@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlmacenDAL.cs" />
+    <Compile Include="ClienteDAL.cs" />
     <Compile Include="DocumentoPagoLibreDAL.cs" />
     <Compile Include="DocumentoPagoTallerDAL.cs" />
     <Compile Include="HojaCombinacionesDAL.cs" />

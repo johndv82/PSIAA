@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -188,5 +188,33 @@ namespace PSIAA.DataAccessLayer
             _sqlParam.Add(new SqlParameter("@orden", SqlDbType.VarChar) { Value = orden });
             return _trans.ReadingEscalarQuery(query, _sqlParam).ToString();
         }
+
+        public DataTable SelectContratosPorModelo(string modelo) {
+            List<SqlParameter> _sqlParam = new List<SqlParameter>();
+            string query = @"
+                select 
+	                numero_contrato 
+                from contrato_detalle
+                where Cod_Modelo_AA like '%' + @modelo + '%'
+                group by numero_contrato";
+
+            _sqlParam.Add(new SqlParameter("@modelo", SqlDbType.VarChar) { Value = modelo });
+            return _trans.ReadingQuery(query, _sqlParam);
+        }
+
+        public DataTable SelectContratosPorCliente(int idCliente)
+        {
+            List<SqlParameter> _sqlParam = new List<SqlParameter>();
+            string query = @"
+                select 
+	                numero_contrato 
+                from contrato_cabecera
+                where Cod_Cliente =  @idCliente
+                group by numero_contrato";
+
+            _sqlParam.Add(new SqlParameter("@idCliente", SqlDbType.Int) { Value = idCliente });
+            return _trans.ReadingQuery(query, _sqlParam);
+        }
     }
 }
+

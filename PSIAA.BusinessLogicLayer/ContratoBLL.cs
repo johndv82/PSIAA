@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -102,7 +102,7 @@ namespace PSIAA.BusinessLogicLayer
         }
 
 
-        public DataTable FiltrarAvanceDetalladoTallasPorPunto(int _contrato,int _punto, out string _cliente, out string _po)
+        public DataTable FiltrarAvanceDetalladoTallasPorPunto(int _contrato, int _punto, out string _cliente, out string _po)
         {
             DataTable _dtAvanceDetalladoTallas = _recepcionControlDal.SelectAvanceDetalladoPorTallas(_contrato);
             string cliente = "", po = "";
@@ -206,8 +206,8 @@ namespace PSIAA.BusinessLogicLayer
                                      Peso_Estimado = double.Parse(grupo.Sum(x => x.Field<double?>("Peso_Estimado")).Value.ToString()),
                                      obs1 = grupo.Max(x => x.Field<string>("obs1")).ToString()
                                  };
-
-                dtReturn = Helper.ToDataTable(dtAgrupado.ToList());
+                var ans = dtAgrupado.ToList();
+                dtReturn = Helper.ToDataTable(ans);
             }
 
             List<ContratoDetalleDTO> listContratoDetalle = new List<ContratoDetalleDTO>();
@@ -254,7 +254,8 @@ namespace PSIAA.BusinessLogicLayer
             return listContratoDetalle;
         }
 
-        public List<string> ListarModelosContrato(int _contrato) {
+        public List<string> ListarModelosContrato(int _contrato)
+        {
             List<string> listModelos = new List<string>();
             listModelos.Add("<------TODOS------->");
             foreach (DataRow row in _contratoDal.SelectGrupoModelos(_contrato).Rows)
@@ -264,20 +265,43 @@ namespace PSIAA.BusinessLogicLayer
             return listModelos;
         }
 
-        public string ObtenerClienteContrato(int _contrato) {
+        public string ObtenerClienteContrato(int _contrato)
+        {
             return _contratoDal.SelectCliente(_contrato);
         }
 
-        public string VerificarContratoCerrado(int _contrato) {
+        public string VerificarContratoCerrado(int _contrato)
+        {
             return _contratoDal.SelectVerificaContratoCerrado(_contrato);
         }
 
-        public DataTable ListarDetalleModeloContrato(int contrato, string modelo) {
+        public DataTable ListarDetalleModeloContrato(int contrato, string modelo)
+        {
             return _contratoDal.SelectDetalleModeloContrato(contrato, modelo);
         }
 
-        public string ObtenerTipoContratoPorOrden(string _orden) {
+        public string ObtenerTipoContratoPorOrden(string _orden)
+        {
             return _contratoDal.SelectTipoContrato(_orden);
+        }
+
+        public List<string> ListarContratosPorModelo(string modelo) {
+            List<string> listContrato = new List<string>();
+            foreach (DataRow row in _contratoDal.SelectContratosPorModelo(modelo).Rows)
+            {
+                listContrato.Add(row["numero_contrato"].ToString());
+            }
+            return listContrato;
+        }
+
+        public List<string> ListarContratosPorCliente(int idCliente)
+        {
+            List<string> listContrato = new List<string>();
+            foreach (DataRow row in _contratoDal.SelectContratosPorCliente(idCliente).Rows)
+            {
+                listContrato.Add(row["numero_contrato"].ToString());
+            }
+            return listContrato;
         }
     }
 }

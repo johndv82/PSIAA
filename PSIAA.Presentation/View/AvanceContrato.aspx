@@ -14,21 +14,31 @@
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
                                     <div class="row">
-                                        <div class="col-md-5">
+                                        <div class="col-md-12">
                                             <div class="well well-sm">
                                                 <div class="row">
-                                                    <div class="col-md-2">
-                                                        <label class="control-label">Contrato:</label>
+                                                    <div class="col-md-3">
+                                                        <asp:RadioButtonList ID="rbnFiltros" runat="server" AutoPostBack="true" RepeatDirection="Horizontal"
+                                                            RepeatLayout="Flow"
+                                                            CssClass="radioboxlist" OnSelectedIndexChanged="rbnFiltros_SelectedIndexChanged">
+                                                            <asp:ListItem Value="cliente" Text="Cliente" Selected="True"></asp:ListItem>
+                                                            <asp:ListItem Value="modelo" Text="Modelo"></asp:ListItem>
+                                                            <asp:ListItem Value="contrato" Text="Contrato"></asp:ListItem>
+                                                        </asp:RadioButtonList>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="input-group">
-                                                            <span class="input-group-addon input-sm">N°</span>
-                                                            <asp:TextBox ID="txtContrato" runat="server" class="form-control input-sm"></asp:TextBox>
+                                                            <span class="input-group-addon input-sm">Nombre:</span>
+                                                            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control input-sm" autocomplete="off"/>
                                                             <asp:HiddenField ID="hidContrato" runat="server" />
                                                             <span class="input-group-btn">
                                                                 <asp:Button ID="btnBuscar" runat="server" Text="Buscar" class="btn btn-primary btn-sm" OnClick="btnBuscar_Click" />
                                                             </span>
+                                                            <asp:HiddenField ID="hidCustomerId" runat="server" />
                                                         </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <asp:DropDownList ID="ddlContratos" runat="server" class="form-control input-sm" AutoPostBack="true" OnSelectedIndexChanged="ddlContratos_SelectedIndexChanged" />
                                                     </div>
                                                     <div class="col-md-2">
                                                         <asp:Button ID="btnAvanceDetallado" runat="server" Text="Avance Detallado" class="btn btn-success btn-sm" Visible="false" data-target="#modalAvanceTallas" data-toggle="modal" OnClick="btnAvanceDetallado_Click" />
@@ -540,7 +550,7 @@
                                             </div>
                                             <div class="row table-responsive" id="fieldSolicitado">
                                                 <fieldset>
-                                                    <legend style="color:royalblue">Detalle de Contrato Solicitado</legend>
+                                                    <legend style="color: royalblue">Detalle de Contrato Solicitado</legend>
                                                     <!-- GRILLA DETALLE CONTRATO -->
                                                     <asp:GridView ID="gridDetalleSolicitadoContrato" runat="server" Width="100%"
                                                         CssClass="table table-striped table-bordered table-hover"
@@ -708,6 +718,8 @@
             </div>
         </div>
     </form>
+    <script type="text/javascript" src="http://cdn.rawgit.com/bassjobsen/Bootstrap-3-Typeahead/master/bootstrap3-typeahead.min.js"></script>
+    <link rel="Stylesheet" href="https://twitter.github.io/typeahead.js/css/examples.css" />
     <script type="text/javascript">
         $("#modalDetalleAvance, #modalAvanceTallas").draggable({
             handle: ".modal-header"
@@ -726,7 +738,62 @@
         }
 
         function AbrirModalDetalleSolicitado() {
+
             $('#modalDetalleContrato').modal('show');
         }
+
+        $(function () {
+            Autocomplete();
+        });
+
+        var prmInstance = Sys.WebForms.PageRequestManager.getInstance();
+        prmInstance.add_endRequest(function () {
+            var chkCliente = document.getElementById("ContentBody_ContentInitBody_rbnFiltros_0");
+            if (chkCliente.checked) {
+                Autocomplete();
+            }
+        });
+
+        function Autocomplete() {
+            $(function () {
+                $('[id*=txtSearch]').typeahead({
+                    hint: true,
+                    highlight: true,
+                    minLength: 1,
+                    source: function (request, response) {
+                        $.ajax({
+                            url: '<%=ResolveUrl("~/View/AvanceContrato.aspx/GetClientes") %>',
+                        data: "{ 'prefijo': '" + request + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            items = [];
+                            map = {};
+                            $.each(data.d, function (i, item) {
+                                var id = item.split('-')[1];
+                                var name = item.split('-')[0];
+                                map[name] = { id: id, name: name };
+                                items.push(name);
+                            });
+                            response(items);
+                            $(".dropdown-menu").css("height", "auto").css("font-size", "9pt");
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                updater: function (item) {
+                    $('[id*=hidCustomerId]').val(map[item].id);
+                    return item;
+                }
+            });
+            });
+    }
+
     </script>
 </asp:Content>

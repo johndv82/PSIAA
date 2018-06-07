@@ -9,12 +9,14 @@ using PSIAA.BusinessLogicLayer;
 using PSIAA.DataTransferObject;
 using System.Data;
 using System.Net;
+using System.Web.Services;
 
 namespace PSIAA.Presentation.View
 {
     public partial class AvanceContrato : System.Web.UI.Page
     {
         private ContratoBLL _contratoBll = new ContratoBLL();
+        private static ClienteBLL _clienteBll = new ClienteBLL();
         private int[] totalAvance = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         private string puntoControl;
 
@@ -22,18 +24,38 @@ namespace PSIAA.Presentation.View
         {
             if (!IsPostBack)
             {
+                //rbnFiltros.SelectedIndex = 0;
             }
-            txtContrato.Focus();
+            txtSearch.Focus();
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            gridAvanceContrato.DataSource = _contratoBll.ListarAvancePorContrato(txtContrato.Text);
-            gridAvanceContrato.DataBind();
-            if (gridAvanceContrato.Rows.Count > 0)
+            txtSearch.ID = "txtSearch";
+            if (rbnFiltros.SelectedValue == "contrato")
             {
-                hidContrato.Value = txtContrato.Text;
-                btnAvanceDetallado.Visible = true;
+                gridAvanceContrato.DataSource = _contratoBll.ListarAvancePorContrato(txtSearch.Text);
+                gridAvanceContrato.DataBind();
+
+                if (gridAvanceContrato.Rows.Count > 0)
+                {
+                    hidContrato.Value = txtSearch.Text;
+                    btnAvanceDetallado.Visible = true;
+                }
+                ddlContratos.Visible = false;
+            }
+            else if (rbnFiltros.SelectedValue == "modelo")
+            {
+                if (!string.IsNullOrWhiteSpace(txtSearch.Text)) {
+                    ddlContratos.DataSource = _contratoBll.ListarContratosPorModelo(txtSearch.Text);
+                    ddlContratos.DataBind();
+                    ddlContratos.Visible = true;
+                }
+            }
+            else if (rbnFiltros.SelectedValue == "cliente") {
+                ddlContratos.DataSource = _contratoBll.ListarContratosPorCliente(int.Parse(hidCustomerId.Value));
+                ddlContratos.DataBind();
+                ddlContratos.Visible = true;
             }
         }
 
@@ -43,19 +65,22 @@ namespace PSIAA.Presentation.View
             lblModelo.Text = ((Button)row.FindControl("lblModelo")).Text.Trim();
             lblColor.Text = ((Label)row.FindControl("lblColor")).Text.Trim();
 
-            if (puntoControl != "0") {
+            if (puntoControl != "0")
+            {
                 ddlPuntos.SelectedValue = puntoControl;
                 CargarDatosAvance();
             }
-            else{
+            else
+            {
                 string baseModelo = lblModelo.Text.Substring(0, lblModelo.Text.IndexOf('-'));
-                string informacion = leerPaginaWeb(@"http://192.168.0.1/diseno/hojas/"+ baseModelo);
+                string informacion = leerPaginaWeb(@"http://192.168.0.1/diseno/hojas/" + baseModelo);
 
                 //BUSCAR ARCHIVOS DE MODELO EN CADENA
                 List<string> subModelos = new List<string>();
                 string cadInicio = ".pdf" + '"' + " id=" + '"';
                 string cadFinal = ".pdf" + '"' + ">";
-                while (informacion.IndexOf(cadInicio) > 0) {
+                while (informacion.IndexOf(cadInicio) > 0)
+                {
                     int indInicio = informacion.IndexOf(cadInicio) + cadInicio.Length;
                     int indFin = informacion.IndexOf(cadFinal);
                     string docModelo = informacion.Substring(indInicio, indFin - indInicio) + ".pdf";
@@ -63,10 +88,11 @@ namespace PSIAA.Presentation.View
                     informacion = informacion.Substring(indFin + cadFinal.Length, informacion.Length - (indFin + cadFinal.Length));
                 }
                 string radioButton = "";
-                foreach (string nombre in subModelos) {
+                foreach (string nombre in subModelos)
+                {
                     string etiqueta = @"
-                        <input type='radio' name='rdbModelo' id='rdbModelo"+ subModelos.IndexOf(nombre) +@"' value='" + nombre + @"' onchange='CargarDocumento(this)' />
-                        <label for='rdbModelo" + subModelos.IndexOf(nombre) + @"'>"+ nombre +@"</label>";
+                        <input type='radio' name='rdbModelo' id='rdbModelo" + subModelos.IndexOf(nombre) + @"' value='" + nombre + @"' onchange='CargarDocumento(this)' />
+                        <label for='rdbModelo" + subModelos.IndexOf(nombre) + @"'>" + nombre + @"</label>";
                     radioButton += etiqueta;
                 }
                 idRadios.InnerHtml = radioButton;
@@ -75,13 +101,20 @@ namespace PSIAA.Presentation.View
 
         private string leerPaginaWeb(string laUrl)
         {
-            WebRequest request = WebRequest.Create(laUrl);
-            WebResponse response = request.GetResponse();
-            StreamReader reader =new StreamReader(response.GetResponseStream());
-            string res = reader.ReadToEnd();
-            reader.Close();
-            response.Close();
-            return res;
+            try
+            {
+                WebRequest request = WebRequest.Create(laUrl);
+                WebResponse response = request.GetResponse();
+                StreamReader reader = new StreamReader(response.GetResponseStream());
+                string res = reader.ReadToEnd();
+                reader.Close();
+                response.Close();
+                return res;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         private void CargarDatosAvance()
@@ -105,8 +138,9 @@ namespace PSIAA.Presentation.View
         private void PoblarGridAsignacionOrdenes()
         {
             string[] tallas;
+            int contrato = rbnFiltros.SelectedValue == "contrato" ? int.Parse(txtSearch.Text) : int.Parse(ddlContratos.Text);
             gridDetalleAsignaciones.DataSource = _contratoBll.ListarAsignacionesPorOrden(int.Parse(ddlPuntos.SelectedValue),
-                                                                                        int.Parse(txtContrato.Text), lblModelo.Text,
+                                                                                        contrato, lblModelo.Text,
                                                                                         lblColor.Text, out tallas);
             gridDetalleAsignaciones.DataBind();
 
@@ -170,7 +204,7 @@ namespace PSIAA.Presentation.View
         {
             row.Font.Bold = true;
             row.Cells[0].Text = "";
-            foreach (object valor in values) 
+            foreach (object valor in values)
                 row.Cells.Add(new TableCell() { Text = valor.ToString() });
             row.Cells[0].ColumnSpan = 2;
         }
@@ -189,7 +223,13 @@ namespace PSIAA.Presentation.View
         {
             //CARGAR GRID DE SOLICITADO
             int contrato = 0;
-            int.TryParse(txtContrato.Text == "" ? "0" : txtContrato.Text, out contrato);
+            if (rbnFiltros.SelectedValue == "contrato")
+            {
+                int.TryParse(txtSearch.Text == "" ? "0" : txtSearch.Text, out contrato);
+            }
+            else {
+                contrato = int.Parse(ddlContratos.Text);
+            }
 
             Session["dtContratoDetalle"] = _contratoBll.ListarDetalleContrato(contrato, false);
 
@@ -200,7 +240,8 @@ namespace PSIAA.Presentation.View
         protected void rblPuntosControl_SelectedIndexChanged1(object sender, EventArgs e)
         {
             string _cliente, _po;
-            DataTable dtAvance = _contratoBll.FiltrarAvanceDetalladoTallasPorPunto(int.Parse(hidContrato.Value), int.Parse(rblPuntosControl.SelectedValue), out _cliente, out _po);
+            int contrato = rbnFiltros.SelectedValue == "contrato" ? int.Parse(txtSearch.Text) : int.Parse(ddlContratos.Text);
+            DataTable dtAvance = _contratoBll.FiltrarAvanceDetalladoTallasPorPunto(contrato, int.Parse(rblPuntosControl.SelectedValue), out _cliente, out _po);
             if (dtAvance.Rows.Count > 0)
             {
                 gridAvanceTallas.DataSource = dtAvance;
@@ -214,7 +255,8 @@ namespace PSIAA.Presentation.View
 
                 gridAvanceTallas.DataBind();
             }
-            else {
+            else
+            {
                 gridAvanceTallas.DataSource = new DataTable();
                 gridAvanceTallas.DataBind();
 
@@ -227,7 +269,8 @@ namespace PSIAA.Presentation.View
             CargarGridDetalleSolicitadoContrato();
         }
 
-        private void CargarGridDetalleSolicitadoContrato() {
+        private void CargarGridDetalleSolicitadoContrato()
+        {
 
             List<ContratoDetalleDTO> listContDet = Session["dtContratoDetalle"] as List<ContratoDetalleDTO>;
             gridDetalleSolicitadoContrato.DataSource = listContDet;
@@ -240,6 +283,41 @@ namespace PSIAA.Presentation.View
             helper.GroupHeader += new GroupEvent(GroupHeaderDetalleContrato);
 
             gridDetalleSolicitadoContrato.DataBind();
+        }
+
+        [WebMethod]
+        public static string[] GetClientes(string prefijo)
+        {
+            List<string> customers = new List<string>();
+            DataTable dtClientes = _clienteBll.ListarClientes();
+            foreach (DataRow row in dtClientes.Rows)
+            {
+                customers.Add(string.Format("{0}-{1}", row["nombre"].ToString().Trim().ToUpper(), row["cod_cliente"]));
+            }
+            var rpta = customers.Where(x => x.Contains(prefijo.ToUpper())).ToList();
+            var arr =  rpta.ToArray();
+            return arr;
+        }
+
+        protected void rbnFiltros_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSearch.Text = string.Empty;
+            /*if (rbnFiltros.SelectedValue != "cliente")
+            {
+                txtSearch.ID = "Otro";
+            }*/
+        }
+
+        protected void ddlContratos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            gridAvanceContrato.DataSource = _contratoBll.ListarAvancePorContrato(ddlContratos.Text.Trim());
+            gridAvanceContrato.DataBind();
+
+            if (gridAvanceContrato.Rows.Count > 0)
+            {
+                hidContrato.Value = txtSearch.Text;
+                btnAvanceDetallado.Visible = true;
+            }
         }
     }
 }
