@@ -1,0 +1,52 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PSIAA.master.cs" Inherits="PSIAA.Presentation.PSIAA" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>PSIAA 2</title>
+    <link href="Content/bootstrap.spacelab.css" rel="stylesheet" />
+    <link href="Content/css/slidefolio.css" rel="stylesheet" />
+    <link href="Content/css/EstilosPropios.css" rel="stylesheet" />
+
+    <!--- Estilo para el Selector de Fecha(No incluido en LUMEN) -->
+    <link rel="stylesheet" href="Content/css/datetimepicker/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="Scripts/daterangepicker/daterangepicker.css" />
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../Scripts/jquery-1.9.1.js"></script>
+    <script src="../Scripts/jquery-ui.js"></script>
+    <script src="../Scripts/js/jquery.vegas.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+
+    <!--- Script para que funcionee el Selector de Fecha(No incluido en LUMEN) -->
+    <script src="../Scripts/datetimepicker/moment.min.js"></script>
+    <script src="../Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="../Scripts/daterangepicker/daterangepicker.js"></script>
+    <script src="../Scripts/daterangepicker/moment.js"></script>
+
+    <!-----Script para Linq.js --->
+    <script src="../Scripts/linq/linq.js"></script>
+
+</head>
+<body>
+    <asp:ContentPlaceHolder ID="ContentHead" runat="server">
+    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="ContentBody" runat="server">
+    </asp:ContentPlaceHolder>
+    <!-- Fondo Slideshow -->
+    <script>
+        $.vegas('slideshow', {
+            delay: 5000,
+            backgrounds: [
+               { src: '../Content/images/art-atlas_1.jpg', fade: 2000 },
+               { src: '../Content/images/art-atlas_2.jpg', fade: 2000 },
+               { src: '../Content/images/art-atlas_3.jpg', fade: 2000 },
+            ]
+        });
+    </script>
+    <!-- /Fin Fondo Slideshow-->
+</body>
+</html>

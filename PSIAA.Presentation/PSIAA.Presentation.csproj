@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{00373D88-41F5-4689-BC71-87046E2B7BD0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PSIAA.Presentation</RootNamespace>
+    <AssemblyName>PSIAA.Presentation</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BarcodeLib, Version=1.0.0.23, Culture=neutral, PublicKeyToken=5f09bda868cc39e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\BarcodeLib.1.0.0.23\lib\net20\BarcodeLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ClosedXML, Version=0.87.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.12\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Mono.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.2.2.7\lib\net40\Mono.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.spacelab.css" />
+    <Content Include="Content\bootstrap.spacelab.min.css" />
+    <Content Include="Content\css\datetimepicker\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\css\EstilosPropios.css" />
+    <Content Include="Content\css\slidefolio.css" />
+    <Content Include="Content\images\art-atlas_1.jpg" />
+    <Content Include="Content\images\art-atlas_2.jpg" />
+    <Content Include="Content\images\art-atlas_3.jpg" />
+    <Content Include="Content\images\cargador.gif" />
+    <Content Include="Content\images\consultas.jpg" />
+    <Content Include="Content\images\cross.png" />
+    <Content Include="Content\images\delete.png" />
+    <Content Include="Content\images\load.gif" />
+    <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="PSIAA.Master" />
+    <Content Include="Init.master" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\PSIAA.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\daterangepicker\daterangepicker.css" />
+    <Content Include="Scripts\daterangepicker\moment.js" />
+    <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\datetimepicker\moment.min.js" />
+    <Content Include="Scripts\GeneracionDocumento.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\daterangepicker\daterangepicker.js" />
+    <Content Include="Scripts\js\jquery.vegas.js" />
+    <Content Include="Scripts\linq\jquery.linq.js" />
+    <Content Include="Scripts\linq\jquery.linq.min.js" />
+    <Content Include="Scripts\linq\linq.js" />
+    <Content Include="Scripts\linq\linq.min.js" />
+    <Content Include="View\Almacen.aspx" />
+    <Content Include="View\AlmacenSap.aspx" />
+    <Content Include="View\AnalisisContrato.aspx" />
+    <Content Include="View\AprobacionPrecio.aspx" />
+    <Content Include="View\AvanceContrato.aspx" />
+    <Content Include="View\ControlFinal.aspx" />
+    <Content Include="View\CorrecionColores.aspx" />
+    <Content Include="View\CostosProduccion.aspx" />
+    <Content Include="View\default.aspx" />
+    <Content Include="View\Contratos.aspx" />
+    <Content Include="View\DocumentosLibres.aspx" />
+    <Content Include="View\Facturaciones.aspx" />
+    <Content Include="View\GeneracionDocumento.aspx" />
+    <Content Include="View\IngresosAlmacen.aspx" />
+    <Content Include="View\IngresosFaltantesAlmacen.aspx" />
+    <Content Include="View\IngresosProduccion.aspx" />
+    <Content Include="View\IngresosPuntosControl.aspx" />
+    <Content Include="View\Inicio.aspx" />
+    <Content Include="View\InventarioProductos.aspx" />
+    <Content Include="View\Lanzamiento.aspx" />
+    <Content Include="View\Liquidaciones.aspx" />
+    <Content Include="View\OrdenProduccion.aspx" />
+    <Content Include="View\ReporteContrato.aspx" />
+    <Content Include="View\SimulacionMP.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\GridViewGroup.cs" />
+    <Compile Include="Helpers\GridViewGroupList.cs" />
+    <Compile Include="Helpers\GridViewHelper.cs" />
+    <Compile Include="Helpers\GridViewSummary.cs" />
+    <Compile Include="Helpers\GridViewSummaryList.cs" />
+    <Compile Include="Helpers\PdfMerger.cs" />
+    <Compile Include="Init.master.cs">
+      <DependentUpon>Init.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Init.master.designer.cs">
+      <DependentUpon>Init.master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="PSIAA.Master.cs">
+      <DependentUpon>PSIAA.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSIAA.Master.designer.cs">
+      <DependentUpon>PSIAA.Master</DependentUpon>
+    </Compile>
+    <Compile Include="View\Almacen.aspx.cs">
+      <DependentUpon>Almacen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Almacen.aspx.designer.cs">
+      <DependentUpon>Almacen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\AlmacenSap.aspx.cs">
+      <DependentUpon>AlmacenSap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\AlmacenSap.aspx.designer.cs">
+      <DependentUpon>AlmacenSap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\AnalisisContrato.aspx.cs">
+      <DependentUpon>AnalisisContrato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\AnalisisContrato.aspx.designer.cs">
+      <DependentUpon>AnalisisContrato.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\AprobacionPrecio.aspx.cs">
+      <DependentUpon>AprobacionPrecio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\AprobacionPrecio.aspx.designer.cs">
+      <DependentUpon>AprobacionPrecio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\AvanceContrato.aspx.cs">
+      <DependentUpon>AvanceContrato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\AvanceContrato.aspx.designer.cs">
+      <DependentUpon>AvanceContrato.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\ControlFinal.aspx.cs">
+      <DependentUpon>ControlFinal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\ControlFinal.aspx.designer.cs">
+      <DependentUpon>ControlFinal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\CorrecionColores.aspx.cs">
+      <DependentUpon>CorrecionColores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\CorrecionColores.aspx.designer.cs">
+      <DependentUpon>CorrecionColores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\CostosProduccion.aspx.cs">
+      <DependentUpon>CostosProduccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\CostosProduccion.aspx.designer.cs">
+      <DependentUpon>CostosProduccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Contratos.aspx.cs">
+      <DependentUpon>Contratos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Contratos.aspx.designer.cs">
+      <DependentUpon>Contratos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\DocumentosLibres.aspx.cs">
+      <DependentUpon>DocumentosLibres.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\DocumentosLibres.aspx.designer.cs">
+      <DependentUpon>DocumentosLibres.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Facturaciones.aspx.cs">
+      <DependentUpon>Facturaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Facturaciones.aspx.designer.cs">
+      <DependentUpon>Facturaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\GeneracionDocumento.aspx.cs">
+      <DependentUpon>GeneracionDocumento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\GeneracionDocumento.aspx.designer.cs">
+      <DependentUpon>GeneracionDocumento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\IngresosAlmacen.aspx.cs">
+      <DependentUpon>IngresosAlmacen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\IngresosAlmacen.aspx.designer.cs">
+      <DependentUpon>IngresosAlmacen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\IngresosFaltantesAlmacen.aspx.cs">
+      <DependentUpon>IngresosFaltantesAlmacen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\IngresosFaltantesAlmacen.aspx.designer.cs">
+      <DependentUpon>IngresosFaltantesAlmacen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\IngresosProduccion.aspx.cs">
+      <DependentUpon>IngresosProduccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\IngresosProduccion.aspx.designer.cs">
+      <DependentUpon>IngresosProduccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\IngresosPuntosControl.aspx.cs">
+      <DependentUpon>IngresosPuntosControl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\IngresosPuntosControl.aspx.designer.cs">
+      <DependentUpon>IngresosPuntosControl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\InventarioProductos.aspx.cs">
+      <DependentUpon>InventarioProductos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\InventarioProductos.aspx.designer.cs">
+      <DependentUpon>InventarioProductos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Lanzamiento.aspx.cs">
+      <DependentUpon>Lanzamiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Lanzamiento.aspx.designer.cs">
+      <DependentUpon>Lanzamiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Liquidaciones.aspx.cs">
+      <DependentUpon>Liquidaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Liquidaciones.aspx.designer.cs">
+      <DependentUpon>Liquidaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\OrdenProduccion.aspx.cs">
+      <DependentUpon>OrdenProduccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\OrdenProduccion.aspx.designer.cs">
+      <DependentUpon>OrdenProduccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReporteContrato.aspx.cs">
+      <DependentUpon>ReporteContrato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\ReporteContrato.aspx.designer.cs">
+      <DependentUpon>ReporteContrato.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\SimulacionMP.aspx.cs">
+      <DependentUpon>SimulacionMP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\SimulacionMP.aspx.designer.cs">
+      <DependentUpon>SimulacionMP.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PSIAA.BusinessLogicLayer\PSIAA.BusinessLogicLayer.csproj">
+      <Project>{0750ea6d-fd39-4384-8abe-376afaca4e6c}</Project>
+      <Name>PSIAA.BusinessLogicLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PSIAA.DataTransferObject\PSIAA.DataTransferObject.csproj">
+      <Project>{0193f994-0d4a-40b5-9270-cceaa058c556}</Project>
+      <Name>PSIAA.DataTransferObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PSIAA.Reports\PSIAA.Reports.csproj">
+      <Project>{ed61caae-0a13-44ab-ad4e-92880ae97524}</Project>
+      <Name>PSIAA.Reports</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51845</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51845/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

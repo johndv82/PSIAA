@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ED61CAAE-0A13-44AB-AD4E-92880AE97524}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PSIAA.Reports</RootNamespace>
+    <AssemblyName>PSIAA.Reports</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\FacturacionTaller.cs">
+      <DependentUpon>FacturacionTaller.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FacturacionTaller.Designer.cs">
+      <DependentUpon>FacturacionTaller.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Data\OrdenesProduccion.cs">
+      <DependentUpon>OrdenesProduccion.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\OrdenesProduccion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrdenesProduccion.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ParteAlmacen.cs">
+      <DependentUpon>ParteAlmacen.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ParteAlmacen.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ParteAlmacen.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="rptContrato.rdlc" />
+    <EmbeddedResource Include="rptMedidasSub.rdlc" />
+    <EmbeddedResource Include="rptOperacionesSub.rdlc" />
+    <EmbeddedResource Include="rptOrdenProduccion.rdlc" />
+    <EmbeddedResource Include="rptOrdenRequisicion.rdlc" />
+    <EmbeddedResource Include="rptPagoLibre.rdlc" />
+    <EmbeddedResource Include="rptFactura.rdlc" />
+    <EmbeddedResource Include="rptParteIngreso.rdlc" />
+    <EmbeddedResource Include="rptTarjetaProduccion.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\FacturacionTaller.xsc">
+      <DependentUpon>FacturacionTaller.xsd</DependentUpon>
+    </None>
+    <None Include="Data\FacturacionTaller.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FacturacionTaller.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data\FacturacionTaller.xss">
+      <DependentUpon>FacturacionTaller.xsd</DependentUpon>
+    </None>
+    <None Include="Data\OrdenesProduccion.xsc">
+      <DependentUpon>OrdenesProduccion.xsd</DependentUpon>
+    </None>
+    <None Include="Data\OrdenesProduccion.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OrdenesProduccion.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\OrdenesProduccion.xss">
+      <DependentUpon>OrdenesProduccion.xsd</DependentUpon>
+    </None>
+    <None Include="Data\ParteAlmacen.xsc">
+      <DependentUpon>ParteAlmacen.xsd</DependentUpon>
+    </None>
+    <None Include="Data\ParteAlmacen.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ParteAlmacen.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\ParteAlmacen.xss">
+      <DependentUpon>ParteAlmacen.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\DataSources\PSIAA.DataTransferObject.Report.ContratoCabDTO.datasource" />
+    <None Include="Properties\DataSources\PSIAA.DataTransferObject.Report.ContratoDetDTO.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PSIAA.DataTransferObject\PSIAA.DataTransferObject.csproj">
+      <Project>{0193f994-0d4a-40b5-9270-cceaa058c556}</Project>
+      <Name>PSIAA.DataTransferObject</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

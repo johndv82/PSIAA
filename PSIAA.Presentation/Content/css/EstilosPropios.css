@@ -1,0 +1,79 @@
+﻿body {
+}
+
+.buttonLabel {
+    background:none!important;
+    border:none; 
+    padding:0!important;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+/*Estilo param Carga defs UpdateProgress*/
+
+.overlay  {
+    position: fixed;
+    z-index: 98;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    opacity: 0.8; 
+}
+
+.overlayContent{
+    z-index: 99;
+    margin: 250px auto;
+    width: 80px;
+    height: 80px;
+}
+
+.overlayContent h2{
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
+
+.overlayContent img{
+    width: 80px;
+    height: 80px;
+}
+
+/*RadioButonList*/
+
+.radioboxlist input{
+    width: 0px;
+    height: 0px;
+}
+
+.radioboxlist radioboxlistStyle{
+    font-size:x-large;
+    padding-right: 20px;
+}
+
+.radioboxlist label {
+    color: #3E3928;
+    background-color:#E8E5D4;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border: 1px solid #AAAAAA;
+    white-space: nowrap;
+    clear: left;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.radioboxlist label:hover{
+    color: #CC3300;
+    background: #D1CFC2;
+}
+
+.radioboxlist input:checked + label {
+    color: #CC3300;
+    background: #D1CFC2;
+}

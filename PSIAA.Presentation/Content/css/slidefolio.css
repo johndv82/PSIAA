@@ -1,0 +1,172 @@
+/* Estilos Globales */
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+.push50{
+margin-top:50px;
+}
+.filter {
+cursor:pointer;
+}
+/*CSS para Slideshow*/
+.vegas-loading {
+	border-radius: 10px;
+	background: #000;
+	background: rgba(0,0,0,0.7);
+	background: url(../images/loading.gif) no-repeat center center; /* Loading Gif by http://preloaders.net/ */
+	height: 32px;
+	left: 20px;
+	position: fixed;
+	top: 20px;
+	width: 32px; 
+	z-index: 0;
+}
+
+.vegas-overlay {
+	background: transparent url(overlays/01.png);
+	opacity: 0.5;
+	z-index: -1;
+}
+
+.vegas-background {
+    max-width: none !important;
+	z-index: -2;
+}
+
+.vegas-overlay,
+.vegas-background {
+	-webkit-user-select: none;
+	 -khtml-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+}
+/*Fin CSS para Slideshow*/
+
+.vert-text {
+  display: table-cell;
+  vertical-align: top;
+  text-align: center;
+  color:#f1f1f1;
+  background:rgba(0, 0, 0, 0.48);
+}
+
+.vert-text h1 {
+  padding: 0;
+  margin: 0;
+  font-size: 4.5em;
+  font-weight: 700;
+}
+#Grid .mix{
+    opacity: 0;
+    display: none;
+	max-height:230px;
+}
+
+
+.header {
+  display: table;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.btn-top {
+color:#f1f1f1;
+background:none repeat scroll 0 0 rgba(0, 0, 0, 0.57);
+border-color:#cccccc;
+}
+.btn-top:hover,
+.btn-top:focus,
+.btn-top:active,
+.btn-top.active {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+
+/* Superposición */
+.overlay {
+    background-color: rgba(0, 0, 0, 0.48);
+    border: 0 solid rgba(255, 255, 255, 0.2);
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    transition: all 0.3s ease 0s;
+    z-index: 9;
+	height:100%;
+	width:100%;
+	cursor:pointer;
+}
+.overlay:hover {
+    opacity: 1;
+    cursor: wait;
+}
+.overlay i, .overlay span.title {
+    color: #FFFFFF;
+    font-size: 40px;
+    position: relative;
+    top: -60px;
+    transition: all 0.3s ease 0s;
+}
+.overlay span.title {
+    font-size: 30px;
+}
+.overlay:hover i, .overlay:hover span.title {
+    top: 10px;
+}
+
+span.valign {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+/* Pie de Página */
+
+footer {
+  padding: 20px 0;
+  background:#f1f1f1;
+}
+
+/* Sensibilidad para Dispositivos */
+/* Dispositivos Ortátiles (tablets, 768px a más) */
+@media (max-width: 768px) { .navbar-brand {margin-left:20px;} .navbar-toggle {margin-right:25px;} #Grid .mix{margin-left:-25px;}}
+
+
+
+/*******************
+FORMULARIO LOGIN
+*******************/
+
+.login-form {
+	width: 300px;
+	margin: 0 auto;
+	position: relative;
+	z-index:10;
+    margin-bottom: 30px;
+	
+	background: rgba(243, 243, 243, 0.30);
+	border: 1px solid #fff;
+	border-radius: 5px;
+	
+	box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.login-form .content {
+	padding: 0 30px 10px 30px;
+}
+
+#alertError {
+    width: 300px;
+    position: relative;
+    margin: 0 auto;
+}
