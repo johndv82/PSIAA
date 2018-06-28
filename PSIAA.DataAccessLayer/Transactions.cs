@@ -20,6 +20,7 @@ namespace PSIAA.DataAccessLayer
             {
                 SqlCommand comando = new SqlCommand(query, oConnSia);
                 comando.CommandType = CommandType.Text;
+                comando.CommandTimeout = 360;
                 if (parametros != null)
                     foreach (SqlParameter param in parametros)
                         comando.Parameters.Add(param);
@@ -88,7 +89,7 @@ namespace PSIAA.DataAccessLayer
             SqlCommand comando = new SqlCommand(nombreProcedure, oConnSia);
             DataTable dtRetorno = new DataTable();
             comando.CommandType = CommandType.StoredProcedure;
-            comando.CommandTimeout = 60;
+            comando.CommandTimeout = 360;
             if (parametros != null)
                 foreach (SqlParameter param in parametros)
                     comando.Parameters.Add(param);

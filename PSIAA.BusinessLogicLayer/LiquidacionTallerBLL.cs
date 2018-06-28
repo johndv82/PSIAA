@@ -5,6 +5,7 @@ using System.Text;
 using PSIAA.DataAccessLayer;
 using PSIAA.DataTransferObject;
 using System.Data;
+using System.Globalization;
 
 namespace PSIAA.BusinessLogicLayer
 {
@@ -48,6 +49,20 @@ namespace PSIAA.BusinessLogicLayer
             for (int y = 2015; y <= yearNow; y++)
                 years.Add(y);
             return years.OrderByDescending(x=>x).ToList();
+        }
+
+        public List<int> ListarSemanas(int anio) {
+            List<int> semanas = new List<int>();
+            DateTime ultimoDia = (anio == DateTime.Now.Year) ? DateTime.Now : new DateTime(anio, 12, 31);
+            Calendar c = CultureInfo.CurrentCulture.Calendar;
+            int ultimaSemana = c.GetWeekOfYear(ultimoDia, CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
+            for (int s = 1; s <= ultimaSemana; s++)
+                semanas.Add(s);
+            return semanas.OrderByDescending(x => x).ToList();
+        }
+
+        public DataTable ListarLiquidacionesPorSemana(int anio, int semana) {
+            return _liquidTallerDal.SelectLiquidacionesPorSemana(anio, semana);
         }
     }
 }

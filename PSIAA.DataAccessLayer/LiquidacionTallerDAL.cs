@@ -282,5 +282,13 @@ namespace PSIAA.DataAccessLayer
             _sqlParam.Add(new SqlParameter("@fechafin", SqlDbType.VarChar) { Value = _fechaFin });
             return _trans.ReadingQuery(query, _sqlParam);
         }
+
+        //Reporte para Ingenieria
+        public DataTable SelectLiquidacionesPorSemana(int anio, int semana) {
+            List<SqlParameter> _sqlParam = new List<SqlParameter>();
+            _sqlParam.Add(new SqlParameter("@anio", SqlDbType.Int) { Value = anio });
+            _sqlParam.Add(new SqlParameter("@semana", SqlDbType.Int) { Value = semana });
+            return _trans.ReadingProcedure("PSIAA.ReportePreLiquidaciones", _sqlParam);
+        }
     }
 }
