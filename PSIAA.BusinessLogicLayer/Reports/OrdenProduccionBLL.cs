@@ -68,30 +68,34 @@ namespace PSIAA.BusinessLogicLayer.Reports
 
         private DataTable ArmarComponentesCabecera(DataTable dtModeloComp) {
             DataTable dtComponentes = new DataTable();
-            dtComponentes.Columns.Add("c_codmod", typeof(string));
-            dtComponentes.Columns.Add("componente1", typeof(string));
-            dtComponentes.Columns.Add("componente2", typeof(string));
-            dtComponentes.Columns.Add("componente3", typeof(string));
-            dtComponentes.Columns.Add("componente4", typeof(string));
-            dtComponentes.Columns.Add("componente5", typeof(string));
-            dtComponentes.Columns.Add("componente6", typeof(string));
-            dtComponentes.Columns.Add("componente7", typeof(string));
-            dtComponentes.Columns.Add("componente8", typeof(string));
-            dtComponentes.Columns.Add("componente9", typeof(string));
-            dtComponentes.Columns.Add("componente10", typeof(string));
+            if (dtModeloComp.Rows.Count > 0) {
+                dtComponentes.Columns.Add("c_codmod", typeof(string));
+                dtComponentes.Columns.Add("componente1", typeof(string));
+                dtComponentes.Columns.Add("componente2", typeof(string));
+                dtComponentes.Columns.Add("componente3", typeof(string));
+                dtComponentes.Columns.Add("componente4", typeof(string));
+                dtComponentes.Columns.Add("componente5", typeof(string));
+                dtComponentes.Columns.Add("componente6", typeof(string));
+                dtComponentes.Columns.Add("componente7", typeof(string));
+                dtComponentes.Columns.Add("componente8", typeof(string));
+                dtComponentes.Columns.Add("componente9", typeof(string));
+                dtComponentes.Columns.Add("componente10", typeof(string));
 
-            string[] componentes = new string[10] { "", "", "", "", "", "", "", "", "", ""};
-            int indice = 0;
-            string modelo = string.Empty;
-            foreach (DataRow fila in dtModeloComp.Rows) {
-                if (indice == 0) {
-                    modelo = fila["c_codmod"].ToString();
+                string[] componentes = new string[10] { "", "", "", "", "", "", "", "", "", "" };
+                int indice = 0;
+                string modelo = string.Empty;
+                foreach (DataRow fila in dtModeloComp.Rows)
+                {
+                    if (indice == 0)
+                    {
+                        modelo = fila["c_codmod"].ToString();
+                    }
+                    componentes[indice] = fila["c_dencom"].ToString();
+                    indice = indice + 1;
                 }
-                componentes[indice] = fila["c_dencom"].ToString();
-                indice = indice + 1;
+                dtComponentes.Rows.Add(modelo, componentes[0], componentes[1], componentes[2], componentes[3], componentes[4],
+                                    componentes[5], componentes[6], componentes[7], componentes[8], componentes[9]);
             }
-            dtComponentes.Rows.Add(modelo, componentes[0], componentes[1], componentes[2], componentes[3], componentes[4],
-                                componentes[5], componentes[6], componentes[7], componentes[8], componentes[9]);
             return dtComponentes;
         }
 

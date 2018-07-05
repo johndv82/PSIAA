@@ -22,7 +22,9 @@ namespace PSIAA.BusinessLogicLayer
             List<CombinacionDTO> _listCombinacionColores = new List<CombinacionDTO>();
             if (partes.Length > 0)
             {
-                DataTable dtColorMaterialOdoo = _combinacionColorDal.SelectColorMateriales(modelo, MascaraColor(correlativoColor));
+                //DataTable dtColorMaterialOdoo = _combinacionColorDal.SelectColorMateriales(modelo, MascaraColor(correlativoColor));
+                //Ya no consultar al ODOO
+                DataTable dtColorMaterialOdoo = new DataTable();
 
                 if (dtColorMaterialOdoo.Rows.Count > 0)
                 {

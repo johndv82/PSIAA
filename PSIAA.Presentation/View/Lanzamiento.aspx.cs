@@ -221,7 +221,7 @@ namespace PSIAA.Presentation.View
                 gridMaterialColor.DataSource = new DataTable();
                 gridMaterialColor.DataBind();
                 string correlativoCol = color.Substring(1, color.Length - 1);
-                gridMaterialColor.DataSource = _hojaCombinacionesBll.ListarColoresCombinacion(lblModelo.Text, correlativoCol, decimal.Parse(lblKgNecesarios.Text));
+                gridMaterialColor.DataSource = _hojaCombinacionesBll.ListarColoresCombinacion(lblModelo.Text, correlativoCol.Trim(), decimal.Parse(lblKgNecesarios.Text));
                 gridMaterialColor.DataBind();
 
                 btnMaterialColor.Visible = true;
@@ -285,6 +285,11 @@ namespace PSIAA.Presentation.View
                         _listAasignar.Add(aasignar);
                         Session["ListadoAlanzar"] = _listAlanzar;
                         Session["ListadoAasignar"] = _listAasignar;
+                        //Aceptar cambios de Grid de combinaciones
+                        List<MaterialPorColorDTO> listMaterialColor = (List<MaterialPorColorDTO>)Session["listMaterialPorColor"];
+                        if (listMaterialColor.Count == 0) {
+                            btnAceptarColor_Click(sender, e);
+                        }
                         lblmsnRegistrosDuplicados.Visible = false;
                     }
                     else
@@ -355,7 +360,7 @@ namespace PSIAA.Presentation.View
             if (color.Substring(0, 2) == "C0")
             {
                 string correlativoCol = color.Substring(1, color.Length - 1);
-                gridMaterialColor.DataSource = _hojaCombinacionesBll.ListarColoresCombinacion(lblModelo.Text, correlativoCol, decimal.Parse(lblKgNecesarios.Text));
+                gridMaterialColor.DataSource = _hojaCombinacionesBll.ListarColoresCombinacion(lblModelo.Text, correlativoCol.Trim(), decimal.Parse(lblKgNecesarios.Text));
                 gridMaterialColor.DataBind();
             }
         }
