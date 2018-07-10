@@ -70,8 +70,8 @@ namespace PSIAA.BusinessLogicLayer
                                                    Titulo = col.Field<string>("Titulos"),
                                                    DescripcionMaterial = mat.Field<string>("c_denmat")
                                                }).ToList();
-                    if (_listCombinacionColores.Count != dtColores.Rows.Count)
-                        _listCombinacionColores.Clear();
+                    /*if (_listCombinacionColores.Count != dtColores.Rows.Count)
+                        _listCombinacionColores.Clear();*/
                 }
                 return _listCombinacionColores;
             }

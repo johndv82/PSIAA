@@ -285,9 +285,9 @@ namespace PSIAA.Presentation.View
                         _listAasignar.Add(aasignar);
                         Session["ListadoAlanzar"] = _listAlanzar;
                         Session["ListadoAasignar"] = _listAasignar;
-                        //Aceptar cambios de Grid de combinaciones
+                        //Aceptar cambios de Grid de combinaciones, cuando el item es combo
                         List<MaterialPorColorDTO> listMaterialColor = (List<MaterialPorColorDTO>)Session["listMaterialPorColor"];
-                        if (listMaterialColor.Count == 0) {
+                        if (listMaterialColor.Count == 0 && rblColores.SelectedValue.Substring(0, 2) == "C0") {
                             btnAceptarColor_Click(sender, e);
                         }
                         lblmsnRegistrosDuplicados.Visible = false;
@@ -521,6 +521,7 @@ namespace PSIAA.Presentation.View
 
         protected void btnAceptarColor_Click(object sender, EventArgs e)
         {
+            Session["listMaterialPorColor"] = new List<MaterialPorColorDTO>();
             List<MaterialPorColorDTO> _listMaterialPorColor = new List<MaterialPorColorDTO>();
             foreach (GridViewRow fila in gridMaterialColor.Rows)
             {
