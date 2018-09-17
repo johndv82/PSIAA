@@ -62,20 +62,24 @@ namespace PSIAA.DataAccessLayer
         public int ExecuteQuery(string query, List<SqlParameter> parametros)
         {
             int filasAfectadas = 0;
+            SqlTransaction sqlTrans = oConnSia.BeginTransaction();
             try
             {
                 SqlCommand comando = new SqlCommand(query, oConnSia);
                 comando.CommandType = CommandType.Text;
+                comando.Transaction = sqlTrans;
                 if (parametros != null)
                     foreach (SqlParameter param in parametros)
                         comando.Parameters.Add(param);
 
                 oConnSia.Open();
                 filasAfectadas = comando.ExecuteNonQuery();
+                sqlTrans.Commit();
             }
             catch (SqlException sqlEx)
             {
                 Console.WriteLine(sqlEx.Message.ToString());
+                sqlTrans.Rollback();
             }
             finally {
                 oConnSia.Close();

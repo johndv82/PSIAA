@@ -55,6 +55,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OrdenesProduccion.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Data\PackingListSAP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PackingListSAP.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Data\ParteAlmacen.cs">
       <DependentUpon>ParteAlmacen.xsd</DependentUpon>
     </Compile>
@@ -71,6 +76,7 @@
     <EmbeddedResource Include="rptOperacionesSub.rdlc" />
     <EmbeddedResource Include="rptOrdenProduccion.rdlc" />
     <EmbeddedResource Include="rptOrdenRequisicion.rdlc" />
+    <EmbeddedResource Include="rptPackingList.rdlc" />
     <EmbeddedResource Include="rptPagoLibre.rdlc" />
     <EmbeddedResource Include="rptFactura.rdlc" />
     <EmbeddedResource Include="rptParteIngreso.rdlc" />
@@ -98,6 +104,17 @@
     </None>
     <None Include="Data\OrdenesProduccion.xss">
       <DependentUpon>OrdenesProduccion.xsd</DependentUpon>
+    </None>
+    <None Include="Data\PackingListSAP.xsc">
+      <DependentUpon>PackingListSAP.xsd</DependentUpon>
+    </None>
+    <None Include="Data\PackingListSAP.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PackingListSAP.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\PackingListSAP.xss">
+      <DependentUpon>PackingListSAP.xsd</DependentUpon>
     </None>
     <None Include="Data\ParteAlmacen.xsc">
       <DependentUpon>ParteAlmacen.xsd</DependentUpon>

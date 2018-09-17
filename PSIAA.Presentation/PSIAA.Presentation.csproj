@@ -151,6 +151,7 @@
     <Content Include="View\OrdenProduccion.aspx" />
     <Content Include="View\ReporteContrato.aspx" />
     <Content Include="View\ReporteLiquidaciones.aspx" />
+    <Content Include="View\ReportePackingList.aspx" />
     <Content Include="View\SimulacionMP.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -350,6 +351,13 @@
     </Compile>
     <Compile Include="View\ReporteLiquidaciones.aspx.designer.cs">
       <DependentUpon>ReporteLiquidaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReportePackingList.aspx.cs">
+      <DependentUpon>ReportePackingList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\ReportePackingList.aspx.designer.cs">
+      <DependentUpon>ReportePackingList.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\SimulacionMP.aspx.cs">
       <DependentUpon>SimulacionMP.aspx</DependentUpon>
