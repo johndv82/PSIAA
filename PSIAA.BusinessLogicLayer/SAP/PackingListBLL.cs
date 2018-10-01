@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PSIAA.DataAccessLayer.SAP.Reports;
+using PSIAA.DataAccessLayer.SAP;
 using System.Data;
 
-namespace PSIAA.BusinessLogicLayer.Reports
+namespace PSIAA.BusinessLogicLayer.SAP
 {
     public class PackingListBLL
     {
@@ -21,6 +21,10 @@ namespace PSIAA.BusinessLogicLayer.Reports
 
         public DataTable PackingListDetalle(int docEntry) {
             return _packingListDal.SelectPackingListDetalle(docEntry);
+        }
+
+        public int BuscarDocumentoEntry(string tipo, string serie, string correlativo) {
+            return _packingListDal.SelectDocumentoEntry(tipo, serie, correlativo);
         }
     }
 }

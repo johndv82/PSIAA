@@ -66,7 +66,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\FacturacionBLL.cs" />
     <Compile Include="Reports\OrdenRequisicionBLL.cs" />
-    <Compile Include="Reports\PackingListBLL.cs" />
+    <Compile Include="SAP\ContratoBLL.cs" />
+    <Compile Include="SAP\PackingListBLL.cs" />
     <Compile Include="Reports\PagoLibreBLL.cs" />
     <Compile Include="SimulacionMpBLL.cs" />
     <Compile Include="UsuarioBLL.cs" />

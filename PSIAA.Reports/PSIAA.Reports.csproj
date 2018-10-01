@@ -39,6 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ContratoSAP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContratoSAP.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Data\FacturacionTaller.cs">
       <DependentUpon>FacturacionTaller.xsd</DependentUpon>
     </Compile>
@@ -72,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="rptContrato.rdlc" />
+    <EmbeddedResource Include="rptContratoSAP.rdlc" />
     <EmbeddedResource Include="rptMedidasSub.rdlc" />
     <EmbeddedResource Include="rptOperacionesSub.rdlc" />
     <EmbeddedResource Include="rptOrdenProduccion.rdlc" />
@@ -83,6 +89,17 @@
     <EmbeddedResource Include="rptTarjetaProduccion.rdlc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\ContratoSAP.xsc">
+      <DependentUpon>ContratoSAP.xsd</DependentUpon>
+    </None>
+    <None Include="Data\ContratoSAP.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ContratoSAP.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\ContratoSAP.xss">
+      <DependentUpon>ContratoSAP.xsd</DependentUpon>
+    </None>
     <None Include="Data\FacturacionTaller.xsc">
       <DependentUpon>FacturacionTaller.xsd</DependentUpon>
     </None>

@@ -1,29 +1,31 @@
-﻿using System;
+﻿using Microsoft.Reporting.WebForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using PSIAA.BusinessLogicLayer.SAP;
-using Microsoft.Reporting.WebForms;
-using System.IO;
 using System.Data;
 using System.Configuration;
+using System.IO;
 
 namespace PSIAA.Presentation.View
 {
-    public partial class ReportePackingList : System.Web.UI.Page
+    public partial class ReporteContratoSAP : System.Web.UI.Page
     {
-        private readonly PackingListBLL _packingListBll = new PackingListBLL();
         private HttpCookie cookie;
+        private readonly ContratoBLL _contratoBll = new ContratoBLL();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
+            if (!IsPostBack)
+            {
                 cookie = Request.Cookies["Usuario"];
                 if (cookie != null)
                 {
                     hidUsuario.Value = cookie["Nombre"].ToString();
-                    //lblError.Visible = false;
+                    lblError.Visible = false;
                 }
                 else
                 {
@@ -40,37 +42,33 @@ namespace PSIAA.Presentation.View
                     Response.Redirect("default.aspx");
                 }
             }
-            txtTipo.Focus();
-            lblError.Visible = false;
+            txtContrato.Focus();
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            int documentoEntry = 0;
-            if (!string.IsNullOrWhiteSpace(txtTipo.Text) &&
-                !string.IsNullOrWhiteSpace(txtSerie.Text) &&
-                !string.IsNullOrWhiteSpace(txtCorrelativo.Text)) {
-                documentoEntry = _packingListBll.BuscarDocumentoEntry(txtTipo.Text, txtSerie.Text, txtCorrelativo.Text);
-                lblDocEntry.Text = documentoEntry.ToString();
-                DataRow drCabecera = _packingListBll.PackingListCabecera(documentoEntry);
-                DataTable dtDetalle = _packingListBll.PackingListDetalle(documentoEntry);
+            if (!string.IsNullOrWhiteSpace(txtContrato.Text))
+            {
+                hidContrato.Value = txtContrato.Text;
+                DataRow drCabecera = _contratoBll.ContratoCabecera(hidContrato.Value.ToString());
+                DataTable dtDetalle = _contratoBll.ContratoDetalle(hidContrato.Value.ToString());
                 if (drCabecera != null && dtDetalle.Rows.Count > 0)
                 {
                     ReportDataSource rdsCabecera = new ReportDataSource();
-                    rdsCabecera.Name = "dsPackingListCab";
+                    rdsCabecera.Name = "dsRepContratoCab";
                     rdsCabecera.Value = drCabecera.Table;
 
                     ReportDataSource rdsDetalle = new ReportDataSource();
-                    rdsDetalle.Name = "dsPackingListDet";
+                    rdsDetalle.Name = "dsRepContratoDet";
                     rdsDetalle.Value = dtDetalle;
 
-                    rptViewPackingList.LocalReport.DataSources.Clear();
-                    rptViewPackingList.LocalReport.DataSources.Add(rdsCabecera);
-                    rptViewPackingList.LocalReport.DataSources.Add(rdsDetalle);
-                    rptViewPackingList.LocalReport.Refresh();
-                    
+                    rptViewContrato.LocalReport.DataSources.Clear();
+                    rptViewContrato.LocalReport.DataSources.Add(rdsCabecera);
+                    rptViewContrato.LocalReport.DataSources.Add(rdsDetalle);
+                    rptViewContrato.LocalReport.Refresh();
+
                     //Si no existe, creamos el documento
-                    string nombrepdf = ExportReportToPDF("RepPackingList_" + lblDocEntry.Text.ToString() + "_" + hidUsuario.Value.ToString());
+                    string nombrepdf = ExportReportToPDF("RepContratoSAP_" + hidContrato.Value.ToString() + "_" + hidUsuario.Value.ToString());
                     if (nombrepdf != string.Empty)
                     {
                         //Cargamos el PDFViewer
@@ -82,9 +80,10 @@ namespace PSIAA.Presentation.View
                         ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", "CargarDocumento();", true);
                     }
                 }
-                else {
+                else
+                {
                     lblError.Visible = true;
-                    rptViewPackingList.LocalReport.DataSources.Clear();
+                    rptViewContrato.LocalReport.DataSources.Clear();
                 }
             }
         }
@@ -98,10 +97,10 @@ namespace PSIAA.Presentation.View
             string filenameExtension;
             try
             {
-                byte[] bytes = rptViewPackingList.LocalReport.Render("PDF", null, out mimeType, out encoding, out filenameExtension,
+                byte[] bytes = rptViewContrato.LocalReport.Render("PDF", null, out mimeType, out encoding, out filenameExtension,
                                                             out streamids, out warnings);
 
-                string filename = @"C:\inetpub\wwwroot\PSIAA\Reports\PackingList\" + reportName + ".pdf";
+                string filename = @"C:\inetpub\wwwroot\PSIAA\Reports\Contratos\" + reportName + ".pdf";
                 using (var fs = new FileStream(filename, FileMode.Create))
                 {
                     fs.Write(bytes, 0, bytes.Length);

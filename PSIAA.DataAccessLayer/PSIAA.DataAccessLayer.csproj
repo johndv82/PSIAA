@@ -60,7 +60,8 @@
     <Compile Include="AsignacionOrdenesDAL.cs" />
     <Compile Include="ContratoDAL.cs" />
     <Compile Include="MaquinaDAL.cs" />
-    <Compile Include="SAP\Reports\PackingListDAL.cs" />
+    <Compile Include="SAP\ContratoDAL.cs" />
+    <Compile Include="SAP\PackingListDAL.cs" />
     <Compile Include="SimulacionMpDAL.cs" />
     <Compile Include="TuartDB\CategoriaOperacionDAL.cs" />
     <Compile Include="TuartDB\CombMaterialDAL.cs" />

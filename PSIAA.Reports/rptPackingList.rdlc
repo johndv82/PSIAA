@@ -42,7 +42,7 @@
               <Width>0.6cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.63532cm</Width>
+              <Width>4.63531cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.9618cm</Width>
@@ -54,13 +54,13 @@
               <Width>1.58823cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.27234cm</Width>
+              <Width>0.19296cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.07938cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.30912cm</Width>
+              <Width>0.12392cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -482,7 +482,7 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox231">
+                    <Textbox Name="Textbox101">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -492,16 +492,13 @@
                               <Value />
                               <Style>
                                 <FontSize>6pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
+                          <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox231</rd:DefaultName>
+                      <rd:DefaultName>Textbox101</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -518,7 +515,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox232">
+                    <Textbox Name="Textbox102">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -528,16 +525,13 @@
                               <Value />
                               <Style>
                                 <FontSize>6pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
+                          <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox232</rd:DefaultName>
+                      <rd:DefaultName>Textbox102</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -554,7 +548,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox233">
+                    <Textbox Name="Textbox103">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -564,16 +558,13 @@
                               <Value />
                               <Style>
                                 <FontSize>6pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
+                          <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox233</rd:DefaultName>
+                      <rd:DefaultName>Textbox103</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -914,7 +905,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox243">
+                    <Textbox Name="Textbox113">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -924,7 +915,6 @@
                               <Value />
                               <Style>
                                 <FontSize>6pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -933,7 +923,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox243</rd:DefaultName>
+                      <rd:DefaultName>Textbox113</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -950,7 +940,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox244">
+                    <Textbox Name="Textbox114">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -960,7 +950,6 @@
                               <Value />
                               <Style>
                                 <FontSize>6pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -969,7 +958,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox244</rd:DefaultName>
+                      <rd:DefaultName>Textbox114</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1058,7 +1047,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox247">
+                    <Textbox Name="Textbox117">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -1068,7 +1057,6 @@
                               <Value />
                               <Style>
                                 <FontSize>6pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1077,7 +1065,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox247</rd:DefaultName>
+                      <rd:DefaultName>Textbox117</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1094,7 +1082,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox248">
+                    <Textbox Name="Textbox118">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -1104,7 +1092,6 @@
                               <Value />
                               <Style>
                                 <FontSize>6pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1113,7 +1100,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox248</rd:DefaultName>
+                      <rd:DefaultName>Textbox118</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1139,7 +1126,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox249">
+                    <Textbox Name="Textbox119">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -1149,7 +1136,6 @@
                               <Value />
                               <Style>
                                 <FontSize>6pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1158,7 +1144,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox249</rd:DefaultName>
+                      <rd:DefaultName>Textbox119</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1181,7 +1167,6 @@
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="TamañoCaja">
-                      <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -1214,7 +1199,6 @@
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="CodCliModelo">
-                      <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -1247,7 +1231,6 @@
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="Color">
-                      <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -1678,7 +1661,8 @@ Fields!Cantidad8.Value)</Value>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!PesoNeto.Value</Value>
+                              <Value>=CDec(Split(Fields!PesoNeto.Value.ToString(),".",2).GetValue(0) 
+&amp; "," &amp; Split(Fields!PesoNeto.Value.ToString(),".",2).GetValue(1))</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                               </Style>
@@ -1713,7 +1697,8 @@ Fields!Cantidad8.Value)</Value>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!PesoBruto.Value</Value>
+                              <Value>=CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0) 
+&amp; "," &amp; Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(1))</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                               </Style>
@@ -1791,7 +1776,9 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=RunningValue(CDec(Fields!PesoNeto.Value), Sum, "Tablix1")</Value>
+                              <Value>=RunningValue(
+CDec(Split(Fields!PesoNeto.Value.ToString(),".",2).GetValue(0) 
+&amp; "," &amp; Split(Fields!PesoNeto.Value.ToString(),".",2).GetValue(1)), Sum, "Tablix1")</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                               </Style>
@@ -1835,7 +1822,9 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=RunningValue(CDec(Fields!PesoBruto.Value), Sum, "Tablix1")</Value>
+                              <Value>=RunningValue(
+CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0) 
+&amp; "," &amp; Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(1)), Sum, "Tablix1")</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                               </Style>
@@ -1899,145 +1888,116 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
-              <Group Name="GrupoTalla">
+              <TablixHeader>
+                <Size>0.72474cm</Size>
+                <CellContents>
+                  <Textbox Name="Textbox11">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>BOX #</Value>
+                            <Style>
+                              <FontSize>6pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox9</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                        <Width>0.5pt</Width>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
+                </TablixMember>
+              </TablixMembers>
+              <KeepWithGroup>After</KeepWithGroup>
+              <RepeatOnNewPage>true</RepeatOnNewPage>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="Paquete">
                 <GroupExpressions>
-                  <GroupExpression>=Fields!GrupoTalla.Value</GroupExpression>
+                  <GroupExpression>=Fields!Paquete.Value</GroupExpression>
                 </GroupExpressions>
               </Group>
               <SortExpressions>
                 <SortExpression>
-                  <Value>=Fields!Modelo.Value</Value>
+                  <Value>=Fields!Paquete.Value</Value>
                 </SortExpression>
               </SortExpressions>
+              <TablixHeader>
+                <Size>0.72474cm</Size>
+                <CellContents>
+                  <Textbox Name="Paquete">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=Fields!Paquete.Value</Value>
+                            <Style>
+                              <FontSize>6pt</FontSize>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Paquete</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                        <Width>0.5pt</Width>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
               <TablixMembers>
                 <TablixMember>
-                  <TablixHeader>
-                    <Size>0.72475cm</Size>
-                    <CellContents>
-                      <Textbox Name="Textbox76">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>BOX #</Value>
-                                <Style>
-                                  <FontSize>6pt</FontSize>
-                                  <FontWeight>Bold</FontWeight>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Center</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox74</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                            <Width>0.5pt</Width>
-                          </Border>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                  <TablixMembers>
-                    <TablixMember>
-                      <RepeatOnNewPage>true</RepeatOnNewPage>
-                    </TablixMember>
-                  </TablixMembers>
-                  <KeepWithGroup>After</KeepWithGroup>
-                  <RepeatOnNewPage>true</RepeatOnNewPage>
-                </TablixMember>
-                <TablixMember>
-                  <TablixHeader>
-                    <Size>0.72475cm</Size>
-                    <CellContents>
-                      <Textbox Name="Textbox230">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value />
-                                <Style>
-                                  <FontSize>6pt</FontSize>
-                                  <FontWeight>Bold</FontWeight>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Center</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox230</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                            <Width>0.5pt</Width>
-                          </Border>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                  <KeepWithGroup>After</KeepWithGroup>
-                  <RepeatOnNewPage>true</RepeatOnNewPage>
-                </TablixMember>
-                <TablixMember>
-                  <Group Name="Paquete">
+                  <Group Name="GrupoTalla">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!Paquete.Value</GroupExpression>
+                      <GroupExpression>=Fields!GrupoTalla.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
-                  <TablixHeader>
-                    <Size>0.72475cm</Size>
-                    <CellContents>
-                      <Textbox Name="Paquete1">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>=Fields!Paquete.Value</Value>
-                                <Style>
-                                  <FontSize>6pt</FontSize>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style />
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Paquete1</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                            <Width>0.5pt</Width>
-                          </Border>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!GrupoTalla.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
                   <TablixMembers>
+                    <TablixMember>
+                      <Visibility>
+                        <Hidden>=Previous(Fields!Talla0.Value) = Fields!Talla0.Value</Hidden>
+                      </Visibility>
+                      <RepeatOnNewPage>true</RepeatOnNewPage>
+                    </TablixMember>
                     <TablixMember>
                       <Group Name="Detalles" />
                     </TablixMember>
@@ -2047,17 +2007,16 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <RepeatRowHeaders>true</RepeatRowHeaders>
         <DataSetName>dsPackingListDet</DataSetName>
         <SortExpressions>
           <SortExpression>
             <Value>=Fields!Paquete.Value</Value>
           </SortExpression>
         </SortExpressions>
-        <Top>0.14464cm</Top>
+        <Top>0.11289cm</Top>
         <Left>0.15875cm</Left>
         <Height>1.4cm</Height>
-        <Width>20.30867cm</Width>
+        <Width>20.0441cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2065,427 +2024,16 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>0.67538in</Height>
+    <Height>0.65685in</Height>
     <Style />
   </Body>
-  <Width>8.05804in</Width>
+  <Width>7.95388in</Width>
   <Page>
     <PageHeader>
-      <Height>4.11078cm</Height>
+      <Height>3.95203cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
-        <Rectangle Name="Rectangle4">
-          <KeepTogether>true</KeepTogether>
-          <Top>1.64867cm</Top>
-          <Left>14.94833cm</Left>
-          <Height>0.56854cm</Height>
-          <Width>2.95389cm</Width>
-          <Style>
-            <Border>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </Border>
-          </Style>
-        </Rectangle>
-        <Rectangle Name="Rectangle6">
-          <ReportItems>
-            <Textbox Name="PageNumber5">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>FECHA / DATE:</Value>
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value />
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.09976cm</Top>
-              <Left>0.12235cm</Left>
-              <Height>0.37cm</Height>
-              <Width>2.42062cm</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="TotalCajas3">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!Fecha.Value, "dsPackingListCab")</Value>
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>TotalCajas</rd:DefaultName>
-              <Top>0.09271cm</Top>
-              <Left>2.64881cm</Left>
-              <Height>0.37cm</Height>
-              <Width>3.63137cm</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="PageNumber6">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>SHIP TO ADDRES:</Value>
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value />
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.09623cm</Top>
-              <Left>6.42128cm</Left>
-              <Height>0.37cm</Height>
-              <Width>2.47578cm</Width>
-              <ZIndex>2</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="TotalCajas4">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!Direccion.Value, "dsPackingListCab")</Value>
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>TotalCajas</rd:DefaultName>
-              <Top>0.09271cm</Top>
-              <Left>8.96762cm</Left>
-              <Height>0.37cm</Height>
-              <Width>10.45048cm</Width>
-              <ZIndex>3</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-          </ReportItems>
-          <KeepTogether>true</KeepTogether>
-          <Top>2.22074cm</Top>
-          <Left>0.15875cm</Left>
-          <Height>0.56854cm</Height>
-          <Width>19.64784cm</Width>
-          <ZIndex>1</ZIndex>
-          <Style>
-            <Border>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </Border>
-          </Style>
-        </Rectangle>
-        <Rectangle Name="Rectangle8">
-          <ReportItems>
-            <Textbox Name="PageNumber8">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>DESTINO / DESTINATION:</Value>
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value />
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.10583cm</Top>
-              <Left>0.12235cm</Left>
-              <Height>0.37cm</Height>
-              <Width>3.39958cm</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="TotalCajas7">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!Destino.Value, "dsPackingListCab")</Value>
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>TotalCajas</rd:DefaultName>
-              <Top>0.10583cm</Top>
-              <Left>3.69832cm</Left>
-              <Height>0.37cm</Height>
-              <Width>8.45785cm</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-          </ReportItems>
-          <KeepTogether>true</KeepTogether>
-          <Top>3.35782cm</Top>
-          <Left>0.15875cm</Left>
-          <Height>0.56854cm</Height>
-          <Width>12.54062cm</Width>
-          <ZIndex>2</ZIndex>
-          <Style>
-            <Border>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </Border>
-          </Style>
-        </Rectangle>
-        <Rectangle Name="Rectangle9">
-          <ReportItems>
-            <Textbox Name="PageNumber7">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>PEDIDO Nro. / CONTRACT:</Value>
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value />
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.07056cm</Top>
-              <Left>0.12235cm</Left>
-              <Height>0.37cm</Height>
-              <Width>3.39958cm</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="TotalCajas5">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!Contrato.Value, "dsPackingListCab")</Value>
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>TotalCajas</rd:DefaultName>
-              <Top>0.09271cm</Top>
-              <Left>3.69832cm</Left>
-              <Height>0.37cm</Height>
-              <Width>2.58186cm</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="TotalCajas6">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!Po.Value, "dsPackingListCab")</Value>
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>TotalCajas</rd:DefaultName>
-              <Top>0.09271cm</Top>
-              <Left>6.51172cm</Left>
-              <Height>0.37cm</Height>
-              <Width>5.64444cm</Width>
-              <ZIndex>2</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-          </ReportItems>
-          <KeepTogether>true</KeepTogether>
-          <Top>2.78928cm</Top>
-          <Left>0.15875cm</Left>
-          <Height>0.56854cm</Height>
-          <Width>12.54062cm</Width>
-          <ZIndex>3</ZIndex>
-          <Style>
-            <Border>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </Border>
-          </Style>
-        </Rectangle>
         <Rectangle Name="Rectangle7">
           <ReportItems>
             <Textbox Name="TotalCajas8">
@@ -2507,8 +2055,8 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>TotalCajas</rd:DefaultName>
-              <Top>0.03881cm</Top>
-              <Left>0.03175cm</Left>
+              <Top>0.4098cm</Top>
+              <Left>0.03528cm</Left>
               <Height>0.37cm</Height>
               <Width>6.8422cm</Width>
               <Style>
@@ -2539,8 +2087,9 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>TotalCajas</rd:DefaultName>
-              <Top>0.40881cm</Top>
-              <Height>0.74cm</Height>
+              <Top>0.8433cm</Top>
+              <Left>0.00353cm</Left>
+              <Height>0.37cm</Height>
               <Width>6.87395cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
@@ -2553,13 +2102,90 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Textbox Name="TotalCajas4">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Direccion.Value, "dsPackingListCab")</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>TotalCajas</rd:DefaultName>
+              <Top>1.24505cm</Top>
+              <Height>0.37cm</Height>
+              <Width>6.87748cm</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="PageNumber6">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>DESTINATARIO / SHIP TO ADDRES:</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value />
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>PageNumber</rd:DefaultName>
+              <Top>0.01705cm</Top>
+              <Left>1.36752cm</Left>
+              <Height>0.37cm</Height>
+              <Width>4.64128cm</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
           </ReportItems>
           <KeepTogether>true</KeepTogether>
-          <Top>2.78928cm</Top>
-          <Left>12.7029cm</Left>
-          <Height>1.14881cm</Height>
-          <Width>7.10369cm</Width>
-          <ZIndex>4</ZIndex>
+          <Top>2.11784cm</Top>
+          <Left>12.69231cm</Left>
+          <Height>1.69575cm</Height>
+          <Width>7.11428cm</Width>
           <Style>
             <Border>
               <Color>LightGrey</Color>
@@ -2589,10 +2215,10 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.10676cm</Top>
-              <Left>0.12912cm</Left>
-              <Height>0.70583cm</Height>
-              <Width>6.15782cm</Width>
+              <Top>0.01151cm</Top>
+              <Left>0.00677cm</Left>
+              <Height>0.65cm</Height>
+              <Width>6.28017cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2620,10 +2246,10 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>0.92195cm</Top>
-              <Left>0.12912cm</Left>
-              <Height>0.45cm</Height>
-              <Width>16.91979cm</Width>
+              <Top>0.66795cm</Top>
+              <Left>0.00677cm</Left>
+              <Height>0.74cm</Height>
+              <Width>11.15312cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -2657,10 +2283,58 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>PageNumber</rd:DefaultName>
-                  <Top>0.44097cm</Top>
-                  <Left>0.23973cm</Left>
-                  <Height>0.45cm</Height>
+                  <Top>0.54095cm</Top>
+                  <Left>0.27501cm</Left>
+                  <Height>0.57808cm</Height>
                   <Width>1.44167cm</Width>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="PageNumber2">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Page.</Value>
+                          <Style>
+                            <FontSize>7pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value />
+                          <Style>
+                            <FontSize>7pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>PageNumber</rd:DefaultName>
+                  <Top>0.14801cm</Top>
+                  <Left>0.27501cm</Left>
+                  <Height>0.4cm</Height>
+                  <Width>1.44167cm</Width>
+                  <ZIndex>1</ZIndex>
                   <Style>
                     <Border>
                       <Style>None</Style>
@@ -2671,61 +2345,11 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
                     <PaddingBottom>2pt</PaddingBottom>
                   </Style>
                 </Textbox>
-                <Rectangle Name="Rectangle5">
-                  <ReportItems>
-                    <Textbox Name="TotalCajas">
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=First(Fields!TotalCajas.Value, "dsPackingListCab")</Value>
-                              <Style>
-                                <FontSize>7pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>TotalCajas</rd:DefaultName>
-                      <Top>0.06667cm</Top>
-                      <Left>0.24666cm</Left>
-                      <Height>0.4cm</Height>
-                      <Width>1.43474cm</Width>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </ReportItems>
-                  <KeepTogether>true</KeepTogether>
-                  <Top>0.96541cm</Top>
-                  <Height>0.56854cm</Height>
-                  <Width>1.91114cm</Width>
-                  <ZIndex>1</ZIndex>
-                  <Style>
-                    <Border>
-                      <Color>LightGrey</Color>
-                      <Style>Solid</Style>
-                      <Width>0.5pt</Width>
-                    </Border>
-                  </Style>
-                </Rectangle>
               </ReportItems>
               <KeepTogether>true</KeepTogether>
-              <Top>0.54448cm</Top>
-              <Left>17.74347cm</Left>
-              <Height>1.53395cm</Height>
-              <Width>1.91114cm</Width>
+              <Left>17.70819cm</Left>
+              <Height>1.40795cm</Height>
+              <Width>1.94642cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -2733,49 +2357,43 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
                   <Style>Solid</Style>
                   <Width>0.5pt</Width>
                 </Border>
+                <TopBorder>
+                  <Style>None</Style>
+                </TopBorder>
+                <BottomBorder>
+                  <Style>None</Style>
+                </BottomBorder>
+                <RightBorder>
+                  <Style>None</Style>
+                </RightBorder>
               </Style>
             </Rectangle>
-            <Textbox Name="PageNumber2">
+            <Textbox Name="Textbox8">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Page.</Value>
+                      <Value>SGC-DS.00-REG-071 / V01 / 17/06/2016</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
-                    <TextAlign>Center</TextAlign>
+                    <TextAlign>Right</TextAlign>
                   </Style>
                 </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value />
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
               </Paragraphs>
-              <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.55767cm</Top>
-              <Left>17.9832cm</Left>
-              <Height>0.4cm</Height>
-              <Width>1.44167cm</Width>
+              <rd:DefaultName>Textbox4</rd:DefaultName>
+              <Top>0.9067cm</Top>
+              <Left>12.54739cm</Left>
+              <Height>0.37cm</Height>
+              <Width>5.01969cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
+                <Border />
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -2796,155 +2414,17 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>0.01503cm</Top>
-              <Left>16.44099cm</Left>
-              <Height>0.49417cm</Height>
-              <Width>2.98388cm</Width>
+              <Top>0.24326cm</Top>
+              <Left>14.10976cm</Left>
+              <Height>0.45cm</Height>
+              <Width>3.45732cm</Width>
               <ZIndex>4</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Rectangle Name="Rectangle10">
-              <ReportItems>
-                <Textbox Name="PageNumber4">
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>WEIGHT PACKING LIST / NOTA DE CONTENIDO:</Value>
-                          <Style>
-                            <FontSize>7pt</FontSize>
-                            <FontWeight>Bold</FontWeight>
-                          </Style>
-                        </TextRun>
-                      </TextRuns>
-                      <Style>
-                        <TextAlign>Left</TextAlign>
-                      </Style>
-                    </Paragraph>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value />
-                          <Style>
-                            <FontSize>7pt</FontSize>
-                            <FontWeight>Bold</FontWeight>
-                          </Style>
-                        </TextRun>
-                      </TextRuns>
-                      <Style />
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>PageNumber</rd:DefaultName>
-                  <Top>0.07609cm</Top>
-                  <Left>0.12912cm</Left>
-                  <Height>0.37cm</Height>
-                  <Width>6.15782cm</Width>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-                <Textbox Name="TotalCajas2">
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>=First(Fields!NotaContenido.Value, "dsPackingListCab")</Value>
-                          <Style>
-                            <FontSize>7pt</FontSize>
-                          </Style>
-                        </TextRun>
-                      </TextRuns>
-                      <Style>
-                        <TextAlign>Left</TextAlign>
-                      </Style>
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>TotalCajas</rd:DefaultName>
-                  <Top>0.07962cm</Top>
-                  <Left>6.42805cm</Left>
-                  <Height>0.37cm</Height>
-                  <Width>7.78178cm</Width>
-                  <ZIndex>1</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-              </ReportItems>
-              <KeepTogether>true</KeepTogether>
-              <Top>1.50989cm</Top>
-              <Height>0.56854cm</Height>
-              <Width>14.78753cm</Width>
-              <ZIndex>5</ZIndex>
-              <Style>
-                <Border>
-                  <Color>LightGrey</Color>
-                  <Style>Solid</Style>
-                  <Width>0.5pt</Width>
-                </Border>
-              </Style>
-            </Rectangle>
-            <Textbox Name="PageNumber3">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>TOTAL BOXES:</Value>
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value />
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>1.58951cm</Top>
-              <Left>14.89541cm</Left>
-              <Height>0.4cm</Height>
-              <Width>2.74222cm</Width>
-              <ZIndex>6</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2959,17 +2439,527 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
           <KeepTogether>true</KeepTogether>
           <Top>0.12717cm</Top>
           <Left>0.15198cm</Left>
-          <Height>2.07843cm</Height>
+          <Height>1.40795cm</Height>
           <Width>19.65461cm</Width>
-          <ZIndex>5</ZIndex>
+          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
+            <BottomBorder>
+              <Style>None</Style>
+            </BottomBorder>
           </Style>
         </Rectangle>
+        <Textbox Name="PageNumber5">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>FECHA / DATE:</Value>
+                  <Style>
+                    <FontSize>7pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>PageNumber</rd:DefaultName>
+          <Top>2.11359cm</Top>
+          <Left>0.15198cm</Left>
+          <Height>0.5cm</Height>
+          <Width>6.15782cm</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </Border>
+            <RightBorder>
+              <Style>None</Style>
+            </RightBorder>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="TotalCajas3">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=UCase(FormatDateTime(First(Fields!Fecha.Value, "dsPackingListCab"), DateFormat.ShortDate))</Value>
+                  <Style>
+                    <FontSize>7pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>TotalCajas</rd:DefaultName>
+          <Top>2.11784cm</Top>
+          <Left>6.27805cm</Left>
+          <Height>0.5cm</Height>
+          <Width>6.42133cm</Width>
+          <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <TopBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </TopBorder>
+            <BottomBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </BottomBorder>
+            <RightBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </RightBorder>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="PageNumber7">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>PEDIDO Nro. / CONTRACT:</Value>
+                  <Style>
+                    <FontSize>7pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>PageNumber</rd:DefaultName>
+          <Top>2.61359cm</Top>
+          <Left>0.15198cm</Left>
+          <Height>0.6cm</Height>
+          <Width>6.15782cm</Width>
+          <ZIndex>4</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <TopBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </TopBorder>
+            <BottomBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </BottomBorder>
+            <LeftBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </LeftBorder>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="TotalCajas5">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!Contrato.Value, "dsPackingListCab")</Value>
+                  <Style>
+                    <FontSize>7pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>TotalCajas</rd:DefaultName>
+          <Top>2.61359cm</Top>
+          <Left>6.27805cm</Left>
+          <Height>0.6cm</Height>
+          <Width>2.58186cm</Width>
+          <ZIndex>5</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <TopBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </TopBorder>
+            <BottomBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </BottomBorder>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="TotalCajas6">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!Po.Value, "dsPackingListCab")</Value>
+                  <Style>
+                    <FontSize>7pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>TotalCajas</rd:DefaultName>
+          <Top>2.61359cm</Top>
+          <Left>8.85991cm</Left>
+          <Height>0.6cm</Height>
+          <Width>3.83593cm</Width>
+          <ZIndex>6</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <TopBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </TopBorder>
+            <BottomBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </BottomBorder>
+            <RightBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </RightBorder>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="PageNumber8">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>DESTINO / DESTINATION:</Value>
+                  <Style>
+                    <FontSize>7pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>PageNumber</rd:DefaultName>
+          <Top>3.21359cm</Top>
+          <Left>0.15198cm</Left>
+          <Height>0.6cm</Height>
+          <Width>6.15782cm</Width>
+          <ZIndex>7</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <TopBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </TopBorder>
+            <BottomBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </BottomBorder>
+            <LeftBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </LeftBorder>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="TotalCajas7">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=UCase(First(Fields!Destino.Value, "dsPackingListCab"))</Value>
+                  <Style>
+                    <FontSize>7pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>TotalCajas</rd:DefaultName>
+          <Top>3.21359cm</Top>
+          <Left>6.27805cm</Left>
+          <Height>0.6cm</Height>
+          <Width>6.42133cm</Width>
+          <ZIndex>8</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <TopBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </TopBorder>
+            <BottomBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </BottomBorder>
+            <RightBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </RightBorder>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="TotalCajas2">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!NotaContenido.Value, "dsPackingListCab")</Value>
+                  <Style>
+                    <FontSize>7pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>TotalCajas</rd:DefaultName>
+          <Top>1.51359cm</Top>
+          <Left>6.27805cm</Left>
+          <Height>0.6cm</Height>
+          <Width>7.78178cm</Width>
+          <ZIndex>9</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <TopBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </TopBorder>
+            <RightBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </RightBorder>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="PageNumber4">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>WEIGHT PACKING LIST / NOTA DE CONTENIDO:</Value>
+                  <Style>
+                    <FontSize>7pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>PageNumber</rd:DefaultName>
+          <Top>1.51359cm</Top>
+          <Left>0.15198cm</Left>
+          <Height>0.6cm</Height>
+          <Width>6.15782cm</Width>
+          <ZIndex>10</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <TopBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </TopBorder>
+            <BottomBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </BottomBorder>
+            <LeftBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </LeftBorder>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="PageNumber3">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>TOTAL BOXES:</Value>
+                  <Style>
+                    <FontSize>7pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>PageNumber</rd:DefaultName>
+          <Top>1.51006cm</Top>
+          <Left>14.05983cm</Left>
+          <Height>0.6cm</Height>
+          <Width>3.80034cm</Width>
+          <ZIndex>11</ZIndex>
+          <Style>
+            <Border>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </Border>
+            <BottomBorder>
+              <Style>None</Style>
+            </BottomBorder>
+            <LeftBorder>
+              <Style>None</Style>
+            </LeftBorder>
+            <RightBorder>
+              <Style>None</Style>
+            </RightBorder>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="TotalCajas">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!TotalCajas.Value, "dsPackingListCab")</Value>
+                  <Style>
+                    <FontSize>7pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>TotalCajas</rd:DefaultName>
+          <Top>1.51784cm</Top>
+          <Left>17.84606cm</Left>
+          <Height>0.6cm</Height>
+          <Width>1.96053cm</Width>
+          <ZIndex>12</ZIndex>
+          <Style>
+            <Border>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
       </ReportItems>
       <Style>
         <Border>
@@ -2978,7 +2968,7 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>1.03188cm</Height>
+      <Height>2.56646cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -2989,7 +2979,7 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Last(ReportItems!Textbox174.Value)</Value>
+                  <Value>=Sum(ReportItems!Textbox35.Value)</Value>
                   <Style>
                     <FontSize>7pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -3012,6 +3002,9 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
+            <BottomBorder>
+              <Style>None</Style>
+            </BottomBorder>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -3025,7 +3018,7 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Last(ReportItems!Textbox188.Value)</Value>
+                  <Value>=Sum(ReportItems!PesoNeto.Value)</Value>
                   <Style>
                     <FontSize>7pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -3049,6 +3042,9 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
+            <BottomBorder>
+              <Style>None</Style>
+            </BottomBorder>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -3062,7 +3058,7 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Last(ReportItems!Textbox191.Value)</Value>
+                  <Value>=Sum(ReportItems!PesoBruto.Value)</Value>
                   <Style>
                     <FontSize>7pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -3086,6 +3082,9 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
+            <BottomBorder>
+              <Style>None</Style>
+            </BottomBorder>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -3173,7 +3172,15 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=CInt(Sum(Fields!TotalCantidad.Value, "dsPackingListCab"))</Value>
+                  <Value>=CInt(Sum(Fields!Cantidad0.Value, "dsPackingListDet") +
+Sum(Fields!Cantidad1.Value, "dsPackingListDet") +
+Sum(Fields!Cantidad2.Value, "dsPackingListDet") +
+Sum(Fields!Cantidad3.Value, "dsPackingListDet") +
+Sum(Fields!Cantidad4.Value, "dsPackingListDet") +
+Sum(Fields!Cantidad5.Value, "dsPackingListDet") +
+Sum(Fields!Cantidad6.Value, "dsPackingListDet") +
+Sum(Fields!Cantidad7.Value, "dsPackingListDet") +
+Sum(Fields!Cantidad8.Value, "dsPackingListDet"))</Value>
                   <Style>
                     <FontSize>7pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -3204,13 +3211,14 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
           </Style>
         </Textbox>
         <Textbox Name="TotalCantidad2">
-          <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Round(Sum(Fields!TotalPesoNeto.Value, "dsPackingListCab"), 2)</Value>
+                  <Value>=Sum(
+CDec(Split(Fields!PesoNeto.Value.ToString(),".",2).GetValue(0) 
+&amp; "," &amp; Split(Fields!PesoNeto.Value.ToString(),".",2).GetValue(1)), "dsPackingListDet")</Value>
                   <Style>
                     <FontSize>7pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -3234,6 +3242,9 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
+            <BottomBorder>
+              <Style>None</Style>
+            </BottomBorder>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -3241,13 +3252,14 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
           </Style>
         </Textbox>
         <Textbox Name="TotalCantidad3">
-          <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Round(Sum(Fields!TotalPesoBruto.Value, "dsPackingListCab"), 2)</Value>
+                  <Value>=Sum(
+CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0) 
+&amp; "," &amp; Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(1)), "dsPackingListDet")</Value>
                   <Style>
                     <FontSize>7pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -3262,9 +3274,169 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
           <rd:DefaultName>TotalCantidad</rd:DefaultName>
           <Top>0.48289cm</Top>
           <Left>18.21836cm</Left>
-          <Height>0.37cm</Height>
+          <Height>0.37353cm</Height>
           <Width>1.58823cm</Width>
           <ZIndex>7</ZIndex>
+          <Style>
+            <Border>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </Border>
+            <BottomBorder>
+              <Style>None</Style>
+            </BottomBorder>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox4">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>KILOGRAMS</Value>
+                  <Style>
+                    <FontSize>6pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox4</rd:DefaultName>
+          <Top>1.22642cm</Top>
+          <Left>16.90867cm</Left>
+          <Height>0.37cm</Height>
+          <Width>2.8976cm</Width>
+          <ZIndex>8</ZIndex>
+          <Style>
+            <Border>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox5">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>NETO/NET</Value>
+                  <Style>
+                    <FontSize>6pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox4</rd:DefaultName>
+          <Top>0.85642cm</Top>
+          <Left>16.90867cm</Left>
+          <Height>0.37cm</Height>
+          <Width>1.30938cm</Width>
+          <ZIndex>9</ZIndex>
+          <Style>
+            <Border>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox6">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>BRUTO/GROS</Value>
+                  <Style>
+                    <FontSize>6pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox4</rd:DefaultName>
+          <Top>0.85642cm</Top>
+          <Left>18.21804cm</Left>
+          <Height>0.37cm</Height>
+          <Width>1.58823cm</Width>
+          <ZIndex>10</ZIndex>
+          <Style>
+            <Border>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox7">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>CANT.</Value>
+                  <Style>
+                    <FontSize>6pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>QUANT.</Value>
+                  <Style>
+                    <FontSize>6pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox4</rd:DefaultName>
+          <Top>0.85642cm</Top>
+          <Left>15.94686cm</Left>
+          <Height>0.74cm</Height>
+          <Width>0.9618cm</Width>
+          <ZIndex>11</ZIndex>
           <Style>
             <Border>
               <Color>LightGrey</Color>

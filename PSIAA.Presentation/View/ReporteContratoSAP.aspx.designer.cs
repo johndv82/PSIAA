@@ -10,16 +10,16 @@
 namespace PSIAA.Presentation.View {
     
     
-    public partial class ReportePackingList {
+    public partial class ReporteContratoSAP {
         
         /// <summary>
-        /// Control formReportePackingList.
+        /// Control frmContratoSAP.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm formReportePackingList;
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmContratoSAP;
         
         /// <summary>
         /// Control ScriptManager.
@@ -40,13 +40,22 @@ namespace PSIAA.Presentation.View {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// Control txtTipo.
+        /// Control txtContrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTipo;
+        protected global::System.Web.UI.WebControls.TextBox txtContrato;
+        
+        /// <summary>
+        /// Control hidContrato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidContrato;
         
         /// <summary>
         /// Control hidUsuario.
@@ -56,60 +65,6 @@ namespace PSIAA.Presentation.View {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hidUsuario;
-        
-        /// <summary>
-        /// Control txtSerie.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSerie;
-        
-        /// <summary>
-        /// Control HiddenField1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
-        
-        /// <summary>
-        /// Control HiddenField2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField2;
-        
-        /// <summary>
-        /// Control txtCorrelativo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCorrelativo;
-        
-        /// <summary>
-        /// Control HiddenField3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField3;
-        
-        /// <summary>
-        /// Control HiddenField4.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField4;
         
         /// <summary>
         /// Control btnAceptar.
@@ -130,15 +85,6 @@ namespace PSIAA.Presentation.View {
         protected global::System.Web.UI.UpdateProgress UpdateProgress1;
         
         /// <summary>
-        /// Control lblDocEntry.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDocEntry;
-        
-        /// <summary>
         /// Control lblError.
         /// </summary>
         /// <remarks>
@@ -148,12 +94,12 @@ namespace PSIAA.Presentation.View {
         protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
-        /// Control rptViewPackingList.
+        /// Control rptViewContrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer rptViewPackingList;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer rptViewContrato;
     }
 }
