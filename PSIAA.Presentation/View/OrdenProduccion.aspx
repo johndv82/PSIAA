@@ -26,7 +26,6 @@
                                                         <span class="input-group-addon input-sm">N°</span>
                                                         <asp:TextBox ID="txtContrato" runat="server" class="form-control input-sm" autocomplete="off"></asp:TextBox>
                                                         <asp:HiddenField ID="hidContrato" runat="server" />
-                                                        <asp:HiddenField ID="hidUsuario" runat="server" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2"><span class="control-label">Producción para: </span></div>

@@ -16,7 +16,7 @@ namespace PSIAA.DataTransferObject
         public string CodProveedor { get; set; }
         public string Taller { get; set; }
         public bool TodasOperaciones { get; set; }
-        //Flag que indica si se asiganará o no
+        //Flag que indica si se asignará o no
         public string Asignacion { get; set; }
     }
 }

@@ -16,33 +16,28 @@ namespace PSIAA.Presentation.View
         private AsignacionOrdenesBLL _asigOrdenesBll = new AsignacionOrdenesBLL();
         private AprobacionPrecioBLL _aprobPrecioBll = new AprobacionPrecioBLL();
         private double[] totalDetalle = { 0, 0, 0 };
-        private HttpCookie cookie;
+        public string usuarioActual = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
-                cookie = Request.Cookies["Usuario"];
-                if (cookie != null)
+            if (Session["usuario"] != null)
+            {
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
+                txtCodProveedor.Focus();
+                lblMensajeError.Visible = false;
+
+                if (!IsPostBack)
                 {
-                    hidUsuario.Value = cookie["Nombre"].ToString();
-                    txtCodProveedor.Focus();
-                }
-                else
-                {
-                    //LOGOUT
-                    string user = Request.QueryString["logout"];
-                    Session.Remove(user);
-                    Session.Abandon();
-                    //Destruir Sesiones
-                    for (int i = 0; i < Session.Count; i++)
-                    {
-                        var nombre = Session.Keys[i].ToString();
-                        Session.Remove(nombre);
-                    }
-                    Response.Redirect("default.aspx");
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
+                    hidOrden.Value = string.Empty;
+                    hidLote.Value = "0";
                 }
             }
-            txtCodProveedor.Focus();
-            lblMensajeError.Visible = false;
         }
 
         protected void btnBuscarPorNombre_Click(object sender, EventArgs e)
@@ -141,7 +136,7 @@ namespace PSIAA.Presentation.View
 
             //Calcular y Actualizar Costos
             nroActPrecio = _asigOrdenesBll.RecalcularPrecios(hidCodProveedor.Value, int.Parse(hidCatOpe.Value), lblAsignacion.Text,
-                                                            ddlMoneda.SelectedValue.ToString(), txtFechaAprob.Text, hidUsuario.Value.ToString(),
+                                                            ddlMoneda.SelectedValue.ToString(), txtFechaAprob.Text, usuarioActual,
                                                             chkAprobado.Checked, hidOrden.Value, int.Parse(hidLote.Value));
 
             if (nroActTarifa > 0 && nroActPrecio > 0)

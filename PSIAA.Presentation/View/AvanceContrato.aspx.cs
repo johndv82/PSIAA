@@ -19,14 +19,25 @@ namespace PSIAA.Presentation.View
         private static ClienteBLL _clienteBll = new ClienteBLL();
         private int[] totalAvance = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         private string puntoControl;
+        public string usuarioActual = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["usuario"] != null)
             {
-                //rbnFiltros.SelectedIndex = 0;
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
+
+                if (!IsPostBack)
+                {
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
+                }
+                txtSearch.Focus();
             }
-            txtSearch.Focus();
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -88,14 +99,24 @@ namespace PSIAA.Presentation.View
                     informacion = informacion.Substring(indFin + cadFinal.Length, informacion.Length - (indFin + cadFinal.Length));
                 }
                 string radioButton = "";
-                foreach (string nombre in subModelos)
+
+                if (subModelos.Count > 0)
                 {
-                    string etiqueta = @"
+                    foreach (string nombre in subModelos)
+                    {
+                        string etiqueta = @"
                         <input type='radio' name='rdbModelo' id='rdbModelo" + subModelos.IndexOf(nombre) + @"' value='" + nombre + @"' onchange='CargarDocumento(this)' />
                         <label for='rdbModelo" + subModelos.IndexOf(nombre) + @"'>" + nombre + @"</label>";
-                    radioButton += etiqueta;
+                        radioButton += etiqueta;
+                    }
+                    idRadios.InnerHtml = radioButton;
                 }
-                idRadios.InnerHtml = radioButton;
+                else
+                    idRadios.InnerHtml = @"
+                    <div class='alert alert-dismissible alert-danger'>
+                        <button type = 'button' class='close' data-dismiss='alert'>&times;</button>
+                        <strong>Hubo un Error!</strong> No se encontró Hoja de Especificaciones.
+                    </div>";
             }
         }
 
@@ -113,7 +134,7 @@ namespace PSIAA.Presentation.View
             }
             catch (Exception)
             {
-                throw;
+                return string.Empty;
             }
         }
 

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using PSIAA.BusinessLogicLayer;
+using PSIAA.DataTransferObject;
 using System.Data;
 using System.IO;
 using ClosedXML.Excel;
@@ -14,32 +15,25 @@ namespace PSIAA.Presentation.View
     public partial class ReporteLiquidaciones : System.Web.UI.Page
     {
         private LiquidacionTallerBLL _liquidTallerBll = new LiquidacionTallerBLL();
-        private HttpCookie cookie;
+        public string usuarioActual = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
-                cookie = Request.Cookies["Usuario"];
-                if (cookie != null)
+            if (Session["usuario"] != null)
+            {
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
+
+                if (!IsPostBack)
                 {
-                    hidUsuario.Value = cookie["Nombre"].ToString();
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
                     ddlPeriodos.DataSource = _liquidTallerBll.ListarYears();
                     ddlPeriodos.DataBind();
                     ddlPeriodos_SelectedIndexChanged(sender, e);
-                }
-                else
-                {
-                    //LOGOUT
-                    string user = Request.QueryString["logout"];
-                    Session.Remove(user);
-                    Session.Abandon();
-                    //Destruir Sesiones
-                    for (int i = 0; i < Session.Count; i++)
-                    {
-                        var nombre = Session.Keys[i].ToString();
-                        Session.Remove(nombre);
-                    }
-                    Response.Redirect("default.aspx");
                 }
             }
         }
@@ -129,7 +123,7 @@ namespace PSIAA.Presentation.View
             MemoryStream stream = GetStream(workbook);
             Response.Clear();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment; filename=" + Server.UrlEncode("Reporte_Liquidaciones" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx"));
+            Response.AddHeader("content-disposition", "attachment; filename=" + Server.UrlEncode("Reporte_Liquidaciones" + DateTime.Now.ToString("yyyyMMdd") + "_" + usuarioActual + ".xlsx"));
             Response.ContentType = "application/vnd.ms-excel";
             Response.BinaryWrite(stream.ToArray());
             Response.End();

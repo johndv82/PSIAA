@@ -16,19 +16,26 @@ namespace PSIAA.Presentation.View
         private AlmacenBLL _almacenBll = new AlmacenBLL();
         private RecepcionControlBLL _recepcionBll = new RecepcionControlBLL();
         private ListXml _listXml = new ListXml();
-        private HttpCookie cookie;
+        public string usuarioActual = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                hidOrden.Value = string.Empty;
-                hidLote.Value = "0";
-                cookie = Request.Cookies["Usuario"];
-                if (cookie != null)
+            if (Session["usuario"] != null) {
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
+
+                if (!IsPostBack)
                 {
-                    lblUser.Text = cookie["Nombre"].ToString();
-                    gridControlFinal.DataSource = _almacenBll.ListarRecepcionControl(lblUser.Text);
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
+                    hidOrden.Value = string.Empty;
+                    hidLote.Value = "0";
+
+                    //Cargar Datos de Recepcion Control de Almacen
+                    gridControlFinal.DataSource = _almacenBll.ListarRecepcionControl(usuarioActual);
                     gridControlFinal.DataBind();
 
                     //Cargar Almacenes
@@ -36,15 +43,7 @@ namespace PSIAA.Presentation.View
                     cmbAlmacenes.DataBind();
                     txtOrden.Focus();
                 }
-                else
-                {
-                    //LOGOUT
-                    string user = Request.QueryString["logout"];
-                    Session.Remove(user);
-                    Session.Abandon();
-                    Response.Redirect("default.aspx");
-                }
-            }
+            } 
         }
 
         protected void btnVerDetalle_Click(object sender, EventArgs e)
@@ -89,6 +88,7 @@ namespace PSIAA.Presentation.View
                         lblTalla.Text = "XXX";
                         lblModelo.Text = "XXXXXXX";
                         lblColor.Text = "XXXXXXX";
+                        Console.WriteLine(exc.Message);
                     }
                 }
             }
@@ -101,7 +101,7 @@ namespace PSIAA.Presentation.View
             if (int.TryParse(txtPiezas.Text == "" ? "0" : txtPiezas.Text, out _pieza) & hidOrden.Value != string.Empty & hidLote.Value != string.Empty)
             {
                 int _diferencia = _recepcionBll.DiferenciaConPuntoAnterior(hidOrden.Value, int.Parse(hidLote.Value), 800, 550);
-                if ((lblUser.Text == "muestras"))
+                if ((usuarioActual == "muestras"))
                 {
                     _diferencia = _pieza;
                 }
@@ -113,7 +113,7 @@ namespace PSIAA.Presentation.View
                     {
                         bool registroDuplicado;
                         gridControlFinal.DataSource = _almacenBll.PoblarListasDeIngresoAlmacen(hidOrden.Value, int.Parse(hidLote.Value), _codigoAlmacen,
-                                                                                        _pieza, lblTalla.Text, lblUser.Text, out registroDuplicado);
+                                                                                        _pieza, lblTalla.Text, usuarioActual, out registroDuplicado);
                         gridControlFinal.DataBind();
                         btnGuardarIngreso.Visible = true;
                         lblParte.Visible = false;
@@ -151,7 +151,7 @@ namespace PSIAA.Presentation.View
             string NumeroParte = "";
             if (gridControlFinal.Rows.Count > 0)
             {
-                if (_almacenBll.IngresarDetalleAlmacen(out NumeroParte, lblUser.Text))
+                if (_almacenBll.IngresarDetalleAlmacen(out NumeroParte, usuarioActual))
                 {
                     lblMensajeOk.Visible = true;
                     lblErrorRegDupli.Visible = false;
@@ -160,7 +160,7 @@ namespace PSIAA.Presentation.View
                     lblParte.Visible = true;
                     btnGuardarIngreso.Visible = false;
                     btnLimpiar.Visible = false;
-                    gridControlFinal.DataSource = _almacenBll.ListarRecepcionControl(lblUser.Text);
+                    gridControlFinal.DataSource = _almacenBll.ListarRecepcionControl(usuarioActual);
                     gridControlFinal.DataBind();
 
                     //LIMPIAR CAMPOS
@@ -176,7 +176,7 @@ namespace PSIAA.Presentation.View
 
         protected void btnLimpiar_Click(object sender, EventArgs e)
         {
-            _almacenBll.LimpiarListasDeControl(lblUser.Text);
+            _almacenBll.LimpiarListasDeControl(usuarioActual);
             Response.Redirect("Almacen.aspx");
         }
 
@@ -191,7 +191,7 @@ namespace PSIAA.Presentation.View
             GridViewRow row = gridControlFinal.SelectedRow;
             string Orden = ((Label)row.FindControl("lblOrden")).Text;
             int Lote = int.Parse(((Label)row.FindControl("lblLote")).Text);
-            AlmacenDTO _result = _almacenBll.DetalleAlmacen(Orden, Lote, lblUser.Text);
+            AlmacenDTO _result = _almacenBll.DetalleAlmacen(Orden, Lote, usuarioActual);
 
             switch (_result.CodAlmacen)
             {
@@ -226,8 +226,8 @@ namespace PSIAA.Presentation.View
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            _listXml.EliminarXmlAlmacen(lblOrdenConfirm.Text, lblLoteConfirm.Text, lblUser.Text);
-            _listXml.EliminarXmlRecepcion(lblOrdenConfirm.Text, int.Parse(lblLoteConfirm.Text), lblUser.Text);
+            _listXml.EliminarXmlAlmacen(lblOrdenConfirm.Text, lblLoteConfirm.Text, usuarioActual);
+            _listXml.EliminarXmlRecepcion(lblOrdenConfirm.Text, int.Parse(lblLoteConfirm.Text), usuarioActual);
             Response.Redirect("Almacen.aspx");
         }
     }

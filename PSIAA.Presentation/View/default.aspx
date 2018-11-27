@@ -27,7 +27,7 @@
                                 <asp:TextBox runat="server" TextMode="Password" class="form-control" ID="txtPassword" placeholder="Contraseña" />
                                 <div class="checkbox col-lg-offset-6">
                                     <label>
-                                        <input type="checkbox" disabled="disabled"/>
+                                        <input type="checkbox" disabled="disabled" />
                                         Recordar Clave
                                     </label>
                                 </div>

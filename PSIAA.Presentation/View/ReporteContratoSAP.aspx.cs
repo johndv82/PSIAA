@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using PSIAA.BusinessLogicLayer.SAP;
+using PSIAA.DataTransferObject;
 using System.Data;
 using System.Configuration;
 using System.IO;
@@ -14,35 +15,27 @@ namespace PSIAA.Presentation.View
 {
     public partial class ReporteContratoSAP : System.Web.UI.Page
     {
-        private HttpCookie cookie;
         private readonly ContratoBLL _contratoBll = new ContratoBLL();
+        public string usuarioActual = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["usuario"] != null)
             {
-                cookie = Request.Cookies["Usuario"];
-                if (cookie != null)
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
+
+                if (!IsPostBack)
                 {
-                    hidUsuario.Value = cookie["Nombre"].ToString();
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
                     lblError.Visible = false;
                 }
-                else
-                {
-                    //LOGOUT
-                    string user = Request.QueryString["logout"];
-                    Session.Remove(user);
-                    Session.Abandon();
-                    //Destruir Sesiones
-                    for (int i = 0; i < Session.Count; i++)
-                    {
-                        var nombre = Session.Keys[i].ToString();
-                        Session.Remove(nombre);
-                    }
-                    Response.Redirect("default.aspx");
-                }
+                txtContrato.Focus();
             }
-            txtContrato.Focus();
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -68,7 +61,7 @@ namespace PSIAA.Presentation.View
                     rptViewContrato.LocalReport.Refresh();
 
                     //Si no existe, creamos el documento
-                    string nombrepdf = ExportReportToPDF("RepContratoSAP_" + hidContrato.Value.ToString() + "_" + hidUsuario.Value.ToString());
+                    string nombrepdf = ExportReportToPDF("RepContratoSAP_" + hidContrato.Value.ToString() + "_" + usuarioActual);
                     if (nombrepdf != string.Empty)
                     {
                         //Cargamos el PDFViewer

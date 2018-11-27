@@ -56,10 +56,11 @@
     <Compile Include="LiquidacionTallerDAL.cs" />
     <Compile Include="ODOO\CombinacionColorDAL.cs" />
     <Compile Include="ODOO\ComponenteModeloDAL.cs" />
-    <Compile Include="OitwSapDAL.cs" />
+    <Compile Include="SAP\OitwSapDAL.cs" />
     <Compile Include="AsignacionOrdenesDAL.cs" />
     <Compile Include="ContratoDAL.cs" />
     <Compile Include="MaquinaDAL.cs" />
+    <Compile Include="SAP\BalanceMpDAL.cs" />
     <Compile Include="SAP\ContratoDAL.cs" />
     <Compile Include="SAP\PackingListDAL.cs" />
     <Compile Include="SimulacionMpDAL.cs" />

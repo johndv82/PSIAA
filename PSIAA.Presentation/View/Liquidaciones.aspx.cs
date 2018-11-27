@@ -19,37 +19,28 @@ namespace PSIAA.Presentation.View
         private DocumentoPagoTallerBLL _docPagoTallerBll = new DocumentoPagoTallerBLL();
         private LiquidacionTallerBLL _liquidTallerBll = new LiquidacionTallerBLL();
         private FacturacionBLL _facturacionBll = new FacturacionBLL();
-        private HttpCookie cookie;
         private double[] totalDetalle = { 0, 0, 0 };
+        public string usuarioActual = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["usuario"] != null)
             {
-                cookie = Request.Cookies["Usuario"];
-                if (cookie != null)
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
+
+                if (!IsPostBack)
                 {
-                    hidUsuario.Value = cookie["Nombre"].ToString();
-                    txtCodProveedor.Focus();
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
                     ddlPeriodos.DataSource = _liquidTallerBll.ListarYears();
                     ddlPeriodos.DataBind();
                 }
-                else
-                {
-                    //LOGOUT
-                    string user = Request.QueryString["logout"];
-                    Session.Remove(user);
-                    Session.Abandon();
-                    //Destruir Sesiones
-                    for (int i = 0; i < Session.Count; i++)
-                    {
-                        var nombre = Session.Keys[i].ToString();
-                        Session.Remove(nombre);
-                    }
-                    Response.Redirect("default.aspx");
-                }
+                txtCodProveedor.Focus();
             }
-            txtCodProveedor.Focus();
         }
 
         protected void btnBuscarPorNombre_Click(object sender, EventArgs e)
@@ -150,7 +141,7 @@ namespace PSIAA.Presentation.View
                 rptViewFactura.LocalReport.Refresh();
             }
 
-            string archivo = "T" + txtCodProveedor.Text + "_" + hidUsuario.Value.ToString();
+            string archivo = "T" + txtCodProveedor.Text + "_" + usuarioActual;
 
             //Si no existe, creamos el documento
             string nombrepdf = ExportReportToPDF(archivo);

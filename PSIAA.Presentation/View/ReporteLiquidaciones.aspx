@@ -23,7 +23,6 @@
                                                     <span class="control-label">Periodo:</span>
                                                 </div>
                                                 <div class="col-md-1">
-                                                    <asp:HiddenField ID="hidUsuario" runat="server" />
                                                     <asp:DropDownList ID="ddlPeriodos" runat="server" class="form-control input-sm" AutoPostBack="true" OnSelectedIndexChanged="ddlPeriodos_SelectedIndexChanged">
                                                     </asp:DropDownList>
                                                 </div>

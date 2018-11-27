@@ -10,16 +10,16 @@
 namespace PSIAA.Presentation.View {
     
     
-    public partial class ReporteContratoSAP {
+    public partial class BalanceMateriaPrima {
         
         /// <summary>
-        /// Control frmContratoSAP.
+        /// Control formBalanceMateriaPrima.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm frmContratoSAP;
+        protected global::System.Web.UI.HtmlControls.HtmlForm formBalanceMateriaPrima;
         
         /// <summary>
         /// Control ScriptManager.
@@ -85,12 +85,21 @@ namespace PSIAA.Presentation.View {
         protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
-        /// Control rptViewContrato.
+        /// Control btnGuardarExcel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer rptViewContrato;
+        protected global::System.Web.UI.WebControls.Button btnGuardarExcel;
+        
+        /// <summary>
+        /// Control gridBalanceMP.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridBalanceMP;
     }
 }

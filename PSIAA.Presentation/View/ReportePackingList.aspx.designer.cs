@@ -49,15 +49,6 @@ namespace PSIAA.Presentation.View {
         protected global::System.Web.UI.WebControls.TextBox txtTipo;
         
         /// <summary>
-        /// Control hidUsuario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidUsuario;
-        
-        /// <summary>
         /// Control txtSerie.
         /// </summary>
         /// <remarks>

@@ -15,31 +15,23 @@ namespace PSIAA.Presentation.View
     {
         private AsignacionOrdenesBLL _asignacionOrdenesBll = new AsignacionOrdenesBLL();
         private DocumentoPagoTallerBLL _docPagoTallerBll = new DocumentoPagoTallerBLL();
-        private HttpCookie cookie;
+        public string usuarioActual = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["usuario"] != null)
             {
-                cookie = Request.Cookies["Usuario"];
-                if (cookie != null)
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
+
+                if (!IsPostBack)
                 {
-                    hidUsuario.Value = cookie["Nombre"].ToString();
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
                     txtCodProveedor.Focus();
-                }
-                else
-                {
-                    //LOGOUT
-                    string user = Request.QueryString["logout"];
-                    Session.Remove(user);
-                    Session.Abandon();
-                    //Destruir Sesiones
-                    for (int i = 0; i < Session.Count; i++)
-                    {
-                        var nombre = Session.Keys[i].ToString();
-                        Session.Remove(nombre);
-                    }
-                    Response.Redirect("default.aspx");
                 }
             }
             System.Globalization.Calendar c = CultureInfo.CurrentCulture.Calendar;
@@ -126,7 +118,7 @@ namespace PSIAA.Presentation.View
             if (itemsCheckeados > 0)
             {
                 //Ingresar DocumentoPagoTaller
-                int nroLiquidacion = _docPagoTallerBll.IngresarDocumentoPagoTaller(_listDocPagoTaller, ddlMoneda.SelectedValue, hidUsuario.Value);
+                int nroLiquidacion = _docPagoTallerBll.IngresarDocumentoPagoTaller(_listDocPagoTaller, ddlMoneda.SelectedValue, usuarioActual);
                 Session["NroLiquidacion"] = nroLiquidacion;
                 Response.Redirect("GeneracionDocumento.aspx");
             }

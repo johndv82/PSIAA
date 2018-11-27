@@ -20,14 +20,11 @@ namespace PSIAA.Presentation.View
             {
                 string user = Request.QueryString["logout"];
                 Session.Remove(user);
-                Session.Abandon();
-
-                //Destruir Sesiones
-                for (int i = 0; i < Session.Count; i++)
-                {
-                    var nombre = Session.Keys[i].ToString();
-                    Session.Remove(nombre);
+                
+                if (Session.Count > 0) {
+                    Session.RemoveAll();
                 }
+                Session.Abandon();
                 Response.Redirect("default.aspx");
             }
         }
@@ -37,15 +34,6 @@ namespace PSIAA.Presentation.View
             UsuarioDTO _usuario = _usuarioBll.Login(txtUsuario.Text, txtPassword.Text);
             if (_usuario.Id != 0)
             {
-                //Creacion de Cookie
-                HttpCookie cookie = Request.Cookies["Usuario"];
-                if (cookie == null)
-                    cookie = new HttpCookie("Usuario");
-
-                cookie["Nombre"] = _usuario.User;
-                cookie.Expires = DateTime.Now.AddHours(3);
-                Response.Cookies.Add(cookie);
-                ///
                 Session["usuario"] = _usuario;
                 Response.Redirect("Inicio.aspx");
             }

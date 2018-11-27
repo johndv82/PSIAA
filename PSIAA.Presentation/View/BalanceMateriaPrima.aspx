@@ -1,18 +1,20 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Init.master" AutoEventWireup="true" CodeBehind="ReporteContratoSAP.aspx.cs" Inherits="PSIAA.Presentation.View.ReporteContratoSAP" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Init.master" AutoEventWireup="true" CodeBehind="BalanceMateriaPrima.aspx.cs" Inherits="PSIAA.Presentation.View.BalanceMateriaPrima" %>
 
-<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentInitBody" runat="server">
-    <form runat="server" id="frmContratoSAP">
+    <form runat="server" id="formBalanceMateriaPrima">
         <asp:ScriptManager ID="ScriptManager" runat="server" EnablePartialRendering="true"></asp:ScriptManager>
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="panel panel-info">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Reporte de Contrato SAP</h3>
+                            <h3 class="panel-title">Reporte de Balance de Materia Prima</h3>
                         </div>
                         <div class="panel-body">
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <Triggers>
+                                    <asp:PostBackTrigger ControlID="btnGuardarExcel" />
+                                </Triggers>
                                 <ContentTemplate>
                                     <div class="row">
                                         <div class="col-md-4">
@@ -27,7 +29,7 @@
                                                             <asp:TextBox ID="txtContrato" runat="server" class="form-control input-sm" autocomplete="off" MaxLength="6"></asp:TextBox>
                                                             <asp:HiddenField ID="hidContrato" runat="server" />
                                                             <span class="input-group-btn">
-                                                                <asp:Button ID="btnAceptar" runat="server" Text="Buscar" class="btn btn-default btn-sm"  OnClick="btnAceptar_Click"/>
+                                                                <asp:Button ID="btnAceptar" runat="server" Text="Buscar" class="btn btn-default btn-sm" OnClick="btnAceptar_Click" />
                                                             </span>
                                                         </div>
                                                     </div>
@@ -41,7 +43,7 @@
                                                 </ProgressTemplate>
                                             </asp:UpdateProgress>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <br />
@@ -49,21 +51,33 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-2">
+                                            <asp:Button ID="btnGuardarExcel" runat="server" Text="Guardar en Excel" class="btn btn-success btn-sm" OnClientClick="this.disabled=true" UseSubmitBehavior="False" Visible="False" OnClick="btnGuardarExcel_Click" />
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="table-responsive text-center">
-                                                <div id="reporte" style="color: white;">
-                                                    <rsweb:ReportViewer ID="rptViewContrato" runat="server" Font-Names="Verdana" Font-Size="8pt" SizeToReportContent="True" Visible="false">
-                                                        <LocalReport ReportPath="../PSIAA.Reports/rptContratoSAP.rdlc" ShowDetailedSubreportMessages="True">
-                                                        </LocalReport>
-                                                    </rsweb:ReportViewer>
-                                                </div>
+                                            <div class="table-responsive">
+                                                <asp:GridView ID="gridBalanceMP" runat="server" Width="100%"
+                                                    CssClass="table table-striped table-bordered table-hover"
+                                                    AutoGenerateColumns="False"
+                                                    EmptyDataText="No Existe Ningun Registro"
+                                                    ShowFooter="true"
+                                                    OnRowDataBound="gridBalanceMP_RowDataBound">
+                                                    <Columns>
+                                                        <asp:BoundField DataField="OrdenProd" HeaderText="Orden" ItemStyle-Width="8%" />
+                                                        <asp:BoundField DataField="CodProducto" HeaderText="Producto" ItemStyle-Width="20%" />
+                                                        <asp:BoundField DataField="Entregado" HeaderText="Entregado" DataFormatString="{0:F3}" ItemStyle-Width="7%" />
+                                                        <asp:BoundField DataField="Devuelto" HeaderText="Devuelto" DataFormatString="{0:F3}" ItemStyle-Width="7%" />
+                                                        <asp:BoundField DataField="Almacen29" HeaderText="Almacen29" DataFormatString="{0:F3}" ItemStyle-Width="7%" />
+                                                        <asp:BoundField DataField="Utilizado" HeaderText="Utilizado" DataFormatString="{0:F3}" ItemStyle-Width="7%" />
+                                                        <asp:BoundField DataField="MateriaPrima" HeaderText="M. Prima" DataFormatString="{0:F3}" ItemStyle-Width="7%" />
+                                                        <asp:BoundField DataField="Saldo" HeaderText="Saldo" DataFormatString="{0:F3}" ItemStyle-Width="7%" />
+                                                        <asp:BoundField DataField="taller" HeaderText="Taller" ItemStyle-Width="30%" />
+                                                    </Columns>
+                                                </asp:GridView>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row" style="text-align: center;">
-                                        <iframe id="frmPDF" style="width: 100%; height: 600px;"></iframe>
                                     </div>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
@@ -73,10 +87,4 @@
             </div>
         </div>
     </form>
-    <script type="text/javascript">
-        function CargarDocumento(nombreDoc, servidor) {
-            var iframe = document.getElementById('frmPDF');
-            iframe.src = "http://" + servidor + "/PSIAA/Reports/Contratos/" + nombreDoc + ".pdf";
-        }
-    </script>
 </asp:Content>

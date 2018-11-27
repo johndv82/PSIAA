@@ -25,7 +25,11 @@ namespace PSIAA.DataAccessLayer.TuartDB
                 limit 1";
 
             _sqlParam.Add(new NpgsqlParameter("@modelo", NpgsqlTypes.NpgsqlDbType.Varchar) { Value = modelo });
-            return _trans.ReadingQuery(query, _sqlParam).Rows[0];
+            DataTable dtResult = _trans.ReadingQuery(query, _sqlParam);
+            if (dtResult.Rows.Count == 0) {
+                return null;
+            } else
+                return dtResult.Rows[0];
         }
     }
 }

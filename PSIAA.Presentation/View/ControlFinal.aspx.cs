@@ -12,26 +12,26 @@ namespace PSIAA.Presentation.View
     {
         private RecepcionControlBLL _recepcionBll = new RecepcionControlBLL();
         private ContratoBLL _contratoBll = new ContratoBLL();
-        private HttpCookie cookie;
+        public string usuarioActual = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["usuario"] != null)
             {
-                cookie = Request.Cookies["Usuario"];
-                if (cookie != null)
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
+
+                if (!IsPostBack)
                 {
-                    lblUser.Text = cookie["Nombre"].ToString();
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
+
                     gridControlFinal.DataSource = _recepcionBll.ListarRecepcionControl(550);
                     gridControlFinal.DataBind();
                     txtOrden.Focus();
-                }
-                else
-                {
-                    //LOGOUT
-                    string user = Request.QueryString["logout"];
-                    Session.Remove(user);
-                    Session.Abandon();
-                    Response.Redirect("default.aspx");
                 }
             }
         }
@@ -97,7 +97,7 @@ namespace PSIAA.Presentation.View
                     }
                     if ((_diferencia > 0) & (_pieza <= _diferencia) & _pieza > 0)
                     {
-                        if (_recepcionBll.IngresarRecepcionControl(hidOrden.Value, int.Parse(hidLote.Value), _pieza, lblUser.Text))
+                        if (_recepcionBll.IngresarRecepcionControl(hidOrden.Value, int.Parse(hidLote.Value), _pieza, usuarioActual))
                         {
                             gridControlFinal.DataSource = _recepcionBll.ListarRecepcionControl(550);
                             gridControlFinal.DataBind();

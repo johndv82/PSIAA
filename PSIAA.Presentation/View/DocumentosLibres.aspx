@@ -22,7 +22,6 @@
                                                     <div class="input-group">
                                                         <asp:TextBox runat="server" ID="txtCodProveedor" class="form-control input-sm" placeholder="Código de Proveedor" />
                                                         <asp:HiddenField ID="hidCodProveedor" runat="server" />
-                                                        <asp:HiddenField ID="hidUsuario" runat="server" />
                                                         <span class="input-group-btn">
                                                             <asp:Button ID="btnBuscarPorCod" runat="server" class="btn btn-info btn-sm" Text="Buscar" OnClick="btnBuscarPorCod_Click" />
                                                         </span>

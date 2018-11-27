@@ -27,7 +27,6 @@
                                                             <span class="input-group-addon input-sm">N°</span>
                                                             <asp:TextBox ID="txtContrato" runat="server" class="form-control input-sm" autocomplete="off" MaxLength="6"></asp:TextBox>
                                                             <asp:HiddenField ID="hidContrato" runat="server" />
-                                                            <asp:HiddenField ID="hidUsuario" runat="server" />
                                                             <span class="input-group-btn">
                                                                 <asp:Button ID="btnAceptar" runat="server" Text="Buscar" class="btn btn-default btn-sm" OnClick="btnAceptar_Click" />
                                                             </span>

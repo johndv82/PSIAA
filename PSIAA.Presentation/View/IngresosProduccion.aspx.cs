@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using PSIAA.BusinessLogicLayer;
 using PSIAA.BusinessLogicLayer.Reports;
+using PSIAA.DataTransferObject;
 using System.Data;
 using Microsoft.Reporting.WebForms;
 using System.IO;
@@ -17,31 +18,24 @@ namespace PSIAA.Presentation.View
     {
         private AlmacenBLL _almacenBll = new AlmacenBLL();
         private IngresoProduccionBLL _ingresoProdBll = new IngresoProduccionBLL();
-        private HttpCookie cookie;
+        public string usuarioActual = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["usuario"] != null)
             {
-                cookie = Request.Cookies["Usuario"];
-                if (cookie != null)
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
+
+                if (!IsPostBack)
                 {
-                    hidUsuario.Value = cookie["Nombre"].ToString();
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
                     cmbAlmacenes.DataSource = _almacenBll.ListarAlmacenes();
                     cmbAlmacenes.DataBind();
-                }
-                else
-                {
-                    //LOGOUT
-                    string user = Request.QueryString["logout"];
-                    Session.Remove(user);
-                    Session.Abandon();
-                    //Destruir Sesiones
-                    for (int i = 0; i < Session.Count; i++)
-                    {
-                        var nombre = Session.Keys[i].ToString();
-                        Session.Remove(nombre);
-                    }
-                    Response.Redirect("default.aspx");
                 }
             }
         }
@@ -89,7 +83,7 @@ namespace PSIAA.Presentation.View
             rptViewPagoLibre.LocalReport.Refresh();
 
             //Si no existe, creamos el documento
-            string nombrepdf = ExportReportToPDF("ParteIngreso_" + hidUsuario.Value);
+            string nombrepdf = ExportReportToPDF("ParteIngreso_" + parte + "_" + usuarioActual);
             if (nombrepdf != string.Empty)
             {
                 //Cargamos el PDFViewer

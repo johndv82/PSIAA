@@ -15,7 +15,6 @@
                                         <div class="row">
                                             <div class="col-md-1">
                                                 <label class="control-label">Contrato:</label>
-                                                <asp:HiddenField ID="hidUsuario" runat="server" />
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="input-group">

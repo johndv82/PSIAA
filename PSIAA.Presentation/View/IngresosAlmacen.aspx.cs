@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using PSIAA.BusinessLogicLayer;
+using PSIAA.DataTransferObject;
 using ClosedXML.Excel;
 using System.Data;
 using System.IO;
@@ -14,9 +15,24 @@ namespace PSIAA.Presentation.View
     public partial class IngresosAlmacen : System.Web.UI.Page
     {
         private AlmacenBLL _almacenBll = new AlmacenBLL();
+        public string usuarioActual = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] != null)
+            {
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
 
+                if (!IsPostBack)
+                {
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
+                }
+            }
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -108,7 +124,7 @@ namespace PSIAA.Presentation.View
             MemoryStream stream = GetStream(workbook);
             Response.Clear();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment; filename=" + Server.UrlEncode("IngresosAlmacen" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx"));
+            Response.AddHeader("content-disposition", "attachment; filename=" + Server.UrlEncode("IngresosAlmacen" + DateTime.Now.ToString("yyyyMMdd") + "_" + usuarioActual +  ".xlsx"));
             Response.ContentType = "application/vnd.ms-excel";
             Response.BinaryWrite(stream.ToArray());
             Response.End();

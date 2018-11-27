@@ -4,20 +4,35 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using PSIAA.BusinessLogicLayer;
+using PSIAA.BusinessLogicLayer.SAP;
 using System.Data;
 using System.IO;
 using ClosedXML.Excel;
+using PSIAA.DataTransferObject;
 
 namespace PSIAA.Presentation.View
 {
     public partial class AlmacenSap : System.Web.UI.Page
     {
         private OitwSapBLL _oitwSalBll = new OitwSapBLL();
+        public string usuarioActual = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] != null)
+            {
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
 
+                if (!IsPostBack)
+                {
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
+                }
+            }
         }
 
         protected void gridAlmacenSap_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -85,7 +100,7 @@ namespace PSIAA.Presentation.View
             MemoryStream stream = GetStream(workbook);
             Response.Clear();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment; filename=" + Server.UrlEncode("AlmacenSap" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx"));
+            Response.AddHeader("content-disposition", "attachment; filename=" + Server.UrlEncode("AlmacenSap" + DateTime.Now.ToString("yyyyMMdd") + "_" + usuarioActual + ".xlsx"));
             Response.ContentType = "application/vnd.ms-excel";
             Response.BinaryWrite(stream.ToArray());
             Response.End();

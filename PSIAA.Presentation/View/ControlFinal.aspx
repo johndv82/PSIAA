@@ -98,7 +98,6 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="row table-responsive">
-                                                <asp:Label runat="server" ID="lblUser" Text="-" Visible="false"></asp:Label>
                                                 <asp:GridView ID="gridControlFinal" runat="server" Width="100%"
                                                     CssClass="table table-bordered"
                                                     AutoGenerateColumns="False"

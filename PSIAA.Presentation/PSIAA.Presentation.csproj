@@ -94,6 +94,7 @@
     <Content Include="Content\images\load.gif" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\newLogo.JPG" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="PSIAA.Master" />
     <Content Include="Init.master" />
@@ -132,6 +133,7 @@
     <Content Include="View\AnalisisContrato.aspx" />
     <Content Include="View\AprobacionPrecio.aspx" />
     <Content Include="View\AvanceContrato.aspx" />
+    <Content Include="View\BalanceMateriaPrima.aspx" />
     <Content Include="View\ControlFinal.aspx" />
     <Content Include="View\CorrecionColores.aspx" />
     <Content Include="View\CostosProduccion.aspx" />
@@ -219,6 +221,13 @@
     </Compile>
     <Compile Include="View\AvanceContrato.aspx.designer.cs">
       <DependentUpon>AvanceContrato.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\BalanceMateriaPrima.aspx.cs">
+      <DependentUpon>BalanceMateriaPrima.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\BalanceMateriaPrima.aspx.designer.cs">
+      <DependentUpon>BalanceMateriaPrima.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\ControlFinal.aspx.cs">
       <DependentUpon>ControlFinal.aspx</DependentUpon>

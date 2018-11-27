@@ -27,7 +27,6 @@
                                                         <div class="input-group">
                                                             <span class="input-group-addon input-sm">N°</span>
                                                             <asp:TextBox ID="txtTipo" runat="server" class="form-control input-sm" autocomplete="off" MaxLength="6"></asp:TextBox>
-                                                            <asp:HiddenField ID="hidUsuario" runat="server" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -47,7 +46,7 @@
                                                     <div class="col-md-2">
                                                         <div class="input-group">
                                                             <span class="input-group-addon input-sm">N°</span>
-                                                            <asp:TextBox ID="txtCorrelativo" runat="server" class="form-control input-sm" autocomplete="off" MaxLength="6"></asp:TextBox>
+                                                            <asp:TextBox ID="txtCorrelativo" runat="server" class="form-control input-sm" autocomplete="off" MaxLength="10"></asp:TextBox>
                                                             <asp:HiddenField ID="HiddenField3" runat="server" />
                                                             <asp:HiddenField ID="HiddenField4" runat="server" />
                                                         </div>

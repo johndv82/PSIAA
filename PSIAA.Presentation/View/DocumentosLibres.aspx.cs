@@ -22,33 +22,26 @@ namespace PSIAA.Presentation.View
         private LiquidacionTallerBLL _liquidTallerBll = new LiquidacionTallerBLL();
         private PagoLibreBLL _pagoLibreBll = new PagoLibreBLL();
         private double[] totalDetalle = { 0, 0, 0 };
-        private HttpCookie cookie;
+        public string usuarioActual = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["usuario"] != null)
             {
-                cookie = Request.Cookies["Usuario"];
-                if (cookie != null)
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
+
+                if (!IsPostBack)
                 {
-                    hidUsuario.Value = cookie["Nombre"].ToString();
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
                     txtCodProveedor.Focus();
                     ddlPeriodos.DataSource = _docPagoLibreBll.ListarYears();
                     ddlPeriodos.DataBind();
                     ddlPeriodos_SelectedIndexChanged(sender, e);
-                }
-                else
-                {
-                    //LOGOUT
-                    string user = Request.QueryString["logout"];
-                    Session.Remove(user);
-                    Session.Abandon();
-                    //Destruir Sesiones
-                    for (int i = 0; i < Session.Count; i++)
-                    {
-                        var nombre = Session.Keys[i].ToString();
-                        Session.Remove(nombre);
-                    }
-                    Response.Redirect("default.aspx");
                 }
             }
         }
@@ -164,7 +157,7 @@ namespace PSIAA.Presentation.View
             List<DocumentoPagoLibreDTO> listDocPagoLibre = Session["listDocPagoLibre"] as List<DocumentoPagoLibreDTO>;
             Session["NroLiquidacion"] = _docPagoLibreBll.GuardarDocumentoPagoLibre(listDocPagoLibre, hidCodProveedor.Value,
                                                                     ddlTipoMov.SelectedValue, ddlMoneda.SelectedValue,
-                                                                    hidUsuario.Value);
+                                                                    usuarioActual);
 
             ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", "CloseModalNuevoPago();", true);
             btnBuscar_Click(sender, e);
@@ -241,7 +234,7 @@ namespace PSIAA.Presentation.View
                 rptViewPagoLibre.LocalReport.Refresh();
             }
 
-            string archivo = "T" + txtCodProveedor.Text + "_" + hidUsuario.Value.ToString();
+            string archivo = "T" + txtCodProveedor.Text + "_" + usuarioActual;
 
             //Si no existe, creamos el documento
             string nombrepdf = ExportReportToPDF(archivo);

@@ -98,7 +98,7 @@ namespace PSIAA.BusinessLogicLayer
         public string[] TallaPesoMuestra(string modelo) { //[TALLA, PESO]
             string[] tallaPeso = new string[2] { "", "0"};
             DataRow drMuestraPeso = _pesosDal.SelectMuestraPeso(modelo.Trim());
-            if (drMuestraPeso.Table.Rows.Count > 0) {
+            if (drMuestraPeso != null) {
                 tallaPeso[0] = drMuestraPeso["c_tal"].ToString();
                 tallaPeso[1] = drMuestraPeso["n_pestej"].ToString();
             }

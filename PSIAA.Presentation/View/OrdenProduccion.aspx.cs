@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using PSIAA.BusinessLogicLayer;
 using PSIAA.BusinessLogicLayer.Reports;
+using PSIAA.DataTransferObject;
 using System.Data;
 using BarcodeLib;
 using System.Drawing;
@@ -21,32 +22,25 @@ namespace PSIAA.Presentation.View
         private OrdenProduccionBLL _ordenProduccionBll = new OrdenProduccionBLL();
         private ContratoBLL _contratoBll = new ContratoBLL();
         private OrdenRequisicionBLL _ordenRequiBll = new OrdenRequisicionBLL();
-        private HttpCookie cookie;
+        public string usuarioActual = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["usuario"] != null)
             {
-                cookie = Request.Cookies["Usuario"];
-                if (cookie != null)
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
+
+                if (!IsPostBack)
                 {
-                    hidUsuario.Value = cookie["Nombre"].ToString();
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
                 }
-                else
-                {
-                    //LOGOUT
-                    string user = Request.QueryString["logout"];
-                    Session.Remove(user);
-                    Session.Abandon();
-                    //Destruir Sesiones
-                    for (int i = 0; i < Session.Count; i++)
-                    {
-                        var nombre = Session.Keys[i].ToString();
-                        Session.Remove(nombre);
-                    }
-                    Response.Redirect("default.aspx");
-                }
+                txtContrato.Focus();
             }
-            txtContrato.Focus();
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -131,7 +125,7 @@ namespace PSIAA.Presentation.View
             rptViewOrdenProduccion.LocalReport.Refresh();
 
             //Si no existe, creamos el documento
-            string nombrepdf = ExportReportToPDF("OP-" + contrato.ToString() + "-" + orden.Trim() + "_"+ hidUsuario.Value, rptViewOrdenProduccion);
+            string nombrepdf = ExportReportToPDF("OP-" + contrato.ToString() + "-" + orden.Trim() + "_"+ usuarioActual, rptViewOrdenProduccion);
             if (nombrepdf != string.Empty)
             {
                 //Cargamos el PDFViewer
@@ -201,7 +195,7 @@ namespace PSIAA.Presentation.View
             rptViewTarjetaProduccion.LocalReport.Refresh();
 
             //Si no existe, creamos el documento
-            string nombrepdf = ExportReportToPDF("TP-" + contrato.ToString() + "-" + orden.Trim() + "_" + lote.ToString() + "_" + hidUsuario.Value, rptViewTarjetaProduccion);
+            string nombrepdf = ExportReportToPDF("TP-" + contrato.ToString() + "-" + orden.Trim() + "_" + lote.ToString() + "_" + usuarioActual, rptViewTarjetaProduccion);
             if (nombrepdf != string.Empty)
             {
                 //Cargamos el PDFViewer
@@ -255,7 +249,7 @@ namespace PSIAA.Presentation.View
             rptViewOrdenReq.LocalReport.Refresh();
 
             //Si no existe, creamos el documento
-            string nombrepdf = ExportReportToPDF("OR-" + contrato.ToString() + "-" + orden.Trim() + "_" + hidUsuario.Value, rptViewOrdenReq);
+            string nombrepdf = ExportReportToPDF("OR-" + contrato.ToString() + "-" + orden.Trim() + "_" + usuarioActual, rptViewOrdenReq);
             if (nombrepdf != string.Empty)
             {
                 //Cargamos el PDFViewer
@@ -375,7 +369,7 @@ namespace PSIAA.Presentation.View
                 {
                     string server = ConfigurationManager.AppSettings["servidor"];
                     linkOrdenProd.NavigateUrl = "http://" + server + "/PSIAA/Reports/Prod/OrdenProduccion_" + hidContrato.Value + ".pdf";
-                    linkOrdenProd.Text = "OrdenProduccion_" + hidContrato.Value + "_" + hidUsuario.Value + ".pdf";
+                    linkOrdenProd.Text = "OrdenProduccion_" + hidContrato.Value + "_" + usuarioActual + ".pdf";
                     linkOrdenProd.Visible = true;
                     EliminarDocumentosUnitarios(documentos);
                     lblAvisoSeleccion.Visible = false;
@@ -428,7 +422,7 @@ namespace PSIAA.Presentation.View
                 {
                     string server = ConfigurationManager.AppSettings["servidor"];
                     linkTarjetaProd.NavigateUrl = "http://" + server + "/PSIAA/Reports/Prod/TarjetaProduccion_" + hidContrato.Value + ".pdf";
-                    linkTarjetaProd.Text = "TarjetaProduccion_" + hidContrato.Value + "_" + hidUsuario.Value + ".pdf";
+                    linkTarjetaProd.Text = "TarjetaProduccion_" + hidContrato.Value + "_" + usuarioActual + ".pdf";
                     linkTarjetaProd.Visible = true;
                     EliminarDocumentosUnitarios(documentos);
                     lblAvisoSeleccion.Visible = false;
@@ -468,7 +462,7 @@ namespace PSIAA.Presentation.View
                 {
                     string server = ConfigurationManager.AppSettings["servidor"];
                     linkOrdenReq.NavigateUrl = "http://" + server + "/PSIAA/Reports/Prod/OrdenRequisicion_" + hidContrato.Value + ".pdf";
-                    linkOrdenReq.Text = "OrdenRequisicion_" + hidContrato.Value + "_" + hidUsuario.Value + ".pdf";
+                    linkOrdenReq.Text = "OrdenRequisicion_" + hidContrato.Value + "_" + usuarioActual + ".pdf";
                     linkOrdenReq.Visible = true;
                     EliminarDocumentosUnitarios(documentos);
                     lblAvisoSeleccion.Visible = false;

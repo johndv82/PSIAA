@@ -18,40 +18,34 @@ namespace PSIAA.Presentation.View
         private SimulacionMpBLL _simulacionBll = new SimulacionMpBLL();
         private AnalisisContratoBLL _analisisContBll = new AnalisisContratoBLL();
         private ContratoBLL _contratoBll = new ContratoBLL();
-        private HttpCookie cookie;
+        public string usuarioActual = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
-                cookie = Request.Cookies["Usuario"];
-                if (cookie != null)
+            if (Session["usuario"] != null)
+            {
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
+
+                if (!IsPostBack)
                 {
-                    hidUsuario.Value = cookie["Nombre"].ToString();
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
                     txtContrato.Focus();
-                    if ((hidUsuario.Value == "produccion"))
+                    if ((usuarioActual == "produccion"))
                     {
                         rbnTipoProceso.Items[1].Enabled = false;
                     }
+                    txtAdicional.Text = "0.00";
                 }
-                else
-                {
-                    //LOGOUT
-                    string user = Request.QueryString["logout"];
-                    Session.Remove(user);
-                    Session.Abandon();
-                    //Destruir Sesiones
-                    for (int i = 0; i < Session.Count; i++)
-                    {
-                        var nombre = Session.Keys[i].ToString();
-                        Session.Remove(nombre);
-                    }
-                    Response.Redirect("default.aspx");
-                }
-                txtAdicional.Text = "0.00";
+                lblRptaMaterial.Visible = false;
+                lblRptaMedidaPeso.Visible = false;
             }
-            lblRptaMaterial.Visible = false;
-            lblRptaMedidaPeso.Visible = false;
         }
+
         protected void btnProcesar_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtContrato.Text)) {
@@ -111,7 +105,7 @@ namespace PSIAA.Presentation.View
             else
             {
                 List<SimulacionDetDTO> listSimCalculo = _simulacionBll.ListarCalculoMateriaPrima(int.Parse(txtContrato.Text),
-                                                        hidUsuario.Value, _modelSelect, decimal.Parse(txtAdicional.Text));
+                                                        usuarioActual, _modelSelect, decimal.Parse(txtAdicional.Text));
                 if (listSimCalculo.Count > 0)
                 {
                     Session["ListSimCalculo"] = listSimCalculo;
@@ -136,7 +130,7 @@ namespace PSIAA.Presentation.View
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             List<SimulacionDetDTO> listSimCalculo = Session["ListSimCalculo"] as List<SimulacionDetDTO>;
-            int regIngresados = _simulacionBll.IngresarSimulacionCalculo(listSimCalculo, int.Parse(hidContrato.Value), hidUsuario.Value);
+            int regIngresados = _simulacionBll.IngresarSimulacionCalculo(listSimCalculo, int.Parse(hidContrato.Value), usuarioActual);
             if (regIngresados > 2)
             {
                 lblMensajeOk.Visible = true;

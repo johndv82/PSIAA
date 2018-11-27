@@ -195,27 +195,29 @@ namespace PSIAA.BusinessLogicLayer
             CalcularTotalArea(_talla, _modelo, out _totalArea);
 
             DataRow drMuestraPeso = _pesoDal.SelectMuestraPeso(_modelo.Trim());
-            string _muestraTalla = drMuestraPeso["c_tal"].ToString();
-            decimal _muestraPeso = decimal.Parse(drMuestraPeso["n_pestej"].ToString());
-            decimal _pesoFinal = 0;
+            if (drMuestraPeso != null) {
+                string _muestraTalla = drMuestraPeso["c_tal"].ToString();
+                decimal _muestraPeso = decimal.Parse(drMuestraPeso["n_pestej"].ToString());
+                decimal _pesoFinal = 0;
 
-            if (_muestraTalla.Equals(_talla))
-            {
-                _pesoFinal = _muestraPeso;
-            }
-            else
-            {
-                CalcularTotalArea(_muestraTalla, _modelo, out _totalAreaMuestra);
-                if (_totalAreaMuestra > 0)
+                if (_muestraTalla.Equals(_talla))
                 {
-                    _pesoFinal = (_totalArea * _muestraPeso) / _totalAreaMuestra;
+                    _pesoFinal = _muestraPeso;
                 }
                 else
                 {
-                    _pesoFinal = 0;
+                    CalcularTotalArea(_muestraTalla, _modelo, out _totalAreaMuestra);
+                    if (_totalAreaMuestra > 0)
+                    {
+                        _pesoFinal = (_totalArea * _muestraPeso) / _totalAreaMuestra;
+                    }
+                    else
+                    {
+                        _pesoFinal = 0;
+                    }
                 }
+                _pesos[_posicion] = Math.Round(Math.Round(_pesoFinal, 4) * _cantidad, 3);
             }
-            _pesos[_posicion] = Math.Round(Math.Round(_pesoFinal, 4) * _cantidad, 3);
             return _pesos;
         }
 

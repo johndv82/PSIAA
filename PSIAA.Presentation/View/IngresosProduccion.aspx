@@ -20,7 +20,6 @@
                                             <div class="row">
                                                 <div class="col-md-1">
                                                     <label class="control-label">Almacen:</label>
-                                                    <asp:HiddenField ID="hidUsuario" runat="server" />
                                                 </div>
                                                 <div class="col-md-1">
                                                     <asp:Label runat="server" class="label label-info" ID="lblNumAlmacen" Text="0" Font-Size="Small" />
@@ -96,7 +95,7 @@
                 </div>
             </div>
         </div>
-        <!---- MODAL HOJA DE ESPECIFICACIONES ---->
+        <!---- MODAL PARTE DE INGRESO ---->
         <div class="modal fade" id="modalParte">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">

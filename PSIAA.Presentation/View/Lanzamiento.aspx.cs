@@ -16,18 +16,23 @@ namespace PSIAA.Presentation.View
         private LanzamientoBLL _lanzamientoBll = new LanzamientoBLL();
         private AsignacionOrdenesBLL _asignacionOrdenBll = new AsignacionOrdenesBLL();
         private HojaCombinacionesBLL _hojaCombinacionesBll = new HojaCombinacionesBLL();
-        private HttpCookie cookie;
+        public string usuarioActual = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["usuario"] != null)
             {
-                cookie = Request.Cookies["Usuario"];
-                Session["Asignado"] = string.Empty;
-                Session["Asignado"] = "Si";
-                if (cookie != null)
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
+
+                if (!IsPostBack)
                 {
-                    hidUsuario.Value = cookie["Nombre"].ToString();
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
+                    Session["Asignado"] = "Si";
                     Session["ListadoAlanzar"] = new List<AlanzarDTO>();
                     Session["ListadoAasignar"] = new List<AasignarDTO>();
                     Session["listMaterialPorColor"] = new List<MaterialPorColorDTO>();
@@ -39,42 +44,29 @@ namespace PSIAA.Presentation.View
                     ddlCatOperacion.DataSource = _lanzamientoBll.ListarCategoriasOperaciones();
                     ddlCatOperacion.DataBind();
                 }
-                else
-                {
-                    //LOGOUT
-                    string user = Request.QueryString["logout"];
-                    Session.Remove(user);
-                    Session.Abandon();
-                    //Destruir Sesiones
-                    for (int i = 0; i < Session.Count; i++)
-                    {
-                        var nombre = Session.Keys[i].ToString();
-                        Session.Remove(nombre);
-                    }
-                    Response.Redirect("default.aspx");
-                }
-            }
-            lblMensajeErrorContrato.Visible = false;
-            lblmsnError.Visible = false;
-            lblmsnRegistrosDuplicados.Visible = false;
 
-            //Evaluar si hay datos en la sesion de FilasAfectadas
-            if (Session["NroOrdenesGeneradas"] != null)
-            {
-                int nroOrdenes = int.Parse(Session["NroOrdenesGeneradas"].ToString());
-                if (nroOrdenes > 0)
+                lblMensajeErrorContrato.Visible = false;
+                lblmsnError.Visible = false;
+                lblmsnRegistrosDuplicados.Visible = false;
+
+                //Evaluar si hay datos en la sesion de FilasAfectadas
+                if (Session["NroOrdenesGeneradas"] != null)
                 {
-                    lblRespuesta.Text = "!Lanzamiento ingresado con Exito!";
-                    lblRespuesta.ForeColor = System.Drawing.Color.Green;
-                    lblRespuesta.Visible = true;
+                    int nroOrdenes = int.Parse(Session["NroOrdenesGeneradas"].ToString());
+                    if (nroOrdenes > 0)
+                    {
+                        lblRespuesta.Text = "!Lanzamiento ingresado con Exito!";
+                        lblRespuesta.ForeColor = System.Drawing.Color.Green;
+                        lblRespuesta.Visible = true;
+                    }
+                    else
+                    {
+                        lblRespuesta.Text = "Hubo un error al ingresar el Lanzamiento";
+                        lblRespuesta.ForeColor = System.Drawing.Color.Red;
+                        lblRespuesta.Visible = true;
+                    }
+                    Session["NroOrdenesGeneradas"] = null;
                 }
-                else
-                {
-                    lblRespuesta.Text = "Hubo un error al ingresar el Lanzamiento";
-                    lblRespuesta.ForeColor = System.Drawing.Color.Red;
-                    lblRespuesta.Visible = true;
-                }
-                Session["NroOrdenesGeneradas"] = null;
             }
         }
 
@@ -314,7 +306,7 @@ namespace PSIAA.Presentation.View
             List<AlanzarDTO> _alanzar = Session["ListadoAlanzar"] as List<AlanzarDTO>;
             if (_alanzar.Count > 0)
             {
-                List<LanzamientoDetDTO> _listLanzDet = _lanzamientoBll.ListarPreLanzamiento(_alanzar, hidUsuario.Value);
+                List<LanzamientoDetDTO> _listLanzDet = _lanzamientoBll.ListarPreLanzamiento(_alanzar, usuarioActual);
                 Session["LanzamientoDet"] = _listLanzDet;
                 gridPreLanzamiento.DataSource = Session["LanzamientoDet"] as List<LanzamientoDetDTO>;
                 gridPreLanzamiento.DataBind();
@@ -449,8 +441,8 @@ namespace PSIAA.Presentation.View
 
             if (!repetido)
             {
-                int registros = _lanzamientoBll.IngresarLanzamiento(_listLanzamientoDet, _listMaterialPorColor, hidUsuario.Value);
-                var rpta = _asignacionOrdenBll.IngresarAsignacionOrden(_listAasignar, _listLanzamientoDet, hidUsuario.Value);
+                int registros = _lanzamientoBll.IngresarLanzamiento(_listLanzamientoDet, _listMaterialPorColor, usuarioActual);
+                var rpta = _asignacionOrdenBll.IngresarAsignacionOrden(_listAasignar, _listLanzamientoDet, usuarioActual);
                 Session["NroOrdenesGeneradas"] = registros;
                 Response.Redirect("Lanzamiento.aspx");
             }

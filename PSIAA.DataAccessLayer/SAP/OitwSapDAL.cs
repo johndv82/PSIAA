@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
-namespace PSIAA.DataAccessLayer
+namespace PSIAA.DataAccessLayer.SAP
 {
     public class OitwSapDAL
     {

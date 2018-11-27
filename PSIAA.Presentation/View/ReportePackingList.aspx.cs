@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using PSIAA.BusinessLogicLayer.SAP;
+using PSIAA.DataTransferObject;
 using Microsoft.Reporting.WebForms;
 using System.IO;
 using System.Data;
@@ -15,33 +16,26 @@ namespace PSIAA.Presentation.View
     public partial class ReportePackingList : System.Web.UI.Page
     {
         private readonly PackingListBLL _packingListBll = new PackingListBLL();
-        private HttpCookie cookie;
+        public string usuarioActual = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
-                cookie = Request.Cookies["Usuario"];
-                if (cookie != null)
+            if (Session["usuario"] != null)
+            {
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
+
+                if (!IsPostBack)
                 {
-                    hidUsuario.Value = cookie["Nombre"].ToString();
-                    //lblError.Visible = false;
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
                 }
-                else
-                {
-                    //LOGOUT
-                    string user = Request.QueryString["logout"];
-                    Session.Remove(user);
-                    Session.Abandon();
-                    //Destruir Sesiones
-                    for (int i = 0; i < Session.Count; i++)
-                    {
-                        var nombre = Session.Keys[i].ToString();
-                        Session.Remove(nombre);
-                    }
-                    Response.Redirect("default.aspx");
-                }
+                txtTipo.Focus();
+                lblError.Visible = false;
             }
-            txtTipo.Focus();
-            lblError.Visible = false;
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -70,7 +64,7 @@ namespace PSIAA.Presentation.View
                     rptViewPackingList.LocalReport.Refresh();
                     
                     //Si no existe, creamos el documento
-                    string nombrepdf = ExportReportToPDF("RepPackingList_" + lblDocEntry.Text.ToString() + "_" + hidUsuario.Value.ToString());
+                    string nombrepdf = ExportReportToPDF("RepPackingList_" + lblDocEntry.Text.ToString() + "_" + usuarioActual);
                     if (nombrepdf != string.Empty)
                     {
                         //Cargamos el PDFViewer

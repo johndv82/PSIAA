@@ -17,11 +17,33 @@ namespace PSIAA.BusinessLogicLayer
         private List<AlmacenDTO> _listAlmacen = new List<AlmacenDTO>();
         private ListXml _listXml = new ListXml();
 
+        /// <summary>
+        /// Devuelve el listado completo de ingresos almacenados en un archivo XML, del servidor.
+        /// La conversion es realizada a una lista genérica, para poder ser utilizada por la capa Presentacion.
+        /// </summary>
+        /// <param name="_user">Nombre de usuario que realiza el ingreso</param>
+        /// <returns>Lista genérica de Tipo RecepcionControlDTO poblada con todos los ingresos</returns>
+        /// 
         public List<RecepcionControlDTO> ListarRecepcionControl(string _user)
         {
             return _listXml.ConvertXmlToListRecepcionControl(_user);
         }
 
+        /// <summary>
+        /// Agrega un nuevo elemento al contenido del archivo XML donde es almacenado cada ingreso, y devuelve el contenido completo.
+        /// En el primer ingreso siempre se crea dos archivos XML por cada modelo de objeto: RecepcionControlDTO y AlmacenDTO.
+        /// En el caso de que el ingreso ya existiera en el contenido del archivo Xml, solo devuelve el contenido completo.
+        /// </summary>
+        /// <param name="_orden">Orden de Producción de Ingreso</param>
+        /// <param name="_lote">Lote de Ingreso</param>
+        /// <param name="_codAlmacen">Codigo de Almacén al cual va dirigido el ingreso</param>
+        /// <param name="_pieza">Cantidad de piezas a ingresar</param>
+        /// <param name="_talla">Talla de la pieza a ingresar</param>
+        /// <param name="_user">Nombre de usuario que realiza el ingreso</param>
+        /// <param name="duplicado">Parametro de Salida con valor verdadero o falso, en el caso de que el ingreso existiera en 
+        /// el contenido del archivo XML</param>
+        /// <returns>Lista genérica de tipo RecepcionControlDTO poblada con todos los ingresos</returns>
+        /// 
         public List<RecepcionControlDTO> PoblarListasDeIngresoAlmacen(string _orden, int _lote, int _codAlmacen,
                                                                 int _pieza, string _talla, string _user, out bool duplicado)
         {
@@ -88,6 +110,11 @@ namespace PSIAA.BusinessLogicLayer
             }
         }
 
+        /// <summary>
+        /// Genera un listado de Almacenes con su codigo respectivo.
+        /// </summary>
+        /// <returns>Colección de Tipo [int, string] poblada con todos los almacenes consultados</returns>
+        /// 
         public Dictionary<int, string> ListarAlmacenes()
         {
             Dictionary<int, string> _dicLista = new Dictionary<int, string>();
@@ -99,13 +126,15 @@ namespace PSIAA.BusinessLogicLayer
             return _dicLista;
         }
 
-        private string Mascara(int numero)
-        {
-            string cadena = "00";
-            int largoId = numero.ToString().Length;
-            return cadena.Substring(0, cadena.Length - largoId) + numero.ToString();
-        }
-
+        /// <summary>
+        /// Envía los ingresos contenidos en los arhivos XML a la capa de Acceso a Datos para su respectiva inserción en la BD.
+        /// Los archivos XML son convetidos en listas genericas de tipo RecepcionControlDTO, AlmacenDTO y modificados previamente a su
+        /// registro, añadiendo su numero de parte y respectivo numero de item.
+        /// </summary>
+        /// <param name="_numParte">Parametro de salida que devuelve a la capa Presentacion el número de parte que se ingresó.</param>
+        /// <param name="_user">Nombre de Usuario que realiza el ingreso de piezas</param>
+        /// <returns>Valor verdadero/falso segun el ingreso se haya ejecutado correctamente</returns>
+        /// 
         public bool IngresarDetalleAlmacen(out string _numParte, string _user)
         {
             //POBLAR LISTS
@@ -127,7 +156,7 @@ namespace PSIAA.BusinessLogicLayer
                 {
                     int ultimoDigito = int.Parse(ultimoDocumento.Substring(ultimoDocumento.Length - 2, 2));
                     ultimoDigito++;
-                    _nuevoDocumento = ultimoDocumento.Substring(0, ultimoDocumento.Length - 2) + Mascara(ultimoDigito);
+                    _nuevoDocumento = ultimoDocumento.Substring(0, ultimoDocumento.Length - 2) + Helper.Mascara(ultimoDigito, "00");
                 }
                 //SI NO HAY PARTES DE HOY, CREAR UNO NUEVO
                 else

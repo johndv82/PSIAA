@@ -228,59 +228,9 @@ namespace PSIAA.DataAccessLayer
         //Reporte para Gerencia
         public DataTable SelectLiquidacionTallerPorFecha(string _fechaIni, string _fechaFin) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
-
-            string query = @"
-                select 
-	                p.nombre_comercial as proveedor,
-	                lt.cod_proveedor,
-                    case SAP.u_bpp_mdtd
-		                when '01' then 'Factura'
-		                when '02' then 'Recibo Honorario'
-		                else 'Otro' end as tipo_movimiento,
-                    SAP.u_bpp_mdsd as serie_documento,
-                    SAP.u_bpp_mdcd as nro_documento,
-                    lt.nro_documento as nro_liquidacion,
-                    lt.fecha_documento,
-                    lt.moneda,
-	                case lt.moneda
-		                when 'S' then round(SAP.[DocTotal]- SAP.[VatSum] + SAP.[WTSum], 2)
-		                when 'D' then  round(SAP.[DocTotalFC]- SAP.[VatSumFC] + SAP.[WTSumFC], 2)
-		                else 0 end as sub_total,
-	                case lt.moneda
-		                when 'S' then round(SAP.[VatSum], 2)
-		                when 'D' then round(SAP.[VatSumFC], 2)
-		                else 0 end as igv,
-                    lt.usuario,
-	                case lt.moneda
-		                when 'S' then round(SAP.[WTSum]+ SAP.[DocTotal], 2)
-		                when 'D' then round(SAP.[WTSumFC]+ SAP.[DocTotalFC], 2)
-		                else 0 end as total
-                from Liquidacion_Talleres lt
-                inner join [192.168.0.213].[SBO_ATLAS_PRODUCCION].dbo.[opch] SAP 
-                on sap.u_numliq  = (CAST(lt.periodo AS nvarchar(20))  + CAST(lt.nro_de_control AS nvarchar(20)) )
-                right join (
-                    select 
-                        dpta.cod_proveedor,
-                        dpta.tipo_movimiento,
-                        dpta.serie_documento,
-                        dpta.nro_documento
-                    from Doc_pago_taller_asig dpta
-                    group by 
-                        dpta.cod_proveedor,
-                        dpta.tipo_movimiento,
-                        dpta.serie_documento,
-                        dpta.nro_documento
-                ) doc on doc.tipo_movimiento = lt.tipo_movimiento
-                    and doc.serie_documento = lt.serie_documento
-                    and doc.nro_documento = lt.nro_documento
-                    and doc.cod_proveedor = lt.cod_proveedor
-                inner join proveedores p on p.cod_proveedor = lt.cod_proveedor
-                where convert(date, lt.fecha_documento) between @fechaini and @fechafin
-                order by lt.fecha_documento";
-
             _sqlParam.Add(new SqlParameter("@fechaini", SqlDbType.VarChar) { Value = _fechaIni });
             _sqlParam.Add(new SqlParameter("@fechafin", SqlDbType.VarChar) { Value = _fechaFin });
-            return _trans.ReadingQuery(query, _sqlParam);
+            return _trans.ReadingProcedure("PSIAA.LiquidacionesFacturadas", _sqlParam);
         }
 
         //Reporte para Ingenieria

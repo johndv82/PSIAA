@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using PSIAA.BusinessLogicLayer;
+using PSIAA.DataTransferObject;
 using System.IO;
 using ClosedXML.Excel;
 using System.Data;
@@ -15,12 +16,25 @@ namespace PSIAA.Presentation.View
     {
         private ContratoBLL _contratoBll = new ContratoBLL();
         RecepcionControlBLL _recepcionControlBll = new RecepcionControlBLL();
+        public string usuarioActual = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
+            if (Session["usuario"] != null)
+            {
+                usuarioActual = ((UsuarioDTO)Session["usuario"]).User;
+
+                if (!IsPostBack)
+                {
+                    /*
+                     * Diferente a Post y Back
+                     * Todo lo que se ejecutará al recargar la pagina
+                     * Cuando se acciona un botón llamamos Post
+                     * Cuando usamos el botón Atras del Navegador llamamos Back
+                     */
+                }
+                txtContrato.Focus();
             }
-            txtContrato.Focus();
         }
 
         protected void btnSeleccionar_Click(object sender, EventArgs e)
@@ -104,7 +118,7 @@ namespace PSIAA.Presentation.View
             MemoryStream stream = GetStream(workbook);
             Response.Clear();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment; filename=" + Server.UrlEncode("IngresosFaltantesAlmacen" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx"));
+            Response.AddHeader("content-disposition", "attachment; filename=" + Server.UrlEncode("IngresosFaltantesAlmacen" + DateTime.Now.ToString("yyyyMMdd") + "_" + usuarioActual + ".xlsx"));
             Response.ContentType = "application/vnd.ms-excel";
             Response.BinaryWrite(stream.ToArray());
             Response.End();

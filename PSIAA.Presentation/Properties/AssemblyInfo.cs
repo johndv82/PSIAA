@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie los valores de estos atributos para modificar la información
 // asociada a un ensamblado.
 [assembly: AssemblyTitle("PSIAA.Presentation")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Sistema Integrado Art Atlas")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Art Atlas SRL")]
 [assembly: AssemblyProduct("PSIAA.Presentation")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
