@@ -15,6 +15,13 @@ namespace PSIAA.BusinessLogicLayer
         private PesosDAL _pesosDal = new PesosDAL();
         private MedidaPorTallaDAL _medidaPorTallaDal = new MedidaPorTallaDAL();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <param name="modelo">Modelo</param>
+        /// <returns></returns>
+        /// 
         public DataTable ListarMaterialModelo(int contrato, string modelo)
         {
             Dictionary<string, List<string[]>> prodMaterialCombo = new Dictionary<string, List<string[]>>();
@@ -30,7 +37,7 @@ namespace PSIAA.BusinessLogicLayer
                 if (contratoDet.CodColor.Trim().Substring(0, 2) == "C0")
                 {
                     prodMaterialCombo.Add(contratoDet.CodColor.Trim(),
-                    _simulacionMpBll.ListarProductosCombo(contratoDet.ModeloAA.Trim(), contratoDet.CodColor.Trim()));
+                        _simulacionMpBll.ListarProductosCombo(contratoDet.ModeloAA.Trim(), contratoDet.CodColor.Trim()));
                 }
                 else
                 {

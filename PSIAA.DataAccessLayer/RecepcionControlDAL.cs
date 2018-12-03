@@ -27,7 +27,7 @@ namespace PSIAA.DataAccessLayer
 	                usuario,
 	                Completo
                 from Recepcion_Pto_Control
-                where almacen = 550 and convert(date, fecha_ingreso)  = convert(date, getdate())
+                where almacen = @almacen and convert(date, fecha_ingreso)  = convert(date, getdate())
                 order by hora_ingreso desc";
 
             _sqlParam.Add(new SqlParameter("@almacen", SqlDbType.Int) { Value = _almacen });

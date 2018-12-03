@@ -10,10 +10,23 @@ namespace PSIAA.Presentation.View
 {
     public partial class ControlFinal : System.Web.UI.Page
     {
-        private RecepcionControlBLL _recepcionBll = new RecepcionControlBLL();
-        private ContratoBLL _contratoBll = new ContratoBLL();
+        /// <summary>
+        /// Variable de llamada a la clase BLL RecepcionControlBLL.
+        /// </summary>
+        public RecepcionControlBLL _recepcionBll = new RecepcionControlBLL();
+        public ContratoBLL _contratoBll = new ContratoBLL();
         public string usuarioActual = string.Empty;
 
+        /// <summary>
+        /// Evento de Carga Principal del formulario ControlFinal.aspx
+        /// </summary>
+        /// <remarks>
+        /// En este evento se evalúa la existencia de la sesión del usuario y tambien capturamos su valor en una variable publica,
+        /// para su posterior uso.
+        /// Se cargan los ingresos recepcionados devuelto por el procedimiento BLL ListarRecepcionControl.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["usuario"] != null)
@@ -36,6 +49,15 @@ namespace PSIAA.Presentation.View
             }
         }
 
+        /// <summary>
+        /// Evento Click del botón btnVerDetalle.
+        /// </summary>
+        /// En este evento se pobla los controles: txtPiezas, lblTalla, lblModelo y lblColor, llamando al procedimiento BLL 
+        /// de Listar Campos de Recepcion Control.
+        /// <remarks>
+        /// </remarks>
+        /// <param name="sender">Objeto llamador del evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnVerDetalle_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtOrden.Text))
@@ -82,6 +104,17 @@ namespace PSIAA.Presentation.View
             }
         }
 
+        /// <summary>
+        /// Evento Click del botón btnGuardar.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se invoca al procedimiento de ingresos de recepcion, enviando los parametros de:
+        /// Orden, Lote, Piezas y Nombre de Usuario, previamente validando la diferencia de piezas ingresadas con el punto anterior, 
+        /// en el caso de que la orden pertenesca a un tipo de contrato: "V", se omite la validación.
+        /// Si la acción es exitosa o hay problema con las piezas ingresadas, se muestra un mensaje al usuario.
+        /// </remarks>
+        /// <param name="sender">Objeto llamador del evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtOrden.Text))
@@ -117,6 +150,14 @@ namespace PSIAA.Presentation.View
             }
         }
 
+        /// <summary>
+        /// Evento Click del botón btnConsultarAvance.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se llama al procedimiento de Listar Seguimiento de Recepcion para cargarlo en un GridView.
+        /// </remarks>
+        /// <param name="sender">Objeto llamador del evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnConsultarAvance_Click(object sender, EventArgs e)
         {
             gridSeguimientoOrden.DataSource = _recepcionBll.ListarSeguimientoRecepcionControl(hidOrden.Value);

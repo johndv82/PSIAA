@@ -13,11 +13,34 @@ namespace PSIAA.Presentation.View
 {
     public partial class Almacen : System.Web.UI.Page
     {
-        private AlmacenBLL _almacenBll = new AlmacenBLL();
-        private RecepcionControlBLL _recepcionBll = new RecepcionControlBLL();
-        private ListXml _listXml = new ListXml();
+        /// <summary>
+        /// Variable de llamada a la clase BLL AlmacenBLL.
+        /// </summary>
+        public AlmacenBLL _almacenBll = new AlmacenBLL();
+        /// <summary>
+        /// Variable de llamada a la clase BLL RecepcionControlBLL.
+        /// </summary>
+        public RecepcionControlBLL _recepcionBll = new RecepcionControlBLL();
+        /// <summary>
+        /// Variable de llamada al helper ListXml.
+        /// </summary>
+        public ListXml _listXml = new ListXml();
+        /// <summary>
+        /// Variable publica para almacenar el usuario logueado.
+        /// </summary>
         public string usuarioActual = string.Empty;
 
+        /// <summary>
+        /// Evento de Carga Principal del formulario Almacen.aspx
+        /// </summary>
+        /// <remarks>
+        /// En este evento se evalúa la existencia de la sesión del usuario y tambien capturamos su valor en una variable publica,
+        /// para su posterior uso.
+        /// Se cargan los ingresos recepcionados devuelto por el procedimiento BLL ListarRecepcionControl.
+        /// Se cargan el listado de almacenes devuelto por el procedimiento BLL ListarAlmacenes.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienes datos del evento</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["usuario"] != null) {
@@ -46,6 +69,15 @@ namespace PSIAA.Presentation.View
             } 
         }
 
+        /// <summary>
+        /// Evento Click del botón btnVerDetalle.
+        /// </summary>
+        /// En este evento se pobla los controles: txtPiezas, lblTalla, lblModelo y lblColor, llamando al procedimiento BLL 
+        /// de Listar Campos de Recepcion Control.
+        /// <remarks>
+        /// </remarks>
+        /// <param name="sender">Objeto llamador del evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnVerDetalle_Click(object sender, EventArgs e)
         {
             lblErrorRegDupli.Visible = false;
@@ -94,6 +126,17 @@ namespace PSIAA.Presentation.View
             }
         }
 
+        /// <summary>
+        /// Evento Click del botón btnAgregar
+        /// </summary>
+        /// <remarks>
+        /// En este evento se invoca al procedimiento BLL de Poblar Listas Ingresos, enviando los parametros de:
+        /// Orden, Lote, Codigo de Almacén, Piezas, Talla y Nombre de Usuario, previamente validando la diferencia 
+        /// de piezas ingresadas con el punto anterior, en el caso de que el usuario sea : "muestras", se omite la validación.
+        /// Si la acción es exitosa o hay problema con las piezas ingresadas, se muestra un mensaje al usuario.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             int _pieza;
@@ -141,11 +184,28 @@ namespace PSIAA.Presentation.View
             }
         }
 
+        /// <summary>
+        /// Evento Cambio de Seleccion de la lista deplegable cmbAlmacenes
+        /// </summary>
+        /// <remarks>
+        /// Obtiene el valor de la lista desplegable cmbAlmacenes y lo asigna a la etiqueta lblNumAlmacen
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void cmbAlmacenes_SelectedIndexChanged(object sender, EventArgs e)
         {
             lblNumAlmacen.Text = cmbAlmacenes.SelectedValue.ToString();
         }
 
+        /// <summary>
+        /// Evento Click del botón btnGuardar
+        /// </summary>
+        /// <remarks>
+        /// En este evento se llama al procedimiento BLL de Ingresar detalle de almacen, retornando en un parametro de salida,
+        /// el número de parte. Tambien se pobla un control GridView con el listado de Recepciones de Control de Almacen.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnGuardarIngreso_Click(object sender, EventArgs e)
         {
             string NumeroParte = "";
@@ -174,18 +234,43 @@ namespace PSIAA.Presentation.View
             }
         }
 
+        /// <summary>
+        /// Evento Click del botón btnLimpiar
+        /// </summary>
+        /// <remarks>
+        /// En este evento se llama al procedimiento BLL de Limpiar listas de control, y redirigir la respuesta la página de Almacen.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnLimpiar_Click(object sender, EventArgs e)
         {
             _almacenBll.LimpiarListasDeControl(usuarioActual);
             Response.Redirect("Almacen.aspx");
         }
 
+        /// <summary>
+        /// Evento Click del botón btnConsultarAvance.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se llama al procedimiento de Listar Seguimiento de Recepcion para cargarlo en un GridView.
+        /// </remarks>
+        /// <param name="sender">Objeto llamador del evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnConsultarAvance_Click(object sender, EventArgs e)
         {
             gridSeguimientoOrden.DataSource = _almacenBll.ListarSeguimientoRecepcionControl(hidOrden.Value);
             gridSeguimientoOrden.DataBind();
         }
 
+        /// <summary>
+        /// Evento de Cambio de Selección del GridView gridControlFinal
+        /// </summary>
+        /// <remarks>
+        /// En este evento se obtienen los valores de Orden de Produción y Npumero de Lote del GridView gridControlFinal, para consultar 
+        /// su detalle llamando al procedimiento BLL Detalle de Almacen y mostrar cada uno de sus campos en Etiquetas.
+        /// </remarks>
+        /// <param name="sender">Objeto llamador del evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void gridControlFinal_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow row = gridControlFinal.SelectedRow;
@@ -224,6 +309,15 @@ namespace PSIAA.Presentation.View
             lblLoteConfirm.Text = _result.NroLote;
         }
 
+        /// <summary>
+        /// Evento Click del botón btnEliminar
+        /// </summary>
+        /// <remarks>
+        /// En este evento se llama a los procedimientos BLL de Eliminar Xml de Almacén y de Recepción, para limpiar la lista
+        /// completa de ingresos. Luego se redirige a la página principal de Almacén.
+        /// </remarks>
+        /// <param name="sender">Objeto llamador del evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             _listXml.EliminarXmlAlmacen(lblOrdenConfirm.Text, lblLoteConfirm.Text, usuarioActual);

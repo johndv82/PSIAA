@@ -19,7 +19,7 @@ namespace PSIAA.BusinessLogicLayer
 
         /// <summary>
         /// Devuelve el listado completo de ingresos almacenados en un archivo XML, del servidor.
-        /// La conversion es realizada a una lista genérica, para poder ser utilizada por la capa Presentacion.
+        /// La conversion es realizada a una lista genérica tipada.
         /// </summary>
         /// <param name="_user">Nombre de usuario que realiza el ingreso</param>
         /// <returns>Lista genérica de Tipo RecepcionControlDTO poblada con todos los ingresos</returns>
@@ -35,7 +35,7 @@ namespace PSIAA.BusinessLogicLayer
         /// En el caso de que el ingreso ya existiera en el contenido del archivo Xml, solo devuelve el contenido completo.
         /// </summary>
         /// <param name="_orden">Orden de Producción de Ingreso</param>
-        /// <param name="_lote">Lote de Ingreso</param>
+        /// <param name="_lote">Número de Lote</param>
         /// <param name="_codAlmacen">Codigo de Almacén al cual va dirigido el ingreso</param>
         /// <param name="_pieza">Cantidad de piezas a ingresar</param>
         /// <param name="_talla">Talla de la pieza a ingresar</param>
@@ -131,7 +131,7 @@ namespace PSIAA.BusinessLogicLayer
         /// Los archivos XML son convetidos en listas genericas de tipo RecepcionControlDTO, AlmacenDTO y modificados previamente a su
         /// registro, añadiendo su numero de parte y respectivo numero de item.
         /// </summary>
-        /// <param name="_numParte">Parametro de salida que devuelve a la capa Presentacion el número de parte que se ingresó.</param>
+        /// <param name="_numParte">Parametro de salida que es devuelta al CALLER, con número de parte que se ingresó.</param>
         /// <param name="_user">Nombre de Usuario que realiza el ingreso de piezas</param>
         /// <returns>Valor verdadero/falso segun el ingreso se haya ejecutado correctamente</returns>
         /// 
@@ -212,38 +212,70 @@ namespace PSIAA.BusinessLogicLayer
             }
         }
 
+        /// <summary>
+        /// Ejecuta procedimiento DAL de todos los ingresos de producción en almacén y los retorna en un contenedor de datos.
+        /// </summary>
+        /// <param name="_codAlmacen">Código de Almacen SIAA</param>
+        /// <param name="_fecha">Fecha de Ingreso en formato (Año-Mes-Dia)</param>
+        /// <returns>Contenedor de tipo DateTable con los ingresos</returns>
+        /// 
         public DataTable ListarIngresosProduccion(int _codAlmacen, string _fecha = "")
         {
             return _almacenDal.SelectIngresosProduccion(_codAlmacen, _fecha);
         }
 
+        /// <summary>
+        /// Ejcuta un Helper (ListXml) para limpiar los ingresos realizados por el usuario.
+        /// </summary>
+        /// <param name="_user">Nombre Usuario que realiza la acción</param>
+        /// 
         public void LimpiarListasDeControl(string _user)
         {
             _listXml.LimpiarArchivosXml(_user);
         }
 
+        /// <summary>
+        /// Ejecuta procedimiento DAL del seguimiento de recepcion por punto de control y los retorna en un contenedor de datos.
+        /// En caso de que la Orden sea nula, retorna un contenedor vacio.
+        /// </summary>
+        /// <param name="_orden">Orden de Producción</param>
+        /// <returns>Contenedor de tipo DataTable con el seguimiento</returns>
+        /// 
         public DataTable ListarSeguimientoRecepcionControl(string _orden)
         {
-            if (_orden == "")
-                return new DataTable();
-            else
-            {
+            if (!string.IsNullOrEmpty(_orden))
                 return _recepcionControlDal.SelectSeguimientoRecepcionControl(_orden);
-            }
+            else
+                return new DataTable();
         }
 
+        /// <summary>
+        /// Busca el ingreso en el ListadoAlmacenDTO de tipo XML archivado en el servidor, y pobla su objeto de tipo AlmacenDTO.
+        /// </summary>
+        /// <param name="_orden">Orden de Producción</param>
+        /// <param name="_lote">Número de Lote</param>
+        /// <param name="_user">Nombre de Usuario que realiza la acción</param>
+        /// <returns>Objeto de tipo AlmacenDTO con los datos de ingreso.</returns>
+        /// 
         public AlmacenDTO DetalleAlmacen(string _orden, int _lote, string _user)
         {
             List<AlmacenDTO> _lista = new List<AlmacenDTO>();
             _lista = _listXml.ConvertXmlToListAlmacen(_user);
-            var filtro = from a in _lista
+            AlmacenDTO _almacen = (from a in _lista
                          where a.Orden == _orden
                          & int.Parse(a.NroLote) == _lote
-                         select a;
-            AlmacenDTO _almacen = filtro.ToList()[0];
+                         select a).FirstOrDefault();
             return _almacen;
         }
 
+        /// <summary>
+        /// Ejecuta procedimiento DAL de los Ingresos a Almacen, y los retorna en un contenedor de datos.
+        /// </summary>
+        /// <param name="_fechaIni">Fecha de Inicio de consulta</param>
+        /// <param name="_fechaFin">Fecha Fin de consulta</param>
+        /// <param name="_modelo">Modelo de consulta</param>
+        /// <returns>Contenedor de tipo DataTable con los ingresos</returns>
+        /// 
         public DataTable ListarIngresosAlmacen(string _fechaIni, string _fechaFin, string _modelo)
         {
             _fechaIni = _fechaIni == "" ? "2015-01-01" : _fechaIni;
