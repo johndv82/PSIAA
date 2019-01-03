@@ -8,8 +8,16 @@ namespace PSIAA.DataAccessLayer.TuartDB
 {
     public class PesosDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión BD)
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener el peso de tejido base de la prenda y su respectiva talla.
+        /// </summary>
+        /// <param name="modelo">Modelo de prenda</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataRow SelectMuestraPeso(string modelo) {
             List<NpgsqlParameter> _sqlParam = new List<NpgsqlParameter>();
 

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula datos secundarios de elementos a Asignar.
+    /// </summary>
     public class AasignarDTO
     {
         public string Modelo { get; set; }
@@ -16,7 +19,10 @@ namespace PSIAA.DataTransferObject
         public string CodProveedor { get; set; }
         public string Taller { get; set; }
         public bool TodasOperaciones { get; set; }
-        //Flag que indica si se asignará o no
+
+        /// <summary>
+        /// Flag que indica si se asignará o no
+        /// </summary>
         public string Asignacion { get; set; }
     }
 }

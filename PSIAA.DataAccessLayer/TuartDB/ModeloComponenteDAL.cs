@@ -9,8 +9,16 @@ namespace PSIAA.DataAccessLayer.TuartDB
 {
     public class ModeloComponenteDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión BDs)
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener todos los componentes de una prenda.
+        /// </summary>
+        /// <param name="modelo">Modelo de prenda</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta</returns>
         public DataTable SelectComponentesModelo(string modelo) {
             List<NpgsqlParameter> _sqlParam = new List<NpgsqlParameter>();
 

@@ -8,7 +8,17 @@ namespace PSIAA.DataAccessLayer.TuartDB
 {
     public class MedidaPorTallaDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión BD)
+        /// </summary>
+        public Transactions _trans = new Transactions();
+
+        /// <summary>
+        /// Ejecuta una consulta de selección para obtener todas las medidas de una prenda por talla.
+        /// </summary>
+        /// <param name="_modelo">Modelo de prenda</param>
+        /// <param name="_talla">Talla de prenda</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectMedidasPorTalla(string _modelo, string _talla) {
             List<NpgsqlParameter> _sqlParam = new List<NpgsqlParameter>();
 

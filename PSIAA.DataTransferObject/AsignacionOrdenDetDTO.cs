@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula los campos principales de la tabla Asignacion Ordenes Det
+    /// </summary>
     public class AsignacionOrdenDetDTO
     {
         #region Atributos
@@ -22,6 +25,9 @@ namespace PSIAA.DataTransferObject
         #endregion
 
         #region Propiedades
+        /// <summary>
+        /// Campo Categoria Operacion
+        /// </summary>
         public int CodCatOperacion { get; set; }
         public string NroAsignacion { get; set; }
         public string Orden { get; set; }
@@ -33,8 +39,14 @@ namespace PSIAA.DataTransferObject
             get { return _fechaAsignacion; }
         }
 
+        /// <summary>
+        /// Campo de Fecha de Termino
+        /// 0x54: Si
+        ///     Valor Entero: 84
+        /// 0X46 : No
+        ///     Valor Entero: 70
+        /// </summary>
         public DateTime FechaTermino { get; set; }
-        //0x54 = 84
         public int Activo { get { return 84; } }
         public int Terminado { get; set; }
         public string Color { get; set; }
@@ -57,7 +69,7 @@ namespace PSIAA.DataTransferObject
         #endregion
 
         #region Metodos
-        public static string[] LimitarLongitudCaracteresTalla(string[] tallas)
+        private string[] LimitarLongitudCaracteresTalla(string[] tallas)
         {
             string[] nuevasTallas = new string[9];
             int indice = 0;

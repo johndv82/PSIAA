@@ -9,8 +9,15 @@ namespace PSIAA.DataAccessLayer.TuartDB
 {
     public class CategoriaOperacionDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia aa la clase Transactions (Conexión a la BD)
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta una consulta de selección la base de datos para obtener la denominación y el ID de las Categorias de Operación.
+        /// </summary>
+        /// <returns>Contenedor de tipo DataTable con los datos de consulta</returns>
         public DataTable SelectCategoriaOperacion() {
             string query = @"
                 select 

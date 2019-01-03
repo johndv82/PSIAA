@@ -9,8 +9,16 @@ namespace PSIAA.DataAccessLayer.TuartDB
 {
     public class CombMaterialDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión BD)
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener las caracteristicas del material de una prenda.
+        /// </summary>
+        /// <param name="modelo">Modelo de prenda</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de consulta</returns>
         public DataTable SelectCombinacionMaterial(string modelo) {
             List<NpgsqlParameter> _sqlParam = new List<NpgsqlParameter>();
 

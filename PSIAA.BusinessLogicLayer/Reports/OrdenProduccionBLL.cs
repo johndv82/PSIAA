@@ -5,16 +5,37 @@ using System.Text;
 using PSIAA.DataAccessLayer;
 using PSIAA.DataAccessLayer.TuartDB;
 using System.Data;
-using System.Reflection;
 
 namespace PSIAA.BusinessLogicLayer.Reports
 {
     public class OrdenProduccionBLL
     {
-        private LanzamientoDAL _lanzamientoDal = new LanzamientoDAL();
-        private ComponenteModeloBLL _modeloComponenteBll = new ComponenteModeloBLL();
-        private DataAccessLayer.TuartDB.MedidaPorTallaDAL _medidaPorTallaDal = new DataAccessLayer.TuartDB.MedidaPorTallaDAL();
-        private OperacionModeloDAL _operacionModeloDal = new OperacionModeloDAL();
+        /// <summary>
+        /// Variable de instancia a la clase LanzamientoDAL.
+        /// </summary>
+        public LanzamientoDAL _lanzamientoDal = new LanzamientoDAL();
+        /// <summary>
+        /// Variable de instancia a la clase ComponenteModeloBLL.
+        /// </summary>
+        public ComponenteModeloBLL _modeloComponenteBll = new ComponenteModeloBLL();
+        /// <summary>
+        /// Variable de instancia a la clase MedidaPorTallaDAL.
+        /// </summary>
+        public MedidaPorTallaDAL _medidaPorTallaDal = new MedidaPorTallaDAL();
+        /// <summary>
+        /// Variable de instancia a la clase OperacionModeloDAL.
+        /// </summary>
+        public OperacionModeloDAL _operacionModeloDal = new OperacionModeloDAL();
+
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Ordenes Asignadas segun el código de categoria de operaciones:
+        /// 400 : Tejido
+        /// 500 : Confección
+        /// En el caso de que el código de categoria sea 0, se ejecuta el procedimiento de Ordenes Lanzadas.
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <param name="categoriaOperacion">Codigo de Categoria de Operaciones</param>
+        /// <returns>Contenedor de datos de tipo DataTable con las órdenes.</returns>
         public DataTable ListarOrdenesLanzadasAsignadas(int contrato, int categoriaOperacion)
         {
             if (categoriaOperacion == 0)
@@ -26,11 +47,25 @@ namespace PSIAA.BusinessLogicLayer.Reports
             }
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Detalle de Ordenes de Producción Lanzadas.
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <param name="orden">Orden de Producción</param>
+        /// <returns>Contenedor de datos de tipo DataTable con el detalle de Ordenes.</returns>
         public DataTable ListarDetalleOrdenesProduccion(int contrato, string orden)
         {
             return _lanzamientoDal.SelectDetalleOrdenesProduccion(contrato, orden);
         }
 
+        /// <summary>
+        /// Ejecuta procedimientos DAL de Combinaciones de Lanzamiento y Componentes por Modelo, y con la ayuda de la función BLL
+        /// para armar cabeceras de componentes crea un conjunto (matching) relacionando combinaciones y componentes pre-armado.
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <param name="orden">Orden de Producción</param>
+        /// <param name="modelo">Modelo de prenda</param>
+        /// <returns>Contenedor de datos de tipo DataTable con el conjunto o matching</returns>
         public DataTable ListarDetalleOrdenProduccion(int contrato, string orden, string modelo) {
             DataTable dtCombinaciones = _lanzamientoDal.SelectCombinacionesPartidaLanzamiento(contrato, orden.Trim(), modelo.Trim());
             DataTable dtComponentesModelo = _modeloComponenteBll.ListarComponentesPorModelo(modelo.Trim());
@@ -63,9 +98,15 @@ namespace PSIAA.BusinessLogicLayer.Reports
                              TitCompo10 = compo.Field<string>("componente10")
                          }).ToList();
 
-            return ToDataTable(match);
+            return Helper.ToDataTable(match);
         }
 
+        /// <summary>
+        /// Genera un nuevo Contenedor de datos en base a los Componentes por Modelo, agrupando el modelo y colocando
+        /// cada uno de los componentes en columnas separadas dentro del esquema de máximo 10 componentes.
+        /// </summary>
+        /// <param name="dtModeloComp">Contenedor de tipo DataTable con los Componentes por Modelo</param>
+        /// <returns>Contenedor de tipo DataTable con el conjunto pre-armado</returns>
         private DataTable ArmarComponentesCabecera(DataTable dtModeloComp) {
             DataTable dtComponentes = new DataTable();
             if (dtModeloComp.Rows.Count > 0) {
@@ -99,26 +140,6 @@ namespace PSIAA.BusinessLogicLayer.Reports
             return dtComponentes;
         }
 
-        private DataTable ToDataTable<T>(List<T> items)
-        {
-            DataTable dataTable = new DataTable(typeof(T).Name);
-            PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            foreach (PropertyInfo prop in Props)
-            {
-                dataTable.Columns.Add(prop.Name);
-            }
-            foreach (T item in items)
-            {
-                var values = new object[Props.Length];
-                for (int i = 0; i < Props.Length; i++)
-                {
-                    values[i] = Props[i].GetValue(item, null);
-                }
-                dataTable.Rows.Add(values);
-            }
-            return dataTable;
-        }
-
         public DataTable ListarPesosPorTalla(int contrato, string nroOrden) {
             return _lanzamientoDal.SelectPesoPorTallas(contrato, nroOrden);
         }
@@ -133,7 +154,7 @@ namespace PSIAA.BusinessLogicLayer.Reports
                                Color = combi.Field<string>("ColorSec"),
                                Partida = combi.Field<string>("Partida")
                            }).ToList();
-            return ToDataTable(colores);
+            return Helper.ToDataTable(colores);
         }
 
         public DataTable ListarMedidasPorTalla(string modelo, string talla) {
@@ -162,17 +183,10 @@ namespace PSIAA.BusinessLogicLayer.Reports
             dtOperAgrup.Columns.Add("nro_fila", typeof(string));
             dtOperAgrup.Columns.Add("operacion", typeof(string));
             foreach (DataRow fila in dtOperaciones.Rows) {
-                dtOperAgrup.Rows.Add(indice, MascaraNumeroFila(indice), fila["c_codope"]);
+                dtOperAgrup.Rows.Add(indice, Helper.Mascara(indice, "00"), fila["c_codope"]);
                 indice = indice + 1;
             }
             return dtOperAgrup;
-        }
-
-        private string MascaraNumeroFila(int nroFila)
-        {
-            string cadena = "00";
-            int largoId = nroFila.ToString().Length;
-            return cadena.Substring(0, cadena.Length - largoId) + nroFila.ToString();
         }
     }
 }

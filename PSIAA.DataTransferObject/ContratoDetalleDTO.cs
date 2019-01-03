@@ -5,11 +5,12 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula los campos principales de la tabla Contrato Detalle.
+    /// </summary>
     public class ContratoDetalleDTO
     {
-        /** Atributos*/
-
-        /** Propiedades*/
+        #region Propiedades
         public int Item { get; set; }
         public int Numero { get; set; }
         public string Tipo { get; set; }
@@ -34,5 +35,7 @@ namespace PSIAA.DataTransferObject
         public int CantContramuestra { get; set; }
         public float PesoEstimado { get; set; }
         public string Observaciones { get; set; }
+
+        #endregion
     }
 }

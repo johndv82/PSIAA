@@ -9,7 +9,16 @@ namespace PSIAA.BusinessLogicLayer.Produccion
 {
     public class InventarioProductosBLL
     {
-        private ConsultasProduccion _consProduccion = new ConsultasProduccion();
+        /// <summary>
+        /// Variable de instancia a la clase ConsultasProduccion.
+        /// </summary>
+        public ConsultasProduccion _consProduccion = new ConsultasProduccion();
+
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de inventario de productos.
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <returns>Contenedor de datos de tipo DataTable con lso datos de inventario.</returns>
         public DataTable ListarInventarioProductos(int contrato)
         {
             return _consProduccion.SelectInventarioProductos(contrato);

@@ -10,56 +10,36 @@ namespace PSIAA.BusinessLogicLayer
 {
     public class ContratoBLL
     {
-        private ContratoDAL _contratoDal = new ContratoDAL();
-        private AsignacionOrdenesDAL _asignacionOrdenesDal = new AsignacionOrdenesDAL();
-        private RecepcionControlDAL _recepcionControlDal = new RecepcionControlDAL();
-        public DataTable ListarContratos(string _tipoCont = "", string _anio = "", string _contrato = "")
-        {
-            DataTable _dtContratos = _contratoDal.SelectContrato();
+        /// <summary>
+        /// Variable de instancia a la clase ContratoDAL.
+        /// </summary>
+        public ContratoDAL _contratoDal = new ContratoDAL();
+        /// <summary>
+        /// Variable de instancia a la clase RecepcionControlDAL.
+        /// </summary>
+        public RecepcionControlDAL _recepcionControlDal = new RecepcionControlDAL();
 
-            _tipoCont = _tipoCont == "0" ? "" : _tipoCont;
-            _anio = _anio == "<---- TODOS ---->" ? "" : _anio.ToString();
-            var filtro = from c in _dtContratos.AsEnumerable()
-                         let sAnio = c.Field<Int16>("Anio").ToString()
-                         let sNumero = c.Field<Int32>("Numero").ToString()
-                         where c.Field<string>("Tipo").StartsWith(_tipoCont)
-                         && sAnio.Contains(_anio)
-                         && sNumero.Contains(_contrato)
-                         select c;
-
-            return filtro.Any() ? filtro.CopyToDataTable() : _dtContratos.Clone();
-        }
-
-        public Dictionary<string, string> ListarTiposContrato()
-        {
-            Dictionary<string, string> _dicLista = new Dictionary<string, string>();
-            _dicLista.Add("0", "<---- TODOS ---->");
-            foreach (DataRow dr in _contratoDal.SelectTipoContrato().Rows)
-            {
-                _dicLista.Add(dr["Codigo"].ToString(), dr["TipoContrato"].ToString());
-            }
-            return _dicLista;
-        }
-
-        public List<string> ListarAnios()
-        {
-            List<string> _lista = new List<string>();
-            _lista.Add("<---- TODOS ---->");
-            foreach (DataRow dr in _contratoDal.SelectAnios().Rows)
-            {
-                _lista.Add(dr["Anio"].ToString());
-            }
-            return _lista;
-        }
-
+        /// <summary>
+        /// Ejecuta procedimiento DAL de Avance por Contrato.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <returns>Contenedor de datos de tipo DataTable con el Avance por Contrato</returns>
         public DataTable ListarAvancePorContrato(string _contrato)
         {
             return _contratoDal.SelectAvancePorContrato(_contrato);
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Recepcion por Contrato y el resultado lo filtra segun sus parametros.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <param name="_punto">Punto de Control</param>
+        /// <param name="_modelo">Modelo de Prenda</param>
+        /// <param name="_color">Color</param>
+        /// <returns>Contenedor de datos de tipo DataTable con los datos de recepcion.</returns>
         public DataTable FiltrarDetalleAvancePorContrato(string _contrato, int _punto, string _modelo, string _color)
         {
-            DataTable _dtDetalleAvanceContrato = _recepcionControlDal.SelectRecepcionPorModeloColor(_contrato);
+            DataTable _dtDetalleAvanceContrato = _recepcionControlDal.SelectRecepcionPorContrato(_contrato);
             try
             {
                 DataTable dtFiltroDetalle = new DataTable();
@@ -75,33 +55,20 @@ namespace PSIAA.BusinessLogicLayer
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message.ToString());
                 return new DataTable();
             }
         }
 
-        public DataTable ListarAsignacionesPorOrden(int _categoria, int _contrato, string _modelo,
-                                                    string _color, out string[] _tallas)
-        {
-            string[] Tallas = new string[9];
-            int indTalla = 0;
-            DataTable dtAsignacion = _asignacionOrdenesDal.SelectTotalAsignacionOrdenes(_categoria,
-                                                            _contrato, _modelo, _color);
-            if (dtAsignacion.Rows.Count > 0)
-            {
-                for (int x = 0; x < dtAsignacion.Columns.Count; x++)
-                {
-                    if (x >= 14)
-                    {
-                        Tallas[indTalla] = dtAsignacion.Rows[0][x].ToString();
-                        indTalla++;
-                    }
-                }
-            }
-            _tallas = Tallas;
-            return dtAsignacion;
-        }
-
-
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Avance Detallado por Tallas, y el resultado lo filtra 
+        /// por el punto de control y pobla los parametros de salida de Cliente y PO.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <param name="_punto">Punto de Control</param>
+        /// <param name="_cliente">Parametro de salida con el nombre del cliente</param>
+        /// <param name="_po">Parametro de salida con el número PO</param>
+        /// <returns>Contenedor de datos de tipo DataTable con el avance filtrado</returns>
         public DataTable FiltrarAvanceDetalladoTallasPorPunto(int _contrato, int _punto, out string _cliente, out string _po)
         {
             DataTable _dtAvanceDetalladoTallas = _recepcionControlDal.SelectAvanceDetalladoPorTallas(_contrato);
@@ -127,10 +94,33 @@ namespace PSIAA.BusinessLogicLayer
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message.ToString());
                 return new DataTable();
             }
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Detalle de Contrato y el resultado es agrupado por los siguientes campos:
+        /// <list type="">numero_contrato</list>
+        /// <list type="">Tipo_Contrato</list>
+        /// <list type="">Cod_Modelo_AA</list>
+        /// <list type="">Cod_Modelo_CLiente</list>
+        /// <list type="">c_codmat</list>
+        /// <list type="">Cod_Producto</list>
+        /// <list type="">c_codcol</list>
+        /// <list type="">Cod_Color_Cliente</list>
+        /// <list type="">cod_grupo_tallas</list>
+        /// <list type="string">talla1 => talla9</list>
+        /// <list type="">Cod_Proveedor</list>
+        /// <list type="">Cod_Proveedor_2</list>
+        /// <list type="">Linea</list>
+        /// <list type="">Galga</list>
+        /// <list type="">Titulo</list>
+        /// Luego con el resultado agrupado se pobla un objeto de tipo ContratoDetalleDTO.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <param name="_agrupacion">Flag de Agrupación</param>
+        /// <returns>Lista Genérica de tipo ContratoDetalleDTO con los datos del grupo</returns>
         public List<ContratoDetalleDTO> ListarDetalleContrato(int _contrato, bool _agrupacion)
         {
             DataTable dtReturn = _contratoDal.SelectDetalleContrato(_contrato);
@@ -254,6 +244,12 @@ namespace PSIAA.BusinessLogicLayer
             return listContratoDetalle;
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Selección de Grupo de Modelos por contrato,
+        /// y con el resultado pobla una lista de tipo cadena.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <returns>Lista Genérica de tipo string con los modelos</returns>
         public List<string> ListarModelosContrato(int _contrato)
         {
             List<string> listModelos = new List<string>();
@@ -265,26 +261,52 @@ namespace PSIAA.BusinessLogicLayer
             return listModelos;
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Cliente por Contrato.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <returns>Variable de tipo string con el nombre del Cliente</returns>
         public string ObtenerClienteContrato(int _contrato)
         {
             return _contratoDal.SelectCliente(_contrato);
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Verificación Contrato Cerrado
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <returns>Variable de tipo string con el valor de: "Si" o "No", segun sea el estado del Contrato</returns>
         public string VerificarContratoCerrado(int _contrato)
         {
             return _contratoDal.SelectVerificaContratoCerrado(_contrato);
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Detalle Modelo de Contrato
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <param name="modelo">Modelo de prenda</param>
+        /// <returns>Cotenedor de datos de tipo DataTable con el detalle del contrato</returns>
         public DataTable ListarDetalleModeloContrato(int contrato, string modelo)
         {
             return _contratoDal.SelectDetalleModeloContrato(contrato, modelo);
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Tipo de Contrato por Orden de Producción.
+        /// </summary>
+        /// <param name="_orden">Orden de Producción</param>
+        /// <returns>Variable de tipo string con el Tipo de Contrato</returns>
         public string ObtenerTipoContratoPorOrden(string _orden)
         {
             return _contratoDal.SelectTipoContrato(_orden);
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Contratos por Modelo.
+        /// </summary>
+        /// <param name="modelo">Modelo de Prenda</param>
+        /// <returns>Lista genérica de tipo string con los números de contratos</returns>
         public List<string> ListarContratosPorModelo(string modelo) {
             List<string> listContrato = new List<string>();
             foreach (DataRow row in _contratoDal.SelectContratosPorModelo(modelo).Rows)
@@ -294,6 +316,11 @@ namespace PSIAA.BusinessLogicLayer
             return listContrato;
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Contratos por Cliente.
+        /// </summary>
+        /// <param name="idCliente">Código de Cliente</param>
+        /// <returns>Lista genérica de tipo string con los números de contrato</returns>
         public List<string> ListarContratosPorCliente(int idCliente)
         {
             List<string> listContrato = new List<string>();

@@ -169,7 +169,7 @@ namespace PSIAA.BusinessLogicLayer
         /// Ejecuta procedimiento DAL de Ingresos Faltantes a Almacen, y lo devuelve en un conteneder de datos.
         /// </summary>
         /// <param name="_contrato">Número de Contrato</param>
-        /// <param name="_modelo">Modelo</param>
+        /// <param name="_modelo">Modelo de Prenda</param>
         /// <returns>Contenedor de datos de tipo DataTable con los ingresos</returns>
         /// 
         public DataTable ListarIngresosFaltantesAlmacen(int _contrato, string _modelo) {

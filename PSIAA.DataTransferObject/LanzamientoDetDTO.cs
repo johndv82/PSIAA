@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula los campos principales de la tabla Lanzamiento Detalle.
+    /// </summary>
     public class LanzamientoDetDTO
     {
         #region Atributos
@@ -27,7 +30,10 @@ namespace PSIAA.DataTransferObject
         public short NumLanzamiento { get; set; }
         public string Orden { get; set; }
         public short Lote { get; set; }
-        //Maquina -> contrato(DB)
+
+        /// <summary>
+        /// Propiedad asignada al campo "contrato" de la tabla, que en si representa el código de Maquina.
+        /// </summary>
         public string Maquina { get; set; }
         public string Color { get; set; }
         public string Modelo { get; set; }
@@ -57,7 +63,7 @@ namespace PSIAA.DataTransferObject
         #endregion
 
         #region Metodos
-        public static string[] LimitarLongitudCaracteresTalla(string[] tallas)
+        private string[] LimitarLongitudCaracteresTalla(string[] tallas)
         {
             string[] nuevasTallas = new string[9];
             int indice = 0;

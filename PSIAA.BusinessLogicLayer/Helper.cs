@@ -34,7 +34,7 @@ namespace PSIAA.BusinessLogicLayer
 
         public static string Mascara(int valor, string mascara)
         {
-            int largoId = valor.ToString().Length;
+            int largoId = valor.ToString().Trim().Length;
             return mascara.Substring(0, mascara.Length - largoId) + valor.ToString();
         }
     }

@@ -12,12 +12,49 @@ namespace PSIAA.BusinessLogicLayer
 {
     public class AsignacionOrdenesBLL
     {
-        private AsignacionOrdenesDAL _asignacionOrdenesDal = new AsignacionOrdenesDAL();
-        private OperacionModeloDAL _operacionModeloDal = new OperacionModeloDAL();
+        /// <summary>
+        /// Variable de instancia a la clase AsignacionOrdenesDAL.
+        /// </summary>
+        public AsignacionOrdenesDAL _asignacionOrdenesDal = new AsignacionOrdenesDAL();
+        /// <summary>
+        /// Variable de instancia a la clase OperacionModeloDAL.
+        /// </summary>
+        public OperacionModeloDAL _operacionModeloDal = new OperacionModeloDAL();
 
         public DataTable ListarAsignaciones(string _codProveedor, string _moneda, string _fechaAprobPre)
         {
             return _asignacionOrdenesDal.SelectAsignacionOrdenes(_codProveedor, _moneda, _fechaAprobPre);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_categoria"></param>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <param name="_modelo">Modelo de Prenda</param>
+        /// <param name="_color">Color</param>
+        /// <param name="_tallas">Parametro de salida con un arreglo de Tallas</param>
+        /// <returns></returns>
+        public DataTable ListarAsignacionesPorOrden(int _categoria, int _contrato, string _modelo,
+                                                    string _color, out string[] _tallas)
+        {
+            string[] Tallas = new string[9];
+            int indTalla = 0;
+            DataTable dtAsignacion = _asignacionOrdenesDal.SelectTotalAsignacionOrdenes(_categoria,
+                                                            _contrato, _modelo, _color);
+            if (dtAsignacion.Rows.Count > 0)
+            {
+                for (int x = 0; x < dtAsignacion.Columns.Count; x++)
+                {
+                    if (x >= 14)
+                    {
+                        Tallas[indTalla] = dtAsignacion.Rows[0][x].ToString();
+                        indTalla++;
+                    }
+                }
+            }
+            _tallas = Tallas;
+            return dtAsignacion;
         }
 
         public List<string> ListarGrupoModelos(string codProv)

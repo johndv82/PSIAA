@@ -5,12 +5,16 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula los campos principales de la tabla Simulacion Detalle.
+    /// </summary>
     public class SimulacionDetDTO
     {
         #region Atributos
         private decimal _porSeguridad = 0;
         private decimal _kilosSimulado = 0;
         #endregion
+
         #region Propiedades
         public int Correlativo { get; set; }
         public string NroSimulacion { get; set; }

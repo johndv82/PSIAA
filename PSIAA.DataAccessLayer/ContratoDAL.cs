@@ -10,63 +10,6 @@ namespace PSIAA.DataAccessLayer
     public class ContratoDAL
     {
         private Transactions _trans = new Transactions();
-        public DataTable SelectContrato() {
-            string query = @"
-                select
-	                cc.Tipo_Contrato as 'Tipo',
-                    cc.Anno as 'Anio',
-	                cc.numero_contrato as 'Numero',
-	                cc.numero_p_o as 'NumeroPO',
-	                cc.Cod_Cliente as 'CodCliente',
-	                c.nombre as 'Cliente',
-	                cc.Cod_Cliente_Consignatario as 'CodClienteConsig',
-	                c.nombre as 'ClienteConsig',
-	                cc.Fecha_Contrato as 'FechaEmision',
-	                cc.Fecha as 'FechaSolicitada',
-	                cc.fecha_despacho as 'FechaDespacho',
-	                cc.Cod_Termino_de_Pago as 'CodTerminoPago',
-	                tp.Descripcion as 'TerminosPago',
-	                cc.Cod_Tipo_Transporte as 'CodTipoTransporte',
-	                tt.Descripcion as 'TipoTransporte',
-	                cc.Tolerancia_Mas as 'ToleranciaMas',
-	                cc.Tolerancia_Menos as 'ToleranciaMenos',
-	                cc.Tolerancia_Porcentaje as 'ToleranciaPorcentaje',
-	                cc.Moneda as 'Moneda',
-	                cc.Destino as 'Destino',
-	                cc.i_est as 'Estado',
-	                cc.Hoja_L as 'HojaL',
-	                cc.Observaciones as 'Observaciones',
-	                cc.fecha_registro as 'FechaRegistro',
-	                cc.Hora_Registro as 'HoraRegistro',
-	                cc.Usuario as 'Usuario'
-                from contrato_cabecera cc 
-                left join clientes c
-	                on c.cod_cliente = cc.Cod_Cliente
-	                and c.cod_cliente = cc.Cod_Cliente_Consignatario
-                left join Terminos_de_Pago tp 
-	                on tp.Cod_Termino_de_Pago = cc.Cod_Termino_de_Pago
-                left join Tipo_de_Transporte tt
-	                on tt.Cod_Tipo_Transporte = cc.Cod_Tipo_Transporte";
-
-            return _trans.ReadingQuery(query);
-        }
-
-        public DataTable SelectTipoContrato() {
-            string query = @"
-                select 
-	                Tipo_Contrato as 'Codigo', 
-	                Descripcion as 'TipoContrato'
-                from Tipo_Contrato";
-            return _trans.ReadingQuery(query, null);
-        }
-
-        public DataTable SelectAnios() {
-            string query = @"
-                select 
-	                distinct Anno as 'Anio'
-                from contrato_cabecera";
-            return _trans.ReadingQuery(query, null);
-        }
 
         //Avance Contrato Principal
         public DataTable SelectAvancePorContrato(string _contrato) {

@@ -9,8 +9,13 @@ namespace PSIAA.DataAccessLayer.SAP
 {
     public class BalanceMpDAL
     {
-        private readonly TransactionsSAP _trans = new TransactionsSAP();
+        private readonly Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta un Procedimiento Almacenado en la base de datos SAP para obtener el Balance de Materia Prima.
+        /// </summary>
+        /// <param name="nroContrato">Número de Contrato</param>
+        /// <returns>Contenedor de datos de tipo DataTable con el resultado del procedimiento.</returns>
         public DataTable SelectRepBalanceMateriaPrima(string nroContrato)
         {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();

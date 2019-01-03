@@ -6,15 +6,26 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
-namespace PSIAA.DataAccessLayer
+namespace PSIAA.DataAccessLayer.SAP
 {
-    public class TransactionsSAP
+    public class Transactions
     {
         private SqlConnection oConnSap;
-        public TransactionsSAP()
+
+        /// <summary>
+        /// Crea nueva instancia de conexión a la cadena: ConnectionSAP, del archivo de configuración (WebConfig).
+        /// </summary>
+        public Transactions()
         {
             oConnSap = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionSAP"].ConnectionString);
         }
+
+        /// <summary>
+        /// Ejecuta una consulta de lectura en formato de cadena, directamente a la base de datos, adjuntando sus parametros.
+        /// </summary>
+        /// <param name="query">Cadena de Consulta</param>
+        /// <param name="parametros">Lista Genérica de tipo SqlParameter</param>
+        /// <returns>Contenedor de tipo DataTable con el retorno de la consulta.</returns>
         public DataTable ReadingQuery(string query, List<SqlParameter> parametros = null)
         {
             DataTable dtRetorno = new DataTable();
@@ -36,6 +47,12 @@ namespace PSIAA.DataAccessLayer
             return dtRetorno;
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de lectura escalar en formato de cadena, directamente a la base de datos, adjuntando sus parametros.
+        /// </summary>
+        /// <param name="query">Cadena de Consulta</param>
+        /// <param name="parametros">Lista Genérica de tipo SqlParameter</param>
+        /// <returns>Variable de tipo string con el valor de retorno.</returns>
         public string ReadingEscalarQuery(string query, List<SqlParameter> parametros = null)
         {
             string valorRetorno = string.Empty;
@@ -61,7 +78,12 @@ namespace PSIAA.DataAccessLayer
             return valorRetorno;
         }
 
-        //TRANSACCION PARA REPORTES
+        /// <summary>
+        /// Ejecuta un comando de tipo: StoredProcedure, directamente en la base de datos, adjuntando sus parametros.
+        /// </summary>
+        /// <param name="nombreProcedure">Nombre del Procedimiento Almacenado</param>
+        /// <param name="parametros">Lista Genérica de tipo SqlParameter</param>
+        /// <returns>Contenedor de tipo DataTable con el retorno del procedimiento</returns>
         public DataTable ReadingProcedure(string nombreProcedure, List<SqlParameter> parametros)
         {
             SqlCommand comando = new SqlCommand(nombreProcedure, oConnSap);

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula datos secundarios de elementos del Lanzamiento Compuesto.
+    /// </summary>
     public class CombinacionDTO
     {
         public string Modelo { get; set; }

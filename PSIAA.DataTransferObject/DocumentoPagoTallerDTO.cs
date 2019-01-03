@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula los campos princiapales de la tabla Doc Pago Taller Asignado.
+    /// </summary>
     public class DocumentoPagoTallerDTO
     {
         #region Propiedades

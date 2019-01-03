@@ -56,10 +56,7 @@
     <Compile Include="MaquinaDTO.cs" />
     <Compile Include="MaterialPorColorDTO.cs" />
     <Compile Include="PaginaDTO.cs" />
-    <Compile Include="MedidaPorTallaDTO.cs" />
-    <Compile Include="PesoDTO.cs" />
     <Compile Include="ProcesoPrecioDTO.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecepcionControlDTO.cs" />
     <Compile Include="Report\ContratoCabDTO.cs" />

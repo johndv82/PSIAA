@@ -11,6 +11,14 @@ namespace PSIAA.DataAccessLayer.ODOO
     public class CombinacionColorDAL
     {
         private Transactions _trans = new Transactions();
+
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para extraer los Colores, Porcentajes, Calidad, Titulo y Materiales
+        /// de un modelo en especifico y su combinación de colores.
+        /// </summary>
+        /// <param name="modelo">Modelo de Prenda</param>
+        /// <param name="combinacion">Nombre de Combinación del Modelo</param>
+        /// <returns>Contenedor de datos de tipo DataTable con los datos de la consulta</returns>
         public DataTable SelectColorMateriales(string modelo, string combinacion)
         {
             List<NpgsqlParameter> _sqlParam = new List<NpgsqlParameter>();

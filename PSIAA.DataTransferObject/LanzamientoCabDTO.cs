@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula los campos principales de la tabla Lanzamiento Cabecera.
+    /// </summary>
     public class LanzamientoCabDTO
     {
         public int NumDocumento { get; set; }

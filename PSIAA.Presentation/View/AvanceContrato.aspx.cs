@@ -15,12 +15,31 @@ namespace PSIAA.Presentation.View
 {
     public partial class AvanceContrato : System.Web.UI.Page
     {
-        private ContratoBLL _contratoBll = new ContratoBLL();
-        private static ClienteBLL _clienteBll = new ClienteBLL();
+        /// <summary>
+        /// Variable de instancia a la clase ContratoBLL.
+        /// </summary>
+        public ContratoBLL _contratoBll = new ContratoBLL();
+        /// <summary>
+        /// Variable de instancia a la clase AsignacionOrdenesBLL.
+        /// </summary>
+        public AsignacionOrdenesBLL _asignacionOrdenesBll = new AsignacionOrdenesBLL();
+        /// <summary>
+        /// Variable estatica de instancia a la clase ClienteBLL.
+        /// </summary>
+        public static ClienteBLL _clienteBll = new ClienteBLL();
         private int[] totalAvance = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         private string puntoControl;
         public string usuarioActual = string.Empty;
 
+        /// <summary>
+        /// Evento de carga principal del formulario AvanceContrato.aspx
+        /// </summary>
+        /// <remarks>
+        /// En este evento se evalúa la existencia de la sesión del usuario y tambien capturamos su valor en una variable publica,
+        /// para su posterior uso.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["usuario"] != null)
@@ -40,6 +59,17 @@ namespace PSIAA.Presentation.View
             }
         }
 
+        /// <summary>
+        /// Evento Click del botón btnBuscar.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se cargan los datos segun se seleccione en el filtro:
+        /// Contrato:  Se carga el avance del contrato consultado.
+        /// Modelo: Se cargan los contratos correspondientes al modelo consultado.
+        /// Cliente: Se cargan los contratos correspondientes al ciente consultado.
+        /// </remarks>
+        /// <param name="sender">Objeto llamador de evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             txtSearch.ID = "txtSearch";
@@ -62,14 +92,30 @@ namespace PSIAA.Presentation.View
                     ddlContratos.DataBind();
                     ddlContratos.Visible = true;
                 }
+                //Limpiamos grid Principal
+                gridAvanceContrato.DataSource = null;
+                gridAvanceContrato.DataBind();
             }
             else if (rbnFiltros.SelectedValue == "cliente") {
                 ddlContratos.DataSource = _contratoBll.ListarContratosPorCliente(int.Parse(hidCustomerId.Value));
                 ddlContratos.DataBind();
                 ddlContratos.Visible = true;
+
+                //Limpiamos grid Principal
+                gridAvanceContrato.DataSource = null;
+                gridAvanceContrato.DataBind();
             }
         }
 
+        /// <summary>
+        /// Evento de Cambio de Selección del control gridAvanceContrato.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se llama al avance detallado segun el punto de control que se haya seleccionado, en el caso de que la selección
+        /// pertenesca a un modelo, se llamara a una vista prelimiar de la hoja de especificaciones correspondiente al modelo.
+        /// </remarks>
+        /// <param name="sender">Objeto llamador al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void gridAvanceContrato_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow row = gridAvanceContrato.SelectedRow;
@@ -159,8 +205,8 @@ namespace PSIAA.Presentation.View
         private void PoblarGridAsignacionOrdenes()
         {
             string[] tallas;
-            int contrato = rbnFiltros.SelectedValue == "contrato" ? int.Parse(txtSearch.Text) : int.Parse(ddlContratos.Text);
-            gridDetalleAsignaciones.DataSource = _contratoBll.ListarAsignacionesPorOrden(int.Parse(ddlPuntos.SelectedValue),
+            int contrato = rbnFiltros.SelectedValue == "contrato" ? int.Parse(hidContrato.Value.ToString()) : int.Parse(ddlContratos.Text);
+            gridDetalleAsignaciones.DataSource = _asignacionOrdenesBll.ListarAsignacionesPorOrden(int.Parse(ddlPuntos.SelectedValue),
                                                                                         contrato, lblModelo.Text,
                                                                                         lblColor.Text, out tallas);
             gridDetalleAsignaciones.DataBind();
@@ -178,6 +224,15 @@ namespace PSIAA.Presentation.View
             CargarDatosAvance();
         }
 
+        /// <summary>
+        /// Evento Enlace de Filas de Datos del control gridAvanceContrato.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se evalúa si la fila de datos enlazada es de tipo DataRow para reemplazar los valores en 0
+        /// por cadenas vacias, o en el caso contrario de que la fila sea de tipo Footer para colocar el total de la columna.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void gridAvanceContrato_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if ((e.Row.RowType == DataControlRowType.DataRow) && (e.Row.RowType != DataControlRowType.EmptyDataRow))
@@ -216,6 +271,14 @@ namespace PSIAA.Presentation.View
             }
         }
 
+        /// <summary>
+        /// Evento Comando de Fila del control gridAvanceContrato.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se asigna el valor que contiene el punto de control del GridView a una variable publica.
+        /// </remarks>
+        /// <param name="sender">Objeto llamador del evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void gridAvanceContrato_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             puntoControl = e.CommandArgument.ToString();
@@ -240,13 +303,21 @@ namespace PSIAA.Presentation.View
             row.Cells[0].ColumnSpan = 5;
         }
 
+        /// <summary>
+        /// Evento Click del botón btnAvanceDetallado.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se captura el numero de contrato y se carga el detalle agrupado del contrato y se guarda en una variable de sesión.
+        /// </remarks>
+        /// <param name="sender">Objeto llamador del evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnAvanceDetallado_Click(object sender, EventArgs e)
         {
             //CARGAR GRID DE SOLICITADO
             int contrato = 0;
             if (rbnFiltros.SelectedValue == "contrato")
             {
-                int.TryParse(txtSearch.Text == "" ? "0" : txtSearch.Text, out contrato);
+                int.TryParse(hidContrato.Value.ToString() == "" ? "0" : hidContrato.Value.ToString(), out contrato);
             }
             else {
                 contrato = int.Parse(ddlContratos.Text);
@@ -258,10 +329,19 @@ namespace PSIAA.Presentation.View
             rblPuntosControl_SelectedIndexChanged1(sender, e);
         }
 
+        /// <summary>
+        /// Evento Cambio de Seleccion del RadioButtonList rblPuntosControl.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se carga el avance detallado por punto de control y el detalle solicitado por contrato, a la vez que
+        /// se agrupan por el grupo de tallas que contengan.
+        /// </remarks>
+        /// <param name="sender">Objeto llamador del evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void rblPuntosControl_SelectedIndexChanged1(object sender, EventArgs e)
         {
             string _cliente, _po;
-            int contrato = rbnFiltros.SelectedValue == "contrato" ? int.Parse(txtSearch.Text) : int.Parse(ddlContratos.Text);
+            int contrato = rbnFiltros.SelectedValue == "contrato" ? int.Parse(hidContrato.Value.ToString()) : int.Parse(ddlContratos.Text);
             DataTable dtAvance = _contratoBll.FiltrarAvanceDetalladoTallasPorPunto(contrato, int.Parse(rblPuntosControl.SelectedValue), out _cliente, out _po);
             if (dtAvance.Rows.Count > 0)
             {
@@ -306,6 +386,15 @@ namespace PSIAA.Presentation.View
             gridDetalleSolicitadoContrato.DataBind();
         }
 
+        /// <summary>
+        /// Metodo Web usado por JavaScript de lado del cliente.
+        /// </summary>
+        /// <remarks>
+        /// Este metodo ejecuta un procedimiento BLL de ListarClientes y pobla un arreglo de tipo cadena con el nombre del cliente
+        /// concatenado a su código de cliente.
+        /// </remarks>
+        /// <param name="prefijo">Prefijo de consulta de Clientes</param>
+        /// <returns>Arreglo de tipo cadena con los datos de los Clientes</returns>
         [WebMethod]
         public static string[] GetClientes(string prefijo)
         {
@@ -320,15 +409,26 @@ namespace PSIAA.Presentation.View
             return arr;
         }
 
+        /// <summary>
+        /// Evento de Cambio de Selección del RadioButtonList rbnFiltros.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se limpiar el control de texto txtSearch.
+        /// </remarks>
+        /// <param name="sender">Objeto llamador del evento</param>
+        /// <param name="e">Argumentos que contienen datos el evento</param>
         protected void rbnFiltros_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtSearch.Text = string.Empty;
-            /*if (rbnFiltros.SelectedValue != "cliente")
-            {
-                txtSearch.ID = "Otro";
-            }*/
+            btnAvanceDetallado.Visible = false;
         }
 
+
+        /// <summary>
+        /// Evento de Cambio de Selección de la lista desplegable ddlContratos.
+        /// </summary>
+        /// <param name="sender">Objeto llamador del evento</param>
+        /// <param name="e">Argumentos que contienen datos el evento</param>
         protected void ddlContratos_SelectedIndexChanged(object sender, EventArgs e)
         {
             gridAvanceContrato.DataSource = _contratoBll.ListarAvancePorContrato(ddlContratos.Text.Trim());
@@ -336,7 +436,7 @@ namespace PSIAA.Presentation.View
 
             if (gridAvanceContrato.Rows.Count > 0)
             {
-                hidContrato.Value = txtSearch.Text;
+                hidContrato.Value = ddlContratos.Text.Trim();
                 btnAvanceDetallado.Visible = true;
             }
         }

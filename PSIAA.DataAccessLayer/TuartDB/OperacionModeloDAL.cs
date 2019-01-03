@@ -9,8 +9,16 @@ namespace PSIAA.DataAccessLayer.TuartDB
 {
     public class OperacionModeloDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión a la BD)
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener las operaciones completas que tiene una prenda.
+        /// </summary>
+        /// <param name="_modelo">Modelo de Prenda</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectOperacionesTiempo(string _modelo) {
             List<NpgsqlParameter> _sqlParam = new List<NpgsqlParameter>();
 
@@ -29,18 +37,28 @@ namespace PSIAA.DataAccessLayer.TuartDB
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
-        public string SelectDescripcionOperacion(int _codOperacion) {
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener la descripción de un proceso.
+        /// </summary>
+        /// <param name="idProceso">ID de Proceso</param>
+        /// <returns>Variable de tipo string con el valor de la descripción.</returns>
+        public string SelectDescripcionOperacion(int idProceso) {
             List<NpgsqlParameter> _sqlParam = new List<NpgsqlParameter>();
             string query = @"
                 select 
                     c_denope || ' - ' || c_comope as descripcion
                 from operaciontmp 
-                where i_idope = @codoperacion";
+                where i_idope = @idoperacion";
 
-            _sqlParam.Add(new NpgsqlParameter("@codoperacion", NpgsqlTypes.NpgsqlDbType.Integer) { Value = _codOperacion });
+            _sqlParam.Add(new NpgsqlParameter("@idoperacion", NpgsqlTypes.NpgsqlDbType.Integer) { Value = idProceso });
             return _trans.ReadingEscalarQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener primeros 60 códigos de operación por modelo.
+        /// </summary>
+        /// <param name="modelo">Modelo de Prenda</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta</returns>
         public DataTable SelectCodigoOperaciones(string modelo) {
             List<NpgsqlParameter> _sqlParam = new List<NpgsqlParameter>();
 

@@ -22,7 +22,7 @@ namespace PSIAA.BusinessLogicLayer
             List<CombinacionDTO> _listCombinacionColores = new List<CombinacionDTO>();
             if (partes.Length > 0)
             {
-                //DataTable dtColorMaterialOdoo = _combinacionColorDal.SelectColorMateriales(modelo, MascaraColor(correlativoColor));
+                //DataTable dtColorMaterialOdoo = _combinacionColorDal.SelectColorMateriales(modelo, Helper.Mascara(Convert.ToInt32(correlativoColor), "C000"));
                 //Ya no consultar al ODOO
                 DataTable dtColorMaterialOdoo = new DataTable();
 
@@ -77,14 +77,7 @@ namespace PSIAA.BusinessLogicLayer
             }
             else {
                 return new List<CombinacionDTO>();
-            }      
-        }
-
-        private string MascaraColor(string correlativoColor)
-        {
-            string cadena = "C000";
-            int largoId = correlativoColor.Trim().Length;
-            return cadena.Substring(0, cadena.Length - largoId) + correlativoColor.ToString();
+            }
         }
 
         public bool CorregirColores(int _contrato)

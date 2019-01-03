@@ -792,7 +792,7 @@
                     return item;
                 }
             });
-            });
+        });
     }
 
     </script>

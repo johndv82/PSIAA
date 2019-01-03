@@ -104,9 +104,10 @@ namespace PSIAA.DataAccessLayer
         }
 
         //Seguimiento al punto de control -> Avance Contrato Principal
-        public DataTable SelectRecepcionPorModeloColor(string _contrato) {
+        public DataTable SelectRecepcionPorContrato(string _contrato) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             _sqlParam.Add(new SqlParameter("@contrato", SqlDbType.VarChar) { Value =  _contrato});
+            //Cambiar nombre a Procedure
             return _trans.ReadingProcedure("PSIAA.RecepcionPorModeloColor", _sqlParam);
         }
 

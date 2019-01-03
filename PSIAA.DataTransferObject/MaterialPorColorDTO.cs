@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula datos secundarios para poblar el Objeto LanzamientoCompDTO.
+    /// </summary>
     public class MaterialPorColorDTO
     {
         public int Contrato { get; set; }

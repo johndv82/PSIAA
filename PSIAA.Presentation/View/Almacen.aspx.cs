@@ -40,7 +40,7 @@ namespace PSIAA.Presentation.View
         /// Se cargan el listado de almacenes devuelto por el procedimiento BLL ListarAlmacenes.
         /// </remarks>
         /// <param name="sender">Objeto que llama al evento</param>
-        /// <param name="e">Argumentos que contienes datos del evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["usuario"] != null) {

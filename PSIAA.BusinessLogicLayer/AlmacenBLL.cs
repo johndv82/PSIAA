@@ -10,9 +10,19 @@ namespace PSIAA.BusinessLogicLayer
 {
     public class AlmacenBLL
     {
-        private RecepcionControlDAL _recepcionControlDal = new RecepcionControlDAL();
-        private AlmacenDAL _almacenDal = new AlmacenDAL();
-        private LanzamientoDAL _lanzamientoDal = new LanzamientoDAL();
+        /// <summary>
+        /// Variable de instancia a la clase RecepcionControlDAL.
+        /// </summary>
+        public RecepcionControlDAL _recepcionControlDal = new RecepcionControlDAL();
+        /// <summary>
+        /// Variable de instancia a la clase AlmacenDAL.
+        /// </summary>
+        public AlmacenDAL _almacenDal = new AlmacenDAL();
+        /// <summary>
+        /// Variable de instancia a la clase LanzamientoDAL.
+        /// </summary>
+        public LanzamientoDAL _lanzamientoDal = new LanzamientoDAL();
+
         private List<RecepcionControlDTO> _listRecepcionControl = new List<RecepcionControlDTO>();
         private List<AlmacenDTO> _listAlmacen = new List<AlmacenDTO>();
         private ListXml _listXml = new ListXml();
@@ -273,7 +283,7 @@ namespace PSIAA.BusinessLogicLayer
         /// </summary>
         /// <param name="_fechaIni">Fecha de Inicio de consulta</param>
         /// <param name="_fechaFin">Fecha Fin de consulta</param>
-        /// <param name="_modelo">Modelo de consulta</param>
+        /// <param name="_modelo">Modelo de Prenda</param>
         /// <returns>Contenedor de tipo DataTable con los ingresos</returns>
         /// 
         public DataTable ListarIngresosAlmacen(string _fechaIni, string _fechaFin, string _modelo)

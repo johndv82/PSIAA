@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula datos secundarios para el detalle de Precios Aprobados.
+    /// </summary>
     public class ProcesoPrecioDTO
     {
         private int _cantidad;

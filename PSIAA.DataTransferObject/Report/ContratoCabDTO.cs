@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject.Report
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula la cabecera del Reporte de Contrato.
+    /// </summary>
     public class ContratoCabDTO
     {
         public string _msnError;
@@ -31,6 +34,9 @@ namespace PSIAA.DataTransferObject.Report
         public string Destino { get; set; }
         public string Observaciones { get; set; }
 
+        /// <summary>
+        /// Lista Generica de Tipo ContratoDetDTO que sirve como contenedor del detalle del Contrato.
+        /// </summary>
         public List<ContratoDetDTO> Detalle
         {
             get

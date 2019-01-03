@@ -9,8 +9,15 @@ namespace PSIAA.DataAccessLayer.SAP
 {
     public class OitwSapDAL
     {
-        private TransactionsSAP _transSap = new TransactionsSAP();
+        private Transactions _transSap = new Transactions();
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener los articulos de almacén SAP.
+        /// </summary>
+        /// <param name="itemName">Nombre el Articulo</param>
+        /// <param name="stock">Cantidad de Stock a incluir</param>
+        /// <param name="itemCode">Código de Articulo</param>
+        /// <returns>Contenedor de datos de tipo DataTable con el resultado de la consulta.</returns>
         public DataTable SelectOitw(string itemName, int stock, string itemCode) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string filtroCodigoItem;

@@ -45,13 +45,6 @@ namespace PSIAA.BusinessLogicLayer
             return caracterFinal.ToString();
         }
 
-        private string Mascara(int numero)
-        {
-            string cadena = "00";
-            int largoId = numero.ToString().Length;
-            return cadena.Substring(0, cadena.Length - largoId) + numero.ToString();
-        }
-
         public List<LanzamientoDetDTO> ListarPreLanzamiento(List<AlanzarDTO> _listAlanzar, string _usuario)
         {
             //TEST PESOS POR PIEZA
@@ -137,7 +130,7 @@ namespace PSIAA.BusinessLogicLayer
                         lanz.NumDocumento = contrato;
                         lanz.NumLanzamiento = (short)nroLanz;
                         lanz.Orden = contrato.ToString().Substring(contrato.ToString().Length - 4, 4) +
-                                maquina + correlativoAlfa + Mascara(correlativoOrden);
+                                maquina + correlativoAlfa + Helper.Mascara(correlativoOrden, "00");
                         lanz.Lote = (short)lote;
                         lanz.Maquina = maquina;
                         lanz.Color = _alanzar.Color;

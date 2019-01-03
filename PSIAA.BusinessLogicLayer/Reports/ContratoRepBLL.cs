@@ -10,7 +10,17 @@ namespace PSIAA.BusinessLogicLayer.Reports
 {
     public class ContratoRepBLL
     {
-        private ContratoDAL _contratoDal = new ContratoDAL();
+        /// <summary>
+        /// Variable de instancia a la clase ContratoDAL.
+        /// </summary>
+        public ContratoDAL _contratoDal = new ContratoDAL();
+
+        /// <summary>
+        /// Ejecuta procedimientos DAL de Reporte Contrato y obtiene si detalle y cabecera en contenedores de datos que son seteados
+        /// en un objeto de tipo ContratoCabDTO, en el caso de que el contenedor este vacio devuelve el objeto tambien vacio.
+        /// </summary>
+        /// <param name="_numContrato">Número de Contrato</param>
+        /// <returns>Objeto de tipo ContratoCabDTO poblado con todos sus datos y su detalle de tipo ContratoDetDTO.</returns>
         public ContratoCabDTO Cabecera(int _numContrato)
         {
             var primeraFila = string.Empty;

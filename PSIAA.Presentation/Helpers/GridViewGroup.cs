@@ -1,12 +1,3 @@
-//------------------------------------------------------------------------------------------
-// Copyright © 2006 Agrinei Sousa [www.agrinei.com]
-//
-// Esse código fonte é fornecido sem garantia de qualquer tipo.
-// Sinta-se livre para utilizá-lo, modificá-lo e distribuí-lo,
-// inclusive em aplicações comerciais.
-// É altamente desejável que essa mensagem não seja removida.
-//------------------------------------------------------------------------------------------
-
 using System;
 using System.Collections.Generic;
 using System.Web.UI;
@@ -15,9 +6,6 @@ using System.Web.UI.WebControls;
 
 public delegate void GroupEvent(string groupName, object[] values, GridViewRow row);
 
-/// <summary>
-/// A class that represents a group consisting of a set of columns
-/// </summary>
 public class GridViewGroup
 {
     #region Fields
@@ -123,12 +111,12 @@ public class GridViewGroup
     {
         if (this.ContainsSummary(s))
         {
-            throw new Exception("Summary already exists in this group.");
+            throw new Exception("Detalle ya existe en el grupo");
         }
 
         if (!s.Validate())
         {
-            throw new Exception("Invalid summary.");
+            throw new Exception("Detale invalido");
         }
 
         ///s._group = this;

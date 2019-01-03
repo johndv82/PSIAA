@@ -9,7 +9,13 @@ namespace PSIAA.DataAccessLayer.ODOO
 {
     public class ComponenteModeloDAL
     {
-        private Transactions _trans = new Transactions();
+        public Transactions _trans = new Transactions();
+
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener todos los componentes relacionado a un modelo.
+        /// </summary>
+        /// <param name="modelo">Modelo de Prenda.</param>
+        /// <returns>Contenedor de datos de tipo DataTable con los datos de consulta.</returns>
         public DataTable SelectComponentesModelo(string modelo) {
             List<NpgsqlParameter> _sqlParam = new List<NpgsqlParameter>();
             string query = @"

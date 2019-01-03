@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject.Report
 {
+    /// <summary>
+    /// Objeto de Tranferencia que encapsula el detalle del Reporte de Contrato.
+    /// </summary>
     public class ContratoDetDTO
     {
         public string ModeloAA { get; set; }

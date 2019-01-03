@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula datos secundarios de elemento a Lanzar.
+    /// </summary>
     public class AlanzarDTO
     {
         #region Atributos

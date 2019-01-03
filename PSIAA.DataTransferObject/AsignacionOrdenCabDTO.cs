@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula los campos principales de la tabla Asignacion Ordenes Cab
+    /// </summary>
     public class AsignacionOrdenCabDTO
     {
         #region Atributos
@@ -21,7 +24,9 @@ namespace PSIAA.DataTransferObject
         #endregion
 
         #region Propiedades
-        //CodCatOperacion -> NroAsigna
+        /// <summary>
+        /// Campo de Categoria Operación
+        /// </summary>
         public int CodCatOperacion { get; set; }
         public string NroAsignacion { get; set; }
         public string CodProveedor { get; set; }
@@ -32,11 +37,15 @@ namespace PSIAA.DataTransferObject
             get { return _horaGeneracion; }
         }
 
-        //Fecha de Retorno
+        /// <summary>
+        /// Campo de Fecha de Retorno
+        /// </summary>
         public DateTime FechaEntrega { get; set; }
         public string Usuario { get; set; }
 
-        //Este campo guarda el valor del chekbox de ¿todas las operaciones?
+        /// <summary>
+        /// Este campo guarda el valor del chekbox de: ¿todas las operaciones?
+        /// </summary>
         public short Completo { get; set; }
         #endregion
     }

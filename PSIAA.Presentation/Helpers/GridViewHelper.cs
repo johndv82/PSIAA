@@ -1,12 +1,3 @@
-//------------------------------------------------------------------------------------------
-// Copyright © 2006 Agrinei Sousa [www.agrinei.com]
-//
-// Esse código fonte é fornecido sem garantia de qualquer tipo.
-// Sinta-se livre para utilizá-lo, modificá-lo e distribuí-lo,
-// inclusive em aplicações comerciais.
-// É altamente desejável que essa mensagem não seja removida.
-//------------------------------------------------------------------------------------------
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,9 +8,6 @@ using System.Web.UI.WebControls;
 
 public delegate void FooterEvent(GridViewRow row);
 
-/// <summary>
-/// A class to allow you to add summaries and groups to a GridView, easily!
-/// </summary>
 public class GridViewHelper
 {
 
@@ -123,11 +111,9 @@ public class GridViewHelper
             throw new Exception(USE_ADEQUATE_METHOD_TO_REGISTER_THE_SUMMARY);
         }
 
-        // TO DO: Perform column validation...
         GridViewSummary s = new GridViewSummary(column, formatString, operation, null);
         mGeneralSummaries.Add(s);
 
-        // if general summaries are displayed in the footer, it must be set to visible
         if (useFooter) mGrid.ShowFooter = true;
 
         return s;
@@ -151,7 +137,6 @@ public class GridViewHelper
             throw new Exception(String.Format(GROUP_NOT_FOUND, groupName));
         }
 
-        // TO DO: Perform column validation...
         GridViewSummary s = new GridViewSummary(column, formatString, operation, group);
         group.AddSummary(s);
 
@@ -165,11 +150,9 @@ public class GridViewHelper
 
     public GridViewSummary RegisterSummary(string column, string formatString, CustomSummaryOperation operation, SummaryResultMethod getResult)
     {
-        // TO DO: Perform column validation...
         GridViewSummary s = new GridViewSummary(column, formatString, operation, getResult, null);
         mGeneralSummaries.Add(s);
 
-        // if general summaries are displayed in the footer, it must be set to visible
         if (useFooter) mGrid.ShowFooter = true;
 
         return s;
@@ -188,7 +171,6 @@ public class GridViewHelper
             throw new Exception(String.Format(GROUP_NOT_FOUND, groupName));
         }
 
-        // TO DO: Perform column validation...
         GridViewSummary s = new GridViewSummary(column, formatString, operation, getResult, group);
         group.AddSummary(s);
 
@@ -204,7 +186,6 @@ public class GridViewHelper
 
         if ( s.Group == null )
         {
-            // if general summaries are displayed in the footer, it must be set to visible
             if (useFooter) mGrid.ShowFooter = true;
 
             mGeneralSummaries.Add(s);
@@ -235,7 +216,6 @@ public class GridViewHelper
             throw new Exception(SUPPRESS_GROUP_ALREADY_DEFINED);
         }
 
-        // TO DO: Perform column validation...
         GridViewGroup g = new GridViewGroup(columns, auto, hideGroupColumns);
         mGroups.Add(g);
 
@@ -274,12 +254,9 @@ public class GridViewHelper
             throw new Exception(ONE_GROUP_ALREADY_REGISTERED);
         }
 
-        // TO DO: Perform column validation...
         GridViewGroup g = new GridViewGroup(columns, true, false, false, false);
         mGroups.Add(g);
 
-        // Disable paging because pager works in datarows that
-        // will be suppressed
         mGrid.AllowPaging = false;
 
         return g;
@@ -302,14 +279,13 @@ public class GridViewHelper
     }
 
     /// <summary>
-    /// Compares the actual group values with the values of the current dataitem
+    /// Compara los valores reales del grupo con los valores del elemento de datos actual
     /// </summary>
     /// <param name="g"></param>
     /// <param name="dataitem"></param>
     /// <returns></returns>
     private bool EvaluateEquals(GridViewGroup g, object dataitem)
     {
-        // The values wasn't initialized
         if (g.ActualValues == null) return false;
 
         for (int i = 0; i < g.Columns.Length; i++)
@@ -353,9 +329,9 @@ public class GridViewHelper
     }
 
     /// <summary>
-    /// Inserts a grid row. Only cells required for the summary results
-    /// will be created (except if GenerateAllCellsOnSummaryRow is true).
-	/// The group will be checked for columns with summary
+    /// Inserta una fila de la cuadrícula. Solo se requieren celdas para los resultados del resumen.
+    /// se creará(excepto si GenerateAllCellsOnSummaryRow es verdadero).
+    /// El grupo será revisado por columnas con resumen
     /// </summary>
     /// <param name="beforeRow"></param>
     /// <param name="g"></param>
@@ -373,7 +349,6 @@ public class GridViewHelper
 
         if ( g != null && ( g.IsSuppressGroup || g.GenerateAllCellsOnSummaryRow ) )
         {
-            // Create all the table cells
             tcArray = new TableCell[visibleColumns];
             for (int i = 0; i < visibleColumns; i++)
             {
@@ -385,7 +360,6 @@ public class GridViewHelper
         }
         else
         {
-            // Create only the required table cells
             colspan = 0;
             List<TableCell> tcc = new List<TableCell>();
             for (int i = 0; i < mGrid.Columns.Count; i++)
@@ -401,15 +375,14 @@ public class GridViewHelper
                         colspan = 0;
                     }
 
-                    // insert table cell and copy the style
+                    // Inserta celda de tabla y copia el estilo.
                     cell = new TableCell();
                     cell.ApplyStyle(mGrid.Columns[i].ItemStyle);
                     tcc.Add(cell);
                 }
                 else if (mGrid.Columns[i].Visible)
                 {
-                    // A visible column that will have no cell because has
-                    // no summary. So we increase the colspan...
+                    // Si la columna es visible, aumentamos el colspan
                     colspan++;
                 }
             }
@@ -442,7 +415,7 @@ public class GridViewHelper
     {
         foreach (GridViewGroup g in mGroups)
         {
-            // The last group values are caught here
+            // Los valores del último grupo son capturados aquí.
             if (e.Row.RowType == DataControlRowType.Footer)
             {
                 g.CalculateSummaries();

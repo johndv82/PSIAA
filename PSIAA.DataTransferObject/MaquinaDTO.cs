@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula los campos principales de la tabla Maquina_bac.
+    /// </summary>
     public class MaquinaDTO
     {
         public string Codigo { get; set; }

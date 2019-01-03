@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula los campos principales de la tabla DetalleAlmacen.
+    /// </summary>
     public class AlmacenDTO
     {
         /** Atributos */
@@ -37,7 +40,7 @@ namespace PSIAA.DataTransferObject
             {
                 for (int i = 0; i < _tallas.Length; i++)
                 {
-                    if (_tallas[i] != 0 & _tallaDeCambio != 0)
+                    if (_tallas[i] != 0 && _tallaDeCambio != 0)
                         _tallas[i] = _tallaDeCambio;
                 }
                 return _tallas;

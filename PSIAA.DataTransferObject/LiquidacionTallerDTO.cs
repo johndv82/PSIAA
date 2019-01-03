@@ -6,6 +6,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula los campos principales de la tabla Liquidacion Talleres.
+    /// </summary>
     public class LiquidacionTallerDTO
     {
         #region Atributos
@@ -113,7 +116,7 @@ namespace PSIAA.DataTransferObject
         }
         public int Semana {
             get {
-                System.Globalization.Calendar c = CultureInfo.CurrentCulture.Calendar;
+                Calendar c = CultureInfo.CurrentCulture.Calendar;
                 return c.GetWeekOfYear(DateTime.Today, CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
             }
         }

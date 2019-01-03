@@ -138,7 +138,6 @@
     <Content Include="View\CorrecionColores.aspx" />
     <Content Include="View\CostosProduccion.aspx" />
     <Content Include="View\default.aspx" />
-    <Content Include="View\Contratos.aspx" />
     <Content Include="View\DocumentosLibres.aspx" />
     <Content Include="View\Facturaciones.aspx" />
     <Content Include="View\GeneracionDocumento.aspx" />
@@ -256,13 +255,6 @@
     </Compile>
     <Compile Include="View\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\Contratos.aspx.cs">
-      <DependentUpon>Contratos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Contratos.aspx.designer.cs">
-      <DependentUpon>Contratos.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\DocumentosLibres.aspx.cs">
       <DependentUpon>DocumentosLibres.aspx</DependentUpon>

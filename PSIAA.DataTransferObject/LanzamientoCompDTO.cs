@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula los campos principales de la tabla Lanzamiento Compuesto.
+    /// </summary>
     public class LanzamientoCompDTO
     {
         private DateTime _fechaIngreso;
@@ -19,7 +22,10 @@ namespace PSIAA.DataTransferObject
         public int NumContrato { get; set; }
         public int NumLanzamiento { get; set; }
         public string Orden { get; set; }
-        //contrato (campo BD)
+
+        /// <summary>
+        /// Propiedad asignada al campo "contrato" de la tabla, que en si representa el código de Maquina.
+        /// </summary>
         public char Maquina { get; set; }
         public string Color { get; set; }
         public string Calidad { get; set; }

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula los campos principales de la tabla ITSM_Paginas.
+    /// </summary>
     public class PaginaDTO
     {
         public string Pagina { get; set; }

@@ -5,16 +5,22 @@ using System.Text;
 
 namespace PSIAA.DataTransferObject
 {
+    /// <summary>
+    /// Objeto de Transferencia que encapsula los campos principales de la tabla Recepcion Punto Control. 
+    /// </summary>
     public class RecepcionControlDTO
     {
-        /** Atributos */
+        #region Atributos
         private string[] _tallas = new string[9];
         private int[] _piezas = new int[9];
         private DateTime _fechaIngreso;
         private string _horaIngreso;
         private int _piezaDeCambio;
 
-        /** Propiedades */
+        #endregion
+
+        #region Propiedades
+
         public RecepcionControlDTO() {
             _fechaIngreso = DateTime.Now;
             _horaIngreso = string.Concat(DateTime.Now.ToString("HHmmss"));
@@ -59,5 +65,7 @@ namespace PSIAA.DataTransferObject
         public string Observaciones { get { return string.Empty;  } }
         public char Completo { get; set; }
         public int PiezaDeCambio { set { _piezaDeCambio = value;  } }
+
+        #endregion
     }
 }
