@@ -10,8 +10,15 @@ namespace PSIAA.DataAccessLayer
 {
     public class DocumentoPagoLibreDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión BD).
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener todas las Operaciónes Libres SIAA.
+        /// </summary>
+        /// <returns>Contenedor de tipo DataTable con el resultado de la consulta.</returns>
         public DataTable SelectOperacionesLibres() {
             string query = @"
                 select
@@ -23,6 +30,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, null);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de inserción a la tabla Doc_pago_taller_libre.
+        /// </summary>
+        /// <param name="_docLibre">Objeto de tipo DocumentoPagoLibreDTO</param>
+        /// <returns>Variable de tipo int con la cantidad de registros ingresados.</returns>
         public int InsertDocumentoPagoLibre(DocumentoPagoLibreDTO _docLibre) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 

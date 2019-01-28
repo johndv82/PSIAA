@@ -279,7 +279,7 @@ namespace PSIAA.BusinessLogicLayer
         }
 
         /// <summary>
-        /// Ejecuta procedimiento DAL de los Ingresos a Almacen, y los retorna en un contenedor de datos.
+        /// Ejecuta procedimiento DAL de los Ingresos a Almacen, y retorna el resultado.
         /// </summary>
         /// <param name="_fechaIni">Fecha de Inicio de consulta</param>
         /// <param name="_fechaFin">Fecha Fin de consulta</param>

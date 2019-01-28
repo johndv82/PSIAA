@@ -9,8 +9,18 @@ namespace PSIAA.DataAccessLayer
 {
     public class LanzamientoDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión BD).
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener los datos principales de una órden lanzada:
+        /// Modelo, Color, Peso, Contrato, Talla y Piezas lanzadas.
+        /// </summary>
+        /// <param name="_orden">Orden de Producción</param>
+        /// <param name="_lote">Número de Lote</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectLanzamientoPorOrden(string _orden, int _lote)
         {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
@@ -36,6 +46,13 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener las cantidades lanzadas de un Modelo/Color por Contrato.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <param name="_modelo">Modelo de Prenda</param>
+        /// <param name="_color">Color de Modelo</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta</returns>
         public DataTable SelectCantidadesLanzadas(int _contrato, string _modelo, string _color)
         {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
@@ -63,6 +80,12 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener el correlativo de la ultima órden lanzada por Contrato/Modelo.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <param name="_modelo">Modelo de prenda</param>
+        /// <returns>Variable dde tipo int con el valor del correlativo.</returns>
         public int SelectUtimoCorrelativoOrden(int _contrato, string _modelo)
         {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
@@ -86,6 +109,11 @@ namespace PSIAA.DataAccessLayer
             return int.Parse(numero == "" ? "0" : numero);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener el último número de lanzamiento, por Contrato.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <returns>Variable de tipo int con el número de lanzamiento.</returns>
         public int SelectUltimoNroLanzamiento(int _contrato)
         {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
@@ -104,6 +132,11 @@ namespace PSIAA.DataAccessLayer
             return int.Parse(numero == "" ? "0" : numero);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de inserción a la tabla lanzamiento_detalle.
+        /// </summary>
+        /// <param name="_lanzDet">Objeto de tipo LanzamientoDetDTO</param>
+        /// <returns>Variable de tipo int con la cantidad registros ingresados.</returns>
         public int InsertLanzamientoDet(LanzamientoDetDTO _lanzDet)
         {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
@@ -180,6 +213,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ExecuteQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de inserción a la tabla lanzamiento_cabecera.
+        /// </summary>
+        /// <param name="_lanzCab">Objeto de tipo LanzamientoCabDTO</param>
+        /// <returns>Variable de tipo int con la cantidad de registros ingresados.</returns>
         public int InsertLanzamientoCab(LanzamientoCabDTO _lanzCab)
         {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
@@ -207,6 +245,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ExecuteQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de sinserción en la tabla Lanzamiento_Compuesto.
+        /// </summary>
+        /// <param name="_lanzComp">Objeto LanzamientoCompDTO</param>
+        /// <returns>Variable de tipo int con la cantidad de registros ingresados.</returns>
         public int InsertLanzamientoComp(LanzamientoCompDTO _lanzComp)
         {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
@@ -244,6 +287,12 @@ namespace PSIAA.DataAccessLayer
             return _trans.ExecuteQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener el detalle de una Orden de Requisición.
+        /// </summary>
+        /// <param name="numContrato">Número de Contrato</param>
+        /// <param name="orden">Orden de Producción</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectDetalleOrdenRequisicion(int numContrato, string orden)
         {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
@@ -320,7 +369,12 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
-        //Para Ordenes de Produccion Lanzadas/Asignadas
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener las Ordenes Lanzadas y Asignadas de un Contrato.
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <param name="catOperacion">Código de Categoría de Operación</param>
+        /// <returns>Contenedor de tipo DataTable con el resultado de la consulta.</returns>
         public DataTable SelectOrdenesLanzadasAsignadas(int contrato, int catOperacion)
         {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
@@ -412,7 +466,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
-        //Ordenes de Produccion Lanzadas
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener todas las Ordenes Lanzadas de un Contrato.
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <returns>Contenedor de tipo DataTable con el resultado de la consulta.</returns>
         public DataTable SelectOrdenesLanzadas(int contrato) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"
@@ -459,6 +517,12 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener el Detalle de una Orden de Producción.
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <param name="orden">Orden de Producción</param>
+        /// <returns>Contenedor de datos de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectDetalleOrdenesProduccion(int contrato, string orden) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -491,6 +555,14 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener las Combinaciones de colores, Piezas lanzadas,
+        /// Tallas y Partidas, por Orden de Producción.
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <param name="orden">Orden de Producción</param>
+        /// <param name="modelo">Modelo de prenda</param>
+        /// <returns>Contenedor de tipo DataTable con el resultado de la consulta.</returns>
         public DataTable SelectCombinacionesPartidaLanzamiento(int contrato, string orden, string modelo) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -579,6 +651,12 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección para obtener los Pesos y Cantidad lanzada, de una Orden de Producción.
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <param name="orden">Orden de Producción</param>
+        /// <returns>Contenedor de tipo DataTable con el resultado de la consulta.</returns>
         public DataTable SelectPesoPorTallas(int contrato, string orden) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"

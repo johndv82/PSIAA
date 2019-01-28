@@ -18,7 +18,7 @@ namespace PSIAA.BusinessLogicLayer.Produccion
         /// Ejecuta un procedimiento DAL de inventario de productos.
         /// </summary>
         /// <param name="contrato">Número de Contrato</param>
-        /// <returns>Contenedor de datos de tipo DataTable con lso datos de inventario.</returns>
+        /// <returns>Contenedor de datos de tipo DataTable con los datos de inventario.</returns>
         public DataTable ListarInventarioProductos(int contrato)
         {
             return _consProduccion.SelectInventarioProductos(contrato);

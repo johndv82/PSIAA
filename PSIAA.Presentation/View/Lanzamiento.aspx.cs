@@ -106,7 +106,6 @@ namespace PSIAA.Presentation.View
             {
                 rblColores.Items.Add(new ListItem() { Text = "Color: " + cd.CodColor, Value = cd.CodColor });
             }
-            Session["listMaterialPorColor"] = new List<MaterialPorColorDTO>();
 
             Session["Linea"] = _listaContratoDetModelo[0].Linea;
             lblFechaSol.Text = DateTime.Now.ToShortDateString();
@@ -279,7 +278,7 @@ namespace PSIAA.Presentation.View
                         Session["ListadoAasignar"] = _listAasignar;
                         //Aceptar cambios de Grid de combinaciones, cuando el item es combo
                         List<MaterialPorColorDTO> listMaterialColor = (List<MaterialPorColorDTO>)Session["listMaterialPorColor"];
-                        if (listMaterialColor.Count == 0 && rblColores.SelectedValue.Substring(0, 2) == "C0") {
+                        if (rblColores.SelectedValue.Substring(0, 2) == "C0") {
                             btnAceptarColor_Click(sender, e);
                         }
                         lblmsnRegistrosDuplicados.Visible = false;
@@ -513,8 +512,7 @@ namespace PSIAA.Presentation.View
 
         protected void btnAceptarColor_Click(object sender, EventArgs e)
         {
-            Session["listMaterialPorColor"] = new List<MaterialPorColorDTO>();
-            List<MaterialPorColorDTO> _listMaterialPorColor = new List<MaterialPorColorDTO>();
+            List<MaterialPorColorDTO> _listMaterialPorColor = Session["listMaterialPorColor"] as List<MaterialPorColorDTO>;
             foreach (GridViewRow fila in gridMaterialColor.Rows)
             {
                 string codProducto = ((TextBox)fila.FindControl("txtMaterialSap")).Text;
@@ -592,7 +590,7 @@ namespace PSIAA.Presentation.View
             Dictionary<string, Dictionary<string, decimal>> modelPeso = new Dictionary<string, Dictionary<string, decimal>>();
             foreach (var contratoDet in contratoAgrupado)
             {
-                modelPeso.Add(contratoDet.ModeloAA.Trim(), _lanzamientoBll.CalcularPesosBase(contratoDet));
+                modelPeso.Add(contratoDet.ModeloAA.Trim(), _lanzamientoBll.CalcularPesosBasePorContratoTalla(contratoDet));
                 Session["dicPesosBaseContrato"] = modelPeso;
             }
 

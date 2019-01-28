@@ -10,8 +10,16 @@ namespace PSIAA.DataAccessLayer
 {
     public class LiquidacionTallerDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions(Conexión BD).
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta una consulta de inserción en la tabla Liquidacion_Talleres de la BD.
+        /// </summary>
+        /// <param name="_liquidTallerDto">Objeto LiquidacionTallerDTO</param>
+        /// <returns>Variable de tipo int con la cantidad de registros ingresados.</returns>
         public int InsertLiquidacionTaller(LiquidacionTallerDTO _liquidTallerDto) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -85,6 +93,10 @@ namespace PSIAA.DataAccessLayer
             return _trans.ExecuteQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la BD, para obtener el último número control(ID) de la tabla Liquidacion_Talleres.
+        /// </summary>
+        /// <returns>Variable de tipo string con el número de control.</returns>
         public string SelectUltimoNroControlLiquidacionTaller() {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -99,6 +111,12 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingEscalarQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la BD, para obtener todos los datos de Liquidaciones por Proveedor.
+        /// </summary>
+        /// <param name="_codProveedor">Código de Proveedor (RUC)</param>
+        /// <param name="_anio">Año de Liquidación</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectLiquidacionTalleres(string _codProveedor, int _anio) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -161,6 +179,13 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la BD, para obtener todos los datos de Liquidaciones Libres por Proveedor.
+        /// </summary>
+        /// <param name="_codProveedor">Código de Proveedor (RUC)</param>
+        /// <param name="_anio">Año de Liquidación</param>
+        /// <param name="_mes">Número de Mes de Liquidación</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectLiquidacionLibreTalleres(string _codProveedor, string _anio, string _mes) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -225,19 +250,31 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
-        //Reporte para Gerencia
+        /// <summary>
+        /// Ejecuta un procedimiento almacenado en la BD, para obtener Liquidaciones Facturadas en SAP.
+        /// </summary>
+        /// <param name="_fechaIni">Fecha Inicial</param>
+        /// <param name="_fechaFin">Fecha Final</param>
+        /// <returns>Contenedor de tipo DataTable con los datos del procedimiento.</returns>
         public DataTable SelectLiquidacionTallerPorFecha(string _fechaIni, string _fechaFin) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             _sqlParam.Add(new SqlParameter("@fechaini", SqlDbType.VarChar) { Value = _fechaIni });
             _sqlParam.Add(new SqlParameter("@fechafin", SqlDbType.VarChar) { Value = _fechaFin });
+            //Reporte para Gerencia
             return _trans.ReadingProcedure("PSIAA.LiquidacionesFacturadas", _sqlParam);
         }
 
-        //Reporte para Ingenieria
+        /// <summary>
+        /// Ejecuta un procedimiento almacendo en la BD, para obtener Liquidaciones por periodo.
+        /// </summary>
+        /// <param name="anio">Año de Liquidacion</param>
+        /// <param name="semana">Número de Semana de Liquidación</param>
+        /// <returns></returns>
         public DataTable SelectLiquidacionesPorSemana(int anio, int semana) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             _sqlParam.Add(new SqlParameter("@anio", SqlDbType.Int) { Value = anio });
             _sqlParam.Add(new SqlParameter("@semana", SqlDbType.Int) { Value = semana });
+            //Reporte para Ingenieria
             return _trans.ReadingProcedure("PSIAA.ReportePreLiquidaciones", _sqlParam);
         }
     }

@@ -9,8 +9,15 @@ namespace PSIAA.DataAccessLayer
 {
     public class MaquinaDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión BD).
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la BD, para obtener todas las Maquinas activas.
+        /// </summary>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectMaquinas() {
             string query = @"
                 select 
@@ -26,18 +33,6 @@ namespace PSIAA.DataAccessLayer
                 where i_est = 1";
 
             return _trans.ReadingQuery(query, null);
-        }
-
-        public string SelectDescripcionMaquina(string linea) {
-            List<SqlParameter> _sqlParam = new List<SqlParameter>();
-            string query = @"
-                select 
-	                c_denmaq
-                from maquina_bac 
-                where c_codmaq = @codmaquina";
-
-            _sqlParam.Add(new SqlParameter("@codmaquina", SqlDbType.VarChar) { Value = linea });
-            return _trans.ReadingEscalarQuery(query, _sqlParam);
         }
     }
 }

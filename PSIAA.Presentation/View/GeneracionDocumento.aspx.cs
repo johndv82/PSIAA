@@ -95,12 +95,10 @@ namespace PSIAA.Presentation.View
                     {
                         DocumentoPagoTallerDTO _docTaller = new DocumentoPagoTallerDTO()
                         {
-                            //CodProveedor = hidCodProveedor.Value.ToString(),
                             CodProveedor = row["Cod_Proveedor"].ToString(),
                             TipoDocumento = ddlTipoDocs.SelectedValue,
                             SerieDocumento = 0,
                             //NroDocumento -> NroLiquidacion (generado en BLL)
-                            //NroDocumento = int.Parse(lblNumeroDoc.Text),
                             CategoriaOperacion = int.Parse(row["Categoria_Operacion"].ToString()),
                             NumOrdenAsignacion = row["Numero_Orden"].ToString(),
                             Orden = row["Orden"].ToString(),

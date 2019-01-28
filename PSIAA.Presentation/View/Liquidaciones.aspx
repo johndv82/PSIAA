@@ -40,7 +40,6 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <asp:DropDownList ID="ddlPeriodos" runat="server" class="form-control input-sm">
-                                                        
                                                     </asp:DropDownList>
                                                 </div>
                                                 <div class="col-md-2">
@@ -100,11 +99,18 @@
                             <div class="modal-body">
                                 <div class="well well-sm col-sm-12">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <span class="control-label">Nombre Comercial: </span>
+                                        <div class="col-md-3">
+                                            <span class="control-label">Nombre Com.: </span>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-7">
                                             <asp:TextBox ID="txtNombreComercial" runat="server" class="form-control input-sm" OnTextChanged="txtNombreComercial_TextChanged"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <asp:UpdateProgress ID="UpdateProgress2" runat="server">
+                                                <ProgressTemplate>
+                                                    <b>Cargando</b><img src="../Content/Images/load.gif" />
+                                                </ProgressTemplate>
+                                            </asp:UpdateProgress>
                                         </div>
                                     </div>
                                 </div>
@@ -180,7 +186,7 @@
 
         function CargarDocumento(nombreDoc, servidor) {
             var iframe = document.getElementById('frmPDF');
-            iframe.src = "http://"+ servidor +"/PSIAA/Reports/Docs/" + nombreDoc + ".pdf";
+            iframe.src = "http://" + servidor + "/PSIAA/Reports/Docs/" + nombreDoc + ".pdf";
         }
     </script>
 </asp:Content>

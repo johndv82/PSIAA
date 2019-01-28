@@ -12,12 +12,33 @@ namespace PSIAA.Presentation.View
 {
     public partial class AprobacionPrecio : System.Web.UI.Page
     {
-        private DocumentoPagoTallerBLL _docPagoTallerBll = new DocumentoPagoTallerBLL();
-        private AsignacionOrdenesBLL _asigOrdenesBll = new AsignacionOrdenesBLL();
-        private AprobacionPrecioBLL _aprobPrecioBll = new AprobacionPrecioBLL();
+        /// <summary>
+        /// Variable de instancia a la clase DocumentoPagoTallerBLL.
+        /// </summary>
+        public DocumentoPagoTallerBLL _docPagoTallerBll = new DocumentoPagoTallerBLL();
+        /// <summary>
+        /// Variable de instancia a la clase AsignacionOrdenesBLL.
+        /// </summary>
+        public AsignacionOrdenesBLL _asigOrdenesBll = new AsignacionOrdenesBLL();
+        /// <summary>
+        /// Variable de instancia a la clase AprobacionPrecioBLL.
+        /// </summary>
+        public AprobacionPrecioBLL _aprobPrecioBll = new AprobacionPrecioBLL();
         private double[] totalDetalle = { 0, 0, 0 };
+        /// <summary>
+        /// Variable global que almacena el usuario actual logueado.
+        /// </summary>
         public string usuarioActual = string.Empty;
 
+        /// <summary>
+        /// Evento de Carga Principal del formulario AprobacionPrecio.aspx
+        /// </summary>
+        /// <remarks>
+        /// En este evento se evalúa la existencia de la sesión del usuario y tambien capturamos su valor en una variable publica,
+        /// para su posterior uso.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["usuario"] != null)
@@ -40,6 +61,15 @@ namespace PSIAA.Presentation.View
             }
         }
 
+        /// <summary>
+        /// Evento Click del botón btnBuscarPorNombre
+        /// </summary>
+        /// <remarks>
+        /// Llama al método BLL de Listar Proveedores y el resultado lo carga en una variable de Sesión 
+        /// con el nombre de: ListadoProveedores, y en el source de la grilla gridProveedores.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnBuscarPorNombre_Click(object sender, EventArgs e)
         {
             DataView dvProveedores = new DataView(_docPagoTallerBll.ListarProveedores());
@@ -49,6 +79,14 @@ namespace PSIAA.Presentation.View
             txtNombreComercial.Focus();
         }
 
+        /// <summary>
+        /// Evento click PageIndexChanging de la grilla gridProveedores.
+        /// </summary>
+        /// <remarks>
+        /// Carga el valor de la variable de sesión ListadoProveedores en la grilla gridProveedores.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void gridProveedores_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gridProveedores.DataSource = ((DataView)Session["ListadoProveedores"]).ToTable();

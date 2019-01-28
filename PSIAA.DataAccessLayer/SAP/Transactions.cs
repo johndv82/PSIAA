@@ -24,7 +24,7 @@ namespace PSIAA.DataAccessLayer.SAP
         /// Ejecuta una consulta de lectura en formato de cadena, directamente a la base de datos, adjuntando sus parametros.
         /// </summary>
         /// <param name="query">Cadena de Consulta</param>
-        /// <param name="parametros">Lista Genérica de tipo SqlParameter</param>
+        /// <param name="parametros">Parametros en forma de Lista Genérica de tipo SqlParameter</param>
         /// <returns>Contenedor de tipo DataTable con el retorno de la consulta.</returns>
         public DataTable ReadingQuery(string query, List<SqlParameter> parametros = null)
         {
@@ -51,7 +51,7 @@ namespace PSIAA.DataAccessLayer.SAP
         /// Ejecuta una consulta de lectura escalar en formato de cadena, directamente a la base de datos, adjuntando sus parametros.
         /// </summary>
         /// <param name="query">Cadena de Consulta</param>
-        /// <param name="parametros">Lista Genérica de tipo SqlParameter</param>
+        /// <param name="parametros">Parametros Lista Genérica de tipo SqlParameter</param>
         /// <returns>Variable de tipo string con el valor de retorno.</returns>
         public string ReadingEscalarQuery(string query, List<SqlParameter> parametros = null)
         {
@@ -82,7 +82,7 @@ namespace PSIAA.DataAccessLayer.SAP
         /// Ejecuta un comando de tipo: StoredProcedure, directamente en la base de datos, adjuntando sus parametros.
         /// </summary>
         /// <param name="nombreProcedure">Nombre del Procedimiento Almacenado</param>
-        /// <param name="parametros">Lista Genérica de tipo SqlParameter</param>
+        /// <param name="parametros">Parametros en forma de Lista Genérica de tipo SqlParameter</param>
         /// <returns>Contenedor de tipo DataTable con el retorno del procedimiento</returns>
         public DataTable ReadingProcedure(string nombreProcedure, List<SqlParameter> parametros)
         {

@@ -21,20 +21,29 @@ namespace PSIAA.BusinessLogicLayer
         /// </summary>
         public OperacionModeloDAL _operacionModeloDal = new OperacionModeloDAL();
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL para listar asignaciones aprobadas para el pago a taller.
+        /// </summary>
+        /// <param name="_codProveedor">Código de Proveedor</param>
+        /// <param name="_moneda">Moneda S/D</param>
+        /// <param name="_fechaAprobPre">Fecha de Aprobación de Precio</param>
+        /// <returns>Contenedor de tipo DataTable con las asignaciones</returns>
         public DataTable ListarAsignaciones(string _codProveedor, string _moneda, string _fechaAprobPre)
         {
             return _asignacionOrdenesDal.SelectAsignacionOrdenes(_codProveedor, _moneda, _fechaAprobPre);
         }
 
         /// <summary>
-        /// 
+        /// Ejecuta un procedimiento DAL de Total de Asignaciones, y retorna el resultado.
+        /// A su vez en base al resultado se extrae el nombre de tallas guardandolo
+        /// en un array para que sea retornado en paralelo al regreso de la función.
         /// </summary>
-        /// <param name="_categoria"></param>
+        /// <param name="_categoria">Código de Categoria</param>
         /// <param name="_contrato">Número de Contrato</param>
         /// <param name="_modelo">Modelo de Prenda</param>
         /// <param name="_color">Color</param>
         /// <param name="_tallas">Parametro de salida con un arreglo de Tallas</param>
-        /// <returns></returns>
+        /// <returns>Contenedor de tipo DataTable con el retorno DAL.</returns>
         public DataTable ListarAsignacionesPorOrden(int _categoria, int _contrato, string _modelo,
                                                     string _color, out string[] _tallas)
         {
@@ -57,6 +66,11 @@ namespace PSIAA.BusinessLogicLayer
             return dtAsignacion;
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Modelos de Asignaciónes por aprobar.
+        /// </summary>
+        /// <param name="codProv">Código de Proveedor</param>
+        /// <returns>Lista genérica de tipo string con los modelos./returns>
         public List<string> ListarGrupoModelos(string codProv)
         {
             List<string> listModelos = new List<string>();
@@ -68,16 +82,42 @@ namespace PSIAA.BusinessLogicLayer
             return listModelos;
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de asignaciones de ordenes por aprobar, y retorna el resultado.
+        /// </summary>
+        /// <param name="codProv">Código de Proveedor</param>
+        /// <param name="modelo">Modelo de prenda</param>
+        /// <returns>Contenedor de tipo DataTable con las asignaciones.</returns>
         public DataTable ListarAsignacionesParaAprobar(string codProv, string modelo)
         {
             return _asignacionOrdenesDal.SelectAsignacionOrdenesParaAprobar(codProv, modelo);
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de detalle de asignaciones agrupadas, y el resultado lo retorna.
+        /// </summary>
+        /// <param name="_codProv">Código de Proveedor</param>
+        /// <param name="nroAsig">Número de Asignación</param>
+        /// <param name="_orden">Orden de Producción</param>
+        /// <param name="_lote">Número de Lote</param>
+        /// <param name="_categoria">Código de Categoria</param>
+        /// <returns>Contenedor de tipo DataTable con el detalle de asignaciones.</returns>
         public DataTable ListarDetalleProcesoAsignacionOrdenes(string _codProv, string nroAsig, string _orden, int _lote, int _categoria)
         {
             return _asignacionOrdenesDal.SelectDetalleGrupoAsignacionOrdenes(_codProv, nroAsig, _orden, _lote, _categoria);
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de actualización de tarifa/tiempo de asignación por cada proceso aprobado.
+        /// </summary>
+        /// <param name="codProv">Código de Proveedor</param>
+        /// <param name="catOperacion">Categoria de Operación</param>
+        /// <param name="numAsignacion">Número de Asignación</param>
+        /// <param name="moneda">Moneda S/D</param>
+        /// <param name="listProcesoPrecio">Listado de procesos con precio aprobado</param>
+        /// <param name="orden">Orden de Producción</param>
+        /// <param name="lote">Número de Lote</param>
+        /// <returns>Variable de tipo int con la cantidad de actualizaciones.</returns>
         public int ActualizarTarifaTiempo(string codProv, int catOperacion, string numAsignacion,
                                     string moneda, List<ProcesoPrecioDTO> listProcesoPrecio, string orden, int lote)
         {
@@ -94,6 +134,20 @@ namespace PSIAA.BusinessLogicLayer
             return actualizaciones;
         }
 
+        /// <summary>
+        /// Convierte el valor del parametro: "aprobado" a entero (1 si es verdadero, o 0 si es falso). Para enviarlo y ejecutar
+        /// el procedimiento DAL de actualizacion y recalculo de precios y costos en asignaciones.
+        /// </summary>
+        /// <param name="codProv">Código de Proveedor</param>
+        /// <param name="catOperacion">Categoria de Operación</param>
+        /// <param name="numAsignacion">Número de Asignación</param>
+        /// <param name="moneda">Moenda (S/D)</param>
+        /// <param name="fechaAprob">Fecha de Aprobación</param>
+        /// <param name="usuarioAprob">Usuario de Aprobación</param>
+        /// <param name="aprobado">Aprobación (SI/NO)</param>
+        /// <param name="orden">Orden de Producción</param>
+        /// <param name="lote">Número de Lote</param>
+        /// <returns>Variable de tipo int con la cantidad de actualizaciones.</returns>
         public int RecalcularPrecios(string codProv, int catOperacion, string numAsignacion,
                                     string moneda, string fechaAprob, string usuarioAprob, bool aprobado,
                                     string orden, int lote)
@@ -105,18 +159,24 @@ namespace PSIAA.BusinessLogicLayer
             return actualizaciones;
         }
 
-        //Metodo que devuelve el numero de asignacion siguiente
-        public string NroDeOrdenAsignacion()
+        private string NroDeOrdenAsignacion()
         {
             string ultimoNumero = _asignacionOrdenesDal.SelectUltimoNumeroOrden();
             long nuevoNumero = long.Parse(ultimoNumero) + 1;
             return nuevoNumero.ToString();
         }
 
-        //Metodos para ingresar detalle y cabecera de Asignaciones
+        /// <summary>
+        /// Genera un nuevo número de asignación y según las operaciones seleccionadas categoriza y sub-categoriza cada uno de sus procesos
+        /// por modelo. Construye un nuevo objeto tipo AsignacionOrdenDetDTO por cada proceso y se dispone a ejecutar el procedimiento DAL
+        /// de Insert Asignación Detalle, y otro objeto de tipo AsignacionOrdenDetDTO para el procedimiento de Insert Asignación Cabecera.
+        /// </summary>
+        /// <param name="listAasignar">Lista genérica de tipo AasignarDTO con los valores a Asignar</param>
+        /// <param name="listLanzamientoDet">Lista genérica de tipo LanzamientoDetDTO con los lanzamientos</param>
+        /// <param name="user">Nombre de Usuario</param>
+        /// <returns>Arreglo de tipo int con dos valores: cantidad de cabeceras ingresadas, y cantidad de detalles ingresados.</returns>
         public int[] IngresarAsignacionOrden(List<AasignarDTO> listAasignar, List<LanzamientoDetDTO> listLanzamientoDet, string user)
         {
-            //List<AsignacionOrdenDetDTO> _listAsigOrdenDet = new List<AsignacionOrdenDetDTO>();
             string nroAsignacion = NroDeOrdenAsignacion();
             int filasInsertCab = 0;
             int filasInsertDet = 0;
@@ -167,7 +227,6 @@ namespace PSIAA.BusinessLogicLayer
                                         Cantidades = lanzDet.Piezas,
                                         Usuario = user
                                     };
-                                    //_listAsigOrdenDet.Add(asigOrdenDet);
                                     int insDet = _asignacionOrdenesDal.InsertAsignacionOrdenDetalle(asigOrdenDet);
                                     filasInsertDet = filasInsertDet + insDet;
                                 }
@@ -191,7 +250,6 @@ namespace PSIAA.BusinessLogicLayer
                     nroAsignacion = (long.Parse(nroAsignacion) + 1).ToString();
                 }
             }
-            //DataTable dt = Helper.ToDataTable(_listAsigOrdenDet);
             return new int[] { filasInsertCab, filasInsertDet};
         }
 

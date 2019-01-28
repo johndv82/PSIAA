@@ -437,6 +437,8 @@ namespace PSIAA.Reports.Data {
             
             private global::System.Data.DataColumn columnigv;
             
+            private global::System.Data.DataColumn columnfecha_documento;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public FactCabeceraDataTable() {
@@ -544,6 +546,14 @@ namespace PSIAA.Reports.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fecha_documentoColumn {
+                get {
+                    return this.columnfecha_documento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -579,7 +589,7 @@ namespace PSIAA.Reports.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FactCabeceraRow AddFactCabeceraRow(string movimiento, int serie_documento, int nro_documento, string moneda, string nombre_comercial, string direccion, string ruc, decimal subtotal, decimal igv) {
+            public FactCabeceraRow AddFactCabeceraRow(string movimiento, int serie_documento, int nro_documento, string moneda, string nombre_comercial, string direccion, string ruc, decimal subtotal, decimal igv, System.DateTime fecha_documento) {
                 FactCabeceraRow rowFactCabeceraRow = ((FactCabeceraRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         movimiento,
@@ -590,7 +600,8 @@ namespace PSIAA.Reports.Data {
                         direccion,
                         ruc,
                         subtotal,
-                        igv};
+                        igv,
+                        fecha_documento};
                 rowFactCabeceraRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFactCabeceraRow);
                 return rowFactCabeceraRow;
@@ -622,6 +633,7 @@ namespace PSIAA.Reports.Data {
                 this.columnruc = base.Columns["ruc"];
                 this.columnsubtotal = base.Columns["subtotal"];
                 this.columnigv = base.Columns["igv"];
+                this.columnfecha_documento = base.Columns["fecha_documento"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -645,6 +657,8 @@ namespace PSIAA.Reports.Data {
                 base.Columns.Add(this.columnsubtotal);
                 this.columnigv = new global::System.Data.DataColumn("igv", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnigv);
+                this.columnfecha_documento = new global::System.Data.DataColumn("fecha_documento", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfecha_documento);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1484,6 +1498,8 @@ namespace PSIAA.Reports.Data {
             
             private global::System.Data.DataColumn columnigv;
             
+            private global::System.Data.DataColumn columnfecha_documento;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PagoLibreCabeceraDataTable() {
@@ -1583,6 +1599,14 @@ namespace PSIAA.Reports.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fecha_documentoColumn {
+                get {
+                    return this.columnfecha_documento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1618,7 +1642,7 @@ namespace PSIAA.Reports.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PagoLibreCabeceraRow AddPagoLibreCabeceraRow(string movimiento, int nro_documento, string moneda, string nombre_comercial, string direccion, string ruc, decimal subtotal, decimal igv) {
+            public PagoLibreCabeceraRow AddPagoLibreCabeceraRow(string movimiento, int nro_documento, string moneda, string nombre_comercial, string direccion, string ruc, decimal subtotal, decimal igv, System.DateTime fecha_documento) {
                 PagoLibreCabeceraRow rowPagoLibreCabeceraRow = ((PagoLibreCabeceraRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         movimiento,
@@ -1628,7 +1652,8 @@ namespace PSIAA.Reports.Data {
                         direccion,
                         ruc,
                         subtotal,
-                        igv};
+                        igv,
+                        fecha_documento};
                 rowPagoLibreCabeceraRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPagoLibreCabeceraRow);
                 return rowPagoLibreCabeceraRow;
@@ -1659,6 +1684,7 @@ namespace PSIAA.Reports.Data {
                 this.columnruc = base.Columns["ruc"];
                 this.columnsubtotal = base.Columns["subtotal"];
                 this.columnigv = base.Columns["igv"];
+                this.columnfecha_documento = base.Columns["fecha_documento"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1680,6 +1706,8 @@ namespace PSIAA.Reports.Data {
                 base.Columns.Add(this.columnsubtotal);
                 this.columnigv = new global::System.Data.DataColumn("igv", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnigv);
+                this.columnfecha_documento = new global::System.Data.DataColumn("fecha_documento", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfecha_documento);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2339,6 +2367,22 @@ namespace PSIAA.Reports.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime fecha_documento {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableFactCabecera.fecha_documentoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'fecha_documento\' de la tabla \'FactCabecera\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFactCabecera.fecha_documentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsmovimientoNull() {
                 return this.IsNull(this.tableFactCabecera.movimientoColumn);
             }
@@ -2443,6 +2487,18 @@ namespace PSIAA.Reports.Data {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetigvNull() {
                 this[this.tableFactCabecera.igvColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfecha_documentoNull() {
+                return this.IsNull(this.tableFactCabecera.fecha_documentoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfecha_documentoNull() {
+                this[this.tableFactCabecera.fecha_documentoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3071,6 +3127,23 @@ namespace PSIAA.Reports.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime fecha_documento {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablePagoLibreCabecera.fecha_documentoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'fecha_documento\' de la tabla \'PagoLibreCabecera\' es DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tablePagoLibreCabecera.fecha_documentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsmovimientoNull() {
                 return this.IsNull(this.tablePagoLibreCabecera.movimientoColumn);
             }
@@ -3163,6 +3236,18 @@ namespace PSIAA.Reports.Data {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetigvNull() {
                 this[this.tablePagoLibreCabecera.igvColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfecha_documentoNull() {
+                return this.IsNull(this.tablePagoLibreCabecera.fecha_documentoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfecha_documentoNull() {
+                this[this.tablePagoLibreCabecera.fecha_documentoColumn] = global::System.Convert.DBNull;
             }
         }
         

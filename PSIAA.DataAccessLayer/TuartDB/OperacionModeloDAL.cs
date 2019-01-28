@@ -15,7 +15,7 @@ namespace PSIAA.DataAccessLayer.TuartDB
         public Transactions _trans = new Transactions();
 
         /// <summary>
-        /// Ejecuta una consulta de selección a la base de datos para obtener las operaciones completas que tiene una prenda.
+        /// Ejecuta una consulta de selección a la base de datos para obtener las operaciones completas por prenda.
         /// </summary>
         /// <param name="_modelo">Modelo de Prenda</param>
         /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
@@ -55,7 +55,7 @@ namespace PSIAA.DataAccessLayer.TuartDB
         }
 
         /// <summary>
-        /// Ejecuta una consulta de selección a la base de datos para obtener primeros 60 códigos de operación por modelo.
+        /// Ejecuta una consulta de selección a la base de datos para obtener los primeros 60 códigos de operación por modelo.
         /// </summary>
         /// <param name="modelo">Modelo de Prenda</param>
         /// <returns>Contenedor de tipo DataTable con los datos de la consulta</returns>

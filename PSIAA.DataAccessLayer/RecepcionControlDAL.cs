@@ -10,8 +10,16 @@ namespace PSIAA.DataAccessLayer
 {
     public class RecepcionControlDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión a la BD).
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la BD, para obtener los ingresos en Recepción por Punto de Control.
+        /// </summary>
+        /// <param name="_almacen">Código de Almacén</param>
+        /// <returns>Contenedor de tipo DataTable con el resultado de la consulta.</returns>
         public DataTable SelectRecepcionControl(int _almacen) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"
@@ -35,7 +43,12 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
-        //Seguimiento Por Orden --> Almacen/Ctrl Final
+        /// <summary>
+        /// Ejecuta una consulta de selección a la BD, para obteener el Seguimiento de una Orden de Producción en cada punto
+        /// de Recepción, desde lanzamiento hasta almacén de productos terminados.
+        /// </summary>
+        /// <param name="_orden">Orden de Producción</param>
+        /// <returns>Contenedor de tipo DataTable con los datos del procedimiento.</returns>
         public DataTable SelectSeguimientoRecepcionControl(string _orden) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             _sqlParam.Add(new SqlParameter("@orden", SqlDbType.VarChar) { Value = _orden });
@@ -43,6 +56,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingProcedure("PSIAA.SeguimientoRecepcionControl", _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de inserción en la tabla Recepcion_Pto_Control a la BD.
+        /// </summary>
+        /// <param name="_controlFinal">Objeto de tipo RecepcionControlDTO</param>
+        /// <returns>Variable de tipo int con la cantidad de registros ingresados.</returns>
         public int InsertRecepcionControl(RecepcionControlDTO _controlFinal) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"
@@ -103,14 +121,26 @@ namespace PSIAA.DataAccessLayer
             return _trans.ExecuteQuery(query, _sqlParam);
         }
 
-        //Seguimiento al punto de control -> Avance Contrato Principal
+        /// <summary>
+        /// Ejecuta un procedimiento almacenado en la BD, para obtener la Recepcion Punto de Control, por Contrasto.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectRecepcionPorContrato(string _contrato) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             _sqlParam.Add(new SqlParameter("@contrato", SqlDbType.VarChar) { Value =  _contrato});
-            //Cambiar nombre a Procedure
+            //Cambiar nombre a Procedure a: RecepcionPorContrato
             return _trans.ReadingProcedure("PSIAA.RecepcionPorModeloColor", _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la BD, para obtener la cantidad de recepción en un punto de control,
+        /// por orden de producción y lote.
+        /// </summary>
+        /// <param name="_orden">Orden de Producción</param>
+        /// <param name="_lote">Número de Lote</param>
+        /// <param name="_punto">Punto de Control</param>
+        /// <returns>Variable de tipo int con la cantidad recepcionada.</returns>
         public int SelectCantidadRecepcion(string _orden, int _lote, int _punto) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -140,13 +170,23 @@ namespace PSIAA.DataAccessLayer
             return _result == "" ? 0: int.Parse(_result);
         }
 
-        //Avance detallado del contrato
+        /// <summary>
+        /// Ejecuta un procedimiento almacenado en la BD, para obtener el avance detallado por tallas de un contrato.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <returns>Contenedor de tipo DataTable con los datos del procedimiento.</returns>
         public DataTable SelectAvanceDetalladoPorTallas(int _contrato) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             _sqlParam.Add(new SqlParameter("@contrato", SqlDbType.Int) { Value = _contrato });
             return _trans.ReadingProcedure("PSIAA.AvanceDetalladoPorTallas", _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento almacenado en la BD, para obtener los Ingresos Faltantes a Almacén.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <param name="_modelo">Modelo de Prenda</param>
+        /// <returns>Contenedor de tipo DataTable con los datos del procedimiento.</returns>
         public DataTable SelectIngresosFaltantesAlmacen(int _contrato, string _modelo) {
             List<SqlParameter> _procedureParam = new List<SqlParameter>();
 
@@ -156,6 +196,12 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingProcedure("PSIAA.IngresosFaltantesAlmacen", _procedureParam);
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento almacenado en la BD, para obtener todos los ingresos en recepdión por punto de control.
+        /// </summary>
+        /// <param name="_fechaIni">Fecha Inicial</param>
+        /// <param name="_fechaFin">Fecha Final</param>
+        /// <returns>Contenedor de tipo DataTable con los datos del procedimiento.</returns>
         public DataTable SelectIngresosPuntoControl(string _fechaIni, string _fechaFin) {
             List<SqlParameter> _procedureParam = new List<SqlParameter>();
 
@@ -165,6 +211,12 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingProcedure("PSIAA.IngresosPuntoControl", _procedureParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la BD, para validar la existencia de una Orden de Producción y Lote.
+        /// </summary>
+        /// <param name="_orden">Orden de Producción</param>
+        /// <param name="_lote">Número de Lote</param>
+        /// <returns>Variable de tipo string con el valor de la órden.</returns>
         public string SelectExistenciaOrdenLote(string _orden, int _lote) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"

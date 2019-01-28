@@ -10,7 +10,16 @@ namespace PSIAA.BusinessLogicLayer
 {
     public class MaquinaBLL
     {
-        private MaquinaDAL _maquinaDal = new MaquinaDAL();
+        /// <summary>
+        /// Variable de instancia a la clase MaquinaDAL.
+        /// </summary>
+        public MaquinaDAL _maquinaDal = new MaquinaDAL();
+
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Máquinas de Producción, y el resultado lo recorre para acceder a sus datos y 
+        /// crear un listado de objetos de tipo MaquinaDTO.
+        /// </summary>
+        /// <returns>Lista genérica de tipo MaquinaDTO con las maquinas de producción.</returns>
         public List<MaquinaDTO> ListarMaquinas()
         {
             List<MaquinaDTO> _listMaquinas = new List<MaquinaDTO>();

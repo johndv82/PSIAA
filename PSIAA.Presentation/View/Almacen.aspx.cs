@@ -185,10 +185,10 @@ namespace PSIAA.Presentation.View
         }
 
         /// <summary>
-        /// Evento Cambio de Seleccion de la lista deplegable cmbAlmacenes
+        /// Evento Cambio de Seleccion de la lista deplegable cmbAlmacenes.
         /// </summary>
         /// <remarks>
-        /// Obtiene el valor de la lista desplegable cmbAlmacenes y lo asigna a la etiqueta lblNumAlmacen
+        /// Obtiene el valor de la lista desplegable cmbAlmacenes y lo asigna a la etiqueta lblNumAlmacen.
         /// </remarks>
         /// <param name="sender">Objeto que llama al evento</param>
         /// <param name="e">Argumentos que contienen datos del evento</param>

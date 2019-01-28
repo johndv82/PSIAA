@@ -8,8 +8,16 @@ namespace PSIAA.DataAccessLayer
 {
     public class SimulacionMpDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión a la BD).
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la BD, para obtener el último correlativo de Simulación.
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <returns>Variable de tipo string con el valor del correlativo. En el caso de que el valor sea vacío o nulo, se retornará 0.</returns>
         public string CorrelativoSimulacion(int contrato) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"
@@ -24,6 +32,14 @@ namespace PSIAA.DataAccessLayer
             return rpta == "" ? "0" : rpta;
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de inserción en la tabla PSIAA.Simulacion_Cabecera.
+        /// </summary>
+        /// <param name="numContrato">Número de Contrato</param>
+        /// <param name="correlativo">Correlativo de Simulación</param>
+        /// <param name="fecha">Fecha de Simulación</param>
+        /// <param name="usuario">Nombre de Usuario</param>
+        /// <returns>Variable de tipo int con la cantidad de registros ingresados.</returns>
         public int InsertSimulacionCabecera(int numContrato, int correlativo, DateTime fecha, string usuario) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -40,31 +56,12 @@ namespace PSIAA.DataAccessLayer
             return _trans.ExecuteQuery(query, _sqlParam);
         }
 
-        public int InsertSimulacionDetalle(SimulacionDetDTO simulacionDetDto) {
-            List<SqlParameter> _sqlParam = new List<SqlParameter>();
-
-            string query = @"
-                insert into Simulacion_detalle
-                values(
-	                @numcontrato, @item, 
-                    @maquina, @codproducto, @modelo, 0, 
-                    @totalkilos, 0, @kilos, @usuario, 
-	                convert(date, @fechaingreso), 
-                    @horaingreso, '', null
-                )";
-
-            _sqlParam.Add(new SqlParameter("@numcontrato", SqlDbType.Int) { Value = simulacionDetDto.NumContrato });
-            _sqlParam.Add(new SqlParameter("@item", SqlDbType.Int) { Value = 0 });
-            _sqlParam.Add(new SqlParameter("@maquina", SqlDbType.VarChar) { Value = string.Empty });
-            _sqlParam.Add(new SqlParameter("@codproducto", SqlDbType.VarChar) { Value = simulacionDetDto.CodProducto });
-            _sqlParam.Add(new SqlParameter("@modelo", SqlDbType.VarChar) { Value = simulacionDetDto.Modelo });
-            //_sqlParam.Add(new SqlParameter("@kilos", SqlDbType.Float) { Value = simulacionDetDto.Kilos });
-            _sqlParam.Add(new SqlParameter("@usuario", SqlDbType.VarChar) { Value = simulacionDetDto.Usuario });
-            _sqlParam.Add(new SqlParameter("@fechaingreso", SqlDbType.DateTime) { Value = simulacionDetDto.FechaIngreso });
-            _sqlParam.Add(new SqlParameter("@horaingreso", SqlDbType.VarChar) { Value = simulacionDetDto.HoraIngreso });
-            return _trans.ExecuteQuery(query, _sqlParam);
-        }
-
+        /// <summary>
+        /// Ejecuta una consulta de selección a la BD, para obtener las Simulaciones por Contrato y Modelos.
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <param name="modelos">Lista tipo string de Modelos de prenda</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectSimulacionDetalleAlternativo(int contrato, List<string> modelos) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string whereModelos = "";
@@ -98,6 +95,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de inserción en la tabla PSIAA.Simulacion_Detalle.
+        /// </summary>
+        /// <param name="simulacionDetDto">Objeto de tipo SimulacionDetDTO</param>
+        /// <returns>Variable de tipo int con la cantidad de registros ingresados.</returns>
         public int InsertSimulacionDetalleAlternativo(SimulacionDetDTO simulacionDetDto) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"
@@ -126,24 +128,16 @@ namespace PSIAA.DataAccessLayer
             return _trans.ExecuteQuery(query, _sqlParam);
         }
 
-        public int DeleteSimulacionDetalleAlternativo(int contrato) {
+        private int DeleteSimulacionDetalleAlternativo(int contrato) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"delete from PSIAA.Simulacion_Detalle where nroContrato = @numcontrato";
             _sqlParam.Add(new SqlParameter("@numcontrato", SqlDbType.Int) { Value = contrato });
             return _trans.ExecuteQuery(query, _sqlParam);
         }
 
-        public int DeleteSimulacionCabeceraAlternativo(int contrato) {
+        private int DeleteSimulacionCabeceraAlternativo(int contrato) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"delete from PSIAA.Simulacion_Cabecera where Contrato = @numcontrato";
-            _sqlParam.Add(new SqlParameter("@numcontrato", SqlDbType.Int) { Value = contrato });
-            return _trans.ExecuteQuery(query, _sqlParam);
-        }
-
-        public int DeleteSimulacionDetalle(int contrato)
-        {
-            List<SqlParameter> _sqlParam = new List<SqlParameter>();
-            string query = @"delete from Simulacion_detalle where No_Contrato = @numcontrato";
             _sqlParam.Add(new SqlParameter("@numcontrato", SqlDbType.Int) { Value = contrato });
             return _trans.ExecuteQuery(query, _sqlParam);
         }

@@ -101,21 +101,9 @@ namespace PSIAA.BusinessLogicLayer
 
         /// <summary>
         /// Ejecuta un procedimiento DAL de Detalle de Contrato y el resultado es agrupado por los siguientes campos:
-        /// <list type="">numero_contrato</list>
-        /// <list type="">Tipo_Contrato</list>
-        /// <list type="">Cod_Modelo_AA</list>
-        /// <list type="">Cod_Modelo_CLiente</list>
-        /// <list type="">c_codmat</list>
-        /// <list type="">Cod_Producto</list>
-        /// <list type="">c_codcol</list>
-        /// <list type="">Cod_Color_Cliente</list>
-        /// <list type="">cod_grupo_tallas</list>
-        /// <list type="string">talla1 => talla9</list>
-        /// <list type="">Cod_Proveedor</list>
-        /// <list type="">Cod_Proveedor_2</list>
-        /// <list type="">Linea</list>
-        /// <list type="">Galga</list>
-        /// <list type="">Titulo</list>
+        /// [numero_contrato, Tipo_Contrato, Cod_Modelo_AA, Cod_Modelo_CLiente, c_codmat, Cod_Producto, c_codcol, Cod_Color_Cliente,
+        /// cod_grupo_tallas, talla1, talla2, talla3, talla4, talla5, talla6, talla7, talla8, talla9, Cod_Proveedor, Cod_Proveedor_2, 
+        /// Linea, Galga, Titulo]
         /// Luego con el resultado agrupado se pobla un objeto de tipo ContratoDetalleDTO.
         /// </summary>
         /// <param name="_contrato">Número de Contrato</param>

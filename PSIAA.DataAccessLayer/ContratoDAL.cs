@@ -9,22 +9,38 @@ namespace PSIAA.DataAccessLayer
 {
     public class ContratoDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión BD).
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
-        //Avance Contrato Principal
+        /// <summary>
+        /// Ejecuta un procedimiento almacenado en la base de datos par aobtener el Avance General de Contrato.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <returns>Contenedor de tipo DataTable con los datos del procedimiento.</returns>
         public DataTable SelectAvancePorContrato(string _contrato) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             _sqlParam.Add(new SqlParameter("@contrato", SqlDbType.Int) { Value = _contrato });
             return _trans.ReadingProcedure("PSIAA.AvancePorContrato", _sqlParam);
         }
 
-        //Para detalle solicitado y lanzamiento
+        /// <summary>
+        /// Ejecuta un procedimiento almacenado en la base de dastos para obtener el Detalle de Contrato Solicitado.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <returns>Contenedor de tipo DataTable con los datos del procedimiento.</returns>
         public DataTable SelectDetalleContrato(int _contrato) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             _sqlParam.Add(new SqlParameter("@contrato", SqlDbType.Int) { Value = _contrato });
             return _trans.ReadingProcedure("PSIAA.DetalleContrato", _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener todos los modelos de un Contrato.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectGrupoModelos(int _contrato) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"
@@ -39,6 +55,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener el cliente de un determinado contrato.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public string SelectCliente(int _contrato) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"
@@ -53,6 +74,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingEscalarQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener el estado si el contrato esta cerrado.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <returns>Varibale de Tipo string con el estado Si/No</returns>
         public string SelectVerificaContratoCerrado(int _contrato) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"
@@ -69,6 +95,13 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingEscalarQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener detalles secundarios (material, maquina, titulo, po),
+        /// del contrato solicitado.
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <param name="modelo">Modelo de prenda</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectDetalleModeloContrato(int contrato, string modelo) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -103,7 +136,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
-        //Metodos de acceso a procedure para Reporte de Contrato
+        /// <summary>
+        /// Ejecuta un procedimiento almacenado en la base de datos para obtener el detalle del Reporte de Contrato.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <returns>Contenedor de tipo DataTable con los datos del procedimiento.</returns>
         public DataTable SelectReporteContratoDet(int _contrato)
         {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
@@ -111,6 +148,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingProcedure("getContratoDetalle", _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento almacenado en la base de datos para obtener la cabecera del Reporte de Contrato.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <returns>Contenedor de tipo DataTable con los datos del procedimiento.</returns>
         public DataTable SelectReporteContratoCab(int _contrato)
         {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
@@ -118,6 +160,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingProcedure("getContratoCabecera", _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener el tipo de un contrasto.
+        /// </summary>
+        /// <param name="orden">Número de Contrato</param>
+        /// <returns>Variable de tipo string con el tipo de contrasto</returns>
         public string SelectTipoContrato(string orden) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"
@@ -132,6 +179,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingEscalarQuery(query, _sqlParam).ToString();
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener todos los contratos de un determinado modelo.
+        /// </summary>
+        /// <param name="modelo">Modelo de prenda</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta</returns>
         public DataTable SelectContratosPorModelo(string modelo) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"
@@ -145,6 +197,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener todos los contrato de un determinado cliente.
+        /// </summary>
+        /// <param name="idCliente">Código de Cliente</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectContratosPorCliente(int idCliente)
         {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();

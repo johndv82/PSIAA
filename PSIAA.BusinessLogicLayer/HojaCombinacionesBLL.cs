@@ -12,10 +12,27 @@ namespace PSIAA.BusinessLogicLayer
 {
     public class HojaCombinacionesBLL
     {
-        private HojaCombinacionesDAL _hojaCombinacionesDal = new HojaCombinacionesDAL();
-        private CombinacionColorDAL _combinacionColorDal = new CombinacionColorDAL();
-        private CombMaterialDAL _combMaterial = new CombMaterialDAL();
+        /// <summary>
+        /// Variable de instancia a la clase HojaCombinacionesDAL.
+        /// </summary>
+        public HojaCombinacionesDAL _hojaCombinacionesDal = new HojaCombinacionesDAL();
+        /// <summary>
+        /// Variable de instancia a la clase CombinacionColorDAL.
+        /// </summary>
+        public CombinacionColorDAL _combinacionColorDal = new CombinacionColorDAL();
+        /// <summary>
+        /// Variable de instancia a la clase CombMaterialDAL.
+        /// </summary>
+        public CombMaterialDAL _combMaterial = new CombMaterialDAL();
 
+        /// <summary>
+        /// Ejecuta procedimientos DAL de Colores/Porcentajes y Materiales por Modelo, con ambos resultados se hace un proceso de 
+        /// matching en base a su código de material, y el resultado se lista.
+        /// </summary>
+        /// <param name="modelo">Modelo de prenda</param>
+        /// <param name="correlativoColor">Correlativo de la Combinación</param>
+        /// <param name="kilosNecesarios">Cantidad en kilos, en el caso se quiera calcular materia prima por porcentaje de combinación.</param>
+        /// <returns>Lista Genérica de tipo CombinacionDTO con el resultado del matching.</returns>
         public List<CombinacionDTO> ListarColoresCombinacion(string modelo, string correlativoColor, decimal kilosNecesarios)
         {
             string[] partes = modelo.Split('-');
@@ -70,8 +87,6 @@ namespace PSIAA.BusinessLogicLayer
                                                    Titulo = col.Field<string>("Titulos"),
                                                    DescripcionMaterial = mat.Field<string>("c_denmat")
                                                }).ToList();
-                    /*if (_listCombinacionColores.Count != dtColores.Rows.Count)
-                        _listCombinacionColores.Clear();*/
                 }
                 return _listCombinacionColores;
             }
@@ -80,11 +95,22 @@ namespace PSIAA.BusinessLogicLayer
             }
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Corrección de colores.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <returns>Variable booleana en el caso que el conteo de filas sea mayor a 0.</returns>
         public bool CorregirColores(int _contrato)
         {
             return (_hojaCombinacionesDal.CorreccionColoresSiaa(_contrato).Rows.Count > 0);
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Materiales por Color Entero de un Modelo.
+        /// </summary>
+        /// <param name="famili">Grupo Familiar de Modelo</param>
+        /// <param name="correlativo">Correletivo de Modelo</param>
+        /// <returns>Contenedor de tipo DataTable con los materiales.</returns>
         public DataTable MaterialPorColor(string famili, int correlativo) {
             return _hojaCombinacionesDal.SelectMaterialUnSoloColor(famili, correlativo);
         }

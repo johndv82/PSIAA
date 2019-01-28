@@ -9,8 +9,18 @@ namespace PSIAA.DataAccessLayer
 {
     public class UsuarioDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión a la BD).
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la BD para obtener los datos principales de la tabla ITSM_Usuarios,
+        /// que coincidan con el nombre de usuario y la contraseña.
+        /// </summary>
+        /// <param name="_nombreUsuario">Nombre de Usuario</param>
+        /// <param name="_password">Contraseña de Usuario</param>
+        /// <returns>Contenedor de tipo DataTable con el resultado de la consulta.</returns>
         public DataTable SelectUsuario(string _nombreUsuario, string _password)
         {
             string query = @"
@@ -33,6 +43,12 @@ namespace PSIAA.DataAccessLayer
              return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la BD para obtener todos los dastos de Página accesibles correspondientes a cada
+        /// categoria de un usuario.
+        /// </summary>
+        /// <param name="_codCategoria">Código de Categoria de Usuario</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectAccesos(int _codCategoria) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             

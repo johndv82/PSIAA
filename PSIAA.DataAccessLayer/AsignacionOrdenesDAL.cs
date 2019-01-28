@@ -10,8 +10,19 @@ namespace PSIAA.DataAccessLayer
 {
     public class AsignacionOrdenesDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión BD)
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta un procedimiento almacenado en la base de datos para obtener el Total de Asignaciones de Ordenes por Contrato.
+        /// </summary>
+        /// <param name="_categoria">Código de Categoría</param>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <param name="_modelo">Modelo de prenda</param>
+        /// <param name="_color">Color de prenda</param>
+        /// <returns></returns>
         public DataTable SelectTotalAsignacionOrdenes(int _categoria, int _contrato, string _modelo, string _color) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -23,6 +34,10 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingProcedure("PSIAA.AsignacionesOrdenes", _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener el último número de órden de asignación ingresado.
+        /// </summary>
+        /// <returns>Variable de tipo string con el número de orden de asignación</returns>
         public string SelectUltimoNumeroOrden() {
             string query = @"
                 select 
@@ -33,6 +48,14 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingEscalarQuery(query, null);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener todas las asignaciones con la tarifa y el precio aprobados.
+        /// Validando que no hayan sido facturadas.
+        /// </summary>
+        /// <param name="_codProveedor">Código de Proveedor</param>
+        /// <param name="_moneda">Código de Moneda (S/D)</param>
+        /// <param name="_fechaAprobPrecio">Fecha de Aprobación de Precio</param>
+        /// <returns></returns>
         public DataTable SelectAsignacionOrdenes(string _codProveedor, string _moneda, string _fechaAprobPrecio) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -102,6 +125,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de actualización de Número de Orden2 en la tabla Asignacion_de_ordenes_det.
+        /// </summary>
+        /// <param name="_docPagoTaller">Objeto de DocumentoPagoTallerDTO</param>
+        /// <returns>Variable de tipo int con la cantidad de registros actualizados.</returns>
         public int UpdateNumeroOrden2AsignacionOrdenes(DocumentoPagoTallerDTO _docPagoTaller) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"
@@ -125,6 +153,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ExecuteQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener los modelos de asignaciones por aprobar.
+        /// </summary>
+        /// <param name="_codProveedor">Código de Proveedor</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectModelosAsignacionOrdenesPorAprobar(string _codProveedor) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -146,6 +179,12 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener el detalle de las asignaciones de ordenes por aprobar.
+        /// </summary>
+        /// <param name="_codProveedor">Código de Proveedor</param>
+        /// <param name="_modelo">Modelo de prenda</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectAsignacionOrdenesParaAprobar(string _codProveedor, string _modelo) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -168,50 +207,50 @@ namespace PSIAA.DataAccessLayer
 	                base.Fecha_Aprob_Precio,
 	                base.Usuario_Aprob_Prec
                 from(
-                select 
-	                aod.Categoria_Operacion,
-	                aod.Numero_Orden,
-	                ld.modelo,
-	                aod.Orden,
-	                aod.lote,
-	                (aod.Cantidad_1+aod.Cantidad_2+aod.Cantidad_3
-	                +aod.Cantidad_4+aod.Cantidad_5+aod.Cantidad_6
-	                +aod.Cantidad_7+aod.Cantidad_8+aod.Cantidad_9) as Cantidad,
-	                coalesce(aod.Moneda, '') as Moneda,
-	                aod.Precio_Unitario as TarifaSoles,
-	                coalesce(aod.Tarifa_Dolares, 0) as TarifaDolares,
-	                sum(aod.Costo_Soles) as CostoSoles,
-	                sum(aod.Costo_Dolares) as CostoDolares,
-	                aod.Precio_Aprobado,
-	                aod.Fecha_de_asignacion,
-	                aod.Usuario_Asignacion,
-	                coalesce(aod.Fecha_Aprob_Precio, '') as Fecha_Aprob_Precio,
-	                coalesce(aod.Usuario_Aprob_Prec, '') as Usuario_Aprob_Prec
-                from Asignacion_de_ordenes_det aod
-                inner join lanzamiento_detalle ld 
-	                on ld.Orden = aod.Orden and ld.Lote = aod.Lote
-                where aod.Cod_Proveedor = @codproveedor
-	                and year(aod.Fecha_de_asignacion) > 2015
-	                and aod.Numero_Orden_2 = 0
-                    and aod.Terminado = 0x54
-	                and ld.modelo like '%'+ @modelo +'%'
-                group by 
-	                aod.Categoria_Operacion,
-	                aod.Numero_Orden,
-	                ld.modelo,
-	                aod.Orden,
-	                aod.lote,
-	                (aod.Cantidad_1+aod.Cantidad_2+aod.Cantidad_3
-	                +aod.Cantidad_4+aod.Cantidad_5+aod.Cantidad_6
-	                +aod.Cantidad_7+aod.Cantidad_8+aod.Cantidad_9),
-	                aod.Moneda,
-	                aod.Precio_Unitario,
-	                aod.Tarifa_Dolares,
-	                aod.Precio_Aprobado,
-	                aod.Fecha_de_asignacion,
-	                aod.Usuario_Asignacion,
-	                aod.Fecha_Aprob_Precio,
-	                aod.Usuario_Aprob_Prec
+                    select 
+	                    aod.Categoria_Operacion,
+	                    aod.Numero_Orden,
+	                    ld.modelo,
+	                    aod.Orden,
+	                    aod.lote,
+	                    (aod.Cantidad_1+aod.Cantidad_2+aod.Cantidad_3
+	                    +aod.Cantidad_4+aod.Cantidad_5+aod.Cantidad_6
+	                    +aod.Cantidad_7+aod.Cantidad_8+aod.Cantidad_9) as Cantidad,
+	                    coalesce(aod.Moneda, '') as Moneda,
+	                    aod.Precio_Unitario as TarifaSoles,
+	                    coalesce(aod.Tarifa_Dolares, 0) as TarifaDolares,
+	                    sum(aod.Costo_Soles) as CostoSoles,
+	                    sum(aod.Costo_Dolares) as CostoDolares,
+	                    aod.Precio_Aprobado,
+	                    aod.Fecha_de_asignacion,
+	                    aod.Usuario_Asignacion,
+	                    coalesce(aod.Fecha_Aprob_Precio, '') as Fecha_Aprob_Precio,
+	                    coalesce(aod.Usuario_Aprob_Prec, '') as Usuario_Aprob_Prec
+                    from Asignacion_de_ordenes_det aod
+                    inner join lanzamiento_detalle ld 
+	                    on ld.Orden = aod.Orden and ld.Lote = aod.Lote
+                    where aod.Cod_Proveedor = @codproveedor
+	                    and year(aod.Fecha_de_asignacion) > 2015
+	                    and aod.Numero_Orden_2 = 0
+                        and aod.Terminado = 0x54
+	                    and ld.modelo like '%'+ @modelo +'%'
+                    group by 
+	                    aod.Categoria_Operacion,
+	                    aod.Numero_Orden,
+	                    ld.modelo,
+	                    aod.Orden,
+	                    aod.lote,
+	                    (aod.Cantidad_1+aod.Cantidad_2+aod.Cantidad_3
+	                    +aod.Cantidad_4+aod.Cantidad_5+aod.Cantidad_6
+	                    +aod.Cantidad_7+aod.Cantidad_8+aod.Cantidad_9),
+	                    aod.Moneda,
+	                    aod.Precio_Unitario,
+	                    aod.Tarifa_Dolares,
+	                    aod.Precio_Aprobado,
+	                    aod.Fecha_de_asignacion,
+	                    aod.Usuario_Asignacion,
+	                    aod.Fecha_Aprob_Precio,
+	                    aod.Usuario_Aprob_Prec
                 ) as base
 	            group by
 	                base.Categoria_Operacion,
@@ -235,9 +274,20 @@ namespace PSIAA.DataAccessLayer
             _sqlParam.Add(new SqlParameter("@modelo", SqlDbType.VarChar) { Value = _modelo });
             return _trans.ReadingQuery(query, _sqlParam);
         }
-        //Toma los procesos de lo asignado para insertar en la tabla Doc_pago_taller, y asi generar documento de taller
+
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener el detalle, por proceso, 
+        /// de asignacion de ordenes terminadas, validando que no hayan sido facturadas.
+        /// </summary>
+        /// <param name="_codProv">Código de Proveedor</param>
+        /// <param name="_asignacion">Número de Asignación</param>
+        /// <param name="_orden">Orden de Producción</param>
+        /// <param name="_lote">Número de Lote</param>
+        /// <param name="_categoria">Código de Categoria</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectDetalleGrupoAsignacionOrdenes(string _codProv, string _asignacion, string _orden, int _lote, int _categoria) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
+
             string query = @"
                 select 
 	                aod.Cod_Proveedor,
@@ -277,9 +327,19 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
-        //Son los procesos que se usan para hacer join con PostgreSQL
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener solo los procesos por asignación de ordenes terminadas.
+        /// </summary>
+        /// <param name="_codProv">Código de Proveedor</param>
+        /// <param name="_modelo">Modelo de Prenda</param>
+        /// <param name="_asign">Número de Asignación</param>
+        /// <param name="_orden">Orden de Producción</param>
+        /// <param name="_lote">Número de Lote</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectProcesosAsignacion(string _codProv, string _modelo, string _asign, string _orden, int _lote) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
+            //Son los procesos que se usan para hacer join con PostgreSQL
+
             string query = @"
                 select 
 	                aod.Proceso 
@@ -305,6 +365,19 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de actualización de tarifa y tiempo, en la tabla Asignacion_de_ordenes_det.
+        /// </summary>
+        /// <param name="_codProv">Código de Proveedor</param>
+        /// <param name="_catOpe">Código de Categoria de Operación</param>
+        /// <param name="_numAsign">Número de Asignación</param>
+        /// <param name="_moneda">Código de Moneda (S/D)</param>
+        /// <param name="_tarifa">Valor de Tarifa</param>
+        /// <param name="_tiempo">Valor de Tiempo</param>
+        /// <param name="_proceso">Código de Proceso</param>
+        /// <param name="_orden">Orden de Producción</param>
+        /// <param name="_lote">Número de Lote</param>
+        /// <returns>Variable de tipo int con la cantidad de registros actualizados.</returns>
         public int UpdateTarifaTiempoAsignacionOrdenes(string _codProv, int _catOpe, string _numAsign,
                                                 string _moneda, double _tarifa, double _tiempo, int _proceso,
                                                 string _orden, int _lote) {
@@ -346,7 +419,19 @@ namespace PSIAA.DataAccessLayer
             return _trans.ExecuteQuery(query, _sqlParam);
         }
 
-        //Cálculo de Costos por SQL
+        /// <summary>
+        /// Ejecuta una consulta de actualización de precios y recalculo de costos, en la tabla Asignacion_de_ordenes_det.
+        /// </summary>
+        /// <param name="_codProv">Código de Proveedor</param>
+        /// <param name="_catOpe">Código de Categoria de Operación</param>
+        /// <param name="_numAsign">Número de Asignación</param>
+        /// <param name="_moneda">Código de Moneda (S/D)</param>
+        /// <param name="_fechaAprobacion">Fecha de Aprobación de Precio</param>
+        /// <param name="_usuarioAprobacion">Usuario quien Aprobó Precio</param>
+        /// <param name="_aprobado">Estado de Aprobación (0/1)</param>
+        /// <param name="_orden">Orden de Producción</param>
+        /// <param name="_lote">Número de Lote</param>
+        /// <returns>Variable de tipo int con la cantidad de registros actualizados.</returns>
         public int UpdatePrecioAsignacionesOrdenes_RE(string _codProv, int _catOpe, string _numAsign,
                                                 string _moneda, string _fechaAprobacion,
                                                 string _usuarioAprobacion, int _aprobado, string _orden, int _lote) {
@@ -410,6 +495,15 @@ namespace PSIAA.DataAccessLayer
             return _trans.ExecuteQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener los procesos asignados por Orden y Lote.
+        /// </summary>
+        /// <param name="_codProv">Código de Proveedor</param>
+        /// <param name="_nroAsig">Número de Asignación</param>
+        /// <param name="_orden">Orden de Producción</param>
+        /// <param name="_lote">Número de Lote</param>
+        /// <param name="_cat">Código de Categoria</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectProcesosAsignacionPorOrdenLote(string _codProv, string _nroAsig, string _orden, 
                                                             int _lote, int _cat) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
@@ -431,7 +525,10 @@ namespace PSIAA.DataAccessLayer
                     and Numero_Orden = @nroasignacion
                     and aod.Orden = @orden 
                     and aod.Lote = @lote 
-                    and aod.Categoria = @categoria ";
+                    and aod.Categoria = @categoria 
+                    and aod.Precio_Aprobado = 1
+                    and aod.Numero_Orden_2 = 0
+                    and aod.Terminado = 0x54";
 
             _sqlParam.Add(new SqlParameter("@codproveedor", SqlDbType.VarChar) { Value = _codProv });
             _sqlParam.Add(new SqlParameter("@nroasignacion", SqlDbType.VarChar) { Value = _nroAsig });
@@ -441,6 +538,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de inserción a la tabla Asignacion_de_ordenes_cab.
+        /// </summary>
+        /// <param name="asigOrdenCab">Objeto de tipo AsignacionOrdenCabDTO</param>
+        /// <returns>Variable de tipo int con la cantidad de registros ingresados.</returns>
         public int InsertAsignacionOrdenCabecera(AsignacionOrdenCabDTO asigOrdenCab) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -467,6 +569,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ExecuteQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de inserción a la tabla Asignacion_de_ordenes_det.
+        /// </summary>
+        /// <param name="asigOrdenDet">Objeto de tipo AsignacionOrdenDetDTO</param>
+        /// <returns>Variable de tipo int con la cantidad de registros ingresados.</returns>
         public int InsertAsignacionOrdenDetalle(AsignacionOrdenDetDTO asigOrdenDet) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -523,34 +630,12 @@ namespace PSIAA.DataAccessLayer
             return _trans.ExecuteQuery(query, _sqlParam);
         }
 
-        public DataTable SelectCentroCostosPorOrden(string orden, int catOperacion) {
-            List<SqlParameter> _sqlParam = new List<SqlParameter>();
-            string query = @"
-                select 
-	                aod.Categoria,
-	                pc.Descripcion, 
-	                ccp.l_produccion, 
-	                ccp.proceso, 
-	                ccp.tipo_gasto
-                from Asignacion_de_ordenes_det aod
-                inner join Puntos_de_Control pc
-                on pc.Cod_Punto = aod.Categoria
-                inner join cc_costos_producc ccp 
-	                on ccp.Cod_Punto = aod.Categoria
-                where aod.Orden = @orden and aod.Categoria_Operacion = @catoper
-                group by 
-	                aod.Categoria,
-	                pc.Descripcion,
-	                ccp.l_produccion, 
-	                ccp.proceso, 
-	                ccp.tipo_gasto";
-
-            _sqlParam.Add(new SqlParameter("@orden", SqlDbType.VarChar) { Value = orden });
-            _sqlParam.Add(new SqlParameter("@catoper", SqlDbType.Int) { Value = catOperacion });
-            return _trans.ReadingQuery(query, _sqlParam);
-        }
-
-        public DataTable SelectCentroCostosPorOrden2(string orden) {
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener el Centro de Costos por Orden.
+        /// </summary>
+        /// <param name="orden">Orden de Producción</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
+        public DataTable SelectCentroCostosPorOrden(string orden) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"
                 select 

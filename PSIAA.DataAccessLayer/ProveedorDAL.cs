@@ -8,8 +8,15 @@ namespace PSIAA.DataAccessLayer
 {
     public class ProveedorDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión a la BD).
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la BD, para obtener datos principales de Proveedores activos.
+        /// </summary>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectProveedores() {
             string query = @"
                 select
@@ -26,6 +33,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, null);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la BD, para obtener el nombre comercial de un Proveedor.
+        /// </summary>
+        /// <param name="_codProveedor">Código de Proveedor (RUC)</param>
+        /// <returns>Variable de tipo string con el nombre del proveedor.</returns>
         public string NombreProveedor(string _codProveedor) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 

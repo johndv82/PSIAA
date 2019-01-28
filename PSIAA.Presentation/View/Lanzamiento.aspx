@@ -617,7 +617,7 @@
                             <div class="modal-body">
                                 <div class="well well-sm col-sm-12">
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon input-sm">Nombre del Taller</span>
                                                 <asp:TextBox ID="txtNombreComercial" runat="server" class="form-control input-sm" onkeypress="return InvalidarEnter(event);"></asp:TextBox>
@@ -625,6 +625,13 @@
                                                     <asp:Button ID="btnFiltrar" runat="server" Text="Buscar" class="btn btn-default btn-sm" OnClick="btnFiltrar_Click" />
                                                 </span>
                                             </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <asp:UpdateProgress ID="UpdateProgress2" runat="server">
+                                                <ProgressTemplate>
+                                                    <b>Cargando</b><img src="../Content/Images/load.gif" />
+                                                </ProgressTemplate>
+                                            </asp:UpdateProgress>
                                         </div>
                                     </div>
                                 </div>

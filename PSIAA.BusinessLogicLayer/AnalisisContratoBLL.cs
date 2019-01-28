@@ -10,17 +10,31 @@ namespace PSIAA.BusinessLogicLayer
 {
     public class AnalisisContratoBLL
     {
-        private SimulacionMpBLL _simulacionMpBll = new SimulacionMpBLL();
-        private ContratoBLL _contratoBll = new ContratoBLL();
-        private PesosDAL _pesosDal = new PesosDAL();
-        private MedidaPorTallaDAL _medidaPorTallaDal = new MedidaPorTallaDAL();
+        /// <summary>
+        /// Variable de instancia a la clase SimulacionMpBLL.
+        /// </summary>
+        public SimulacionMpBLL _simulacionMpBll = new SimulacionMpBLL();
+        /// <summary>
+        /// Variable de instancia a la clase ContratoBLL.
+        /// </summary>
+        public ContratoBLL _contratoBll = new ContratoBLL();
+        /// <summary>
+        /// Variable de instancia a la clase PesosDAL.
+        /// </summary>
+        public PesosDAL _pesosDal = new PesosDAL();
+        /// <summary>
+        /// Variable de instancia a la clase MedidaPorTallaDAL.
+        /// </summary>
+        public MedidaPorTallaDAL _medidaPorTallaDal = new MedidaPorTallaDAL();
 
         /// <summary>
-        /// 
+        /// Ejecuta procedimientos BLL de productos por combinación de modelo o color unitario segun sea el caso, con los datos obtenidos
+        /// se construye un contenedor de materiales de tipo DataTable con los siguientes campos: Color, Material, Porcentaje, Decripción, 
+        /// y se pobla dicho contenedor segun el tipo de color de cada modelo del contrato.
         /// </summary>
         /// <param name="contrato">Número de Contrato</param>
-        /// <param name="modelo">Modelo</param>
-        /// <returns></returns>
+        /// <param name="modelo">Modelo de prenda</param>
+        /// <returns>Contenedor de datos de tipo DataTable con los materiales.</returns>
         /// 
         public DataTable ListarMaterialModelo(int contrato, string modelo)
         {
@@ -83,6 +97,12 @@ namespace PSIAA.BusinessLogicLayer
             return dtMateriales;
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de medidas por talla, y evalúa la expresión matemática de cada medida, en el caso de que
+        /// la expresión tenga un error de escritura, se actualizará dicho campo con la palabra: "Error".
+        /// </summary>
+        /// <param name="modelo">Modelo de prenda</param>
+        /// <returns>Contenedor de datos de tipo DataTable con las medidas de la prenda, por talla de muestra</returns>
         public DataTable ListarMedidasPorModelo(string modelo)
         {
             string talla = TallaPesoMuestra(modelo)[0];
@@ -102,6 +122,11 @@ namespace PSIAA.BusinessLogicLayer
             return _dtResult;
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de muestra de peso por modelo para obtener los valores de talla y peso base del modelo en cuestion.
+        /// </summary>
+        /// <param name="modelo">Modelo de prenda</param>
+        /// <returns>Arreglo de tipo string con dos valores(1): talla(0) y peso base(1).</returns>
         public string[] TallaPesoMuestra(string modelo) { //[TALLA, PESO]
             string[] tallaPeso = new string[2] { "", "0"};
             DataRow drMuestraPeso = _pesosDal.SelectMuestraPeso(modelo.Trim());
@@ -112,7 +137,12 @@ namespace PSIAA.BusinessLogicLayer
             return tallaPeso;
         }
 
-        //Metodos de Validacion, para Calculo de Materia Prima
+        /// <summary>
+        /// Ejecuta un procedimiento BLL de Medidas por Modelo, y evalúa cada elemento de la columna: "Medida" si el valor
+        /// es: "Error", en el caso de que haya al menos uno, se finaliza el procedimiento.
+        /// </summary>
+        /// <param name="modelo">Modelo de prenda</param>
+        /// <returns>Variable de tipo bool con la validación del error.</returns>
         public bool ValidarMedidasPorModelo(string modelo) {
             DataTable dtResult = ListarMedidasPorModelo(modelo);
             bool verificacionModelo = true;
@@ -133,6 +163,13 @@ namespace PSIAA.BusinessLogicLayer
             return verificacionModelo;
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento BLL de Materiales por Modelo, agrupa los registros por color sumando el porcentaje, y evalúa
+        /// que el valor del procentaje sea 100, en el caso contrario finaliza el procedimiento.
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <param name="modelo">Modelo de Prenda</param>
+        /// <returns>Variable de tipo bool con la validación del porcentaje.</returns>
         public bool ValidarMaterialModelo(int contrato, string modelo) {
             DataTable dtMaterialModelo = ListarMaterialModelo(contrato, modelo);
             bool verificacionMaterial = true;

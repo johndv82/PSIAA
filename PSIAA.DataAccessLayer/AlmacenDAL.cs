@@ -10,7 +10,15 @@ namespace PSIAA.DataAccessLayer
 {
     public class AlmacenDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión BD)
+        /// </summary>
+        public Transactions _trans = new Transactions();
+
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener los almacénes con su respectivo código.
+        /// </summary>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectAlmacenes90_98() {
             string query = @"
                 select 
@@ -22,6 +30,10 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, null);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener el último número de parte registrado en almacén.
+        /// </summary>
+        /// <returns>Variable de tipo string con el número de parte.</returns>
         public string SelectUltimoDocumentoDeHoy() {
             string query = @"
                 select top 1
@@ -36,6 +48,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingEscalarQuery(query, null);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de inserción a la tabla detalle_almacen.
+        /// </summary>
+        /// <param name="_almacenDto">Objeto de tipo AlmacenDTO</param>
+        /// <returns>Variable de tipo int con la cantidad de registros ingresados.</returns>
         public int InsertDetalleAlmacen(AlmacenDTO _almacenDto) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -101,6 +118,12 @@ namespace PSIAA.DataAccessLayer
             return _trans.ExecuteQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener lo ingresos a producción (partes de almacén).
+        /// </summary>
+        /// <param name="_codAlmacen">Código de Almacén</param>
+        /// <param name="_fechaOperacion">Fecha de Operación</param>
+        /// <returns>Contenedor de tipo DataTable con los datos de la consulta.</returns>
         public DataTable SelectIngresosProduccion(int _codAlmacen, string _fechaOperacion = "") {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string andFecha = "";
@@ -153,6 +176,13 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento almacenado en la base de datos para obtener los Ingresos detallados a Almacén.
+        /// </summary>
+        /// <param name="_fechaInicial">Fecha Inicial</param>
+        /// <param name="_fechaFinal">Fecha Final</param>
+        /// <param name="_modelo">Modelo de Prenda</param>
+        /// <returns>Contenedor de tipo DataTable con los datos del procedimiento.</returns>
         public DataTable SelectIngresosAlmacen(string _fechaInicial, string _fechaFinal, string _modelo) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             _sqlParam.Add(new SqlParameter("@modelo", SqlDbType.VarChar) { Value = _modelo });
@@ -161,6 +191,12 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingProcedure("PSIAA.IngresosAlmacen", _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento almacenado en la base de datos para obtener el detalle del Ingreso a Producción (parte de Almacén).
+        /// </summary>
+        /// <param name="nroParte">Número de Parte</param>
+        /// <param name="almacenSap">Código de Almacén SAP</param>
+        /// <returns>Contenedor de tipo DataTable con los datos del procedimiento.</returns>
         public DataTable SelectIngresosProduccion(string nroParte, int almacenSap) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             _sqlParam.Add(new SqlParameter("@parte", SqlDbType.VarChar) { Value = nroParte });

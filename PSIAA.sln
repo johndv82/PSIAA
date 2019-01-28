@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSIAA.DataTransferObject", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSIAA.Reports", "PSIAA.Reports\PSIAA.Reports.csproj", "{ED61CAAE-0A13-44AB-AD4E-92880AE97524}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSIAA.Test", "PSIAA.Test\PSIAA.Test.csproj", "{F1801D05-6AE5-42EC-9C98-9C05854F9C36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{ED61CAAE-0A13-44AB-AD4E-92880AE97524}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED61CAAE-0A13-44AB-AD4E-92880AE97524}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED61CAAE-0A13-44AB-AD4E-92880AE97524}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1801D05-6AE5-42EC-9C98-9C05854F9C36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1801D05-6AE5-42EC-9C98-9C05854F9C36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1801D05-6AE5-42EC-9C98-9C05854F9C36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1801D05-6AE5-42EC-9C98-9C05854F9C36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

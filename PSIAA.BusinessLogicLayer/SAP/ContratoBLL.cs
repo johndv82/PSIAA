@@ -9,7 +9,17 @@ namespace PSIAA.BusinessLogicLayer.SAP
 {
     public class ContratoBLL
     {
-        private readonly ContratoDAL _contratoDal = new ContratoDAL();
+        /// <summary>
+        /// Variable de instancia a la clase ContratoDAL.
+        /// </summary>
+        public readonly ContratoDAL _contratoDal = new ContratoDAL();
+
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de reporte de cabecera contrato, y se evalúa la existencia de datos en su contenedor,
+        /// para para retornar la primera Fila de Datos, en caso contrario se retorna nulo.
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <returns>Fila de datos de tipo DataRow con la cabecera.</returns>
         public DataRow ContratoCabecera(string contrato)
         {
             DataTable dtCab = _contratoDal.SelectReporteContratoCab(contrato);
@@ -21,6 +31,11 @@ namespace PSIAA.BusinessLogicLayer.SAP
                 return null;
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de reporte de detalle contrato, y lo retorna.
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <returns>Contenedor de tipo DataTable con el detalle.</returns>
         public DataTable ContratoDetalle(string contrato)
         {
             return _contratoDal.SelectReporteContratoDet(contrato);

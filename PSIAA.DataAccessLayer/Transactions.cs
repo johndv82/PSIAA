@@ -9,10 +9,21 @@ namespace PSIAA.DataAccessLayer
     public class Transactions
     {
         private SqlConnection oConnSia;
+
+        /// <summary>
+        /// Crea nueva instancia de conexión a la cadena: ConnectionSIAA, del archivo de configuración (WebConfig).
+        /// </summary>
         public Transactions()
         {
             oConnSia = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionSIAA"].ConnectionString);
         }
+
+        /// <summary>
+        /// Ejecuta una consulta de lectura en formato de cadena, directamente a la base de datos, adjuntando sus parametros.
+        /// </summary>
+        /// <param name="query">Consulta de formato de cadena</param>
+        /// <param name="parametros">Parametros en forma de Lista Genérica de tipo NpgsqlParameter, no obligatorio</param>
+        /// <returns>Contenedor de datos de tipo DataTable, con el retorno de la consulta</returns>
         public DataTable ReadingQuery(string query, List<SqlParameter> parametros = null)
         {
             DataTable dtRetorno = new DataTable();
@@ -35,6 +46,12 @@ namespace PSIAA.DataAccessLayer
             return dtRetorno;
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de lectura escalar en formato de cadena, directamente a la base de datos, adjuntando sus parametros.
+        /// </summary>
+        /// <param name="query">Cadena de Consulta</param>
+        /// <param name="parametros">Parametros Lista Genérica de tipo SqlParameter</param>
+        /// <returns>Variable de tipo string con el valor de retorno.</returns>
         public string ReadingEscalarQuery(string query, List<SqlParameter> parametros = null)
         {
             string valorRetorno = string.Empty;
@@ -59,6 +76,12 @@ namespace PSIAA.DataAccessLayer
             return valorRetorno;
         }
 
+        /// <summary>
+        /// Ejecuta una consulta inserción, directamente en la base de datos, adjuntando sus parametros.
+        /// </summary>
+        /// <param name="query">Cadena de Consulta</param>
+        /// <param name="parametros">Parametros en forma de Lista Genérica de tipo SqlParameter</param>
+        /// <returns>Variable de tipo int con el valor de retorno.</returns>
         public int ExecuteQuery(string query, List<SqlParameter> parametros)
         {
             int filasAfectadas = 0;
@@ -88,7 +111,12 @@ namespace PSIAA.DataAccessLayer
             return filasAfectadas;
         }
 
-        //TRANSACCION PARA REPORTES
+        /// <summary>
+        /// Ejecuta un comando de tipo: StoredProcedure, directamente en la base de datos, adjuntando sus parametros.
+        /// </summary>
+        /// <param name="nombreProcedure">Nombre del Procedimiento Almacenado</param>
+        /// <param name="parametros">Parametros en forma Lista Genérica de tipo SqlParameter</param>
+        /// <returns>Contenedor de tipo DataTable con el retorno del procedimiento</returns>
         public DataTable ReadingProcedure(string nombreProcedure, List<SqlParameter> parametros)
         {
             SqlCommand comando = new SqlCommand(nombreProcedure, oConnSia);

@@ -10,7 +10,7 @@ namespace PSIAA.DataAccessLayer.TuartDB
     public class ModeloComponenteDAL
     {
         /// <summary>
-        /// Variable de instancia a la clase Transactions (Conexión BDs)
+        /// Variable de instancia a la clase Transactions (Conexión BD)
         /// </summary>
         public Transactions _trans = new Transactions();
 

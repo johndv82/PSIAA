@@ -24,7 +24,7 @@ namespace PSIAA.DataAccessLayer.ODOO
         /// Ejecuta una consulta de lectura en formato de cadena, directamente a la base de datos, adjuntando sus parametros.
         /// </summary>
         /// <param name="query">Consulta de formato de cadena</param>
-        /// <param name="parametros">Lista Genérica de tipo NpgsqlParameter, no obligatorio</param>
+        /// <param name="parametros">Parametro en forma de Lista Genérica de tipo NpgsqlParameter, no obligatorio</param>
         /// <returns>Contenedor de datos de tipo DataTable, con el retorno de la consulta</returns>
         public DataTable ReadingQuery(string query, List<NpgsqlParameter> parametros = null)
         {

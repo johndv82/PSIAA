@@ -91,7 +91,6 @@
                       <rd:DefaultName>Textbox9</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -127,7 +126,6 @@
                       <rd:DefaultName>Textbox11</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -163,7 +161,6 @@
                       <rd:DefaultName>Textbox13</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -199,7 +196,6 @@
                       <rd:DefaultName>Textbox15</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -258,7 +254,6 @@
                       <rd:DefaultName>Textbox21</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -308,7 +303,6 @@
                       <rd:DefaultName>Textbox33</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -344,7 +338,6 @@
                       <rd:DefaultName>Textbox36</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -382,9 +375,7 @@
                       <rd:DefaultName>Textbox173</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                          <Width>0.5pt</Width>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -418,19 +409,8 @@
                       <rd:DefaultName>Textbox187</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                          <Width>0.5pt</Width>
+                          <Style>None</Style>
                         </Border>
-                        <TopBorder>
-                          <Style>None</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Style>None</Style>
-                        </BottomBorder>
-                        <RightBorder>
-                          <Style>None</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -463,9 +443,7 @@
                       <rd:DefaultName>Textbox190</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                          <Width>0.5pt</Width>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -501,7 +479,6 @@
                       <rd:DefaultName>Textbox101</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -534,7 +511,6 @@
                       <rd:DefaultName>Textbox102</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -567,7 +543,6 @@
                       <rd:DefaultName>Textbox103</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -603,7 +578,6 @@
                       <rd:DefaultName>Textbox147</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -639,7 +613,6 @@
                       <rd:DefaultName>Textbox148</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -675,7 +648,6 @@
                       <rd:DefaultName>Textbox149</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -711,7 +683,6 @@
                       <rd:DefaultName>Textbox150</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -747,7 +718,6 @@
                       <rd:DefaultName>Textbox151</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -783,7 +753,6 @@
                       <rd:DefaultName>Textbox152</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -819,7 +788,6 @@
                       <rd:DefaultName>Textbox153</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -855,7 +823,6 @@
                       <rd:DefaultName>Textbox154</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -891,7 +858,6 @@
                       <rd:DefaultName>Textbox155</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -926,7 +892,6 @@
                       <rd:DefaultName>Textbox113</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -961,7 +926,6 @@
                       <rd:DefaultName>Textbox114</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -995,9 +959,11 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox37</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Fields!Paquete.Value &lt;&gt; 1</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1031,9 +997,11 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox72</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Fields!Paquete.Value &lt;&gt; 1</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1068,9 +1036,7 @@
                       <rd:DefaultName>Textbox117</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                          <Width>0.5pt</Width>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1103,19 +1069,12 @@
                       <rd:DefaultName>Textbox118</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                        <LeftBorder>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
-                        </Border>
-                        <TopBorder>
-                          <Style>None</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Style>None</Style>
-                        </BottomBorder>
-                        <RightBorder>
-                          <Style>None</Style>
-                        </RightBorder>
+                        </LeftBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1147,9 +1106,7 @@
                       <rd:DefaultName>Textbox119</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                          <Width>0.5pt</Width>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1184,7 +1141,6 @@
                       <rd:DefaultName>TamañoCaja</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1216,7 +1172,6 @@
                       <rd:DefaultName>CodCliModelo</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1248,7 +1203,6 @@
                       <rd:DefaultName>Color</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1272,6 +1226,7 @@
                               <Value>=IIf(CInt(Fields!Cantidad0.Value) = 0, "", CInt(Fields!Cantidad0.Value))</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1283,7 +1238,6 @@
                       <rd:DefaultName>Textbox16</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1307,6 +1261,7 @@
                               <Value>=IIf(CInt(Fields!Cantidad1.Value) = 0, "", CInt(Fields!Cantidad1.Value))</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1318,7 +1273,6 @@
                       <rd:DefaultName>Textbox18</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1342,6 +1296,7 @@
                               <Value>=IIf(CInt(Fields!Cantidad2.Value) = 0, "", CInt(Fields!Cantidad2.Value))</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1353,7 +1308,6 @@
                       <rd:DefaultName>Textbox20</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1377,6 +1331,7 @@
                               <Value>=IIf(CInt(Fields!Cantidad3.Value) = 0, "", CInt(Fields!Cantidad3.Value))</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1388,7 +1343,6 @@
                       <rd:DefaultName>Textbox22</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1412,6 +1366,7 @@
                               <Value>=IIf(CInt(Fields!Cantidad4.Value) = 0, "", CInt(Fields!Cantidad4.Value))</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1423,7 +1378,6 @@
                       <rd:DefaultName>Textbox24</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1447,6 +1401,7 @@
                               <Value>=IIf(CInt(Fields!Cantidad5.Value) = 0, "", CInt(Fields!Cantidad5.Value))</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1458,7 +1413,6 @@
                       <rd:DefaultName>Textbox26</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1482,6 +1436,7 @@
                               <Value>=IIf(CInt(Fields!Cantidad6.Value) = 0, "", CInt(Fields!Cantidad6.Value))</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1493,7 +1448,6 @@
                       <rd:DefaultName>Textbox28</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1517,6 +1471,7 @@
                               <Value>=IIf(CInt(Fields!Cantidad7.Value) = 0, "", CInt(Fields!Cantidad7.Value))</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1528,7 +1483,6 @@
                       <rd:DefaultName>Textbox30</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1552,6 +1506,7 @@
                               <Value>=IIf(CInt(Fields!Cantidad8.Value) = 0, "", CInt(Fields!Cantidad8.Value))</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1563,7 +1518,6 @@
                       <rd:DefaultName>Textbox32</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1597,7 +1551,6 @@
                       <rd:DefaultName>CliModelo</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1640,7 +1593,6 @@ Fields!Cantidad8.Value)</Value>
                       <rd:DefaultName>Textbox35</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1681,7 +1633,6 @@ CDec(Split(Fields!PesoNeto.Value.ToString(),".",2).GetValue(0)
                       </Visibility>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1722,7 +1673,6 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
                       </Visibility>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </Border>
@@ -1765,9 +1715,7 @@ Fields!Cantidad8.Value), Sum, "Tablix1")</Value>
                       <rd:DefaultName>Textbox174</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                          <Width>0.5pt</Width>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1802,9 +1750,7 @@ CDec(Split(Fields!PesoNeto.Value.ToString(),".",2).GetValue(0)
                       <rd:DefaultName>Textbox188</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
-                          <Width>0.5pt</Width>
                         </Border>
                         <TopBorder>
                           <Style>None</Style>
@@ -1812,6 +1758,9 @@ CDec(Split(Fields!PesoNeto.Value.ToString(),".",2).GetValue(0)
                         <BottomBorder>
                           <Style>None</Style>
                         </BottomBorder>
+                        <LeftBorder>
+                          <Width>0.5pt</Width>
+                        </LeftBorder>
                         <RightBorder>
                           <Style>None</Style>
                         </RightBorder>
@@ -1848,9 +1797,7 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
                       <rd:DefaultName>Textbox191</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                          <Width>0.5pt</Width>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1923,7 +1870,6 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
                     <rd:DefaultName>Textbox9</rd:DefaultName>
                     <Style>
                       <Border>
-                        <Color>LightGrey</Color>
                         <Style>Solid</Style>
                         <Width>0.5pt</Width>
                       </Border>
@@ -1976,7 +1922,6 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
                         <rd:DefaultName>Textbox27</rd:DefaultName>
                         <Style>
                           <Border>
-                            <Color>LightGrey</Color>
                             <Style>Solid</Style>
                             <Width>0.5pt</Width>
                           </Border>
@@ -2031,7 +1976,6 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
                         <rd:DefaultName>Paquete</rd:DefaultName>
                         <Style>
                           <Border>
-                            <Color>LightGrey</Color>
                             <Style>Solid</Style>
                             <Width>0.5pt</Width>
                           </Border>
@@ -2069,8 +2013,21 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           </Border>
         </Style>
       </Tablix>
+      <Line Name="Line1">
+        <Top>1.54817cm</Top>
+        <Left>0.15875cm</Left>
+        <Height>0cm</Height>
+        <Width>19.64752cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+            <Width>0.5pt</Width>
+          </Border>
+        </Style>
+      </Line>
     </ReportItems>
-    <Height>0.65685in</Height>
+    <Height>0.69852in</Height>
     <Style />
   </Body>
   <Width>7.93305in</Width>
@@ -2234,7 +2191,6 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           <Width>7.11428cm</Width>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
@@ -2399,19 +2355,12 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
-                  <Color>LightGrey</Color>
                   <Style>Solid</Style>
                   <Width>0.5pt</Width>
                 </Border>
-                <TopBorder>
-                  <Style>None</Style>
-                </TopBorder>
                 <BottomBorder>
                   <Style>None</Style>
                 </BottomBorder>
-                <RightBorder>
-                  <Style>None</Style>
-                </RightBorder>
               </Style>
             </Rectangle>
             <Textbox Name="Textbox8">
@@ -2490,7 +2439,6 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
@@ -2525,13 +2473,9 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
-            <RightBorder>
-              <Style>None</Style>
-            </RightBorder>
             <VerticalAlign>Middle</VerticalAlign>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
@@ -2564,23 +2508,12 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
-              <Style>None</Style>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
             </Border>
-            <TopBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </TopBorder>
-            <BottomBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </BottomBorder>
-            <RightBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </RightBorder>
+            <LeftBorder>
+              <Style>None</Style>
+            </LeftBorder>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -2613,23 +2546,9 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
-              <Style>None</Style>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
             </Border>
-            <TopBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </TopBorder>
-            <BottomBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </BottomBorder>
-            <LeftBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </LeftBorder>
             <VerticalAlign>Middle</VerticalAlign>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
@@ -2638,50 +2557,6 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           </Style>
         </Textbox>
         <Textbox Name="TotalCajas5">
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=First(Fields!Contrato.Value, "dsPackingListCab")</Value>
-                  <Style>
-                    <FontSize>7pt</FontSize>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>TotalCajas</rd:DefaultName>
-          <Top>2.61359cm</Top>
-          <Left>6.27805cm</Left>
-          <Height>0.6cm</Height>
-          <Width>2.58186cm</Width>
-          <ZIndex>5</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <TopBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </TopBorder>
-            <BottomBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </BottomBorder>
-            <VerticalAlign>Middle</VerticalAlign>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="TotalCajas6">
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
             <Paragraph>
@@ -2700,29 +2575,53 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           </Paragraphs>
           <rd:DefaultName>TotalCajas</rd:DefaultName>
           <Top>2.61359cm</Top>
+          <Left>6.27805cm</Left>
+          <Height>0.6cm</Height>
+          <Width>2.58186cm</Width>
+          <ZIndex>5</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
+            </Border>
+            <LeftBorder>
+              <Style>None</Style>
+            </LeftBorder>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="TotalCajas6">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!Contrato.Value, "dsPackingListCab")</Value>
+                  <Style>
+                    <FontSize>7pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>TotalCajas</rd:DefaultName>
+          <Top>2.61359cm</Top>
           <Left>8.85991cm</Left>
           <Height>0.6cm</Height>
           <Width>3.83593cm</Width>
           <ZIndex>6</ZIndex>
           <Style>
             <Border>
-              <Style>None</Style>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
             </Border>
-            <TopBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </TopBorder>
-            <BottomBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </BottomBorder>
-            <RightBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </RightBorder>
             <VerticalAlign>Middle</VerticalAlign>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
@@ -2756,23 +2655,9 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           <ZIndex>7</ZIndex>
           <Style>
             <Border>
-              <Style>None</Style>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
             </Border>
-            <TopBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </TopBorder>
-            <BottomBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </BottomBorder>
-            <LeftBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </LeftBorder>
             <VerticalAlign>Middle</VerticalAlign>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
@@ -2805,23 +2690,12 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           <ZIndex>8</ZIndex>
           <Style>
             <Border>
-              <Style>None</Style>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
             </Border>
-            <TopBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </TopBorder>
-            <BottomBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </BottomBorder>
-            <RightBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </RightBorder>
+            <LeftBorder>
+              <Style>None</Style>
+            </LeftBorder>
             <VerticalAlign>Middle</VerticalAlign>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
@@ -2854,18 +2728,12 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           <ZIndex>9</ZIndex>
           <Style>
             <Border>
-              <Style>None</Style>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
             </Border>
-            <TopBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </TopBorder>
-            <RightBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </RightBorder>
+            <LeftBorder>
+              <Style>None</Style>
+            </LeftBorder>
             <VerticalAlign>Middle</VerticalAlign>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
@@ -2899,23 +2767,9 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           <ZIndex>10</ZIndex>
           <Style>
             <Border>
-              <Style>None</Style>
+              <Style>Solid</Style>
+              <Width>0.5pt</Width>
             </Border>
-            <TopBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </TopBorder>
-            <BottomBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </BottomBorder>
-            <LeftBorder>
-              <Color>LightGrey</Color>
-              <Style>Solid</Style>
-              <Width>0.5pt</Width>
-            </LeftBorder>
             <VerticalAlign>Middle</VerticalAlign>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
@@ -2949,19 +2803,9 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           <ZIndex>11</ZIndex>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
-            <BottomBorder>
-              <Style>None</Style>
-            </BottomBorder>
-            <LeftBorder>
-              <Style>None</Style>
-            </LeftBorder>
-            <RightBorder>
-              <Style>None</Style>
-            </RightBorder>
             <VerticalAlign>Middle</VerticalAlign>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
@@ -2995,7 +2839,6 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           <ZIndex>12</ZIndex>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
@@ -3014,7 +2857,7 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>2.56646cm</Height>
+      <Height>2.22598cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -3044,13 +2887,9 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           <Width>0.9618cm</Width>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
-            <BottomBorder>
-              <Style>None</Style>
-            </BottomBorder>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -3084,13 +2923,9 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
-            <BottomBorder>
-              <Style>None</Style>
-            </BottomBorder>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -3124,13 +2959,9 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
-            <BottomBorder>
-              <Style>None</Style>
-            </BottomBorder>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -3164,7 +2995,6 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
@@ -3201,7 +3031,6 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
@@ -3246,7 +3075,6 @@ Sum(Fields!Cantidad8.Value, "dsPackingListDet"))</Value>
           <ZIndex>5</ZIndex>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
@@ -3282,7 +3110,6 @@ Sum(Fields!Cantidad8.Value, "dsPackingListDet"))</Value>
           <ZIndex>6</ZIndex>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
@@ -3321,7 +3148,6 @@ Sum(Fields!Cantidad8.Value, "dsPackingListDet"))</Value>
           <ZIndex>7</ZIndex>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
@@ -3360,7 +3186,6 @@ Sum(Fields!Cantidad8.Value, "dsPackingListDet"))</Value>
           <ZIndex>8</ZIndex>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
@@ -3396,7 +3221,6 @@ Sum(Fields!Cantidad8.Value, "dsPackingListDet"))</Value>
           <ZIndex>9</ZIndex>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
@@ -3432,7 +3256,6 @@ Sum(Fields!Cantidad8.Value, "dsPackingListDet"))</Value>
           <ZIndex>10</ZIndex>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>
@@ -3481,7 +3304,6 @@ Sum(Fields!Cantidad8.Value, "dsPackingListDet"))</Value>
           <ZIndex>11</ZIndex>
           <Style>
             <Border>
-              <Color>LightGrey</Color>
               <Style>Solid</Style>
               <Width>0.5pt</Width>
             </Border>

@@ -9,6 +9,12 @@ namespace PSIAA.BusinessLogicLayer
 {
     public static class Helper
     {
+        /// <summary>
+        /// Convierte una Lista Genérica a un contenedor de tipo DataTable.
+        /// </summary>
+        /// <typeparam name="T">Parametro de tipo genérico</typeparam>
+        /// <param name="items">Lista de items de tipo genérico a convertir</param>
+        /// <returns></returns>
         public static DataTable ToDataTable<T>(this List<T> items)
         {
             var tb = new DataTable(typeof(T).Name);
@@ -32,6 +38,15 @@ namespace PSIAA.BusinessLogicLayer
             return tb;
         }
 
+        /// <summary>
+        /// Crea una mascara de valores segun la cantidad de caracteres que contenga. Ejemplo:
+        /// Valor: 1234
+        /// Mascara: 000000
+        /// Resultado:001234
+        /// </summary>
+        /// <param name="valor">Valor de mascara</param>
+        /// <param name="mascara">Mascara que cubre al valor</param>
+        /// <returns>Variable de tipo string con el resultado de la máscara.</returns>
         public static string Mascara(int valor, string mascara)
         {
             int largoId = valor.ToString().Trim().Length;

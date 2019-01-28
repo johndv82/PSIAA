@@ -171,7 +171,6 @@ namespace PSIAA.Presentation.View
                 var documentoPagoLibre = new DocumentoPagoLibreDTO
                 {
                     CodProveedor = hidCodProveedor.Value,
-                    //Continuar
                     Orden = txtOrden.Text.ToUpper(),
                     Lote = int.Parse(txtLote.Text),
                     CodOperacion = ddlOperacionesLibres.SelectedValue,

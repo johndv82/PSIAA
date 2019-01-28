@@ -12,7 +12,7 @@ namespace PSIAA.DataAccessLayer.SAP
         private readonly Transactions _trans = new Transactions();
 
         /// <summary>
-        /// Ejecuta un Procedimiento Almacenado en la base de datos SAP para obtener los datos de cabecera del Reporte de Contrato SAP.
+        /// Ejecuta un procedimiento almacenado en la BD para obtener los datos de cabecera del Reporte de Contrato SAP.
         /// </summary>
         /// <param name="nroContrato">Número de Contrato</param>
         /// <returns>Contenedor de datos de tipo DataTable con el resultado del procedimiento.</returns>

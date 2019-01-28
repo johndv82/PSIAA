@@ -12,13 +12,39 @@ namespace PSIAA.BusinessLogicLayer
 {
     public class LanzamientoBLL
     {
-        private LanzamientoDAL _lanzamientoDal = new LanzamientoDAL();
-        private MedidaPorTallaDAL _medidaPorTallaDal = new MedidaPorTallaDAL();
-        private PesosDAL _pesoDal = new PesosDAL();
-        private MaquinaBLL _maquinaBll = new MaquinaBLL();
-        private CategoriaOperacionDAL _categoriaOperDal = new CategoriaOperacionDAL();
-        private AsignacionOrdenesDAL _asignacionOrdenesDal = new AsignacionOrdenesDAL();
+        /// <summary>
+        /// Variable de instancia a la clase LanzamientoDAL.
+        /// </summary>
+        public LanzamientoDAL _lanzamientoDal = new LanzamientoDAL();
+        /// <summary>
+        /// Variable de instancia a la clase MedidaPorTallaDAL.
+        /// </summary>
+        public MedidaPorTallaDAL _medidaPorTallaDal = new MedidaPorTallaDAL();
+        /// <summary>
+        /// Variable de instancia a la clase PesosDAL.
+        /// </summary>
+        public PesosDAL _pesoDal = new PesosDAL();
+        /// <summary>
+        /// Variable de instancia a la clase MaquinaBLL.
+        /// </summary>
+        public MaquinaBLL _maquinaBll = new MaquinaBLL();
+        /// <summary>
+        /// Variable de instancia a la clase CategoriaOperacionDAL.
+        /// </summary>
+        public CategoriaOperacionDAL _categoriaOperDal = new CategoriaOperacionDAL();
+        /// <summary>
+        /// Variable de instancia a la clase AsignacionOrdenesDAL.
+        /// </summary>
+        public AsignacionOrdenesDAL _asignacionOrdenesDal = new AsignacionOrdenesDAL();
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de Cantidades Lanzadas y construye un arreglo con las cantidades,
+        /// en el caso que la cantidad sea nula se le asigna un valor de 0.
+        /// </summary>
+        /// <param name="_contrato">Número de Contrato</param>
+        /// <param name="_modelo">Modelo de prenda</param>
+        /// <param name="_color">Color de Modelo</param>
+        /// <returns>Arreglo de tipo int con las cantidades.</returns>
         public int[] ListarCantidadesLanzadas(int _contrato, string _modelo, string _color)
         {
             int[] cantidades = new int[9];
@@ -30,21 +56,14 @@ namespace PSIAA.BusinessLogicLayer
             return cantidades;
         }
 
-        public string CorrelativoAlfabeticoPorModelo(List<ContratoDetalleDTO> modelosAgrupados, string modelo)
-        {
-            int caracterIni = 65;
-            Dictionary<string, char> Modelos = new Dictionary<string, char>();
-            modelosAgrupados.OrderBy(x => x.ModeloAA);
-            foreach (ContratoDetalleDTO mod in modelosAgrupados)
-            {
-                Modelos.Add(mod.ModeloAA.Trim(), (char)caracterIni);
-                caracterIni++;
-            }
-            char caracterFinal;
-            Modelos.TryGetValue(modelo, out caracterFinal);
-            return caracterFinal.ToString();
-        }
-
+        /// <summary>
+        /// Se genera un nuevo número de lanzamiento, y recorriendo la lista de elemento a lanzar se construye un nuevo objeto
+        /// de tipo LanzamientoDetDTO por cada elemento, generando su orden de producción y número de lote, así como las
+        /// cantidades y kilos calculados. El resultado se almacena un una lista del mismo tipo.
+        /// </summary>
+        /// <param name="_listAlanzar">Lista genérica con los elementos a lanzar.</param>
+        /// <param name="_usuario">Nombre de Usuario</param>
+        /// <returns>Lista genérica de tipo LanzamientoDetDTO con el prelanzamiento.</returns>
         public List<LanzamientoDetDTO> ListarPreLanzamiento(List<AlanzarDTO> _listAlanzar, string _usuario)
         {
             //TEST PESOS POR PIEZA
@@ -97,29 +116,29 @@ namespace PSIAA.BusinessLogicLayer
                         cantidadFilasEnteras = 1;
                     }
 
-                    int valorAIngresar = 0;
+                    int valorAingresar = 0;
                     int limiteAlmacenado = 0;
                     int lote = 1;
                     if (_alanzar.Cantidades[c] < limite)
                     {
-                        valorAIngresar = _alanzar.Cantidades[c];
+                        valorAingresar = _alanzar.Cantidades[c];
                     }
                     else
                     {
-                        valorAIngresar = limite;
+                        valorAingresar = limite;
                     }
 
                     for (int l = 1; l <= cantidadFilasEnteras; l++)
                     {
                         int[] _nuevasCantidades = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-                        _nuevasCantidades[c] = valorAIngresar;
-                        limiteAlmacenado += valorAIngresar;
+                        _nuevasCantidades[c] = valorAingresar;
+                        limiteAlmacenado += valorAingresar;
 
                         if (limiteAlmacenado > capacidad)
                         {
                             correlativoOrden++;
                             lote = 1;
-                            limiteAlmacenado = valorAIngresar;
+                            limiteAlmacenado = valorAingresar;
                         }
 
                         LanzamientoDetDTO lanz = new LanzamientoDetDTO();
@@ -149,13 +168,13 @@ namespace PSIAA.BusinessLogicLayer
                         if ((resto != 0) && (l == cantidadFilasEnteras))
                         {
                             cantidadFilasEnteras++;
-                            valorAIngresar = resto;
+                            valorAingresar = resto;
                             resto = 0;
                             continue;
                         }
                         else
                         {
-                            valorAIngresar = limite;
+                            valorAingresar = limite;
                         }
                     }
                     correlativoOrden++;
@@ -310,11 +329,18 @@ namespace PSIAA.BusinessLogicLayer
             }
         }
 
-        //Metodo usado para calculo de materia prima(Abastecimiento)
-        public decimal CalcularKilosNecesarios(ContratoDetalleDTO _contratoDetalle, int[] cantAlanzar)
+        /// <summary>
+        /// Ejecuta un procedimiento de cálculo para hallar el peso correcto por cada modelo/color a lanzar. Este
+        /// proceso es usado por el área de Abastecimiento para el cálculo de materia prima.
+        /// </summary>
+        /// <param name="_contratoDetalle">Objeto de tipo ContratoDetalleDTO con el detalle del contrato</param>
+        /// <returns>Variable de tipo decimal con el peso en kilos del contrato.</returns>
+        public decimal CalcularKilosPorContrato(ContratoDetalleDTO _contratoDetalle)
         {
             decimal kilosNecesarios = 0;
             string modelo = _contratoDetalle.ModeloAA;
+            int[] cantAlanzar = _contratoDetalle.Cantidades;
+
             for (int x = 0; x < cantAlanzar.Length; x++)
             {
                 string talla = _contratoDetalle.Tallas[x];
@@ -328,7 +354,13 @@ namespace PSIAA.BusinessLogicLayer
         }
 
         //Metodo usado para calcular el peso base(1 unidad) para Lanzamiento(Planificacion)
-        public Dictionary<string, decimal> CalcularPesosBase(ContratoDetalleDTO _contratoDetalle)
+        /// <summary>
+        /// Ejecuta un procedimiento de cálculo para hallar el peso base en tallas por unidad de un contrato. Este proceso
+        /// es usado por el área de Planificación para el lanzamiento de prendas.
+        /// </summary>
+        /// <param name="_contratoDetalle">Objeto de tipo ContratoDetalleDTO con el detalle del contrato</param>
+        /// <returns>Diccionario de tipo (string, decimal) con los pesos por talla.</returns>
+        public Dictionary<string, decimal> CalcularPesosBasePorContratoTalla(ContratoDetalleDTO _contratoDetalle)
         {
             Dictionary<string, decimal> dicKilos = new Dictionary<string, decimal>();
             string modelo = _contratoDetalle.ModeloAA;
@@ -343,6 +375,11 @@ namespace PSIAA.BusinessLogicLayer
             return dicKilos;
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de categorías de operaciones, y a partir del resultado se extrae el código y la denominación
+        /// de la operación.
+        /// </summary>
+        /// <returns>Diccionario de tipo (int, string) con las códigos y nombres de operaciones.</returns>
         public Dictionary<int, string> ListarCategoriasOperaciones()
         {
             Dictionary<int, string> dicCategoriaOper = new Dictionary<int, string>();
@@ -355,12 +392,26 @@ namespace PSIAA.BusinessLogicLayer
             return dicCategoriaOper;
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento DAL de proveedores, y retorna el resultado.
+        /// </summary>
+        /// <returns>Contenedor de tipo DataTable con los datos de proveedores.</returns>
         public DataTable ListarProveedores()
         {
             ProveedorDAL _provDal = new ProveedorDAL();
             return _provDal.SelectProveedores();
         }
 
+        /// <summary>
+        /// Recorre el detalle de lanzamiento para ejecutar el procedimiento DAL de Insert Lanzamiento Detalle.
+        /// Agrupa el detalle de lanzamiento para generar una lista de tipo LanzamientoCabDTO, para recorrerla junto al
+        /// compuesto de lanzamiento en el caso haya datos, e ir llamando al procedimiento DAL de Insert Lanzamiento Compuesto
+        /// por cada objeto de tipo LanzamientoCompDTO creado.
+        /// </summary>
+        /// <param name="listLanzamientoDet">Lista genérica de tipo LanzamientoDetDTO con el detalle del lanzamiento</param>
+        /// <param name="listMaterialPorColor">Lista genérica de tipo MaterialPorColorDTO con el compuesto del lanzamiento</param>
+        /// <param name="_user">Nombre de Usuario</param>
+        /// <returns>Variable de tipo int con el conteo de ingresos realizados.</returns>
         public int IngresarLanzamiento(List<LanzamientoDetDTO> listLanzamientoDet, List<MaterialPorColorDTO> listMaterialPorColor, string _user)
         {
             int nroRegistros = 0;
@@ -445,7 +496,7 @@ namespace PSIAA.BusinessLogicLayer
                             HoraIngreso = item.HoraIngreso,
                             CodProductoSolicitado = item.CodProducto,
                             Porcentaje = matCol.Porcentaje,
-                            Kilos = Math.Round(calculoKilos, 2)
+                            Kilos = Math.Round(calculoKilos, 6)
                         };
                         //Insertar Lanzamiento Compuesto en BD
                         _lanzamientoDal.InsertLanzamientoComp(lanzComp);
@@ -456,20 +507,12 @@ namespace PSIAA.BusinessLogicLayer
             return nroRegistros;
         }
 
-        public AsignacionOrdenDetDTO AsignacionOrdenDet(LanzamientoDetDTO lanzDet, DateTime fechaRetorno,
-                                                        int codCatOper, string nroAsignacion,
-                                                        string codProveedor, bool todasOperaciones)
-        {
-            var _asigOrdenDet = new AsignacionOrdenDetDTO()
-            {
-                CodCatOperacion = codCatOper,
-                NroAsignacion = nroAsignacion,
-                Orden = lanzDet.Orden,
-                Lote = lanzDet.Lote
-            };
-            return _asigOrdenDet;
-        }
-
+        /// <summary>
+        /// Agrupa el detalle del contrato por Modelo y Linea de producción, y recorre el resultado para hallar el índice
+        /// del correlativo alfabético para la generación de la orden de producción.
+        /// </summary>
+        /// <param name="listContrato">Lista genérica de tipo ContratoDetalleDTO con el detalle del contrato</param>
+        /// <returns>Diccionario de tipo (string, char) con el listado de modelos y su respectivo índice alfabético.</returns>
         public Dictionary<string, char> ModelosCorrelativoPorMaquina(List<ContratoDetalleDTO> listContrato)
         {
             Dictionary<string, char> modelosCorr = new Dictionary<string, char>();

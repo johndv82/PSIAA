@@ -10,6 +10,11 @@ namespace PSIAA.BusinessLogicLayer
 {
     public class ListXml
     {
+        /// <summary>
+        /// Crea un archivo XML con el Listado de Almacen, en la siquiente ruta del servidor: C:\inetpub\wwwroot\PSIAA\
+        /// </summary>
+        /// <param name="alm">Objeto de tipo AlmacenDTO</param>
+        /// <param name="_user">Nombre de usuario</param>
         public void AgregarAlmacenToXML(AlmacenDTO alm, string _user)
         {
             XDocument miXML = new XDocument();
@@ -50,6 +55,12 @@ namespace PSIAA.BusinessLogicLayer
             miXML.Save(_ruta);
         }
 
+        /// <summary>
+        /// Crea un archivo XML con el Listado de Recepción por Punto de Control, en la siquiente ruta del 
+        /// servidor: C:\inetpub\wwwroot\PSIAA\
+        /// </summary>
+        /// <param name="rec">Objeto de tipo RecepcionControlDTO</param>
+        /// <param name="_user">Nombre de Usuario</param>
         public void AgregarRecepcionControlToXML(RecepcionControlDTO rec, string _user)
         {
             XDocument miXML = new XDocument();
@@ -98,6 +109,12 @@ namespace PSIAA.BusinessLogicLayer
             miXML.Save(_ruta);
         }
 
+        /// <summary>
+        /// Convierte un archivo XML con el Listado de Almacen que se encuentra en el servidor, a un listado de objetos de tipo
+        /// AlmacenDTO, en el caso hubiera un error, retorna un objeto vacío.
+        /// </summary>
+        /// <param name="_user">Nombre de Usuario</param>
+        /// <returns>Lista genérica de tipo AlmacenDTO con el listado convertido.</returns>
         public List<AlmacenDTO> ConvertXmlToListAlmacen(string _user)
         {
             List<AlmacenDTO> items = new List<AlmacenDTO>();
@@ -134,6 +151,12 @@ namespace PSIAA.BusinessLogicLayer
             }
         }
 
+        /// <summary>
+        /// Convierte un archivo XML con el Listado de Recepción por Punto de Control que se encuentra en el servidor, 
+        /// a un listado de objetos de tipo RecepcionControlDTO, en el caso hubiera un error, retorna un objeto vacío.
+        /// </summary>
+        /// <param name="_user"></param>
+        /// <returns>Lista genérica de tipo RecepcionControlDTO con el listado convertido.</returns>
         public List<RecepcionControlDTO> ConvertXmlToListRecepcionControl(string _user)
         {
             List<RecepcionControlDTO> items = new List<RecepcionControlDTO>();
@@ -209,6 +232,11 @@ namespace PSIAA.BusinessLogicLayer
             return _piezas;
         }
 
+        /// <summary>
+        /// Elimina los archivos XML de Listado Almacen y Listado Rercepcion, del servidor. Este proceso se ejecuta 
+        /// normalmente luego haber realizado el ingreso a la BD.
+        /// </summary>
+        /// <param name="_user">Nombre de Usuario</param>
         public void LimpiarArchivosXml(string _user)
         {
             //LIMPIAR XMLS
@@ -225,6 +253,12 @@ namespace PSIAA.BusinessLogicLayer
             }
         }
 
+        /// <summary>
+        /// Busca un ingreso por Orden y Lote, en el archivo XML de Listado de Almacén, y lo remueve de su colección.
+        /// </summary>
+        /// <param name="_orden">Orden de Producción</param>
+        /// <param name="_lote">Número de Lote</param>
+        /// <param name="_user">Nombre de Usuario</param>
         public void EliminarXmlAlmacen(string _orden, string _lote, string _user) {
             string _rutaAlmacen = @"C:\inetpub\wwwroot\PSIAA\ListadoAlmacenDTO_" + _user + ".xml";
 
@@ -239,6 +273,12 @@ namespace PSIAA.BusinessLogicLayer
             xmlAlmacen.Save(_rutaAlmacen);
         }
 
+        /// <summary>
+        /// Busca un ingreso por Orden y Lote, en el archivo XML de Listado de Recepción, y lo remueve de su colección.
+        /// </summary>
+        /// <param name="_orden">Orden de Producción</param>
+        /// <param name="_lote">Número de Lote</param>
+        /// <param name="_user">Nombre de Usuario</param>
         public void EliminarXmlRecepcion(string _orden, int _lote, string _user) {
             string _rutaRecepcion = @"C:\inetpub\wwwroot\PSIAA\ListadoRecepcionControlDTO_" + _user + ".xml";
 

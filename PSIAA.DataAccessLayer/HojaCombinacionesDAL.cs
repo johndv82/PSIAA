@@ -11,9 +11,18 @@ namespace PSIAA.DataAccessLayer
 {
     public class HojaCombinacionesDAL
     {
-        private Transactions _trans = new Transactions();
-        //private PostgreSQL.TransactionsODOO _transOdoo = new PostgreSQL.TransactionsODOO();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión BD).
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener los porcentajes, material, y titulos de cada color combinado.
+        /// </summary>
+        /// <param name="familia">Grupo Familiar del Modelo</param>
+        /// <param name="correlativo">Correlativo del Modelo</param>
+        /// <param name="combinacion">Código de Combinación</param>
+        /// <returns>Contenedor de tipo DataTable con el resultado de la consulta.</returns>
         public DataTable SelectColoresPorcentajes(string familia, int correlativo, short combinacion) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -96,6 +105,12 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta una consulta de selección a la base de datos para obtener el material, titulo y color de un modelo.
+        /// </summary>
+        /// <param name="familia">Grupo Familiar del Modelo</param>
+        /// <param name="correlativo">Correlativo del Modelo</param>
+        /// <returns>Contenedor de datos de tipo DataTable con el resultado de la consulta.</returns>
         public DataTable SelectMaterialUnSoloColor(string familia, int correlativo) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -140,6 +155,11 @@ namespace PSIAA.DataAccessLayer
             return _trans.ReadingQuery(query, _sqlParam);
         }
 
+        /// <summary>
+        /// Ejecuta un procedimiento almacenado en la BD, para la corrección de colores SIAA.
+        /// </summary>
+        /// <param name="contrato">Número de Contrato</param>
+        /// <returns>Contenedor de tipo DataTable con los colores corregidos.</returns>
         public DataTable CorreccionColoresSiaa(int contrato) {
             List<SqlParameter> _procedureParam = new List<SqlParameter>();
             _procedureParam.Add(new SqlParameter("@contrato", SqlDbType.Int) { Value = contrato });

@@ -10,8 +10,16 @@ namespace PSIAA.DataAccessLayer
 {
     public class DocumentoPagoTallerDAL
     {
-        private Transactions _trans = new Transactions();
+        /// <summary>
+        /// Variable de instancia a la clase Transactions (Conexión BD).
+        /// </summary>
+        public Transactions _trans = new Transactions();
 
+        /// <summary>
+        /// Ejecuta una consulta de inserción a la tabla Doc_pago_taller_asig.
+        /// </summary>
+        /// <param name="_docPagoTaller">Objeto de tipo DocumentoPagoTallerDTO</param>
+        /// <returns>Variable de tipo int con la cantidad de registros ingresados.</returns>
         public int InsertDocumentoPagoTaller(DocumentoPagoTallerDTO _docPagoTaller) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
 
@@ -42,68 +50,6 @@ namespace PSIAA.DataAccessLayer
             _sqlParam.Add(new SqlParameter("@categoria", SqlDbType.Int) { Value = _docPagoTaller.Categoria });
             _sqlParam.Add(new SqlParameter("@codproceso", SqlDbType.Int) { Value = _docPagoTaller.CodProceso });
             return _trans.ExecuteQuery(query, _sqlParam);
-        }
-
-        public string SelectUltimoNumeroDocumentoPagoTaller(string _codProveedor, int _serie, string _tipoMov) {
-            List<SqlParameter> _sqlParam = new List<SqlParameter>();
-
-            string query = @"
-                select 
-	                top 1 * 
-                from (
-	                select 
-		                nro_documento 
-	                from Doc_pago_taller_asig 
-	                where cod_proveedor = @codproveedor
-                        and serie_documento =  @serie
-		                and tipo_movimiento = @tipomovimiento
-	                group by nro_documento
-                union
-	                select 
-		                nro_documento 
-	                from Doc_pago_taller_libre 
-	                where cod_proveedor = @codproveedor
-                        and serie_documento = @serie
-		                and tipo_movimiento = @tipomovimiento
-	                group by nro_documento
-                ) as base
-                order by base.nro_documento desc";
-
-            _sqlParam.Add(new SqlParameter("@codproveedor", SqlDbType.VarChar) { Value = _codProveedor });
-            _sqlParam.Add(new SqlParameter("@serie", SqlDbType.Int) { Value = _serie });
-            _sqlParam.Add(new SqlParameter("@tipomovimiento", SqlDbType.VarChar) { Value = _tipoMov });
-            return _trans.ReadingEscalarQuery(query, _sqlParam);
-        }
-
-        public string SelectNumeroDocumento(string _codProveedor, int _serie, string _tipoMov, int _nroDoc) {
-            List<SqlParameter> _sqlParam = new List<SqlParameter>();
-            string query = @"
-                select 
-	                base.nro_documento
-                from (
-                select 
-	                nro_documento
-                from Doc_pago_taller_asig 
-	                where cod_proveedor = @codproveedor 
-	                and tipo_movimiento = @tipomovimiento 
-	                and serie_documento = @serie
-                group by nro_documento
-                union
-                select
-	                nro_documento
-                from Doc_pago_taller_libre
-		                where cod_proveedor = @codproveedor 
-	                and tipo_movimiento = @tipomovimiento 
-	                and serie_documento = @serie
-                group by nro_documento
-                ) as base
-                where base.nro_documento = @documento";
-
-            _sqlParam.Add(new SqlParameter("@codproveedor", SqlDbType.VarChar) { Value = _codProveedor });
-            _sqlParam.Add(new SqlParameter("@tipomovimiento", SqlDbType.VarChar) { Value = _tipoMov });
-            _sqlParam.Add(new SqlParameter("@serie", SqlDbType.Int) { Value = _serie });
-            _sqlParam.Add(new SqlParameter("@documento", SqlDbType.Int) { Value = _nroDoc });
-            return _trans.ReadingEscalarQuery(query, _sqlParam);
         }
     }
 }

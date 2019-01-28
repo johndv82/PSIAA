@@ -15,10 +15,10 @@ namespace PSIAA.BusinessLogicLayer.SAP
         public readonly BalanceMpDAL _balanceMpDal = new BalanceMpDAL();
 
         /// <summary>
-        /// Ejecuta un procedimiento DAL de Balance de Materia Prima. 
+        /// Ejecuta un procedimiento DAL de Balance de Materia Prima, y lo retorna.
         /// </summary>
         /// <param name="contrato">Número de Contrato</param>
-        /// <returns>Contenedor de datos de tipo DataTable con el Balance de Materia Prima.</returns>
+        /// <returns>Contenedor de tipo DataTable con los datos de retorno.</returns>
         public DataTable ReporteBalanceMateriaPrima(string contrato)
         {
             return _balanceMpDal.SelectRepBalanceMateriaPrima(contrato);
