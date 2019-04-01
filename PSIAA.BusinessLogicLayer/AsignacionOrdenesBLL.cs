@@ -141,7 +141,7 @@ namespace PSIAA.BusinessLogicLayer
         /// <param name="codProv">Código de Proveedor</param>
         /// <param name="catOperacion">Categoria de Operación</param>
         /// <param name="numAsignacion">Número de Asignación</param>
-        /// <param name="moneda">Moenda (S/D)</param>
+        /// <param name="moneda">Moneda (S/D)</param>
         /// <param name="fechaAprob">Fecha de Aprobación</param>
         /// <param name="usuarioAprob">Usuario de Aprobación</param>
         /// <param name="aprobado">Aprobación (SI/NO)</param>

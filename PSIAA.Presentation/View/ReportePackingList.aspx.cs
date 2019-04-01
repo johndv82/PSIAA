@@ -47,7 +47,7 @@ namespace PSIAA.Presentation.View
                 documentoEntry = _packingListBll.BuscarDocumentoEntry(txtTipo.Text, txtSerie.Text, txtCorrelativo.Text);
                 lblDocEntry.Text = documentoEntry.ToString();
                 DataRow drCabecera = _packingListBll.PackingListCabecera(documentoEntry);
-                DataTable dtDetalle = _packingListBll.PackingListDetalle(documentoEntry);
+                DataTable dtDetalle = MascaraCuadrosBlancoPorPagina(_packingListBll.PackingListDetalle(documentoEntry));
                 if (drCabecera != null && dtDetalle.Rows.Count > 0)
                 {
                     ReportDataSource rdsCabecera = new ReportDataSource();
@@ -112,6 +112,77 @@ namespace PSIAA.Presentation.View
                 Console.WriteLine(exc);
                 return string.Empty;
             }
+        }
+
+        private DataTable MascaraCuadrosBlancoPorPagina(DataTable dtPackingListDetalle) {
+            int nroFilasPagina = 57;
+            int nroFilasPorAgregar = 0;
+            int nroAgrupados = (from dt in dtPackingListDetalle.AsEnumerable()
+                               group dt by new
+                               {
+                                   talla0 = dt.Field<string>("Talla0"),
+                                   talla1 = dt.Field<string>("Talla1"),
+                                   talla2 = dt.Field<string>("Talla2"),
+                                   talla3 = dt.Field<string>("Talla3"),
+                                   talla4 = dt.Field<string>("Talla4"),
+                                   talla5 = dt.Field<string>("Talla5"),
+                                   talla6 = dt.Field<string>("Talla6"),
+                                   talla7 = dt.Field<string>("Talla7"),
+                                   talla8 = dt.Field<string>("Talla8")
+                               }
+                               into grupo
+                               select new
+                               {
+                                   Talla0 = grupo.Key.talla0,
+                                   Talla1 = grupo.Key.talla1,
+                                   Talla2 = grupo.Key.talla2,
+                                   Talla3 = grupo.Key.talla3,
+                                   Talla4 = grupo.Key.talla4,
+                                   Talla5 = grupo.Key.talla5,
+                                   Talla6 = grupo.Key.talla6,
+                                   Talla7 = grupo.Key.talla7,
+                                   Talla8 = grupo.Key.talla8
+                               }).ToList().Count;
+
+            int nroFilasDetalle = dtPackingListDetalle.Rows.Count;
+
+            if ((nroFilasDetalle + nroAgrupados) < nroFilasPagina) {
+                nroFilasPorAgregar = nroFilasPagina - (nroFilasDetalle + nroAgrupados);
+            }
+            else{
+                int nroPaginas = (nroFilasDetalle + nroAgrupados) / nroFilasPagina;
+                int capacidad = (nroPaginas + 1) * nroFilasPagina;
+                nroFilasPorAgregar = capacidad - (nroFilasDetalle + nroAgrupados);
+            }
+
+            //Restar uno para el ultimo grupo de Z.
+            nroFilasPorAgregar = nroFilasPorAgregar - 1;
+
+            //Agregar Filas en Blanco
+
+            for (int x = 1; x <= nroFilasPorAgregar; x++) {
+                DataRow nuevaFila = dtPackingListDetalle.NewRow();
+                for (int i = 0; i < nuevaFila.ItemArray.Length; i++)
+                {
+                    if (dtPackingListDetalle.Columns[i].DataType == Type.GetType("System.Int16") ||
+                        dtPackingListDetalle.Columns[i].DataType == Type.GetType("System.Int32"))
+                    {
+                        nuevaFila[i] = 0;
+                    }
+                    else if (dtPackingListDetalle.Columns[i].DataType == Type.GetType("System.Decimal"))
+                    {
+                        nuevaFila[i] = 0.0;
+                    }
+                    else {
+                        nuevaFila[i] = "ZZ";
+                    }
+                    nuevaFila["Paquete"] = 999;
+                    nuevaFila["PesoNeto"] = "00.00";
+                    nuevaFila["PesoBruto"] = "00.00";
+                }
+                dtPackingListDetalle.Rows.Add(nuevaFila);
+            }
+            return dtPackingListDetalle;
         }
     }
 }

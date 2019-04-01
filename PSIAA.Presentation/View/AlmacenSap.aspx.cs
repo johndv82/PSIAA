@@ -14,9 +14,24 @@ namespace PSIAA.Presentation.View
 {
     public partial class AlmacenSap : System.Web.UI.Page
     {
-        private OitwSapBLL _oitwSalBll = new OitwSapBLL();
+        /// <summary>
+        /// Variable de instancia a la clase OitwSapBLL.
+        /// </summary>
+        public OitwSapBLL _oitwSalBll = new OitwSapBLL();
+        /// <summary>
+        /// Variable publica para almacenar el usuario logueado.
+        /// </summary>
         public string usuarioActual = string.Empty;
 
+        /// <summary>
+        /// Evento de carga principal del formulario AlmacenSap.aspx
+        /// </summary>
+        /// <remarks>
+        /// En este evento se evalúa la existencia de la sesión del usuario y tambien capturamos su valor en una variable publica,
+        /// para su posterior uso.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["usuario"] != null)
@@ -35,6 +50,15 @@ namespace PSIAA.Presentation.View
             }
         }
 
+        /// <summary>
+        /// Evento de Cambio de Indice de Página de la grilla gridAlmacenSap.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se obtiene el Listado de Articulos SAP desde una variable Session, y se carga la grilla de gridAlmacenSap.
+        /// Establece un índice de pagina actual en la grilla de gridAlmacenSap.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void gridAlmacenSap_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gridAlmacenSap.DataSource = Session["ListaArticulos"] as DataTable;
@@ -42,6 +66,16 @@ namespace PSIAA.Presentation.View
             gridAlmacenSap.DataBind();
         }
 
+        /// <summary>
+        /// Evento Click del botón btnBuscar.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se ejecuta el procedimiento BLL de Listar Articulos SAP enviando sus parametros requeridos, y el resultado
+        /// es cargado en una variable Session para luego usar éste, como fuente de la grilla gridAlmacenSap. En el caso el procedimiento
+        /// devuelva vacío no se cargará la grilla.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             DataTable dtArticulos = _oitwSalBll.ListarArticulosSap(txtArticulo.Text, chkStockCero.Checked, txtCodigo.Text);
@@ -55,7 +89,7 @@ namespace PSIAA.Presentation.View
             }
         }
 
-        public MemoryStream GetStream(XLWorkbook excelWorkbook)
+        private MemoryStream GetStream(XLWorkbook excelWorkbook)
         {
             MemoryStream fs = new MemoryStream();
             excelWorkbook.SaveAs(fs);
@@ -63,6 +97,15 @@ namespace PSIAA.Presentation.View
             return fs;
         }
 
+        /// <summary>
+        /// Evento Click del botón btnExportar.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se carga los datos de Session de Articulos SAP en un contenedor para luego, usando la libreria ClosedXML,
+        /// exportarlo en un formato Excel(.xlsx), con sus cabeceras respectivas.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnExportar_Click(object sender, EventArgs e)
         {
             var workbook = new XLWorkbook();

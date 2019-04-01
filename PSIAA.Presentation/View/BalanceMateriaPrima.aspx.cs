@@ -16,7 +16,7 @@ namespace PSIAA.Presentation.View
     {
         public string usuarioActual = string.Empty;
         private readonly BalanceMpBLL _balanceMpBll = new BalanceMpBLL();
-        private decimal[] totalAvance = new decimal[] { 0, 0, 0, 0, 0, 0 };
+        private decimal[] totalAvance = new decimal[] { 0, 0, 0, 0, 0, 0, 0 };
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -72,27 +72,31 @@ namespace PSIAA.Presentation.View
 
             //CABECERAS
             worksheet.Cell("B2").Value = "ORDEN";
-            worksheet.Cell("C2").Value = "PRODUCTO";
-            worksheet.Cell("D2").Value = "ENTREGADO";
-            worksheet.Cell("E2").Value = "DEVUELTO";
-            worksheet.Cell("F2").Value = "ALMACEN 29";
-            worksheet.Cell("G2").Value = "UTILIZADO";
-            worksheet.Cell("H2").Value = "MATERIA PRIMA";
-            worksheet.Cell("I2").Value = "SALDO";
-            worksheet.Cell("J2").Value = "COD. TALLER";
-            worksheet.Cell("K2").Value = "TALLER";
+            worksheet.Cell("C2").Value = "MODELO";
+            worksheet.Cell("D2").Value = "PRODUCTO";
+            worksheet.Cell("E2").Value = "DESTINO";
+            worksheet.Cell("F2").Value = "ENTREGADO";
+            worksheet.Cell("G2").Value = "DEVUELTO";
+            worksheet.Cell("H2").Value = "ALMACEN 29";
+            worksheet.Cell("I2").Value = "ALMACEN 11";
+            worksheet.Cell("J2").Value = "UTILIZADO";
+            worksheet.Cell("K2").Value = "MATERIA PRIMA";
+            worksheet.Cell("L2").Value = "SALDO";
+            worksheet.Cell("M2").Value = "COD. TALLER";
+            worksheet.Cell("N2").Value = "TALLER";
 
             DataTable dt = (DataTable)Session["dtBalanceMP"];
             worksheet.Cell("B3").InsertData(dt.AsEnumerable());
             int filasTabla = dt.Rows.Count + 2;
 
-            var rngTable = worksheet.Range("B2:K" + filasTabla);
+            var rngTable = worksheet.Range("B2:N" + filasTabla);
 
             var table = rngTable.CreateTable();
             table.ShowTotalsRow = true;
             table.Field("ENTREGADO").TotalsRowFunction = XLTotalsRowFunction.Sum;
             table.Field("DEVUELTO").TotalsRowFunction = XLTotalsRowFunction.Sum;
             table.Field("ALMACEN 29").TotalsRowFunction = XLTotalsRowFunction.Sum;
+            table.Field("ALMACEN 11").TotalsRowFunction = XLTotalsRowFunction.Sum;
             table.Field("UTILIZADO").TotalsRowFunction = XLTotalsRowFunction.Sum;
             table.Field("MATERIA PRIMA").TotalsRowFunction = XLTotalsRowFunction.Sum;
             table.Field("SALDO").TotalsRowFunction = XLTotalsRowFunction.Sum;
@@ -118,21 +122,23 @@ namespace PSIAA.Presentation.View
         {
             if ((e.Row.RowType == DataControlRowType.DataRow) && (e.Row.RowType != DataControlRowType.EmptyDataRow))
             {
-                totalAvance[0] += e.Row.Cells[2].Text == "" ? 0 : decimal.Parse(e.Row.Cells[2].Text);
-                totalAvance[1] += e.Row.Cells[3].Text == "" ? 0 : decimal.Parse(e.Row.Cells[3].Text);
-                totalAvance[2] += e.Row.Cells[4].Text == "" ? 0 : decimal.Parse(e.Row.Cells[4].Text);
-                totalAvance[3] += e.Row.Cells[5].Text == "" ? 0 : decimal.Parse(e.Row.Cells[5].Text);
-                totalAvance[4] += e.Row.Cells[6].Text == "" ? 0 : decimal.Parse(e.Row.Cells[6].Text);
-                totalAvance[5] += e.Row.Cells[7].Text == "" ? 0 : decimal.Parse(e.Row.Cells[7].Text);
+                totalAvance[0] += e.Row.Cells[4].Text == "" ? 0 : decimal.Parse(e.Row.Cells[4].Text);
+                totalAvance[1] += e.Row.Cells[5].Text == "" ? 0 : decimal.Parse(e.Row.Cells[5].Text);
+                totalAvance[2] += e.Row.Cells[6].Text == "" ? 0 : decimal.Parse(e.Row.Cells[6].Text);
+                totalAvance[3] += e.Row.Cells[7].Text == "" ? 0 : decimal.Parse(e.Row.Cells[7].Text);
+                totalAvance[4] += e.Row.Cells[8].Text == "" ? 0 : decimal.Parse(e.Row.Cells[8].Text);
+                totalAvance[5] += e.Row.Cells[9].Text == "" ? 0 : decimal.Parse(e.Row.Cells[9].Text);
+                totalAvance[6] += e.Row.Cells[10].Text == "" ? 0 : decimal.Parse(e.Row.Cells[10].Text);
             }
             if (e.Row.RowType == DataControlRowType.Footer)
             {
-                e.Row.Cells[2].Text = totalAvance[0].ToString("0.000");
-                e.Row.Cells[3].Text = totalAvance[1].ToString("0.000");
-                e.Row.Cells[4].Text = totalAvance[2].ToString("0.000");
-                e.Row.Cells[5].Text = totalAvance[3].ToString("0.000");
-                e.Row.Cells[6].Text = totalAvance[4].ToString("0.000");
-                e.Row.Cells[7].Text = totalAvance[5].ToString("0.000");
+                e.Row.Cells[4].Text = totalAvance[0].ToString("0.000");
+                e.Row.Cells[5].Text = totalAvance[1].ToString("0.000");
+                e.Row.Cells[6].Text = totalAvance[2].ToString("0.000");
+                e.Row.Cells[7].Text = totalAvance[3].ToString("0.000");
+                e.Row.Cells[8].Text = totalAvance[4].ToString("0.000");
+                e.Row.Cells[9].Text = totalAvance[5].ToString("0.000");
+                e.Row.Cells[10].Text = totalAvance[6].ToString("0.000");
                 e.Row.Font.Bold = true;
                 e.Row.Font.Size = FontUnit.Medium;
             }

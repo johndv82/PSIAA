@@ -65,15 +65,18 @@
                                                     ShowFooter="true"
                                                     OnRowDataBound="gridBalanceMP_RowDataBound">
                                                     <Columns>
-                                                        <asp:BoundField DataField="OrdenProd" HeaderText="Orden" ItemStyle-Width="8%" />
-                                                        <asp:BoundField DataField="CodProducto" HeaderText="Producto" ItemStyle-Width="20%" />
-                                                        <asp:BoundField DataField="Entregado" HeaderText="Entregado" DataFormatString="{0:F3}" ItemStyle-Width="7%" />
-                                                        <asp:BoundField DataField="Devuelto" HeaderText="Devuelto" DataFormatString="{0:F3}" ItemStyle-Width="7%" />
-                                                        <asp:BoundField DataField="Almacen29" HeaderText="Almacen29" DataFormatString="{0:F3}" ItemStyle-Width="7%" />
-                                                        <asp:BoundField DataField="Utilizado" HeaderText="Utilizado" DataFormatString="{0:F3}" ItemStyle-Width="7%" />
-                                                        <asp:BoundField DataField="MateriaPrima" HeaderText="M. Prima" DataFormatString="{0:F3}" ItemStyle-Width="7%" />
-                                                        <asp:BoundField DataField="Saldo" HeaderText="Saldo" DataFormatString="{0:F3}" ItemStyle-Width="7%" />
-                                                        <asp:BoundField DataField="taller" HeaderText="Taller" ItemStyle-Width="30%" />
+                                                        <asp:BoundField DataField="Orden" HeaderText="Orden" ItemStyle-Width="8%" />
+                                                        <asp:BoundField DataField="modelo" HeaderText="Modelo" ItemStyle-Width="8%" />
+                                                        <asp:BoundField DataField="CodProducto" HeaderText="Producto" ItemStyle-Width="10%" />
+                                                        <asp:BoundField DataField="Destino" HeaderText="Destino" ItemStyle-Width="16%" />
+                                                        <asp:BoundField DataField="Entregado" HeaderText="Entregado" DataFormatString="{0:F3}" ItemStyle-Width="6%" />
+                                                        <asp:BoundField DataField="Devuelto" HeaderText="Devuelto" DataFormatString="{0:F3}" ItemStyle-Width="6%" />
+                                                        <asp:BoundField DataField="Almacen29" HeaderText="Almacen29" DataFormatString="{0:F3}" ItemStyle-Width="6%" />
+                                                        <asp:BoundField DataField="Almacen11" HeaderText="Devoluciones Alm. 11" DataFormatString="{0:F3}" ItemStyle-Width="6%" />
+                                                        <asp:BoundField DataField="Utilizado" HeaderText="Utilizado" DataFormatString="{0:F3}" ItemStyle-Width="6%" />
+                                                        <asp:BoundField DataField="MateriaPrima" HeaderText="M. Prima" DataFormatString="{0:F3}" ItemStyle-Width="6%" />
+                                                        <asp:BoundField DataField="Saldo" HeaderText="Saldo" DataFormatString="{0:F3}" ItemStyle-Width="6%" />
+                                                        <asp:BoundField DataField="taller" HeaderText="Taller" ItemStyle-Width="16%" />
                                                     </Columns>
                                                 </asp:GridView>
                                             </div>

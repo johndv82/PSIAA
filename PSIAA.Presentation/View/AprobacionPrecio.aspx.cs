@@ -65,7 +65,7 @@ namespace PSIAA.Presentation.View
         /// Evento Click del botón btnBuscarPorNombre
         /// </summary>
         /// <remarks>
-        /// Llama al método BLL de Listar Proveedores y el resultado lo carga en una variable de Sesión 
+        /// Llama al método BLL de Listar Proveedores y el resultado lo carga en una variable Session 
         /// con el nombre de: ListadoProveedores, y en el source de la grilla gridProveedores.
         /// </remarks>
         /// <param name="sender">Objeto que llama al evento</param>
@@ -80,10 +80,10 @@ namespace PSIAA.Presentation.View
         }
 
         /// <summary>
-        /// Evento click PageIndexChanging de la grilla gridProveedores.
+        /// Evento Cambio de Página de la grilla gridProveedores.
         /// </summary>
         /// <remarks>
-        /// Carga el valor de la variable de sesión ListadoProveedores en la grilla gridProveedores.
+        /// Carga el valor de la variable de sesión ListadoProveedores en la grilla gridProveedores, y actualiza su indice de página.
         /// </remarks>
         /// <param name="sender">Objeto que llama al evento</param>
         /// <param name="e">Argumentos que contienen datos del evento</param>
@@ -94,6 +94,15 @@ namespace PSIAA.Presentation.View
             gridProveedores.DataBind();
         }
 
+        /// <summary>
+        /// Evento Cambio de Selección de la grilla gridProveedores.
+        /// </summary>
+        /// <remarks>
+        /// Obtiene el Código de Proveedor de la fila seleccionada en la grilla, y ejecuta un procedimiento BLL de Listar
+        /// Modelos Asignados por Taller, y con el resultado cargar la Lista desplegable ddlModelos.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void gridProveedores_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow row = gridProveedores.SelectedRow;
@@ -108,6 +117,16 @@ namespace PSIAA.Presentation.View
             ddlModelos.DataBind();
         }
 
+        /// <summary>
+        /// Evento Click del botón btnBuscarPorCod.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se ejecuta un procedimiento BLL de Nombre de Proveedor por Código, y el resultado, en el caso no sea nulo,
+        /// es establecido como texto del control txtNombreProveedor. Luego, con el código de proveedor se ejecuta otro procedimiento BLL
+        /// de Listar Modelos Asignados por Taller, y son cargados en la lista desplegable ddlModelos.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnBuscarPorCod_Click(object sender, EventArgs e)
         {
             string respuesta = _docPagoTallerBll.DevolverNombreProveedor(txtCodProveedor.Text);
@@ -129,6 +148,15 @@ namespace PSIAA.Presentation.View
             }
         }
 
+        /// <summary>
+        /// Evento Click del botón btnBuscar.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se ejecuta un procedimiento BLL de Asignaciones por Aprobar, enviando proveedor y modelo, 
+        /// y se carga el resultado en la grilla gridAsignacionesAprobacion
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             string modelo = ddlModelos.SelectedIndex == 0 ? "" : ddlModelos.SelectedValue;
@@ -136,6 +164,15 @@ namespace PSIAA.Presentation.View
             gridAsignacionesAprobacion.DataBind();
         }
 
+        /// <summary>
+        /// Evento Cambio de Selección de la grilla gridAsignacionesAprobacion.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se obtienen los datos de fila en la grilla gridAsignacionesAprobacion y se poblan las etiquetas
+        /// del modal modalActualizacionPrecio.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void gridAsignacionesAprobacion_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow row = gridAsignacionesAprobacion.SelectedRow;

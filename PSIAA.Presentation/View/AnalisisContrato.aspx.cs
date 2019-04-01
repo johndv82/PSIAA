@@ -11,8 +11,17 @@ namespace PSIAA.Presentation.View
 {
     public partial class AnalisisContrato : System.Web.UI.Page
     {
-        private ContratoBLL _contratoBll = new ContratoBLL();
-        private AnalisisContratoBLL _analisisCont = new AnalisisContratoBLL();
+        /// <summary>
+        /// Variable de instancia a la clase ContratoBLL
+        /// </summary>
+        public ContratoBLL _contratoBll = new ContratoBLL();
+        /// <summary>
+        /// Variable de instancia a la clase AnalisisContratoBLL
+        /// </summary>
+        public AnalisisContratoBLL _analisisContBll = new AnalisisContratoBLL();
+        /// <summary>
+        /// Variable publica para almacenar el usuario logueado.
+        /// </summary>
         public string usuarioActual = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -34,6 +43,16 @@ namespace PSIAA.Presentation.View
             }
         }
 
+        /// <summary>
+        /// Evento Click del botón btnBuscar.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se ejecuta un procedimiento BLL de Listar Modelos por Contrato y el resultado es cargado en la Lista
+        /// Desplegable ddlModelo.
+        /// El valor del contrato ingresado es cargado en un control invisible, para su posterior consulta.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtContrato.Text))
@@ -73,10 +92,20 @@ namespace PSIAA.Presentation.View
             }
         }
 
+        /// <summary>
+        /// Evento click del botón btnAnalizar.
+        /// </summary>
+        /// <remarks>
+        /// En este evento se ejecutan los procedimientos BLL para cargar el Listado de Materiales por Modelo, Listado de 
+        /// Medidas por Modelo, y valores de Talla/Peso por Modelo, y son cargados en sus respectivas grillas.
+        /// La grilla de Materiales es agrupada por Color sumando su Porcentajes.
+        /// </remarks>
+        /// <param name="sender">Objeto que llama al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void btnAnalizar_Click(object sender, EventArgs e)
         {
             //Cargar Materiales
-            gridMateriales.DataSource = _analisisCont.ListarMaterialModelo(int.Parse(hidContrato.Value), ddlModelo.SelectedItem.ToString());
+            gridMateriales.DataSource = _analisisContBll.ListarMaterialModelo(int.Parse(hidContrato.Value), ddlModelo.SelectedItem.ToString());
             gridMateriales.DataBind();
             //Agrupar Grid de Materiales por Color
             GridViewHelper helper = new GridViewHelper(gridMateriales);
@@ -87,14 +116,19 @@ namespace PSIAA.Presentation.View
             gridMateriales.DataBind();
 
             //Cargar Medidas
-            gridMedidas.DataSource = _analisisCont.ListarMedidasPorModelo(ddlModelo.SelectedItem.ToString());
+            gridMedidas.DataSource = _analisisContBll.ListarMedidasPorModelo(ddlModelo.SelectedItem.ToString());
             gridMedidas.DataBind();
 
             //Cargar Peso
-            lblTalla.Text = _analisisCont.TallaPesoMuestra(ddlModelo.SelectedItem.ToString())[0];
-            lblPeso.Text = _analisisCont.TallaPesoMuestra(ddlModelo.SelectedItem.ToString())[1];
+            lblTalla.Text = _analisisContBll.TallaPesoMuestra(ddlModelo.SelectedItem.ToString())[0];
+            lblPeso.Text = _analisisContBll.TallaPesoMuestra(ddlModelo.SelectedItem.ToString())[1];
         }
 
+        /// <summary>
+        /// Evento de Enlace de Fila de Datos de la grilla grdiMedidas.
+        /// </summary>
+        /// <param name="sender">Objeto que llamada al evento</param>
+        /// <param name="e">Argumentos que contienen datos del evento</param>
         protected void gridMedidas_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if ((e.Row.RowType == DataControlRowType.DataRow) && (e.Row.RowType != DataControlRowType.EmptyDataRow))
