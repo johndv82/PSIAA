@@ -161,22 +161,25 @@ namespace PSIAA.DataAccessLayer
         }
 
         /// <summary>
-        /// Ejecuta una consulta de selección a la base de datos para obtener el tipo de un contrasto.
+        /// Ejecuta una consulta de selección a la base de datos para obtener el tipo de un contrato.
         /// </summary>
-        /// <param name="orden">Número de Contrato</param>
-        /// <returns>Variable de tipo string con el tipo de contrasto</returns>
-        public string SelectTipoContrato(string orden) {
+        /// <param name="contrato">Número de Contrato</param>
+        /// <returns>Variable de tipo string con el tipo de contrato</returns>
+        public DataRow SelectTipoContrato(int contrato) {
             List<SqlParameter> _sqlParam = new List<SqlParameter>();
             string query = @"
                 select 
-	                cc.Tipo_Contrato 
-                from lanzamiento_detalle ld
-                inner join contrato_cabecera cc on cc.numero_contrato = ld.numero_documento
-                where Orden = @orden
-                group by cc.Tipo_Contrato";
+	                cc.Tipo_Contrato,
+	                tc.Descripcion
+                from contrato_cabecera cc inner join Tipo_Contrato tc on tc.Tipo_Contrato = cc.Tipo_Contrato
+                collate Modern_Spanish_100_CI_AS
+                where cc.numero_contrato = @contrato";
 
-            _sqlParam.Add(new SqlParameter("@orden", SqlDbType.VarChar) { Value = orden });
-            return _trans.ReadingEscalarQuery(query, _sqlParam).ToString();
+            _sqlParam.Add(new SqlParameter("@contrato", SqlDbType.Int) { Value = contrato });
+            DataTable dtTC = _trans.ReadingQuery(query, _sqlParam);
+            if (dtTC.Rows.Count > 0)
+                return dtTC.Rows[0];
+            else return null;
         }
 
         /// <summary>

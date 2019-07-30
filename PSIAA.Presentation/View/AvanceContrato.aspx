@@ -58,6 +58,22 @@
                                             </div>
                                         </div>
                                     </div>
+                                     <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="well well-sm">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <span class="control-label col-md-6">Tipo Contrato:</span>
+                                                        <asp:Label ID="lblTipoContratoHead" runat="server" Font-Bold="True" CssClass="col-md-6">--</asp:Label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <span class="control-label col-md-4">Cliente:</span>
+                                                        <asp:Label ID="lblClienteHead" runat="server" Font-Bold="True" CssClass="col-md-8">--</asp:Label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="table-responsive">

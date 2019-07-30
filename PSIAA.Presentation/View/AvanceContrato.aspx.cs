@@ -82,6 +82,9 @@ namespace PSIAA.Presentation.View
                 {
                     hidContrato.Value = txtSearch.Text;
                     btnAvanceDetallado.Visible = true;
+
+                    lblClienteHead.Text = _contratoBll.ObtenerClienteContrato(Convert.ToInt32(hidContrato.Value));
+                    lblTipoContratoHead.Text = _contratoBll.ObtenerTipoContrato(Convert.ToInt32(hidContrato.Value), "Descripcion");
                 }
                 ddlContratos.Visible = false;
             }
@@ -95,6 +98,9 @@ namespace PSIAA.Presentation.View
                 //Limpiamos grid Principal
                 gridAvanceContrato.DataSource = null;
                 gridAvanceContrato.DataBind();
+
+                lblClienteHead.Text = "--";
+                lblTipoContratoHead.Text = "--";
             }
             else if (rbnFiltros.SelectedValue == "cliente") {
                 ddlContratos.DataSource = _contratoBll.ListarContratosPorCliente(int.Parse(hidCustomerId.Value));
@@ -104,6 +110,9 @@ namespace PSIAA.Presentation.View
                 //Limpiamos grid Principal
                 gridAvanceContrato.DataSource = null;
                 gridAvanceContrato.DataBind();
+
+                lblClienteHead.Text = "--";
+                lblTipoContratoHead.Text = "--";
             }
         }
 
@@ -438,6 +447,9 @@ namespace PSIAA.Presentation.View
             {
                 hidContrato.Value = ddlContratos.Text.Trim();
                 btnAvanceDetallado.Visible = true;
+                //cargar campos cabecera
+                lblClienteHead.Text = _contratoBll.ObtenerClienteContrato(Convert.ToInt32(hidContrato.Value));
+                lblTipoContratoHead.Text = _contratoBll.ObtenerTipoContrato(Convert.ToInt32(hidContrato.Value), "Descripcion");
             }
         }
     }

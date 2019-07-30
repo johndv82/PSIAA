@@ -115,7 +115,7 @@ namespace PSIAA.Presentation.View
         }
 
         private DataTable MascaraCuadrosBlancoPorPagina(DataTable dtPackingListDetalle) {
-            int nroFilasPagina = 57;
+            int nroFilasPagina = 56; // 57
             int nroFilasPorAgregar = 0;
             int nroAgrupados = (from dt in dtPackingListDetalle.AsEnumerable()
                                group dt by new

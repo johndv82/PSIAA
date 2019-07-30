@@ -112,6 +112,24 @@ namespace PSIAA.Presentation.View {
         protected global::System.Web.UI.UpdateProgress UpdateProgress;
         
         /// <summary>
+        /// Control lblTipoContratoHead.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTipoContratoHead;
+        
+        /// <summary>
+        /// Control lblClienteHead.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblClienteHead;
+        
+        /// <summary>
         /// Control gridAvanceContrato.
         /// </summary>
         /// <remarks>

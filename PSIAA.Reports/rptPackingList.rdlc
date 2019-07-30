@@ -6,6 +6,9 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
+              <Width>0.72777cm</Width>
+            </TablixColumn>
+            <TablixColumn>
               <Width>1.23cm</Width>
             </TablixColumn>
             <TablixColumn>
@@ -42,7 +45,7 @@
               <Width>0.6cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.58531cm</Width>
+              <Width>4.38439cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.9618cm</Width>
@@ -67,6 +70,41 @@
             <TablixRow>
               <Height>0.7cm</Height>
               <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox34">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Box #</Value>
+                              <Style>
+                                <FontSize>6pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox34</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                          <Width>0.5pt</Width>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="Textbox10">
@@ -470,6 +508,50 @@
             <TablixRow>
               <Height>0.35cm</Height>
               <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox85">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontSize>6pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox85</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                          <Width>0.5pt</Width>
+                        </Border>
+                        <TopBorder>
+                          <Style>Solid</Style>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Style>=IIf(CInt(Fields!Paquete.Value) = 999, "None", "Solid")</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>Solid</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>Solid</Style>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="Textbox101">
@@ -1363,6 +1445,55 @@
             <TablixRow>
               <Height>0.35cm</Height>
               <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox86">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=IIf(Previous(Fields!Paquete.Value) = Fields!Paquete.Value or CInt(Fields!Paquete.Value) = 999, 
+"", CInt(Fields!Paquete.Value))</Value>
+                              <Style>
+                                <FontSize>6pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox86</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                          <Width>0.5pt</Width>
+                        </Border>
+                        <TopBorder>
+                          <Style>=IIf(CInt(Fields!Paquete.Value) = 999, "None",
+IIf(Fields!Paquete.Value = Previous(Fields!Paquete.Value), "None", "Solid")
+)</Style>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Style>=IIf(RowNumber("Tablix1") = CountRows("Tablix1"), "Solid", "None")</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="TamañoCaja">
@@ -2320,22 +2451,23 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>0.67916cm</Size>
+                <Size>0.07938cm</Size>
                 <CellContents>
-                  <Textbox Name="Textbox34">
+                  <Textbox Name="Textbox87">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>Box #</Value>
+                            <Value />
                             <Style>
                               <FontSize>6pt</FontSize>
                               <FontWeight>Bold</FontWeight>
@@ -2347,7 +2479,10 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
                         </Style>
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox34</rd:DefaultName>
+                    <rd:DefaultName>Textbox87</rd:DefaultName>
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
                     <Style>
                       <Border>
                         <Style>Solid</Style>
@@ -2379,7 +2514,7 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>0.67916cm</Size>
+                <Size>0.07938cm</Size>
                 <CellContents>
                   <Textbox Name="Paquete1">
                     <CanGrow>true</CanGrow>
@@ -2398,24 +2533,24 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
                       </Paragraph>
                     </Paragraphs>
                     <rd:DefaultName>Paquete1</rd:DefaultName>
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
                     <Style>
                       <Border>
                         <Style>None</Style>
                         <Width>0.5pt</Width>
                       </Border>
                       <TopBorder>
-                        <Color>Black</Color>
                         <Style>Solid</Style>
                       </TopBorder>
                       <BottomBorder>
                         <Style>=IIf(RowNumber("Tablix1") = CountRows("Tablix1"), "Solid", "None")</Style>
                       </BottomBorder>
                       <LeftBorder>
-                        <Color>Black</Color>
                         <Style>Solid</Style>
                       </LeftBorder>
                       <RightBorder>
-                        <Color>Black</Color>
                         <Style>Solid</Style>
                       </RightBorder>
                       <PaddingLeft>2pt</PaddingLeft>
@@ -2465,10 +2600,10 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
             <Value>=Fields!Paquete.Value</Value>
           </SortExpression>
         </SortExpressions>
-        <Top>0.11289cm</Top>
-        <Left>0.15875cm</Left>
+        <Top>0.03735cm</Top>
+        <Left>0.15198cm</Left>
         <Height>1.4cm</Height>
-        <Width>19.8066cm</Width>
+        <Width>19.73367cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2476,7 +2611,7 @@ CDec(Split(Fields!PesoBruto.Value.ToString(),".",2).GetValue(0)
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>0.64644in</Height>
+    <Height>0.59436in</Height>
     <Style />
   </Body>
   <Width>7.86037in</Width>

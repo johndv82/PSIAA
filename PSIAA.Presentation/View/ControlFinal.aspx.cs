@@ -123,7 +123,8 @@ namespace PSIAA.Presentation.View
                 if (int.TryParse(txtPiezas.Text == "" ? "0" : txtPiezas.Text, out _pieza) & hidOrden.Value != string.Empty & hidLote.Value != string.Empty)
                 {
                     int _diferencia = _recepcionBll.DiferenciaConPuntoAnterior(hidOrden.Value, int.Parse(hidLote.Value), 550, 530);
-                    string tipoContrato = _contratoBll.ObtenerTipoContratoPorOrden(hidOrden.Value).Trim();
+                    int contrato = Convert.ToInt32(hidOrden.Value.ToString().Substring(0, 4));
+                    string tipoContrato = _contratoBll.ObtenerTipoContrato(contrato, "Tipo_Contrato").Trim();
                     if(( tipoContrato == "V"))
                     {
                         _diferencia = _pieza;

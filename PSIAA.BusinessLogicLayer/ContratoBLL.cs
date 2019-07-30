@@ -285,9 +285,12 @@ namespace PSIAA.BusinessLogicLayer
         /// </summary>
         /// <param name="_orden">Orden de Producción</param>
         /// <returns>Variable de tipo string con el Tipo de Contrato</returns>
-        public string ObtenerTipoContratoPorOrden(string _orden)
+        public string ObtenerTipoContrato(int numContrato, string campo)
         {
-            return _contratoDal.SelectTipoContrato(_orden);
+            DataRow drTc = _contratoDal.SelectTipoContrato(numContrato);
+            if (drTc != null)
+                return drTc[campo].ToString();
+            else return string.Empty;
         }
 
         /// <summary>
