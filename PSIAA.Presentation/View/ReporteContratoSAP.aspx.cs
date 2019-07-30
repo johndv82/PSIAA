@@ -47,6 +47,7 @@ namespace PSIAA.Presentation.View
                 DataTable dtDetalle = _contratoBll.ContratoDetalle(hidContrato.Value.ToString());
                 if (drCabecera != null && dtDetalle.Rows.Count > 0)
                 {
+                    lblError.Visible = false;
                     ReportDataSource rdsCabecera = new ReportDataSource();
                     rdsCabecera.Name = "dsRepContratoCab";
                     rdsCabecera.Value = drCabecera.Table;
@@ -75,6 +76,7 @@ namespace PSIAA.Presentation.View
                 }
                 else
                 {
+                    lblError.Text = "No hay Ninguna Coincidencia para el Numero de Contrato";
                     lblError.Visible = true;
                     rptViewContrato.LocalReport.DataSources.Clear();
                 }
