@@ -25,7 +25,7 @@ namespace PSIAA.DataAccessLayer
 	                Cod_Almacen as 'Codigo',
 	                Descripcion as 'Almacen'
                 from Almacenes
-                where Cod_Almacen in (90, 93, 95, 98, 112,113)
+                where Cod_Almacen in (90, 93, 95, 98, 112,113,126)
                 order by Cod_Almacen asc";
             return _trans.ReadingQuery(query, null);
         }

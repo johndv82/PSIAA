@@ -3976,7 +3976,8 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=First(Fields!Tolerancia.Value, "dsRdlcCabecera")</Value>
+                  <Value>=First(Fields!Tolerancia.Value, "dsRdlcCabecera") &amp;" "
+&amp; First(Fields!ToleranciaTiempo.Value, "dsRdlcCabecera")</Value>
                   <Style>
                     <FontSize>9pt</FontSize>
                   </Style>

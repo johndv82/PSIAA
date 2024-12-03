@@ -87,7 +87,7 @@ namespace PSIAA.Presentation.View
 
         private string GenerarDocumentoOrdenProduccion(int contrato, string modeloSia, string orden, string taller,
                                                     string fechaRetorno, int cantidad, string maquina, string linea,
-                                                    string modeloSap, string po, string titulo, string material)
+                                                    string modeloSap, string po, string titulo, string material, string fechaingreso)
         {
             DataTable dtDetalleOP = _ordenProduccionBll.ListarDetalleOrdenProduccion(contrato, orden, modeloSia);
             DataTable dtPesoTalla = _ordenProduccionBll.ListarPesosPorTalla(contrato, orden);
@@ -102,7 +102,7 @@ namespace PSIAA.Presentation.View
             rdsPesoTalla.Name = "dsPesosPorTalla";
             rdsPesoTalla.Value = dtPesoTalla;
 
-            ReportParameter[] parametros = new ReportParameter[13];
+            ReportParameter[] parametros = new ReportParameter[14];
             parametros[0] = new ReportParameter("asignadoa", taller);
             parametros[1] = new ReportParameter("fecharetorno", fechaRetorno);
             parametros[2] = new ReportParameter("numeroorden", orden.Trim());
@@ -116,6 +116,7 @@ namespace PSIAA.Presentation.View
             parametros[10] = new ReportParameter("material", material);
             parametros[11] = new ReportParameter("tipoorden", ddlCatOperacion.SelectedValue.ToString() == "400" ? "TEJIDO" : "CONFECCION");
             parametros[12] = new ReportParameter("barCodeParameter", rutaBarCode);
+            parametros[13] = new ReportParameter("fechaingreso", fechaingreso);
 
             rptViewOrdenProduccion.LocalReport.DataSources.Clear();
             rptViewOrdenProduccion.LocalReport.DataSources.Add(rdsDetalle);
@@ -344,6 +345,7 @@ namespace PSIAA.Presentation.View
                     string modeloSap = row.Cells[3].Text;
                     string taller = row.Cells[4].Text;
                     int cantidad = int.Parse(row.Cells[5].Text);
+                    string fechaIngreso = row.Cells[9].Text;
                     string fechaRetorno = row.Cells[10].Text;
                     string fechaEmision = DateTime.Now.ToShortDateString();
 
@@ -357,7 +359,7 @@ namespace PSIAA.Presentation.View
 
                     documentos.Add(GenerarDocumentoOrdenProduccion(int.Parse(hidContrato.Value), modeloSia, orden, taller,
                                                                    fechaRetorno, cantidad, maquina, linea, modeloSap, nroPo,
-                                                                   titulo, material));
+                                                                   titulo, material, fechaIngreso));
                 }
             }
             if (documentos.Count > 0)

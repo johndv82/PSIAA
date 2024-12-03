@@ -73,6 +73,7 @@
                                                         <asp:BoundField DataField="Devuelto" HeaderText="Devuelto" DataFormatString="{0:F3}" ItemStyle-Width="6%" />
                                                         <asp:BoundField DataField="Almacen29" HeaderText="Almacen29" DataFormatString="{0:F3}" ItemStyle-Width="6%" />
                                                         <asp:BoundField DataField="Almacen11" HeaderText="Devoluciones Alm. 11" DataFormatString="{0:F3}" ItemStyle-Width="6%" />
+                                                        <asp:BoundField DataField="Almacen10" HeaderText="Almacen10" DataFormatString="{0:F3}" ItemStyle-Width="6%" />
                                                         <asp:BoundField DataField="Utilizado" HeaderText="Utilizado" DataFormatString="{0:F3}" ItemStyle-Width="6%" />
                                                         <asp:BoundField DataField="MateriaPrima" HeaderText="M. Prima" DataFormatString="{0:F3}" ItemStyle-Width="6%" />
                                                         <asp:BoundField DataField="Saldo" HeaderText="Saldo" DataFormatString="{0:F3}" ItemStyle-Width="6%" />

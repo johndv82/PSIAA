@@ -79,17 +79,18 @@ namespace PSIAA.Presentation.View
             worksheet.Cell("G2").Value = "DEVUELTO";
             worksheet.Cell("H2").Value = "ALMACEN 29";
             worksheet.Cell("I2").Value = "ALMACEN 11";
-            worksheet.Cell("J2").Value = "UTILIZADO";
-            worksheet.Cell("K2").Value = "MATERIA PRIMA";
-            worksheet.Cell("L2").Value = "SALDO";
-            worksheet.Cell("M2").Value = "COD. TALLER";
-            worksheet.Cell("N2").Value = "TALLER";
+            worksheet.Cell("J2").Value = "ALMACEN 10";
+            worksheet.Cell("K2").Value = "UTILIZADO";
+            worksheet.Cell("L2").Value = "MATERIA PRIMA";
+            worksheet.Cell("M2").Value = "SALDO";
+            worksheet.Cell("N2").Value = "COD. TALLER";
+            worksheet.Cell("O2").Value = "TALLER";
 
             DataTable dt = (DataTable)Session["dtBalanceMP"];
             worksheet.Cell("B3").InsertData(dt.AsEnumerable());
             int filasTabla = dt.Rows.Count + 2;
 
-            var rngTable = worksheet.Range("B2:N" + filasTabla);
+            var rngTable = worksheet.Range("B2:O" + filasTabla);
 
             var table = rngTable.CreateTable();
             table.ShowTotalsRow = true;
@@ -97,6 +98,7 @@ namespace PSIAA.Presentation.View
             table.Field("DEVUELTO").TotalsRowFunction = XLTotalsRowFunction.Sum;
             table.Field("ALMACEN 29").TotalsRowFunction = XLTotalsRowFunction.Sum;
             table.Field("ALMACEN 11").TotalsRowFunction = XLTotalsRowFunction.Sum;
+            table.Field("ALMACEN 10").TotalsRowFunction = XLTotalsRowFunction.Sum;
             table.Field("UTILIZADO").TotalsRowFunction = XLTotalsRowFunction.Sum;
             table.Field("MATERIA PRIMA").TotalsRowFunction = XLTotalsRowFunction.Sum;
             table.Field("SALDO").TotalsRowFunction = XLTotalsRowFunction.Sum;
@@ -112,7 +114,7 @@ namespace PSIAA.Presentation.View
             MemoryStream stream = GetStream(workbook);
             Response.Clear();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment; filename=" + Server.UrlEncode("Reporte_BalanceMP" + DateTime.Now.ToString("yyyyMMdd") + "_" + usuarioActual + ".xlsx"));
+            Response.AddHeader("content-disposition", "attachment; filename=" + Server.UrlEncode("Reporte_BalanceMP" + "-"+ txtContrato.Text+ "-"+ DateTime.Now.ToString("yyyyMMdd") + "_" + usuarioActual + ".xlsx"));
             Response.ContentType = "application/vnd.ms-excel";
             Response.BinaryWrite(stream.ToArray());
             Response.End();
