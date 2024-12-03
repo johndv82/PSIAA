@@ -315,7 +315,7 @@ namespace PSIAA.Presentation.View
         {
             Barcode codigo = new Barcode();
             codigo.IncludeLabel = true;
-            System.Drawing.Image imgBarcode = codigo.Encode(TYPE.CODE39, valor,
+            System.Drawing.Image imgBarcode = codigo.Encode(TYPE.CODE128, valor,
                                                             Color.Black, Color.White, 550, 130);
 
             string rutaImagen = @"C:\inetpub\wwwroot\PSIAA\Reports\BarCodes\" + nombreArchivo + ".png";
